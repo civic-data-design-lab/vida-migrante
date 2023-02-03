@@ -1,22 +1,24 @@
-# create-svelte
+# Ecuador Migrant Integration Project
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Project description. Check in later for updates.
 
-## Creating a project
+## Project Details
+This project was created with [SvelteKit](https://kit.svelte.dev/). A full
+Svelte tutorial can be found [here](https://svelte.dev/tutorial/basics).
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Development
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Go through the following steps to get started developing:
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+0. Make sure you have [Node](https://nodejs.org/en/download/) installed and that
+   you can run the `npm` command in your terminal.
+1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+the repository using `git clone` into your local workspace.
+2. Switch to the **`develop` branch** before working (`git checkout develop`).
+   The `main` branch is only used for deployment.
+3. Once you are in the project root directory, run `npm install` to install the
+   dependencies. 
+4. Run the following command to start the development server:
 
 ```bash
 npm run dev
@@ -25,7 +27,24 @@ npm run dev
 npm run dev -- --open
 ```
 
+If everything works, you should be able to navigate to
+http://localhost:5173 to see the website.
+
+**Note:** To expose the localhost server to the internet (so you can test your
+changes on your phone), use the following steps.
+
+0. Install the [`ngrok` CLI tool](https://ngrok.com/download). This tool creates
+   a secure private tunnel to the cloud, giving you a publicly-accessible URL
+   you can access from any device. Read more about `ngrok`
+   [here](https://www.sitepoint.com/use-ngrok-test-local-site/). 
+1. Make sure your dev server is started as explained above.
+   * If using VSCode, run the `Open tunnel` VSCode task (<kbd>Ctrl/⌘</kbd> +
+   <kbd>Shift</kbd> + <kbd>P</kbd> > `Run Task` > `Open tunnel`).
+   * You can otherwise run the command `ngrok http 5173`.
+
 ## Building
+
+*Check this section later for more deployment details*
 
 To create a production version of your app:
 
