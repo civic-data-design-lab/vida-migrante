@@ -2,7 +2,7 @@
   import { GameData } from '../store';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
+<h1>Welcome to Ecaduor!</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <h2>Game State:</h2>
 <pre>
