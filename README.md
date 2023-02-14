@@ -14,8 +14,8 @@ Go through the following steps to get started developing:
    you can run the `npm` command in your terminal.
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 the repository using `git clone` into your local workspace.
-2. Switch to the **`develop` branch** before working (`git checkout develop`).
-   The `main` branch is only used for deployment.
+2. **IMPORTANT:** Switch to the **`develop` branch** before working (`git
+   checkout develop`). The `main` branch is only used for deployment.
 3. Once you are in the project root directory, run `npm install` to install the
    dependencies. 
 4. Run the following command to start the development server:
@@ -31,7 +31,7 @@ If everything works, you should be able to navigate to
 http://localhost:5173 to see the website.
 
 **Note:** To expose the localhost server to the internet (so you can test your
-changes on your phone), use the following steps.
+changes on your phone without having to redeploy), use the following steps.
 
 0. Install the [`ngrok` CLI tool](https://ngrok.com/download). This tool creates
    a secure private tunnel to the cloud, giving you a publicly-accessible URL
@@ -42,16 +42,11 @@ changes on your phone), use the following steps.
    <kbd>Shift</kbd> + <kbd>P</kbd> > `Run Task` > `Open tunnel`).
    * You can otherwise run the command `ngrok http 5173`.
 
-## Building
+## Deployment
 
-*Check this section later for more deployment details*
+To deploy a **preview** of your changes, simply push your code to the `develop`
+branch. On the GitHub repository, click "Preview" under the "Environments"
+section to view this preview.
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+To deploy to **production** (the live website), you must create a pull request.
+*Check in later for more details on this workflow*
