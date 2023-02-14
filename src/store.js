@@ -75,4 +75,4 @@ function createGameData() {
   };
 }
 
-export const gameData = createGameData();
+export const GameData = createGameData();

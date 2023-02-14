@@ -56,7 +56,7 @@ export const GameStates = {
  */
 export const INITIAL_GAME_DATA = {
   state: GameStates.START,
-  currentCard: null,
+  currentCardId: null,
   migrant: null,
   resources: {
     skills: [],
