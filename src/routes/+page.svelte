@@ -2,7 +2,7 @@
     const lastPage = 2;
     let page = 0;
     function advancePage() {
-        if (page === lastPage) ; // navigate to game page
+        if (page === lastPage) window.location.href = '/game';
         else page++;
     }
 </script>
