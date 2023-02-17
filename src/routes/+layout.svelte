@@ -1,0 +1,29 @@
+<script>
+    import {browser} from "$app/environment";
+
+    function calcViewportUnits() {
+        let vh = window.innerHeight / 100;
+        let vw = window.innerWidth / 100;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        document.documentElement.style.setProperty('--vw', `${vw}px`);
+    }
+
+    if (browser) calcViewportUnits();
+</script>
+
+<svelte:window on:resize={calcViewportUnits}/>
+<div id="bg">
+    <slot></slot>
+</div>
+
+<style>
+    #bg {
+
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        background: rgba(230, 230, 230, 0.5);
+    }
+</style>
