@@ -5,7 +5,6 @@
     if (page === lastPage) window.location.href = '/game';
     else page++;
   }
-  import { GameData } from '.@store';
 </script>
 
 <div id="container">
