@@ -20,7 +20,7 @@ function createGameData() {
    */
   const applyCardUpdates = (updates) =>
     update((g) => {
-      for (resource in updates) {
+      for (let resource of updates) {
         if (resource === 'skills') {
           g.resources.skills.push(...updates[resource]);
           continue;
