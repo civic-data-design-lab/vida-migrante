@@ -53,7 +53,7 @@
 </button>
 
 {#if page === lastPage}
-    <a href="/">Explore the data</a>
+    <a href="/dashboard">Explore the data</a>
 {/if}
 </div>
 
