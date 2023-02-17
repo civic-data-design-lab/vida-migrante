@@ -38,6 +38,8 @@ function createGameData() {
         case GameStates.MIGRANT_SELECT:
           return { ...g, state: GameStates.JOB_SELECT };
         case GameStates.JOB_SELECT:
+          return { ...g, state: GameStates.INSTRUCTIONS}
+        case GameStates.INSTRUCTIONS:
           return { ...g, state: GameStates.ROUND_START };
         case GameStates.ROUND_START:
           return { ...g, state: GameStates.INCOME };
@@ -66,12 +68,21 @@ function createGameData() {
     });
   };
 
+  const selectMigrant = (migrant) => {
+    update((g) => {
+        g.migrant = migrant;
+        return g;
+      }
+    );
+  }
+
   return {
     subscribe,
     set,
     update,
     applyCardUpdates,
     advanceGameState,
+    selectMigrant,
   };
 }
 
