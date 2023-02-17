@@ -32,6 +32,23 @@ export const GameStates = {
 // ----------------
 
 /**
+ * @typedef Option
+ * @prop {number} id
+ * @prop {string} description
+ * @prop {ResourcesObject} updates
+ */
+
+/**
+ * @typedef Card
+ * @prop {number} id
+ * @prop {string} category
+ * @prop {string} title
+ * @prop {string} description
+ * @prop {string} resourcesRequired
+ * @prop {Option[]} options
+ */
+
+/**
  * @typedef GameData
  * @prop {string} state - The current game state
  * @prop {string | null} currentCardId - The current card ID the user has drawn

@@ -1,6 +1,7 @@
 <script>
   import { GameData } from '@store';
   import { GameStates } from '@types';
+  import DecisionPage from './DecisionPage.svelte';
 
   $: state = $GameData.state;
   $: migrant = $GameData.migrant;
@@ -54,6 +55,7 @@
     <h1>DRAW CARD</h1>
   {:else if state === GameStates.DECISION}
     <h1>DECISION</h1>
+    <DecisionPage />
   {/if}
 </div>
 
