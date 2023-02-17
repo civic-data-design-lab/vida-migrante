@@ -34,8 +34,8 @@ export const GameStates = {
 /**
  * @typedef GameData
  * @prop {string} state - The current game state
- * @prop {string} currentCardId - The current card ID the user has drawn
- * @prop {string} migrantId - The selected migrant ID
+ * @prop {string | null} currentCardId - The current card ID the user has drawn
+ * @prop {string | null} migrantId - The selected migrant ID
  * @prop {ResourcesObject} resources - The migrant's resources (e.g. time,
  *    money, wellbeing)
  */
@@ -58,7 +58,7 @@ export const GameStates = {
 export const INITIAL_GAME_DATA = {
   state: GameStates.START,
   currentCardId: null,
-  migrant: null,
+  migrantId: null,
   resources: {
     skills: [],
     time: 0,

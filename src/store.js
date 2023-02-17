@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { GameStates, INITIAL_GAME_DATA } from './utils/types';
+import { GameStates, INITIAL_GAME_DATA } from '@types';
 
 function createGameData() {
   const { subscribe, set, update } = writable(INITIAL_GAME_DATA);
@@ -38,7 +38,7 @@ function createGameData() {
         case GameStates.MIGRANT_SELECT:
           return { ...g, state: GameStates.JOB_SELECT };
         case GameStates.JOB_SELECT:
-          return { ...g, state: GameStates.INSTRUCTIONS}
+          return { ...g, state: GameStates.INSTRUCTIONS };
         case GameStates.INSTRUCTIONS:
           return { ...g, state: GameStates.ROUND_START };
         case GameStates.ROUND_START:
@@ -70,11 +70,10 @@ function createGameData() {
 
   const selectMigrant = (migrant) => {
     update((g) => {
-        g.migrant = migrant;
-        return g;
-      }
-    );
-  }
+      g.migrant = migrant;
+      return g;
+    });
+  };
 
   return {
     subscribe,
