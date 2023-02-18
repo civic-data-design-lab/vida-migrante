@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { GameStates, INITIAL_GAME_DATA } from '@types';
+import { GameStates, INITIAL_GAME_DATA } from '$types';
 
 function createGameData() {
   const { subscribe, set, update } = writable(INITIAL_GAME_DATA);

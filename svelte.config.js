@@ -1,3 +1,4 @@
+import path from 'node:path';
 import adapter from '@sveltejs/adapter-vercel';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -6,13 +7,14 @@ const config = {
     adapter: adapter(),
     alias: {
       // File aliases
-      '@types': 'src/utils/types.js',
-      '@store': 'src/store.js',
+      $types: path.resolve('./src/lib/utils/types.js'),
+      $gameData: path.resolve('./src/lib/stores/gameData.js'),
 
       // Folder aliases
-      '@components': 'src/components',
-      '@utils': 'src/utils',
-      '@gamefiles': 'src/game',
+      $components: path.resolve('./src/lib/components'),
+      $utils: path.resolve('./src/lib/utils'),
+      $gameFiles: path.resolve('./src/lib/assets/game-files'),
+      $images: path.resolve('./src/lib/assets/images'),
     },
   },
 };

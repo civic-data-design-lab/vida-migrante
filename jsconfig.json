@@ -12,11 +12,22 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
-      "@store": ["src/store.js"],
-      "@types": ["src/utils/types.js"],
-      "@components/*": ["src/components/*"],
-      "@utils/*": ["src/utils"],
-      "@gamefiles/*": ["src/game/*"]
+      "$lib": ["src/lib"],
+      "$lib/*": ["src/lib/*"],
+      "$types": ["src/lib/utils/types.js"],
+      "$gameData": ["src/lib/stores/gameData.js"],
+
+      "$components": ["src/lib/components"],
+      "$components/*": ["src/lib/components/*"],
+
+      "$utils": ["src/lib/utils"],
+      "$utils/*": ["src/lib/utils/*"],
+
+      "$gameFiles": ["src/lib/assets/game-files"],
+      "$gameFiles/*": ["src/lib/assets/game-files/*"],
+
+      "$images": ["src/lib/assets/images"],
+      "$images/*": ["src/lib/assets/images/*"]
     }
   }
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias

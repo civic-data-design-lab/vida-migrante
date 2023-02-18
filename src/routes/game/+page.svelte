@@ -1,6 +1,6 @@
 <script>
-  import { GameData } from '@store';
-  import { GameStates } from '@types';
+  import { GameData } from '$gameData';
+  import { GameStates } from '$types';
   import DecisionPage from './DecisionPage.svelte';
 
   $: state = $GameData.state;
