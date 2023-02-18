@@ -7,6 +7,51 @@ Project description. Check in later for updates.
 This project was created with [SvelteKit](https://kit.svelte.dev/). A full
 Svelte tutorial can be found [here](https://svelte.dev/tutorial/basics).
 
+## Project Structure
+
+Below is a simplified view of the project directories
+```
+ecuador-integration/
+├ src/
+│ ├ lib/
+│ │ ├ assets/ 
+│ │ │ ├ game-files/
+│ │ │ └ images/
+│ │ ├ components/ 
+│ │ ├ stores/ 
+│ │ └ utils/
+│ ├ routes/
+│ │ └ [your routes]
+│ └ app.html
+├ static/
+│ └ [your static assets]
+├ package.json
+├ svelte.config.js
+├ jsconfig.json
+└ vite.config.js
+```
+
+Some key points:
+* 📄 **Pages** and **layouts** can be found in the [`routes/`](src/routes/)
+  directory. These are indicated as `+page.svelte` and `+layout.svelte`
+  respectively. For example, the page found at the route `/game` game be found
+  in `routes/game/+page.svelte`.
+* 🖼️ General **assets** can be found in [`lib/assets/`](src/lib/assets/)
+  directory.
+  * You can find **game files** such as the card definitions under the
+   [`lib/assets/game-files/`](src/lib/assets/game-files/) directory
+   (`$gameFiles` alias).
+  * **Images** can be found in the [`lib/assets/images/`](src/lib/assets/images/)
+    directory (`$images` alias).
+* 🟧 "Generic" **components** can be found in the
+  [`lib/components/`](src/lib/components/) directory (`$components` alias).
+  These are components that may be used in many different pages.  
+* 🏪 **Stores** can be found in the [`lib/stores/`](src/lib/stores/) directory.
+  The game data store can specifically be found at the alias `$gameData`.
+* 🔧 **Utilities**, such as type definitions and generic function definitions
+  can be found in the [`lib/utils/`](src/lib/utils/) directory. Type definitions
+  can be found at the alias `$types`. 
+
 ## Development
 
 Go through the following steps to get started developing:
