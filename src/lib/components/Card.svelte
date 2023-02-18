@@ -1,7 +1,5 @@
 <script>
-  /**
-   * @type {import("$types").Card}
-   */
+  /** @type {import("$types").Card} */
   export let card;
 </script>
 

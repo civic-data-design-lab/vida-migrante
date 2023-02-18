@@ -25,7 +25,7 @@
     >
   {:else if state === GameStates.JOB_SELECT}
     <h1>
-      What does {migrant.name} do?
+      What does {migrant?.name} do?
     </h1>
   {:else if state === GameStates.INSTRUCTIONS}
     <h1>Instructions</h1>
