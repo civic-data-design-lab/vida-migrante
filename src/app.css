@@ -1,0 +1,44 @@
+h1 {
+    font-family: EB Garamond;
+    font-size: 43pt;
+    font-weight: bolder;
+    color: #505050
+}
+
+h2 {
+    font-family: sans-serif;
+    font-size: 28pt;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: Garamond;
+    font-size: 23pt;
+    font-weight: bolder;
+}
+
+p {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font: 16pt Cambria;
+    font-weight: regular;
+    line-height: 22pt;
+    color: #505050;
+    text-align: center;
+}
+
+body {
+    font: 16pt rubik;
+    text-align: left;
+    color: #505050;
+}
+
+button {
+    position: fixed;
+    margin: auto;
+    bottom: 25vh;
+    border-radius: 16px;
+    width: 30%;
+    height: 4%;
+    background-color: #505050;
+    color: white;
+}

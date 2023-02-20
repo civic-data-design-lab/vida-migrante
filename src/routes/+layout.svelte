@@ -1,5 +1,7 @@
 <script>
   import { browser } from '$app/environment';
+  import '../app.css';
+  import mt_pic from '$lib/assets/mountains_greyscale.png';
 
   function calcViewportUnits() {
     let vh = window.innerHeight / 100;
