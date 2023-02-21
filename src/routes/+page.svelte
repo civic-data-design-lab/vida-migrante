@@ -1,5 +1,4 @@
 <script>
-  import mt_pic from '$lib/assets/mountains_greyscale.png';
   const lastPage = 2;
   let page = 0;
   function advancePage() {
@@ -47,7 +46,6 @@
     <a href="/dashboard">Explore the data</a>
   {/if}
 </div>
-<img alt="Background mountain grey pic" src={mt_pic} />
 
 <style>
   #container {

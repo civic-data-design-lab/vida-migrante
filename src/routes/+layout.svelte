@@ -1,7 +1,6 @@
 <script>
   import { browser } from '$app/environment';
   import '../app.css';
-  import mt_pic from '$lib/assets/mountains_greyscale.png';
 
   function calcViewportUnits() {
     let vh = window.innerHeight / 100;
@@ -21,10 +20,20 @@
 <style>
   #bg {
     position: fixed;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     top: 0;
     left: 0;
-    background: rgba(230, 230, 230, 0.5);
+  }
+
+  #bg:before {
+    content: ' ';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-image: url('$images/mountains-greyscale.png');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 </style>
