@@ -1,0 +1,27 @@
+[
+  {
+    "id": 0,
+    "category": "Personal Improvement",
+    "title": "Hairdresser",
+    "description": "You meet a friend who can teach you the skills needed to become a hairdresser.",
+    "resourcesRequired": ["time"],
+    "options": [
+      {
+        "id": 0,
+        "description": "Yes, work fewer hours for training time",
+        "updates": { "money": 5, "time": -5, "skills": ["test"] }
+      },
+      {
+        "id": 1,
+        "description": "Work longer hours to make up the time for the training",
+        "updates": { "money": 10, "time": -10, "skills": ["test"] }
+      },
+      {
+        "id": 2,
+        "description": "I Can't Afford Taking Time Off",
+        "updates": {}
+      }
+    ],
+    "image": "imgPath"
+  }
+]

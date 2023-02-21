@@ -1,0 +1,12 @@
+{
+  "migrantA": {
+    "name": "José",
+    "age": 24,
+    "initialResources": {
+      "skills": ["construction"],
+      "time": 5,
+      "money": 2,
+      "wellbeing": 5
+    }
+  }
+}
