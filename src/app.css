@@ -33,12 +33,10 @@ body {
 }
 
 button {
-  position: fixed;
   margin: auto;
-  bottom: 25vh;
   border-radius: 16px;
-  width: 30%;
-  height: 4%;
+  width: 30vw;
+  height: 4vh;
   background-color: #505050;
   color: white;
 }
