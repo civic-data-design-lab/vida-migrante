@@ -1,5 +1,5 @@
 h1 {
-  font-family: "sirenia", sans-serif;
+  font-family: 'sirenia', sans-serif;
   font-size: 43pt;
   font-weight: bolder;
   color: #505050;
@@ -39,4 +39,18 @@ button {
   height: 4vh;
   background-color: #505050;
   color: white;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.fade-in-out {
+  animation: 1.5s alternate forwards infinite fade-in-out;
 }
