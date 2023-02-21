@@ -54,8 +54,9 @@
   #container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
     padding: 2.5vw;
+    height: 100vh;
   }
 </style>

@@ -17,12 +17,14 @@
 </button>
 
 <style>
-  #header {
-    margin: 5vh;
-  }
   h1 {
     font-size: 30pt;
     width: fit-content;
     margin: 0;
+  }
+
+  button {
+    margin: 0;
+    margin-bottom: 2.5vh;
   }
 </style>
