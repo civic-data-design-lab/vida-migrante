@@ -49,12 +49,19 @@ export const GameStates = {
  */
 
 /**
+ * @typedef PastAction
+ * @prop {number} cardId - The card that was drawn
+ * @prop {number} optionId - The ID of the option that was selected
+ */
+
+/**
  * @typedef GameData
  * @prop {string} state - The current game state
  * @prop {string | null} currentCardId - The current card ID the user has drawn
  * @prop {string | null} migrantId - The selected migrant ID
  * @prop {ResourcesObject} resources - The migrant's resources (e.g. time,
  *    money, wellbeing)
+ * @prop {PastAction[]} pastActions - List of past actions in this game
  */
 
 /**
@@ -82,5 +89,8 @@ export const INITIAL_GAME_DATA = {
     money: 0,
     wellbeing: 0,
   },
-  // TODO: store past actions in game data, define a type for this
+  pastActions: [],
 };
+
+// Used for round numbers (4 rounds)
+export const NUM_TO_ORDINAL_ARR = ['first', 'second', 'third', 'fourth'];

@@ -3,6 +3,7 @@
   import { GameStates } from '$types';
   import MigrantPage from './MigrantPage.svelte';
   import DecisionPage from './DecisionPage.svelte';
+  import DrawCardPage from './DrawCardPage.svelte';
 
   $: state = $GameData.state;
   $: migrant = $GameData.migrant;
@@ -43,9 +44,8 @@
   {:else if state === GameStates.EXPENSES}
     <h1>EXPENSES</h1>
   {:else if state === GameStates.DRAW_CARD}
-    <h1>DRAW CARD</h1>
+    <DrawCardPage />
   {:else if state === GameStates.DECISION}
-    <h1>DECISION</h1>
     <DecisionPage />
   {/if}
 </div>
