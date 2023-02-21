@@ -1,28 +1,19 @@
 <script>
   import { GameData } from '$gameData';
   import { GameStates } from '$types';
+  import MigrantPage from './MigrantPage.svelte';
   import DecisionPage from './DecisionPage.svelte';
 
   $: state = $GameData.state;
   $: migrant = $GameData.migrant;
   let round = 1;
-
-  function advanceState() {
-    if (state === GameStates.DECISION) round++;
-    GameData.advanceGameState();
-  }
 </script>
 
 <div id="container">
   {#if state === GameStates.START}
     <h1>START</h1>
   {:else if state === GameStates.MIGRANT_SELECT}
-    <h1>Who are the migrants?</h1>
-    <button
-      on:click={() => {
-        GameData.selectMigrant({ name: 'Carlos' });
-      }}>Select</button
-    >
+    <MigrantPage />
   {:else if state === GameStates.JOB_SELECT}
     <h1>
       What does {migrant?.name} do?
@@ -59,16 +50,6 @@
   {/if}
 </div>
 
-<div id="game">
-  <h2>Game State:</h2>
-  <pre>
-        <code>
-            {JSON.stringify($GameData, null, 4)}
-        </code>
-    </pre>
-  <button on:click={advanceState}>Update state</button>
-</div>
-
 <style>
   #container {
     display: flex;
@@ -76,9 +57,5 @@
     justify-content: flex-start;
     align-items: center;
     padding: 2.5vw;
-  }
-
-  #game {
-    padding: 5vw;
   }
 </style>

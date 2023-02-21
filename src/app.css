@@ -1,5 +1,5 @@
 h1 {
-  font-family: EB Garamond;
+  font-family: "sirenia", sans-serif;
   font-size: 43pt;
   font-weight: bolder;
   color: #505050;
@@ -20,7 +20,7 @@ h3 {
 p {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font: 16pt Cambria;
-  font-weight: regular;
+  font-weight: normal;
   line-height: 22pt;
   color: #505050;
   text-align: center;
