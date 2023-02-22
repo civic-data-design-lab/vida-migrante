@@ -7,12 +7,12 @@
   <div class="carousel-viewport">
     {#each migrants as migrant, i}
       <div id="carousel-slide{i}" class="carousel-slide">
-        <a href="#carousel-slide{(i - 1 + numMigrants) % numMigrants}" class="carousel-prev">
-          Go to last slide
-        </a>
-        <a href="#carousel-slide{(i + 1) % numMigrants}" class="carousel-next">
-          Go to next slide
-        </a>
+        {#if i > 0}
+          <a href="#carousel-slide{i - 1}" class="carousel-prev">Go to last slide</a>
+        {/if}
+        {#if i < migrants.length - 1}
+          <a href="#carousel-slide{i + 1}" class="carousel-next">Go to next slide</a>
+        {/if}
         <div class="carousel-content">
           <img src="/src/lib/assets/images/{migrant.name}.png" alt="Manuel" />
           <h3>{migrant.name}</h3>
@@ -22,6 +22,8 @@
       </div>
     {/each}
   </div>
+  <div class="carousel-control" id="left-control" />
+  <div class="carousel-control" id="right-control" />
 </div>
 
 <style>
@@ -58,9 +60,7 @@
     scroll-snap-align: center;
   }
 
-  .carousel::before,
-  .carousel::after {
-    content: '';
+  .carousel-control {
     z-index: 1;
     position: absolute;
     margin-top: 17vh;
@@ -70,15 +70,15 @@
     pointer-events: none;
   }
 
-  .carousel::before {
+  #left-control {
     border-right: 10px solid #333;
   }
 
-  .carousel::after {
+  #right-control {
     border-left: 10px solid #333;
   }
 
-  .carousel::after,
+  #right-control,
   .carousel-next {
     right: 0;
   }

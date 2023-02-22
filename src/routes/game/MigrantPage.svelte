@@ -8,16 +8,22 @@
     rootMargin: '0px',
     threshold: 0.5,
   };
-  function createUpdater(i) {
-    return function updater(entries) {
-      entries.forEach((entry) => {
-        if (entry.intersectionRatio >= observerOptions.threshold) migrant = i;
-      });
-    };
-  }
 
   onMount(() => {
+    const lControl = document.getElementById('left-control');
+    const rControl = document.getElementById('right-control');
     const slides = [...document.querySelectorAll('.carousel-slide')];
+
+    function createUpdater(i) {
+      return function updater(entries) {
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio >= observerOptions.threshold) migrant = i;
+          lControl.hidden = migrant === 0;
+          rControl.hidden = migrant === slides.length - 1;
+        });
+      };
+    }
+
     slides.forEach((slide, i) => {
       const observer = new IntersectionObserver(createUpdater(i), observerOptions);
       observer.observe(slide);
