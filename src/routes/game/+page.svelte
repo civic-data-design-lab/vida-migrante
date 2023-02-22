@@ -7,7 +7,6 @@
 
   $: state = $GameData.state;
   $: migrant = $GameData.migrant;
-  let round = 1;
 </script>
 
 <div id="container">
@@ -37,7 +36,7 @@
     <button on:click={GameData.advanceGameState}>Begin</button>
   {:else if state === GameStates.ROUND_START}
     <h1>
-      ROUND {round} START
+      ROUND {$GameData.round + 1} START
     </h1>
   {:else if state === GameStates.INCOME}
     <h1>INCOME</h1>

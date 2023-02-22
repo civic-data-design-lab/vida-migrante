@@ -16,7 +16,7 @@
 
 {#if flipped}
   <h1>{card.category}</h1>
-  <h2>{card.prompt} (TODO)</h2>
+  <h2>{card.prompt}</h2>
   <ul>
     {#each card.options as option (option.id)}
       <li>

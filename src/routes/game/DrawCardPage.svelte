@@ -4,13 +4,11 @@
   import cardBack from '$images/card-back.png';
 
   // FIXME: Fix once we are keeping track of round number
-  // $: round = $GameData.round
-  let roundNum = 0;
-
-  $: ordinalRound = NUM_TO_ORDINAL_ARR[roundNum];
+  $: round = $GameData.round;
+  $: ordinalRound = NUM_TO_ORDINAL_ARR[round];
 </script>
 
-<h1>Round {roundNum}</h1>
+<h1>Round {round + 1}</h1>
 <!-- Game Data store will automatically draw a card -->
 <button on:click={() => GameData.advanceGameState()}>
   <div class="tap-indicator">
@@ -34,7 +32,6 @@
     all: unset;
     width: 200px;
     height: 280px;
-    border: 1px solid red;
     position: relative;
   }
 

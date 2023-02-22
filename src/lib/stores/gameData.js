@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { GameStates, INITIAL_GAME_DATA } from '$types';
+import { GameStates, INITIAL_GAME_DATA, NUM_ROUNDS } from '$types';
 import allCards from '$gameFiles/card-data';
 
 function createGameData() {
@@ -33,19 +33,29 @@ function createGameData() {
           const updates = allCards[g.currentCardId].options.find(
             (option) => option.id === optionId
           ).updates;
-          console.log('updates:', updates);
           const updatedResources = getUpdatedResources(g.resources, updates);
-          // TODO: Make sure we end the game after 4 rounds
-          const gameOver = false;
+          // TODO: Make sure resources cannot go negative (either here or in the
+          // front end)
 
-          /** @type {import('$types').PastAction} */
+          let gameOver = false;
+          if (g.round + 1 >= NUM_ROUNDS) {
+            gameOver = true;
+          }
+
+          /**
+           * Stores the action into the past actions array
+           * @type {import('$types').PastAction}
+           */
           const action = { cardId: g.currentCardId, optionId };
+
+          // Update the game state
           return {
             ...g,
-            resources: { ...g.resources, ...updatedResources }, // Update resources
+            state: gameOver ? GameStates.GAME_END : GameStates.ROUND_START,
+            round: gameOver ? g.round : g.round + 1, // Increment round if game not over
             currentCardId: null, // Reset the current card
+            resources: { ...g.resources, ...updatedResources }, // Update resources
             pastActions: [...g.pastActions, action], // Add to the past actions list
-            state: gameOver ? GameStates.START : GameStates.ROUND_START,
           };
         default:
           return g;
