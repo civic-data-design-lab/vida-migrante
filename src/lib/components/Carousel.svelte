@@ -1,22 +1,29 @@
+<script>
+  import { migrants } from '$gameFiles/migrant-data.json';
+  let numMigrants = migrants.length;
+</script>
+
 <div class="carousel">
   <div class="carousel-viewport">
-    <div id="carousel-slide1" class="carousel-slide">
-      <a href="#carousel-slide4" class="carousel-prev">Go to last slide</a>
-      <a href="#carousel-slide2" class="carousel-next">Go to next slide</a>
-    </div>
-    <div id="carousel-slide2" class="carousel-slide">
-      <a href="#carousel-slide1" class="carousel-prev">Go to previous slide</a>
-      <a href="#carousel-slide3" class="carousel-next">Go to next slide</a>
-    </div>
-    <div id="carousel-slide3" class="carousel-slide">
-      <a href="#carousel-slide2" class="carousel-prev">Go to previous slide</a>
-      <a href="#carousel-slide4" class="carousel-next">Go to next slide</a>
-    </div>
-    <div id="carousel-slide4" class="carousel-slide">
-      <a href="#carousel-slide3" class="carousel-prev">Go to previous slide</a>
-      <a href="#carousel-slide1" class="carousel-next">Go to first slide</a>
-    </div>
+    {#each migrants as migrant, i}
+      <div id="carousel-slide{i}" class="carousel-slide">
+        {#if i > 0}
+          <a href="#carousel-slide{i - 1}" class="carousel-prev">Go to last slide</a>
+        {/if}
+        {#if i < migrants.length - 1}
+          <a href="#carousel-slide{i + 1}" class="carousel-next">Go to next slide</a>
+        {/if}
+        <div class="carousel-content">
+          <img src="/src/lib/assets/images/{migrant.name}.png" alt="Manuel" />
+          <h3>{migrant.name}</h3>
+          <span>{migrant.age}, {migrant.maritalStatus}</span>
+          {@html migrant.introText}
+        </div>
+      </div>
+    {/each}
   </div>
+  <div class="carousel-control" id="left-control" />
+  <div class="carousel-control" id="right-control" />
 </div>
 
 <style>
@@ -41,7 +48,6 @@
     right: 0;
     display: flex;
     overflow-x: scroll;
-    counter-reset: item;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
   }
@@ -51,46 +57,28 @@
     flex: 0 0 100%;
     width: 100%;
     height: 100%;
-    background-color: #f99;
-    counter-increment: item;
     scroll-snap-align: center;
   }
 
-  .carousel-slide:nth-child(even) {
-    background-color: #99f;
-  }
-
-  .carousel-slide::before {
-    content: counter(item);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -40%, 70px);
-    color: #fff;
-    font-size: 2em;
-  }
-
-  .carousel::before,
-  .carousel::after {
-    content: '';
+  .carousel-control {
     z-index: 1;
     position: absolute;
-    margin-top: 35vh;
+    margin-top: 17vh;
     width: 0;
     height: 0;
     border-block: 10px solid transparent;
     pointer-events: none;
   }
 
-  .carousel::before {
+  #left-control {
     border-right: 10px solid #333;
   }
 
-  .carousel::after {
+  #right-control {
     border-left: 10px solid #333;
   }
 
-  .carousel::after,
+  #right-control,
   .carousel-next {
     right: 0;
   }
@@ -98,9 +86,32 @@
   .carousel-prev,
   .carousel-next {
     position: absolute;
-    margin-top: 35vh;
+    margin-top: 17vh;
     height: 15px;
     width: 15px;
     font-size: 0;
+  }
+
+  .carousel-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  span {
+    font-family: 'sirenia', sans-serif;
+    font-size: 16pt;
+    font-weight: normal;
+    color: #505050;
+  }
+
+  img {
+    height: 35vh;
   }
 </style>
