@@ -14,7 +14,7 @@
           Go to next slide
         </a>
         <div class="carousel-content">
-          <img src="/src/lib/assets/images/{migrant.name}.png" alt="Manuel">
+          <img src="/src/lib/assets/images/{migrant.name}.png" alt="Manuel" />
           <h3>{migrant.name}</h3>
           <span>{migrant.age}, {migrant.maritalStatus}</span>
           {@html migrant.introText}
@@ -105,7 +105,7 @@
   }
 
   span {
-    font-family: "sirenia", sans-serif;
+    font-family: 'sirenia', sans-serif;
     font-size: 16pt;
     font-weight: normal;
     color: #505050;

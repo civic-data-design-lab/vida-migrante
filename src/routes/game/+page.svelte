@@ -1,12 +1,14 @@
 <script>
   import { GameData } from '$gameData';
   import { GameStates } from '$types';
+  import { migrants } from '$gameFiles/migrant-data.json';
+
   import MigrantPage from './MigrantPage.svelte';
   import DecisionPage from './DecisionPage.svelte';
   import DrawCardPage from './DrawCardPage.svelte';
 
   $: state = $GameData.state;
-  $: migrant = $GameData.migrant;
+  $: migrant = migrants[$GameData.migrant];
 </script>
 
 <div id="container">
@@ -16,7 +18,7 @@
     <MigrantPage />
   {:else if state === GameStates.JOB_SELECT}
     <h1>
-      What does {migrant?.name} do?
+      What does {migrant.name} do?
     </h1>
   {:else if state === GameStates.INSTRUCTIONS}
     <h1>Instructions</h1>
