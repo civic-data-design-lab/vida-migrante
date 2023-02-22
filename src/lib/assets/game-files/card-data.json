@@ -4,17 +4,19 @@
     "category": "Personal Improvement",
     "title": "Hairdresser",
     "description": "You meet a friend who can teach you the skills needed to become a hairdresser.",
+    "prompt": "Would you like to train to become a hairdresser?",
     "resourcesRequired": ["time"],
+    "skillsEarned": [],
     "options": [
       {
         "id": 0,
         "description": "Yes, work fewer hours for training time",
-        "updates": { "money": 5, "time": -5, "skills": ["test"] }
+        "updates": { "money": 5, "time": -5 }
       },
       {
         "id": 1,
         "description": "Work longer hours to make up the time for the training",
-        "updates": { "money": 10, "time": -10, "skills": ["test"] }
+        "updates": { "money": 10, "time": -10 }
       },
       {
         "id": 2,
@@ -22,6 +24,6 @@
         "updates": {}
       }
     ],
-    "image": "imgPath"
+    "image": "PI_hairdresser.png"
   }
 ]

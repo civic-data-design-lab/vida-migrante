@@ -1,0 +1,27 @@
+[
+  {
+    "id": 0,
+    "category": "Personal Improvement",
+    "title": "Peluquero",
+    "description": "Conoces a un amigo que puede enseñarte las habilidades necesarias para convertirte en peluquero.",
+    "resourcesRequired": ["tiempo"],
+    "options": [
+      {
+        "id": 0,
+        "description": "Sí, trabajar menos horas por tiempo de entrenamiento",
+        "updates": { "money": 5, "time": -5, "skills": ["test"] }
+      },
+      {
+        "id": 1,
+        "description": "Work longer hours to make up the time for the training",
+        "updates": { "money": 10, "time": -10, "skills": ["test"] }
+      },
+      {
+        "id": 2,
+        "description": "I Can't Afford Taking Time Off",
+        "updates": {}
+      }
+    ],
+    "image": "imgPath"
+  }
+]
