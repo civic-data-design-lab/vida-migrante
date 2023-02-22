@@ -6,20 +6,20 @@ h1 {
 }
 
 h2 {
-  font-family: sans-serif;
+  font-family: "sirenia", sans-serif;
   font-size: 28pt;
   font-weight: bold;
 }
 
 h3 {
-  font-family: Garamond;
+  font-family: "sirenia", sans-serif;
   font-size: 23pt;
   font-weight: bolder;
 }
 
 p {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font: 16pt Cambria;
+  font-family: "sirenia", sans-serif;
+  font-size: 16pt;
   font-weight: normal;
   line-height: 22pt;
   color: #505050;
