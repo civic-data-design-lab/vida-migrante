@@ -1,25 +1,25 @@
 h1 {
-  font-family: 'sirenia', sans-serif;
+  font-family: "sirenia", sans-serif;
   font-size: 43pt;
   font-weight: bolder;
   color: #505050;
 }
 
 h2 {
-  font-family: 'sirenia', sans-serif;
+  font-family: sans-serif;
   font-size: 28pt;
   font-weight: bold;
 }
 
 h3 {
-  font-family: 'sirenia', sans-serif;
+  font-family: Garamond;
   font-size: 23pt;
   font-weight: bolder;
 }
 
 p {
-  font-family: 'sirenia', sans-serif;
-  font-size: 16pt;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font: 16pt Cambria;
   font-weight: normal;
   line-height: 22pt;
   color: #505050;
@@ -39,26 +39,4 @@ button {
   height: 4vh;
   background-color: #505050;
   color: white;
-}
-
-ul {
-  padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
-@keyframes fade-in-out {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.3;
-  }
-}
-
-.fade-in-out {
-  animation: 1.5s alternate forwards infinite fade-in-out;
 }

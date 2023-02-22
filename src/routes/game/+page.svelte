@@ -1,14 +1,12 @@
 <script>
   import { GameData } from '$gameData';
   import { GameStates } from '$types';
-  import { migrants } from '$gameFiles/migrant-data.json';
-
   import MigrantPage from './MigrantPage.svelte';
   import DecisionPage from './DecisionPage.svelte';
-  import DrawCardPage from './DrawCardPage.svelte';
 
   $: state = $GameData.state;
-  $: migrant = migrants[$GameData.migrant];
+  $: migrant = $GameData.migrant;
+  let round = 1;
 </script>
 
 <div id="container">
@@ -18,7 +16,7 @@
     <MigrantPage />
   {:else if state === GameStates.JOB_SELECT}
     <h1>
-      What does {migrant.name} do?
+      What does {migrant?.name} do?
     </h1>
   {:else if state === GameStates.INSTRUCTIONS}
     <h1>Instructions</h1>
@@ -38,15 +36,16 @@
     <button on:click={GameData.advanceGameState}>Begin</button>
   {:else if state === GameStates.ROUND_START}
     <h1>
-      ROUND {$GameData.round + 1} START
+      ROUND {round} START
     </h1>
   {:else if state === GameStates.INCOME}
     <h1>INCOME</h1>
   {:else if state === GameStates.EXPENSES}
     <h1>EXPENSES</h1>
   {:else if state === GameStates.DRAW_CARD}
-    <DrawCardPage />
+    <h1>DRAW CARD</h1>
   {:else if state === GameStates.DECISION}
+    <h1>DECISION</h1>
     <DecisionPage />
   {/if}
 </div>
