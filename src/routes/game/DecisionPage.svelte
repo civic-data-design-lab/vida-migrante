@@ -9,7 +9,7 @@
   let flipped = false;
 
   const makeDecision = (optionId) => {
-    // TODO: Handle invalid moves
+    // TODO: Handle invalid decision
     GameData.advanceGameState({ optionId });
   };
 </script>
@@ -29,3 +29,9 @@
 {:else}<Card {card} />{/if}
 
 <button on:click={() => (flipped = !flipped)}>Flip card</button>
+
+<style>
+  li {
+    margin: 1rem 0;
+  }
+</style>

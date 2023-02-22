@@ -4,7 +4,6 @@
   import cardBack from '$images/card-back.png';
   import touchIcon from '$lib/assets/images/touch-app.svg';
 
-  // FIXME: Fix once we are keeping track of round number
   $: round = $GameData.round;
   $: ordinalRound = NUM_TO_ORDINAL_ARR[round];
 </script>

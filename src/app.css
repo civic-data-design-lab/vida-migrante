@@ -41,6 +41,14 @@ button {
   color: white;
 }
 
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
 @keyframes fade-in-out {
   0% {
     opacity: 1;

@@ -59,6 +59,8 @@ export const GameStates = {
  *    accept the card's prompt, may be empty
  * @prop {Option[]} options - List of options associated with this card, may be
  *    empty
+ * @prop {string} image - The full name of the image to use with this card (with
+ *    file extension)
  */
 
 /**
