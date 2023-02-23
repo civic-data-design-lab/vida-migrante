@@ -14,7 +14,7 @@
           <a href="#carousel-slide{i + 1}" class="carousel-next">Go to next slide</a>
         {/if}
         <div class="carousel-content">
-          <img src="/src/lib/assets/images/{migrant.name}.png" alt="Manuel" />
+          <img src={`/images/migrants/${migrant.name}.png`} alt="Manuel" />
           <h3>{migrant.name}</h3>
           <span>{migrant.age}, {migrant.maritalStatus}</span>
           {@html migrant.introText}
