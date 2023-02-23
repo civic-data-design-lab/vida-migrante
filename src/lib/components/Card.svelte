@@ -9,7 +9,7 @@
   <h1>{card.title}</h1>
   <img
     class="card-image"
-    src={`src/lib/assets/images/${card.image}`}
+    src={`/images/card-visuals/${card.image}`}
     alt="Card
   visual"
   />
