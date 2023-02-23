@@ -18,7 +18,7 @@ h3 {
 }
 
 p {
-  font-family: 'sirenia', sans-serif;
+  font-family: 'sirenia';
   font-size: 16pt;
   font-weight: normal;
   line-height: 22pt;
@@ -32,13 +32,67 @@ body {
   color: #505050;
 }
 
-button {
+.button {
   margin: auto;
   border-radius: 16px;
   width: 30vw;
   height: 4vh;
   background-color: #505050;
   color: white;
+  font: 12pt 'sirenia';
+  position: relative;
+}
+
+.button:hover {
+  background-color: #505050;
+  color: white
+}
+
+.button:active {
+  background-color: #2d2d2d;
+  color: white;
+  transform: translateY(4px);
+}
+
+.button:disabled {
+  background-color: #232323;
+  color: white;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button2 {
+  background-color: #2d2d2d;
+  color: black;
+}
+
+.button3 {
+  margin: auto;
+  position: relative;
+  border-radius: 16px;
+  width: 80vw;
+  height: 6vh;
+  background-color: #505050;
+  color: white;
+}
+
+.button4 {
+  background-color: white;
+  color: #505050;
+  border-color: #505050;
+  box-shadow: 5px 5px 10px 2px #505050;
+  cursor: not-allowed;
+  transform: none;
+  width: 16vw;
+  height: 8vh;
+}
+
+.button5 {
+  background-color: lightgray;
+  border-radius: 50%;
+  border: none;
+  width: 20px;
+  height: 20px;
 }
 
 ul {
@@ -61,4 +115,16 @@ li {
 
 .fade-in-out {
   animation: 1.5s alternate forwards infinite fade-in-out;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  padding: 20px;
+}
+
+.grid-item {
+  padding: 6px 1px 1px 1px;
+  font-size: 3px;
+  text-align: center;
 }

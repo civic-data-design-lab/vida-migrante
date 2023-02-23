@@ -20,7 +20,7 @@
   <ul>
     {#each card.options as option (option.id)}
       <li>
-        <button on:click={() => makeDecision(option.id)}>
+        <button class="button button3" on:click={() => makeDecision(option.id)}>
           {option.description}
         </button>
       </li>
@@ -28,7 +28,7 @@
   </ul>
 {:else}<Card {card} />{/if}
 
-<button on:click={() => (flipped = !flipped)}>Flip card</button>
+<button class="button button" on:click={() => (flipped = !flipped)}>Flip card</button>
 
 <style>
   li {

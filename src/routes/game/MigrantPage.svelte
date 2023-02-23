@@ -37,6 +37,7 @@
 </div>
 <Carousel />
 <button
+  class="button button"
   on:click={() => {
     GameData.selectMigrant(migrant);
     GameData.advanceGameState();

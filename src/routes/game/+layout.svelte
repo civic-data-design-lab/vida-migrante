@@ -7,7 +7,8 @@
 
 <slot />
 <nav>
-  <button on:click={() => (showDevNav = !showDevNav)}>{showDevNav ? 'Hide' : 'Show'} dev nav</button
+  <button class="button navbar-btn" on:click={() => (showDevNav = !showDevNav)}
+    >{showDevNav ? 'Hide' : 'Show'} dev nav</button
   >
   {#if showDevNav}
     <ul>

@@ -34,7 +34,7 @@
     </p>
   {/if}
 
-  <button on:click={advancePage}>
+  <button class="button button" on:click={advancePage}>
     {#if page === lastPage}
       Start
     {:else}
