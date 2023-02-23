@@ -21,6 +21,19 @@
     </ul>
   {/if}
 </nav>
+<section>
+  <ul class="temp-resources">
+    <li>
+      Money: {$GameData.resources.money}
+    </li>
+    <li>
+      Time: {$GameData.resources.time}
+    </li>
+    <li>
+      Wellbeing: {$GameData.resources.wellbeing}
+    </li>
+  </ul>
+</section>
 
 <style>
   nav {
@@ -30,5 +43,16 @@
 
   ul {
     background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  section {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .temp-resources {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
   }
 </style>
