@@ -26,3 +26,20 @@ export function convertToOrdinal(n) {
   }
   return n + 'th';
 }
+
+/**
+ * Safely parses a JSON string.
+ *
+ * @param {string} json - The JSON string to parse
+ * @param {any} defaultOnError - The default value to return if there is an
+ *    error during parsing.
+ */
+export function parseJSONSafe(json, defaultOnError) {
+  try {
+    const res = JSON.parse(json);
+    return res;
+  } catch (e) {
+    console.warn('Could not parse JSON, returning the default:', e);
+    return defaultOnError;
+  }
+}

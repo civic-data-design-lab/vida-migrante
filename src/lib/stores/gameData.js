@@ -1,9 +1,26 @@
 import { writable } from 'svelte/store';
+import { browser } from '$app/environment';
 import { GameStates, INITIAL_GAME_DATA, NUM_ROUNDS } from '$types';
 import allCards from '$gameFiles/card-data';
+import { parseJSONSafe } from '$lib/utils/functions';
+
+// Get the possible game data on the browser's local storage
+let initialValue = INITIAL_GAME_DATA;
+if (browser) {
+  const storedGameData = window.localStorage.getItem('gameData');
+
+  // Parse the JSON; if there is an error, return the initial game data
+  initialValue = parseJSONSafe(storedGameData, INITIAL_GAME_DATA);
+  console.debug('Got game data from local storage:', initialValue);
+  if (!initialValue) {
+    // If for whatever reason the key exists but there is no game data, default
+    // back the initial game data
+    initialValue = INITIAL_GAME_DATA;
+  }
+}
 
 function createGameData() {
-  const { subscribe, set, update } = writable(INITIAL_GAME_DATA);
+  const { subscribe, set, update } = writable(initialValue);
 
   const advanceGameState = (kwargs) => {
     update((g) => {
@@ -80,6 +97,15 @@ function createGameData() {
 }
 
 export const GameData = createGameData();
+
+// Add a subscription to the game data so that whenever it updates, the local
+// storage is also updated
+// Adapted from: https://rodneylab.com/using-local-storage-sveltekit/
+GameData.subscribe((value) => {
+  if (browser) {
+    window.localStorage.setItem('gameData', JSON.stringify(value));
+  }
+});
 
 /**
  * Draws a random card, making sure to avoid duplicates based on past actions.
