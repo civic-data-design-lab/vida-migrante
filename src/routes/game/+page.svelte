@@ -4,6 +4,7 @@
   import { migrants } from '$gameFiles/migrant-data.json';
 
   import MigrantPage from './MigrantPage.svelte';
+  import JobSelectPage from './JobSelectPage.svelte';
   import DecisionPage from './DecisionPage.svelte';
   import DrawCardPage from './DrawCardPage.svelte';
 
@@ -17,9 +18,7 @@
   {:else if state === GameStates.MIGRANT_SELECT}
     <MigrantPage />
   {:else if state === GameStates.JOB_SELECT}
-    <h1>
-      What does {migrant.name} do?
-    </h1>
+    <JobSelectPage />
   {:else if state === GameStates.INSTRUCTIONS}
     <h1>Instructions</h1>
     <p>
