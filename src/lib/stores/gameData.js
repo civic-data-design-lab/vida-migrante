@@ -142,8 +142,17 @@ function drawCard(gameData) {
  * @param {number} [updates.time]
  * @param {number} [updates.wellbeing]
  * @param {[string]} [updates.skills] - List of skills to concatenate
+ *
+ * @returns {import('$types').ResourcesObject}
  */
 function getUpdatedResources(oldResources, updates) {
+  if (!oldResources) {
+    console.warn(
+      'No resources found, you might need to select a migrant to load in the initial resources'
+    );
+    return oldResources;
+  }
+
   // Creates copy to avoid mutation
   const updatedResources = {};
   for (let resourceKey in updates) {

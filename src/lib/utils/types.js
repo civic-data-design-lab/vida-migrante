@@ -28,6 +28,12 @@ export const GameStates = {
   GAME_END: 'game-end',
 };
 
+export const CopingLevels = {
+  STRESS: 'stress',
+  CRITICAL: 'critical',
+  EMERGENCY: 'emergency',
+};
+
 // ----------------
 // Type Definitions
 // ----------------
@@ -81,11 +87,38 @@ export const GameStates = {
  */
 
 /**
+ * @typedef ExpendituresObject
+ *
+ * Represents the monthly expenditures of a migrant broken down into different
+ * categories such as rent, food, health, etc.
+ *
+ * @prop {number} rent - Amount of rent expenses
+ * @prop {number} food - Amount of food expenses
+ * @prop {number} health - Amount of basic health expenses
+ * @prop {number} housholdUtilitiesEssential - *Essential* household expenses
+ * @prop {number} householdUtilitiesNonEssential - *Non-essential* household
+ *    expenses
+ * @prop {number} remittances - Amount spent on remittances each month
+ * @prop {number} internet - Amount spent on internet expenses
+ */
+
+/**
  * @typedef ResourcesObject
+ *
+ * Represents the resources a migrant has. This also includes "negative"
+ * resources such as expenditures.
+ *
  * @prop {string[]} skills - Array of skills (see Skills enum)
  * @prop {number} time - Time quantitative resource
  * @prop {number} money - Money quantitative resource
- * @prop {number} wellbeing - Wellbeing quantitative resource
+ * @prop {ExpendituresObject} expenditures - Expenditures broken down into
+ *    several categories (see `ExpendituresObject`)
+ * @prop {object} income - Income object, broken down into salary and assistance
+ * @prop {number} income.salary - The migrant's income from job salary
+ * @prop {number} income.assistance - The migrant's income from assistance
+ * @prop {string | null} copingLevel - The coping level the migrant is
+ *    experiencing (see `CopingLevel` enum)
+ * @prop {string[]} accreditations - List of the migrant's accreditations
  */
 
 // ---------
@@ -103,12 +136,7 @@ export const INITIAL_GAME_DATA = {
   currentCardId: null,
   migrantId: null,
   round: 0,
-  resources: {
-    skills: [],
-    time: 0,
-    money: 0,
-    wellbeing: 0,
-  },
+  resources: null,
   pastActions: [],
 };
 

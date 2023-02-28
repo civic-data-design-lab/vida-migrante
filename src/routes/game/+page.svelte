@@ -45,7 +45,7 @@
     <h1>EXPENSES</h1>
   {:else if state === GameStates.DRAW_CARD}
     <DrawCardPage />
-  {:else if state === GameStates.DECISION}
+  {:else if state === GameStates.DECISION && $GameData.currentCardId !== null}
     <DecisionPage />
   {/if}
 </div>

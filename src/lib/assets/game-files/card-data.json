@@ -7,21 +7,75 @@
     "prompt": "Would you like to train to become a hairdresser?",
     "resourcesRequired": ["time"],
     "skillsEarned": [],
+    "accreditations": [],
     "options": [
       {
         "id": 0,
         "description": "Yes, work fewer hours for training time",
-        "updates": { "money": 5, "time": -5 }
+        "updates": { "money": 5, "time": -5 },
+        "implication_text": "xxx migrants work extra hours to make ends meet"
       },
       {
         "id": 1,
         "description": "Work longer hours to make up the time for the training",
-        "updates": { "money": 10, "time": -10 }
+        "updates": { "money": 10, "time": -10 },
+        "implication_text": "xxx migrants work extra hours to make ends meet"
       },
       {
         "id": 2,
         "description": "I Can't Afford Taking Time Off",
-        "updates": {}
+        "updates": {},
+        "implication_text": "xxx migrants work extra hours to make ends meet"
+      }
+    ],
+    "image": "PI_hairdresser.png"
+  },
+  {
+    "id": 1,
+    "category": "Assistance",
+    "title": "Regularlization",
+    "description": "The Ecuadorian government is expanding their regularlization policy and you qualify to benefit from regular status documentation.",
+    "resourcesRequired": ["time"],
+    "skillsEarned": [],
+    "accreditations": ["regularlized"],
+    "monthly": "True",
+    "options": [
+      {
+        "id": 0,
+        "description": "Yes, apply for documentation",
+        "updates": {"money": 10, "time": -5 },
+        "implication_text": "xxx migrants do not have their immigration documents regularized. This limits the employment opportunities for Venezuelan migrants. Migrants with regularized documents earn $87 more per month on average. Congratulations, you got a raise due to your new status. "
+      }
+    ],
+    "image": "PI_hairdresser.png"
+  },
+  {
+    "id": 2,
+    "category": "Life Event",
+    "title": "Remittances",
+    "description": "Your mother in Venezuela needs surgey for a health emergency, and you have to send remittances to cover the medical bills.",
+    "prompt": "How would you like to pay for the remittances?",
+    "resourcesRequired": ["time"],
+    "skillsEarned": [],
+    "accreditations": [],
+    "options": [
+      {
+        "id": 0,
+        "description": "Work longer hours to get extra money",
+        "updates": { "money": 5, "time": -5 },
+        "implication_text": "xxx migrants send money to Venezuela on a monthly basis."
+      },
+      {
+        "id": 1,
+        "description": "Borrow money from a friend",
+        "updates": { "money": 10, "time": 0, "coping": "stress" },
+        "implication_text": "xxx migrants borrow money from family and friends to cover essential expenses"
+      },
+      {
+        "id": 2,
+        "description": "I can't send money to mom now",
+        "updates": {},
+        "implication_text": "xxx"
       }
     ],
     "image": "PI_hairdresser.png"

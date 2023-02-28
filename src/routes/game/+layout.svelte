@@ -40,15 +40,19 @@
   </nav>
   <section>
     <ul class="temp-resources">
-      <li>
-        Money: {$GameData.resources.money}
-      </li>
-      <li>
-        Time: {$GameData.resources.time}
-      </li>
-      <li>
-        Wellbeing: {$GameData.resources.wellbeing}
-      </li>
+      {#if !$GameData.resources}
+        <li>No resources yet, select a migrant first</li>
+      {:else}
+        <li>
+          Money: {$GameData.resources.money}
+        </li>
+        <li>
+          Time: {$GameData.resources.time}
+        </li>
+        <li>
+          Wellbeing: {$GameData.resources.wellbeing}
+        </li>
+      {/if}
     </ul>
   </section>
 {/if}
