@@ -100,7 +100,14 @@ function createGameData() {
 
   const selectMigrant = (migrant) => {
     update((g) => {
-      g.migrant = migrant;
+      g.migrantId = migrant;
+      return g;
+    });
+  };
+
+  const selectJob = (job) => {
+    update((g) => {
+      g.jobId = job;
       return g;
     });
   };
@@ -111,6 +118,7 @@ function createGameData() {
     update,
     advanceGameState,
     selectMigrant,
+    selectJob,
   };
 }
 
