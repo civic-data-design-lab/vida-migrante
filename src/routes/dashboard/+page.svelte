@@ -4,6 +4,7 @@
   import Modal from '$components/Modal.svelte';
 
   let showModal = false;
+  let displayedSpending = null;
 
   let expenses = [];
   for (let i = 0; i <60; i++) {
@@ -31,13 +32,38 @@
   let spendings = [
     {
       name: 'Rent',
-      icon: '/src/lib/assets/images/dashboard/RENT.png',
+      icon: 'RENT.png',
       total_expense: initial_expenses.reduce(add, 0),
       expenses: initial_expenses,
     },
     {
       name: 'Food',
-      icon: '/src/lib/assets/images/dashboard/FOOD.png',
+      icon: 'FOOD3.png',
+      total_expense: initial_expenses.reduce(add, 0),
+      expenses: initial_expenses,
+    },
+    {
+      name: 'Health & Hygiene',
+      icon: 'HEALTH.png',
+      total_expense: initial_expenses.reduce(add, 0),
+      expenses: initial_expenses,
+    },
+    {
+      name: 'Household & Utilities',
+      icon: 'HOUSEHOLD.png',
+      total_expense: initial_expenses.reduce(add, 0),
+      expenses: initial_expenses,
+    },
+
+    {
+      name: 'Remittances',
+      icon: 'REMITTANCES.png',
+      total_expense: initial_expenses.reduce(add, 0),
+      expenses: initial_expenses,
+    },
+    {
+      name: 'Internet',
+      icon: 'INTERNET.png',
       total_expense: initial_expenses.reduce(add, 0),
       expenses: initial_expenses,
     },
@@ -100,31 +126,47 @@
   <body
     >slide to allocate your income</body
   >
-  {#each spendings as { name, icon, total_expense, expenses }}
+  {#each spendings as spending}
     <section>
-      
-      <img src={icon} style="width:3.5em; height: 3.5em; padding: 25px" alt={name} />
-      <h2>{name}</h2>
-      <button class = "info" on:click={() => (showModal = true)}>
-        i
-      </button>
-
+      <div id="container2">
+        <p>{spending.name}</p>
+        <button class = "info" on:click={() => (displayedSpending = spending)}
+          style="
+          width: 1.5em;
+          height: 1.5em;
+          color: white;
+          margin-top: 1.5em;
+          margin-left: .5em;
+          background-color: #505050;
+          -webkit-border-radius:.75em;
+          -moz-border-radius:.75em;
+          border-radius:.75em;">?
+        </button>
+      </div>
       <div>
-        <label for="basic-range">{name}</label>
+        <!-- <label for="basic-range">{spending.name}</label> -->
         <!-- <Range on:change={(e) => value = e.detail.value} id="basic-slider" /> -->
       </div>
-      
       
     </section>
   {/each}
 </div>
 
-<Modal bind:showModal>
-	<h2>
-		modal
-	</h2>
-  <img src={'/src/lib/assets/images/dashboard/FOOD.png'} style="width:3.5em; height: 3.5em; padding: 25px" alt="FOOD" />
+<Modal showModal={displayedSpending}>
+  <div class="modal-body" slot="body">
+    <img
+      src="/src/lib/assets/images/dashboard/{displayedSpending?.icon}"
+      alt={displayedSpending?.name}
+    />
+    <div>
+      <h2>{displayedSpending?.name}</h2>
+      <p>Your Expense</p>
+      <p>Average Migrant Household Expense</p>
+      <p>Average National Expense</p>
+    </div>
+  </div>
 </Modal>
+
 
 <style>
   #container {
