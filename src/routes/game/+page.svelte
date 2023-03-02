@@ -50,6 +50,8 @@
     <DecisionPage />
   {:else if state === GameStates.ASSISTANCE}
     <AssistancePage />
+  {:else if state === GameStates.GAME_END}
+    <h1>Game Over</h1>
   {/if}
 </div>
 

@@ -62,6 +62,8 @@ export const CopingLevels = {
  *    you would encode `{ time: -5 }`). Any skill gain is encoded in an array of
  *    skill strings. For example, if the user gains digital skills, you would
  *    encode `{ skills: ['digital skills'] }`
+ * @prop {string} implicationText - Describes qualitatively the implication of
+ *    the decision associated with this option
  */
 
 /**

@@ -33,7 +33,9 @@
           </li>
         {/each}
         <li>
-          <button on:click={() => localStorage.removeItem('gameData')}>Clear local storage</button>
+          <button on:click={() => localStorage.removeItem('gameData')}
+            >Clear local storage/reset game data (needs refresh)</button
+          >
         </li>
       </ul>
     {/if}
