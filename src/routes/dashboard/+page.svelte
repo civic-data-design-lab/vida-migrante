@@ -1,10 +1,13 @@
 <script>
   import { onMount } from 'svelte';
   import Range from '$components/Range.svelte';
+  import RangeSlider from "svelte-range-slider-pips";
   import Modal from '$components/Modal.svelte';
 
   let showModal = false;
   let displayedSpending = null;
+  let values = [0,200];
+
 
   let expenses = [];
   for (let i = 0; i <60; i++) {
@@ -143,12 +146,18 @@
           border-radius:.75em;">?
         </button>
       </div>
-      <div>
-        <!-- <label for="basic-range">{spending.name}</label> -->
-        <!-- <Range on:change={(e) => value = e.detail.value} id="basic-slider" /> -->
-      </div>
+      <!-- <div> -->
+        <!-- <label for="basic-range">{spending.name}</label>  -->
+        <!-- <Range on:change={(e) => value = e.detail.value} id="basic-slider"/> -->
+        <!-- <RangeSlider style="fontsize: 20px;" min={0} max={200} /> -->
+        
+      <!-- </div> -->
+      
       
     </section>
+    <!-- <RangeSlider style="fontsize: 20px;" min={0} max={200} /> -->
+    <RangeSlider id=small bind:values range float all="label" step={10} />
+
   {/each}
 </div>
 
@@ -245,5 +254,8 @@
     justify-content: space-between;
   }
 
-  
+  :global(#small) { 
+		font-size: 0.75em;
+  }
+	
 </style>

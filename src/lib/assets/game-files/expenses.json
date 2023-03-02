@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Rent",
+        "icon": "RENT.png"
+    },
+    {
+        "name": "Food",
+        "icon": "FOOD3.png"
+    },
+    {
+        "name": "Health & Hygiene",
+        "icon": "HEALTH.png"
+    },
+    {
+        "name": "Household & Utilities",
+        "icon": "HOUSEHOLD.png"
+    },
+
+    {
+        "name": "Remittances",
+        "icon": "REMITTANCES.png"
+    },
+    {
+        "name": "Internet",
+        "icon": "INTERNET.png"
+    }
+  ]
