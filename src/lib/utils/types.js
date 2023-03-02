@@ -102,6 +102,7 @@ export const INITIAL_GAME_DATA = {
   state: GameStates.START,
   currentCardId: null,
   migrantId: null,
+  jobId: null,
   round: 0,
   resources: {
     skills: [],
