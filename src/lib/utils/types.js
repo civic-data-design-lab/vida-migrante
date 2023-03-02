@@ -15,8 +15,20 @@ export const Resources = {
   WELLBEING: 'wellbeing',
 };
 
+export const Assistances = {
+  TRAINING: 'training',
+  JOB_FINDING: 'jobFind',
+  LEGALIZATION_DOCS: 'legalDocs',
+  LEGALIZATION_ACRDT: 'legalAcrdt',
+  FOOD_ASSIST_CASH: 'foodAssistCash',
+  FOOD_ASSIST_IN_KIND: 'foodAssistIK',
+  MEDICINES_ASSIST_CASH: 'medAssistCash',
+  MEDICINES_ASSIST_IN_KIND: 'medAssistIK',
+  INTERNET: 'internet',
+};
+
 export const GameStates = {
-  START: 'start',
+  START: 'start', // Start
   MIGRANT_SELECT: 'migrant-select',
   JOB_SELECT: 'job-select',
   INSTRUCTIONS: 'instructions',
@@ -25,6 +37,8 @@ export const GameStates = {
   EXPENSES: 'expenses',
   DRAW_CARD: 'draw-card',
   DECISION: 'decision',
+  /** Users select an assistance card, shows up after rounds 1 and 3 */
+  ASSISTANCE: 'assistance',
   GAME_END: 'game-end',
 };
 

@@ -7,6 +7,7 @@
   import JobSelectPage from './JobSelectPage.svelte';
   import DecisionPage from './DecisionPage.svelte';
   import DrawCardPage from './DrawCardPage.svelte';
+  import AssistancePage from './AssistancePage.svelte';
 
   $: state = $GameData.state;
   $: migrant = migrants[$GameData.migrant];
@@ -47,6 +48,8 @@
     <DrawCardPage />
   {:else if state === GameStates.DECISION && $GameData.currentCardId !== null}
     <DecisionPage />
+  {:else if state === GameStates.ASSISTANCE}
+    <AssistancePage />
   {/if}
 </div>
 

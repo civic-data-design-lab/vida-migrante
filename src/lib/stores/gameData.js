@@ -54,26 +54,44 @@ function createGameData() {
           // TODO: Make sure resources cannot go negative (either here or in the
           // front end)
 
-          let gameOver = false;
-          if (g.round + 1 >= NUM_ROUNDS) {
-            gameOver = true;
-          }
-
           /**
            * Stores the action into the past actions array
            * @type {import('$types').PastAction}
            */
           const action = { cardId: g.currentCardId, optionId };
 
-          // Update the game state
+          // Figure out the next game state
+          let nextState;
+          let roundOver = false;
+          if (g.round + 1 >= NUM_ROUNDS) {
+            // Game Over
+            nextState = GameStates.GAME_END;
+          } else if (g.round === 0 || g.round === 2) {
+            // Assistance state shows up after rounds 1 and 3, don't end the
+            // round yet
+            nextState = GameStates.ASSISTANCE;
+          } else {
+            // Next round
+            roundOver = true;
+            nextState = GameStates.ROUND_START;
+          }
+
+          // Update the game data
           return {
             ...g,
-            state: gameOver ? GameStates.GAME_END : GameStates.ROUND_START,
-            round: gameOver ? g.round : g.round + 1, // Increment round if game not over
+            state: nextState,
+            round: roundOver ? g.round + 1 : g.round,
             currentCardId: null, // Reset the current card
             resources: { ...g.resources, ...updatedResources }, // Update resources
             pastActions: [...g.pastActions, action], // Add to the past actions list
           };
+        case GameStates.ASSISTANCE:
+          const { assistanceId } = kwargs;
+
+          // TODO: Figure out how to update resources based on assistance
+
+          // Start round 2 or 4 after assistance has been selected
+          return { ...g, state: GameStates.ROUND_START, round: g.round + 1 };
         default:
           return g;
       }
