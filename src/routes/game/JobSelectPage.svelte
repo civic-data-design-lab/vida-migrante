@@ -24,7 +24,7 @@
 <div id="jobs">
   {#each jobs as job, i}
     <img
-            class="selection-icon"
+      class="selection-icon"
       src={`/images/jobs/${job.image}`}
       alt={job.sector}
       on:click={modalUpdater(
@@ -48,10 +48,14 @@
       monthly income will be <b>${modalIncome}</b> and you will be working an average of
       <b>{modalHours} hours</b> per week.
     </p>
-      <button id="modal-button" class="button" on:click={() => {
+    <button
+      id="modal-button"
+      class="button"
+      on:click={() => {
         GameData.selectJob(job);
         GameData.advanceGameState();
-      }}>Select</button>
+      }}>Select</button
+    >
   </div>
 </Modal>
 

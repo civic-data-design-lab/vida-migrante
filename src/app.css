@@ -25,6 +25,27 @@ p {
   color: #505050;
   text-align: center;
 }
+p2 {
+  font-family: 'sirenia';
+  font-size: 16pt;
+  font-weight: normal;
+  line-height: 22pt;
+  color: #505050;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  color: blue;
+}
+p3 {
+  font-family: 'sirenia';
+  font-size: 16pt;
+  font-weight: normal;
+  line-height: 22pt;
+  color: #505050;
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+}
 
 body {
   font: 16pt rubik;

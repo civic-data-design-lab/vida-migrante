@@ -15,8 +15,20 @@ export const Resources = {
   WELLBEING: 'wellbeing',
 };
 
+export const Assistances = {
+  TRAINING: 'training',
+  JOB_FINDING: 'jobFind',
+  LEGALIZATION_DOCS: 'legalDocs',
+  LEGALIZATION_ACRDT: 'legalAcrdt',
+  FOOD_ASSIST_CASH: 'foodAssistCash',
+  FOOD_ASSIST_IN_KIND: 'foodAssistIK',
+  MEDICINES_ASSIST_CASH: 'medAssistCash',
+  MEDICINES_ASSIST_IN_KIND: 'medAssistIK',
+  INTERNET: 'internet',
+};
+
 export const GameStates = {
-  START: 'start',
+  START: 'start', // Start
   MIGRANT_SELECT: 'migrant-select',
   JOB_SELECT: 'job-select',
   INSTRUCTIONS: 'instructions',
@@ -25,7 +37,15 @@ export const GameStates = {
   EXPENSES: 'expenses',
   DRAW_CARD: 'draw-card',
   DECISION: 'decision',
+  /** Users select an assistance card, shows up after rounds 1 and 3 */
+  ASSISTANCE: 'assistance',
   GAME_END: 'game-end',
+};
+
+export const CopingLevels = {
+  STRESS: 'stress',
+  CRITICAL: 'critical',
+  EMERGENCY: 'emergency',
 };
 
 // ----------------
@@ -42,6 +62,8 @@ export const GameStates = {
  *    you would encode `{ time: -5 }`). Any skill gain is encoded in an array of
  *    skill strings. For example, if the user gains digital skills, you would
  *    encode `{ skills: ['digital skills'] }`
+ * @prop {string} implicationText - Describes qualitatively the implication of
+ *    the decision associated with this option
  */
 
 /**
@@ -81,11 +103,38 @@ export const GameStates = {
  */
 
 /**
+ * @typedef ExpendituresObject
+ *
+ * Represents the monthly expenditures of a migrant broken down into different
+ * categories such as rent, food, health, etc.
+ *
+ * @prop {number} rent - Amount of rent expenses
+ * @prop {number} food - Amount of food expenses
+ * @prop {number} health - Amount of basic health expenses
+ * @prop {number} housholdUtilitiesEssential - *Essential* household expenses
+ * @prop {number} householdUtilitiesNonEssential - *Non-essential* household
+ *    expenses
+ * @prop {number} remittances - Amount spent on remittances each month
+ * @prop {number} internet - Amount spent on internet expenses
+ */
+
+/**
  * @typedef ResourcesObject
+ *
+ * Represents the resources a migrant has. This also includes "negative"
+ * resources such as expenditures.
+ *
  * @prop {string[]} skills - Array of skills (see Skills enum)
  * @prop {number} time - Time quantitative resource
  * @prop {number} money - Money quantitative resource
- * @prop {number} wellbeing - Wellbeing quantitative resource
+ * @prop {ExpendituresObject} expenditures - Expenditures broken down into
+ *    several categories (see `ExpendituresObject`)
+ * @prop {object} income - Income object, broken down into salary and assistance
+ * @prop {number} income.salary - The migrant's income from job salary
+ * @prop {number} income.assistance - The migrant's income from assistance
+ * @prop {string | null} copingLevel - The coping level the migrant is
+ *    experiencing (see `CopingLevel` enum)
+ * @prop {string[]} accreditations - List of the migrant's accreditations
  */
 
 // ---------
@@ -104,12 +153,7 @@ export const INITIAL_GAME_DATA = {
   migrantId: null,
   jobId: null,
   round: 0,
-  resources: {
-    skills: [],
-    time: 0,
-    money: 0,
-    wellbeing: 0,
-  },
+  resources: null,
   pastActions: [],
 };
 

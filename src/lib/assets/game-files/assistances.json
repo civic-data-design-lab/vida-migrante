@@ -1,0 +1,65 @@
+[
+  {
+    "id": "training",
+    "category": "Training and Education",
+    "name": "Training or Education Program",
+    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "image": "A_accreditation.png"
+  },
+  {
+    "id": "jobFind",
+    "category": "Training and Education",
+    "name": "Job finding assistance",
+    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "image": "A_foodassistance.png"
+  },
+  {
+    "id": "legalDocs",
+    "category": "Legal",
+    "name": "Legalization of Documents",
+    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "image": "A_regularization.png"
+  },
+  {
+    "id": "legalAcrdt",
+    "category": "Legal",
+    "name": "Legalization of Accreditations",
+    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "image": "A_accreditation.png"
+  },
+  {
+    "id": "foodAssistCash",
+    "category": "Food and Health",
+    "name": "Food Assistance (Cash)",
+    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "image": "A_accreditation.png"
+  },
+  {
+    "id": "foodAssistIK",
+    "category": "Food and Health",
+    "name": "Food Asssistance (In-Kind)",
+    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "image": "A_accreditation.png"
+  },
+  {
+    "id": "medAssistCash",
+    "category": "Food and Health",
+    "name": "Medicines Assistance",
+    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "image": "A_accreditation.png"
+  },
+  {
+    "id": "medAssistIK",
+    "category": "Food and Health",
+    "name": "Medicines Assistance (In-Kind)",
+    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "image": "A_accreditation.png"
+  },
+  {
+    "id": "internet",
+    "category": "Other",
+    "name": "Internet Connectivity",
+    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "image": "A_accreditation.png"
+  }
+]
