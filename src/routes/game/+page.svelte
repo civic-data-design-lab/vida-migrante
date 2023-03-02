@@ -6,6 +6,7 @@
 
   import MigrantPage from './MigrantPage.svelte';
   import JobSelectPage from './JobSelectPage.svelte';
+  import InstructionsPage from './InstructionsPage.svelte';
   import DecisionPage from './DecisionPage.svelte';
   import DrawCardPage from './DrawCardPage.svelte';
   import AssistancePage from './AssistancePage.svelte';
@@ -23,10 +24,7 @@
   {:else if state === GameStates.JOB_SELECT}
     <JobSelectPage />
   {:else if state === GameStates.INSTRUCTIONS}
-    <h1>Instructions</h1>
-    <p>Migrant: {migrant.name}</p>
-    <p>Job: {job.title}</p>
-    <button on:click={GameData.advanceGameState}>Begin</button>
+    <InstructionsPage />
   {:else if state === GameStates.ROUND_START}
     <h1>
       ROUND {$GameData.round + 1} START
