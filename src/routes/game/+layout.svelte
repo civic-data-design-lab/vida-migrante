@@ -46,13 +46,13 @@
         <li>No resources yet, select a migrant first</li>
       {:else}
         <li>
-          Money: {$GameData.resources.money}
+          Salary: {$GameData.resources.income.salary}
         </li>
         <li>
           Time: {$GameData.resources.time}
         </li>
         <li>
-          Wellbeing: {$GameData.resources.wellbeing}
+          Skills: {$GameData.resources.skills}
         </li>
       {/if}
     </ul>

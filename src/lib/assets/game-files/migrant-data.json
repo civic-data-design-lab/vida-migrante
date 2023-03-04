@@ -1,6 +1,7 @@
 {
   "migrants": [
     {
+      "id": 0,
       "name": "Manuel",
       "age": 25,
       "maritalStatus": "married",
@@ -28,6 +29,7 @@
       "immigration": false
     },
     {
+      "id": 1,
       "name": "Amarilis",
       "age": 27,
       "maritalStatus": "single",
@@ -55,6 +57,7 @@
       "immigration": false
     },
     {
+      "id": 2,
       "name": "Fernanda",
       "age": 26,
       "maritalStatus": "married",
@@ -82,6 +85,7 @@
       "immigration": false
     },
     {
+      "id": 3,
       "name": "Carlos",
       "age": 26,
       "maritalStatus": "married",

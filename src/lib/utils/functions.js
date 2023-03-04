@@ -43,3 +43,13 @@ export function parseJSONSafe(json, defaultOnError) {
     return defaultOnError;
   }
 }
+
+/**
+ * Deep copies an object.
+ *
+ * @param {object} obj - The object to deep copy
+ * @return {object} The copied object
+ */
+export function deepCopy(obj) {
+  return structuredClone(obj);
+}

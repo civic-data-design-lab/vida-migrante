@@ -2,7 +2,8 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import { GameStates, INITIAL_GAME_DATA, NUM_ROUNDS } from '$types';
 import allCards from '$gameFiles/card-data';
-import { parseJSONSafe } from '$lib/utils/functions';
+import allMigrantData from '$gameFiles/migrant-data';
+import { deepCopy, parseJSONSafe } from '$lib/utils/functions';
 
 // Get the possible game data on the browser's local storage
 let initialValue = INITIAL_GAME_DATA;
@@ -28,7 +29,18 @@ function createGameData() {
         case GameStates.START:
           return { ...g, state: GameStates.MIGRANT_SELECT };
         case GameStates.MIGRANT_SELECT:
-          return { ...g, state: GameStates.JOB_SELECT };
+          const { migrantId } = kwargs;
+
+          // Copy the initial resources from the migrant into the game data's
+          // state
+          const initialResources = allMigrantData.migrants[migrantId].initialResources;
+
+          return {
+            ...g,
+            migrantId, // Set the migrant ID
+            resources: deepCopy(initialResources),
+            state: GameStates.JOB_SELECT,
+          };
         case GameStates.JOB_SELECT:
           return { ...g, state: GameStates.INSTRUCTIONS };
         case GameStates.INSTRUCTIONS:
@@ -42,7 +54,6 @@ function createGameData() {
           // TODO: Update monthly expenses
           return { ...g, state: GameStates.DRAW_CARD };
         case GameStates.DRAW_CARD:
-          // TODO: Randomly select a card and update the card state
           const cardId = drawCard(g);
           return { ...g, state: GameStates.DECISION, currentCardId: cardId };
         case GameStates.DECISION:
