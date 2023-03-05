@@ -8,7 +8,6 @@
 
   const selectAssistance = (assistanceId) => {
     console.debug(assistanceId);
-    // TODO: Have some sort of implication text show up
     GameData.advanceGameState({ assistanceId });
   };
 </script>

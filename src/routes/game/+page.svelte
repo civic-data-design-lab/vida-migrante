@@ -14,17 +14,19 @@
   import IncomePage from './_pages/IncomePage.svelte';
   import ExpensesPage from './_pages/ExpensesPage.svelte';
   import GamePage from './GamePage.svelte';
+  import StartPage from './_pages/StartPage.svelte';
+  import RoundStartPage from './_pages/RoundStartPage.svelte';
 
   $: state = $GameData.state;
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
 
   const gamePages = [
-    { stateName: GameStates.START, component: TempGamePage },
+    { stateName: GameStates.START, component: StartPage },
     { stateName: GameStates.MIGRANT_SELECT, component: MigrantPage },
     { stateName: GameStates.JOB_SELECT, component: JobSelectPage },
     { stateName: GameStates.INSTRUCTIONS, component: InstructionsPage },
-    { stateName: GameStates.ROUND_START, component: TempGamePage },
+    { stateName: GameStates.ROUND_START, component: RoundStartPage },
     { stateName: GameStates.INCOME, component: IncomePage },
     { stateName: GameStates.EXPENSES, component: ExpensesPage },
     { stateName: GameStates.DRAW_CARD, component: DrawCardPage },

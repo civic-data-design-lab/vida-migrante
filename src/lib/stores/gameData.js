@@ -52,7 +52,7 @@ function createGameData() {
           return { ...g, state: GameStates.EXPENSES };
         case GameStates.EXPENSES:
           // TODO: Update monthly expenses
-          return { ...g, state: GameStates.DRAW_CARD };
+          return { ...g, currentCardId: null, state: GameStates.DRAW_CARD };
         case GameStates.DRAW_CARD:
           const cardId = drawCard(g);
           return { ...g, state: GameStates.DECISION, currentCardId: cardId };
@@ -92,7 +92,6 @@ function createGameData() {
             ...g,
             state: nextState,
             round: roundOver ? g.round + 1 : g.round,
-            currentCardId: null, // Reset the current card
             resources: { ...g.resources, ...updatedResources }, // Update resources
             pastActions: [...g.pastActions, action], // Add to the past actions list
           };
