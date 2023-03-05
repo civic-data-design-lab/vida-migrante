@@ -23,9 +23,9 @@
     your balance.
   </p>
   <p>
-    Migrant: {migrant.name}
+    Migrant: {migrant?.name}
     <br />
-    Job: {job.title}
+    Job: {job?.title}
   </p>
   <button class="button" id="begin-button" on:click={GameData.advanceGameState}>Begin</button>
 </div>

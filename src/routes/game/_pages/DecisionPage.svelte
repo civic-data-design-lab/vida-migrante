@@ -26,7 +26,6 @@
     <button on:click={() => makeDecision(displayedOption.id)} class="button">Select</button>
   </div>
 </Modal>
-
 {#if flipped}
   <h1>{card.category}</h1>
   <h2>{card.prompt || 'MISSING PROMPT? 🥲'}</h2>

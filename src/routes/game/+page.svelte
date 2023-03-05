@@ -4,53 +4,46 @@
   import { migrants } from '$gameFiles/migrant-data.json';
   import { jobs } from '$gameFiles/jobs.json';
 
-  import MigrantPage from './MigrantPage.svelte';
-  import JobSelectPage from './JobSelectPage.svelte';
-  import InstructionsPage from './InstructionsPage.svelte';
-  import DecisionPage from './DecisionPage.svelte';
-  import DrawCardPage from './DrawCardPage.svelte';
-  import AssistancePage from './AssistancePage.svelte';
+  import MigrantPage from './_pages/MigrantPage.svelte';
+  import JobSelectPage from './_pages/JobSelectPage.svelte';
+  import InstructionsPage from './_pages/InstructionsPage.svelte';
+  import DecisionPage from './_pages/DecisionPage.svelte';
+  import DrawCardPage from './_pages/DrawCardPage.svelte';
+  import AssistancePage from './_pages/AssistancePage.svelte';
+  import TempGamePage from './_pages/TempGamePage.svelte';
+  import IncomePage from './_pages/IncomePage.svelte';
+  import ExpensesPage from './_pages/ExpensesPage.svelte';
+  import GamePage from './GamePage.svelte';
 
   $: state = $GameData.state;
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
+
+  const gamePages = [
+    { stateName: GameStates.START, component: TempGamePage },
+    { stateName: GameStates.MIGRANT_SELECT, component: MigrantPage },
+    { stateName: GameStates.JOB_SELECT, component: JobSelectPage },
+    { stateName: GameStates.INSTRUCTIONS, component: InstructionsPage },
+    { stateName: GameStates.ROUND_START, component: TempGamePage },
+    { stateName: GameStates.INCOME, component: IncomePage },
+    { stateName: GameStates.EXPENSES, component: ExpensesPage },
+    { stateName: GameStates.DRAW_CARD, component: DrawCardPage },
+    { stateName: GameStates.DECISION, component: DecisionPage },
+    { stateName: GameStates.ASSISTANCE, component: AssistancePage },
+    { stateName: GameStates.GAME_END, component: TempGamePage },
+  ];
+
+  $: currentPage = gamePages.find((data) => data.stateName === state);
 </script>
 
-<div id="container">
-  {#if state === GameStates.START}
-    <h1>START</h1>
-  {:else if state === GameStates.MIGRANT_SELECT}
-    <MigrantPage />
-  {:else if state === GameStates.JOB_SELECT}
-    <JobSelectPage />
-  {:else if state === GameStates.INSTRUCTIONS}
-    <InstructionsPage />
-  {:else if state === GameStates.ROUND_START}
-    <h1>
-      ROUND {$GameData.round + 1} START
-    </h1>
-  {:else if state === GameStates.INCOME}
-    <h1>INCOME</h1>
-  {:else if state === GameStates.EXPENSES}
-    <h1>EXPENSES</h1>
-  {:else if state === GameStates.DRAW_CARD}
-    <DrawCardPage />
-  {:else if state === GameStates.DECISION && $GameData.currentCardId !== null}
-    <DecisionPage />
-  {:else if state === GameStates.ASSISTANCE}
-    <AssistancePage />
-  {:else if state === GameStates.GAME_END}
-    <h1>Game Over</h1>
-  {/if}
-</div>
-
-<style>
-  #container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 2.5vw;
-    height: 100vh;
-  }
-</style>
+<svelte:head>
+  <title>Game | Ecuador Integration</title>
+</svelte:head>
+<!-- Key ensures that the animation gets applied on each state transition -->
+{#key state}
+  <GamePage>
+    <!-- See https://svelte.dev/repl/74593f36569a4c268d8a6ab277db34b5?version=3.12.1
+      for passing props -->
+    <svelte:component this={currentPage.component} />
+  </GamePage>
+{/key}
