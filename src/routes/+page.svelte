@@ -34,13 +34,11 @@
     </p>
   {/if}
 
-  <button class="button button" on:click={advancePage}>
-    {#if page === lastPage}
-      Start
-    {:else}
-      Next
-    {/if}
-  </button>
+  {#if page === lastPage}
+    <a href="/game" class="button">Start</a>
+  {:else}
+    <button class="button button" on:click={advancePage}> Next </button>
+  {/if}
 
   {#if page === lastPage}
     <a href="/dashboard">Explore the data</a>
@@ -57,21 +55,10 @@
     padding: 2.5vw;
   }
 
-  button {
-    position: fixed;
-    margin: auto;
-    bottom: 25vh;
-    border-radius: 16px;
-    width: 30%;
-    height: 4%;
-    background-color: #505050;
-    color: white;
-  }
-
-  a {
+  /* a {
     color: black;
     margin: auto;
     position: fixed;
     bottom: 7vh;
-  }
+  } */
 </style>
