@@ -1,4 +1,15 @@
-<main>
-  <!-- TODO: Make it look pretty -->
-  <h1>LOADING THE GAME DATA...</h1>
+<script>
+  import { fade } from 'svelte/transition';
+</script>
+
+<main transition:fade={{ duration: 200 }}>
+  <h1>LOADING...</h1>
 </main>
+
+<style>
+  main {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+  }
+</style>
