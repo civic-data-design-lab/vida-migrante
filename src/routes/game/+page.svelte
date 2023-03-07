@@ -21,21 +21,21 @@
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
 
-  const gamePages = [
-    { stateName: GameStates.START, component: StartPage },
-    { stateName: GameStates.MIGRANT_SELECT, component: MigrantPage },
-    { stateName: GameStates.JOB_SELECT, component: JobSelectPage },
-    { stateName: GameStates.INSTRUCTIONS, component: InstructionsPage },
-    { stateName: GameStates.ROUND_START, component: RoundStartPage },
-    { stateName: GameStates.INCOME, component: IncomePage },
-    { stateName: GameStates.EXPENSES, component: ExpensesPage },
-    { stateName: GameStates.DRAW_CARD, component: DrawCardPage },
-    { stateName: GameStates.DECISION, component: DecisionPage },
-    { stateName: GameStates.ASSISTANCE, component: AssistancePage },
-    { stateName: GameStates.GAME_END, component: TempGamePage },
-  ];
+  const gamePages = new Map([
+    [GameStates.START, StartPage],
+    [GameStates.MIGRANT_SELECT, MigrantPage],
+    [GameStates.JOB_SELECT, JobSelectPage],
+    [GameStates.INSTRUCTIONS, InstructionsPage],
+    [GameStates.ROUND_START, RoundStartPage],
+    [GameStates.INCOME, IncomePage],
+    [GameStates.EXPENSES, ExpensesPage],
+    [GameStates.DRAW_CARD, DrawCardPage],
+    [GameStates.DECISION, DecisionPage],
+    [GameStates.ASSISTANCE, AssistancePage],
+    [GameStates.GAME_END, TempGamePage],
+  ]);
 
-  $: currentPage = gamePages.find((data) => data.stateName === state);
+  $: currentPage = gamePages.get(state);
 </script>
 
 <svelte:head>
@@ -46,6 +46,6 @@
   <GamePage>
     <!-- See https://svelte.dev/repl/74593f36569a4c268d8a6ab277db34b5?version=3.12.1
       for passing props -->
-    <svelte:component this={currentPage.component} />
+    <svelte:component this={currentPage} />
   </GamePage>
 {/key}
