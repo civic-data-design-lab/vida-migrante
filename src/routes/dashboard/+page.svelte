@@ -3,22 +3,30 @@
   import Range from '$components/Range.svelte';
   import RangeSlider from "svelte-range-slider-pips";
   import Modal from '$components/Modal.svelte';
+  import { GameData } from '$gameData';
+  import { intros } from 'svelte/internal';
 
   let showModal = false;
   let displayedSpending = null;
   let values = [0,200];
 
+  let total_columns = 55;
+  let max_expense = 800; 
+
+  let player_expenses = 200;
+  let player_income = $GameData.resources?.income.salary
 
   let expenses = [];
-  for (let i = 0; i <60; i++) {
-    if (i < 24) {
+  for (let i = 0; i <total_columns; i++) {
+    if (i < Math.ceil(total_columns*player_expenses/max_expense)) {
       expenses.push("oval_filled");
-    } else {
-      if (i==59) {
+      } else if (i == Math.ceil(total_columns*player_income/max_expense)) {
+        expenses.push("oval_green");
+      } else if (i==54) {
         expenses.push("oval_red");
-      } else if (i == 40) { //$540*60/800
+      } else if (i == 37) { //$540*55/800
         expenses.push("oval_yellow");
-      } else if (i == 57) {
+      } else if (i == 52) {
         expenses.push("oval_blue");
       } else {
         expenses.push("oval");
@@ -26,7 +34,7 @@
     }
     
     
-  }
+  
 
   let initial_expenses = [];
   for (let i = 1; i <= 30; i++) {
@@ -87,7 +95,7 @@
 <div id="container">
     <div id="container2">
       <h3 class="alignleft">Your Total Expense</h3>
-      <h3 class="alignright">$324</h3>
+      <h3 class="alignright">${player_expenses}</h3>
     </div>
     <section>
     {#each expenses as color }
@@ -95,6 +103,20 @@
       <div class={color}></div>
     {/each}
   </section>
+  <div id="container2">
+    <div class="circle"></div>
+    <p2 style="color: #505050; font-weight: bold;">Your Total Expenses</p2>
+    <p3 class="alignright" style="color: #505050; float: right; font-weight: bold;">
+    <span>${player_expenses}</span>
+    </p3>
+  </div>
+  <div id="container2">
+    <div class="circle"></div>
+    <p2 style="color: green; font-weight: bold;">Your Income</p2>
+    <p3 class="alignright" style="color: green; float: right; font-weight: bold;">
+    <span>${player_income}</span>
+    </p3>
+  </div>
   <div id="container2">
     <div class="circle"></div>
     <p2 style="color: #505050;">Average Migrant Household Income</p2>
@@ -203,29 +225,36 @@
       border-radius: 40px;
       margin: 1px;
   }
+  .oval_green {
+    width: 5px;
+    height: 75px;
+    background: green;
+    border-radius: 40px;
+    margin: 1px;
+  }
   .oval_red {
     width: 5px;
     height: 75px;
-    background: lightgray;
+    background:#CF6348;
     border-radius: 40px;
     margin: 1px;
-    border: 1.5px solid #CF6348;
+    /* border: 1.5px solid #CF6348; */
   }
   .oval_yellow {
     width: 5px;
     height: 75px;
-    background: lightgray;
+    background: #E5B257; ;
     border-radius: 40px;
     margin: 1px;
-    border: 1.5px solid #E5B257;
+    /* border: 1.5px solid #E5B257; */
   }
   .oval_blue {
     width: 5px;
     height: 75px;
-    background: lightgray;
+    background: #5273B0;
     border-radius: 40px;
     margin: 1px;
-    border: 1.5px solid #5273B0;
+    /* border: 1.5px solid #5273B0; */
   }
   .oval_filled {
     width: 5px;
