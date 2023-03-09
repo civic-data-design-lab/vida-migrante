@@ -54,9 +54,7 @@ function createGameData() {
           // TODO: Update monthly expenses
           return { ...g, currentCardId: null, state: GameStates.DRAW_CARD };
         case GameStates.DRAW_CARD:
-          // FIXME: Revert back
-          const cardId = 1;
-          // const cardId = drawCard(g);
+          const cardId = drawCard(g);
           return { ...g, state: GameStates.DECISION, currentCardId: cardId };
         case GameStates.DECISION:
           const { optionId } = kwargs;

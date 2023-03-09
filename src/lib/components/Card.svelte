@@ -1,7 +1,7 @@
 <script>
   import { slide } from 'svelte/transition';
-  import moneyIcon from '$images/time.svg';
-  import timeIcon from '$images/money.svg';
+  import timeIcon from '$images/time.svg';
+  import moneyIcon from '$images/money.svg';
   import { CARD_CATEGORY_COLOR_MAP } from '$types';
   import TapIndicator from './TapIndicator.svelte';
 
@@ -22,6 +22,7 @@
       skillsEarned: [],
       accreditationsEarned: [],
     };
+    // TODO: Only show at most one of each icon
     card.options.forEach((option) => {
       const updates = option.updates;
       if (updates.money < 0) {
@@ -85,8 +86,6 @@
     position: relative;
     width: 320px;
     max-width: 90vw;
-
-    overflow-y: scroll;
 
     background-color: white;
     border: 2px solid #505050;

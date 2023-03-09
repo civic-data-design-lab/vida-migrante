@@ -60,6 +60,19 @@ describe('resource updater test', () => {
     expect(originalObject).toStrictEqual({ a: { b: ['item1', 'item2'] } });
   });
 
+  it('updates miscellaneous values', () => {
+    const originalObject = {
+      a: { b: false },
+      c: 'foo',
+    };
+    const updatesObject = {
+      a: { b: true },
+      c: 'bar',
+    };
+    applyUpdates(originalObject, updatesObject);
+    expect(originalObject).toStrictEqual({ a: { b: true }, c: 'bar' });
+  });
+
   it('ignores items that are not being updated', () => {
     const originalObject = {
       a: { b: ['item1'] },
