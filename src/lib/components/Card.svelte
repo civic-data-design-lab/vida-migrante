@@ -17,27 +17,31 @@
   export let onCardTap;
 
   const getCardDetails = () => {
+    // Use set to avoid adding duplicates
     const cardDetails = {
-      requiredResources: [],
-      skillsEarned: [],
-      accreditationsEarned: [],
+      requiredResources: new Set(),
+      skillsEarned: new Set(),
+      accreditationsEarned: new Set(),
     };
-    // TODO: Only show at most one of each icon
     card.options.forEach((option) => {
       const updates = option.updates;
       if (updates.money < 0) {
-        cardDetails.requiredResources.push(moneyIcon);
+        cardDetails.requiredResources.add(moneyIcon);
       }
       if (updates.time < 0) {
-        cardDetails.requiredResources.push(timeIcon);
+        cardDetails.requiredResources.add(timeIcon);
       }
       if (updates.skills?.length) {
-        cardDetails.skillsEarned.push(...updates.skills);
+        updates.skills.forEach((skill) => cardDetails.skillsEarned.add(skill));
       }
       if (updates.accreditations?.length) {
-        cardDetails.accreditationsEarned.push(...updates.accreditations);
+        updates.accreditations.forEach((skill) => cardDetails.accreditationsEarned.add(skill));
       }
     });
+
+    cardDetails.requiredResources = Array.from(cardDetails.requiredResources);
+    cardDetails.skillsEarned = Array.from(cardDetails.skillsEarned);
+    cardDetails.accreditationsEarned = Array.from(cardDetails.accreditationsEarned);
     return cardDetails;
   };
 
@@ -52,8 +56,6 @@
       </header>
       {#if !minimized}
         <img class="card-image" src={`/images/card-visuals/${card.image}`} alt="Card visual" />
-      {/if}
-      {#if !minimized}
         <p class="card-description">{card.description}</p>
       {/if}
       <!-- Display the updates that the card may provide -->
