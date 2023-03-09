@@ -53,3 +53,30 @@ export function parseJSONSafe(json, defaultOnError) {
 export function deepCopy(obj) {
   return structuredClone(obj);
 }
+
+/**
+ * Applies the updates from the updates object to the original object.
+ *
+ * NOTE: Keys in the updates object MUST exist in the original object and must
+ *    be in the same nested structure. Mutates the original object.
+ *
+ * @param {object} originalObject
+ * @param {object} updatesObject
+ */
+export const applyUpdates = (originalObject, updatesObject) => {
+  for (let key in updatesObject) {
+    const update = updatesObject[key];
+    if (Array.isArray(update)) {
+      // Concatenate the new array to the old array
+      originalObject[key] = originalObject[key].concat(update);
+    } else if (typeof update === 'number') {
+      // Add the delta to the original value
+      originalObject[key] += update;
+    } else if (typeof update === 'object') {
+      // Recurse for nested values
+      applyUpdates(originalObject[key], update);
+    } else {
+      originalObject[key] = update;
+    }
+  }
+};

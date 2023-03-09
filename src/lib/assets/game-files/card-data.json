@@ -5,20 +5,11 @@
     "title": "Hairdresser",
     "description": "You meet a friend who can teach you the skills needed to become a hairdresser.",
     "prompt": "Would you like to train to become a hairdresser?",
-    "resourcesRequired": ["time"],
-    "skillsEarned": [],
-    "accreditations": [],
     "options": [
       {
         "id": 0,
         "description": "Yes, work fewer hours for training time",
-        "updates": { "money": 5, "time": -5 },
-        "implicationText": "xxx migrants work extra hours to make ends meet"
-      },
-      {
-        "id": 1,
-        "description": "Work longer hours to make up the time for the training",
-        "updates": { "money": 10, "time": -10 },
+        "updates": { "time": -5 },
         "implicationText": "xxx migrants work extra hours to make ends meet"
       },
       {
@@ -32,6 +23,27 @@
   },
   {
     "id": 1,
+    "category": "Personal Improvement",
+    "title": "Digital Skills",
+    "description": "You saw an ad about a course on electronic commerce, which will help you increase your income. Would you like to take the course?",
+    "prompt": "Would you like to take the course?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Spend savings to take unpaid time off",
+        "updates": {
+          "time": -5,
+          "income": { "salary": 48 },
+          "skills": ["digital skills"]
+        },
+        "implicationText": "TODO"
+      },
+      { "id": 1, "description": "Maybe Next Time", "updates": {}, "implicationText": "TODO" }
+    ],
+    "image": "PI_digitalskills.png"
+  },
+  {
+    "id": 2,
     "category": "Assistance",
     "title": "Regularlization",
     "description": "The Ecuadorian government is expanding their regularlization policy and you qualify to benefit from regular status documentation.",
@@ -50,7 +62,7 @@
     "image": "LE_health.png"
   },
   {
-    "id": 2,
+    "id": 3,
     "category": "Life Event",
     "title": "Remittances",
     "description": "Your mother in Venezuela needs surgey for a health emergency, and you have to send remittances to cover the medical bills.",

@@ -159,3 +159,9 @@ export const INITIAL_GAME_DATA = {
 
 // Used for round numbers (for 4 rounds)
 export const NUM_TO_ORDINAL_ARR = ['first', 'second', 'third', 'fourth'];
+
+export const CARD_CATEGORY_COLOR_MAP = {
+  'Personal Improvement': 'var(--accent-red)',
+  Assistance: 'var(--accent-blue)',
+  'Life Event': 'var(--accent-yellow)',
+};

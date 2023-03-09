@@ -2,7 +2,7 @@
   import { GameData } from '$gameData';
   import { NUM_TO_ORDINAL_ARR } from '$lib/utils/types';
   import cardBack from '$images/card-back.png';
-  import touchIcon from '$lib/assets/images/touch-app.svg';
+  import TapIndicator from '$components/TapIndicator.svelte';
 
   $: round = $GameData.round;
   $: ordinalRound = NUM_TO_ORDINAL_ARR[round];
@@ -11,15 +11,11 @@
 <h1>Round {round + 1}</h1>
 <!-- Game Data store will automatically draw a card -->
 <button id="draw-card" on:click={() => GameData.advanceGameState()}>
-  <div class="tap-indicator">
-    <img src={touchIcon} alt="" />
-    <p for="draw-card">Tap to draw a card</p>
-  </div>
-  <div class="fade-in-out">
+  <TapIndicator message="Tap to draw a card">
     <img class="card-back" src={cardBack} alt="Card back" />
     <img class="card-back" src={cardBack} alt="Card back" />
     <img class="card-back" src={cardBack} alt="Card back" />
-  </div>
+  </TapIndicator>
 </button>
 
 <p>
@@ -38,17 +34,6 @@
 
   button:hover {
     cursor: pointer;
-  }
-
-  .tap-indicator {
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 
   .card-back {
