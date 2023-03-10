@@ -6,7 +6,7 @@
 
   import MigrantPage from './_pages/MigrantPage.svelte';
   import JobSelectPage from './_pages/JobSelectPage.svelte';
-  import InstructionsPage from './_pages/InstructionsPage.svelte';
+  import ProfilePage from './_pages/ProfilePage.svelte';
   import DecisionPage from './_pages/DecisionPage.svelte';
   import DrawCardPage from './_pages/DrawCardPage.svelte';
   import AssistancePage from './_pages/AssistancePage.svelte';
@@ -25,7 +25,7 @@
     [GameStates.START, StartPage],
     [GameStates.MIGRANT_SELECT, MigrantPage],
     [GameStates.JOB_SELECT, JobSelectPage],
-    [GameStates.INSTRUCTIONS, InstructionsPage],
+    [GameStates.PROFILE, ProfilePage],
     [GameStates.ROUND_START, RoundStartPage],
     [GameStates.INCOME, IncomePage],
     [GameStates.EXPENSES, ExpensesPage],

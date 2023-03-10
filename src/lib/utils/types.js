@@ -31,7 +31,7 @@ export const GameStates = {
   START: 'start', // Start
   MIGRANT_SELECT: 'migrant-select',
   JOB_SELECT: 'job-select',
-  INSTRUCTIONS: 'instructions',
+  PROFILE: 'profile',
   ROUND_START: 'round-start',
   INCOME: 'income',
   EXPENSES: 'expenses',

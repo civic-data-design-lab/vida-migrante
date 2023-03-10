@@ -2,6 +2,7 @@
   import { GameData } from '$gameData';
   import { migrants } from '$gameFiles/migrant-data.json';
   import { jobs } from '$gameFiles/jobs.json';
+  import Drawer from '$components/Drawer.svelte';
 
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
@@ -29,7 +30,12 @@
   </p>
   <button class="button" id="begin-button" on:click={GameData.advanceGameState}>Begin</button>
 </div>
+<!--<Drawer>-->
+<!--  <div id="drawer-body" slot="body">-->
+<!--    <h1>DRAWER</h1>-->
+<!--  </div>-->
 
+<!--</Drawer>-->
 <style>
   #container {
     display: flex;
@@ -43,5 +49,9 @@
     width: 50%;
     border-radius: 2.5vh;
     font: 18pt 'sirenia';
+  }
+
+  #drawer-body {
+    text-align: center;
   }
 </style>
