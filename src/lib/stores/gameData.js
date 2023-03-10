@@ -3,7 +3,7 @@ import { browser } from '$app/environment';
 import { GameStates, INITIAL_GAME_DATA, NUM_ROUNDS } from '$types';
 import allCards from '$gameFiles/card-data';
 import allMigrantData from '$gameFiles/migrant-data';
-import { deepCopy, parseJSONSafe } from '$lib/utils/functions';
+import { applyUpdates, deepCopy, parseJSONSafe } from '$lib/utils/functions';
 
 // Get the possible game data on the browser's local storage
 let initialValue = INITIAL_GAME_DATA;
@@ -61,7 +61,10 @@ function createGameData() {
           const updates = allCards[g.currentCardId].options.find(
             (option) => option.id === optionId
           ).updates;
-          const updatedResources = getUpdatedResources(g.resources, updates);
+
+          // Update the resources
+          updateResources(g.resources, updates);
+
           // TODO: Make sure resources cannot go negative (either here or in the
           // front end)
 
@@ -92,7 +95,6 @@ function createGameData() {
             ...g,
             state: nextState,
             round: roundOver ? g.round + 1 : g.round,
-            resources: { ...g.resources, ...updatedResources }, // Update resources
             pastActions: [...g.pastActions, action], // Add to the past actions list
           };
         case GameStates.ASSISTANCE:
@@ -166,38 +168,22 @@ function drawCard(gameData) {
 }
 
 /**
- * Gets the updated resources based on the card updates and current resources.
+ * Updates resources based on the card updates.
  *
  * Takes in an object with numeric deltas of money, time, and/or wellbeing, as
  * well as skill updates as written in the card data (see `card-data.json` for
- * examples). Given the old resources, returns the updated resources.
+ * examples). Given these updates, applies them in-place to the old resources,
+ * mutatin the original resources.
  *
- * @param {import('$types').ResourcesObject} oldResources
- * @param {object} updates
- * @param {number} [updates.money]
- * @param {number} [updates.time]
- * @param {number} [updates.wellbeing]
- * @param {[string]} [updates.skills] - List of skills to concatenate
- *
- * @returns {import('$types').ResourcesObject}
+ * @param {import('$types').ResourcesObject} oldResources - The original resources
+ * @param {import('$types').ResourcesObject} updates - The updates to apply
  */
-function getUpdatedResources(oldResources, updates) {
+function updateResources(oldResources, updates) {
   if (!oldResources) {
     console.warn(
       'No resources found, you might need to select a migrant to load in the initial resources'
     );
-    return oldResources;
+    return;
   }
-
-  // Creates copy to avoid mutation
-  const updatedResources = {};
-  for (let resourceKey in updates) {
-    if (resourceKey === 'skills') {
-      updatedResources.skills = [...oldResources.skills, ...updates.skills];
-      continue;
-    }
-    // Add the numeric resource values
-    updatedResources[resourceKey] = oldResources[resourceKey] + updates[resourceKey];
-  }
-  return updatedResources;
+  applyUpdates(oldResources, updates);
 }

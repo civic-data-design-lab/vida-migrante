@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import { fly, fade } from "svelte/transition";
-  
+    import { onMount } from "svelte";
     // Props
     export let min = 0;
     export let max = 100;
@@ -27,7 +27,8 @@
     // Dispatch 'change' events
     const dispatch = createEventDispatcher();
   
-    // Mouse shield used onMouseDown to prevent any mouse events penetrating other elements,
+    onMount(() => {
+      // Mouse shield used onMouseDown to prevent any mouse events penetrating other elements,
     // ie. hover events on other elements while dragging. Especially for Safari
     const mouseEventShield = document.createElement("div");
     mouseEventShield.setAttribute("class", "mouse-over-shield");
@@ -35,6 +36,9 @@
       e.preventDefault();
       e.stopPropagation();
     });
+    });
+    
+    
   
     function resizeWindow() {
       elementX = element.getBoundingClientRect().left;

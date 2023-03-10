@@ -1,27 +1,33 @@
 [
     {
         "name": "Rent",
-        "icon": "RENT.png"
+        "icon": "RENT.png",
+        "expense": 0
     },
     {
         "name": "Food",
-        "icon": "FOOD3.png"
+        "icon": "FOOD3.png",
+        "expense": 0
     },
     {
         "name": "Health & Hygiene",
-        "icon": "HEALTH.png"
+        "icon": "HEALTH.png",
+        "expense": 0
     },
     {
         "name": "Household & Utilities",
-        "icon": "HOUSEHOLD.png"
+        "icon": "HOUSEHOLD.png",
+        "expense": 0
     },
 
     {
         "name": "Remittances",
-        "icon": "REMITTANCES.png"
+        "icon": "REMITTANCES.png",
+        "expense": 0
     },
     {
         "name": "Internet",
-        "icon": "INTERNET.png"
+        "icon": "INTERNET.png",
+        "expense": 0
     }
   ]
