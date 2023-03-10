@@ -69,10 +69,10 @@
       expense: 0,
     },
   ];
-  player_expenses = 0;
-  for (let item of spendings) {
-    player_expenses += item.expense;
-  }
+  // player_expenses = 0;
+  // for (let item of spendings) {
+  //   player_expenses += item.expense;
+  // }
 
   function onChangeExpense(spending, value) {
     console.log("changel, ", spending, value)
@@ -89,32 +89,35 @@
     for (let item of spendings) {
     player_expenses += item.expense;
   }
-    let expenses = [];
+    // let expenses = [];
   for (let i = 0; i <total_columns; i++) {
     if (i < Math.ceil(total_columns*player_expenses/max_expense)) {
-      expenses.push("oval_filled");
+      expenses[i]="oval_filled";
       } else if (i == Math.ceil(total_columns*player_income/max_expense)) {
-        expenses.push("oval_green");
+        expenses[i]="oval_green";
       } else if (i==54) {
-        expenses.push("oval_red");
+        expenses[i]="oval_red";
       } else if (i == 37) { //$540*55/800
-        expenses.push("oval_yellow");
+        expenses[i]="oval_yellow";
       } else if (i == 52) {
-        expenses.push("oval_blue");
+        expenses[i]="oval_blue";
       } else {
-        expenses.push("oval");
+        expenses[i]="oval";
       }
     }
+
   }
-  console.log(expenses);
 
 </script>
-    <section style="margin-top: 10px: auto; margin-right: auto;">
+
+<div style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
+    <section>
     {#each expenses as color }
       <!-- <h4>{color}</h4> -->
       <div id={color}></div>
     {/each}
   </section>
+</div>
   <div id="container2">
     <div class="circle" style="background-color: #505050"></div>
     <p2 style="color: #505050; font-weight: bold;">Your Total Expenses</p2>
@@ -157,11 +160,11 @@
     <span>$765</span>
     </p3>
   </div>
-  
-  <h3>Allocate Your Spending</h3>
+  <div style="display: flex; flex-direction: column; align-content: center; justify-content: center; padding: 1em">
+    <h3>Allocate Your Spending</h3>
   <body>Total Proposed Spending</body>
   <body>{spendings[0].expense+spendings[1].expense+spendings[2].expense+spendings[3].expense+spendings[4].expense+spendings[5].expense}</body>
-  <button on:click={() => updateChart()}>Update Expenses</button>
+  <!-- <button on:click={() => updateChart()}>Update Expenses</button> -->
   {#each spendings as spending}
     <section>
       <!-- <div id="container2"> -->
@@ -180,7 +183,12 @@
         </button>
         <p>${spending.expense}</p>
     </section>
-    <Range on:change={(e) => spending.expense = e.detail.value}
+    <Range on:change={
+      (e) => {
+        spending.expense = e.detail.value; 
+        updateChart();
+      }
+        }
           min={0}
           max={200}
           value={spending.expense}
@@ -189,6 +197,7 @@
         ></Range>
             <!-- <Range on:change={(e) => onChangeExpense(spending, e.detail.value)} -->
   {/each}
+</div>
 
 
 
