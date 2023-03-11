@@ -1,12 +1,12 @@
 <script>
   import touchIcon from '$images/touch-app.svg';
-  import { fade } from 'svelte/transition';
   import Timed from './Timed.svelte';
 
   import { createEventDispatcher } from 'svelte';
   const dispatch = createEventDispatcher();
 
   const onClick = () => {
+    show = false;
     dispatch('click');
   };
 
@@ -28,22 +28,17 @@
 </script>
 
 <Timed callback={() => (show = false)} waitTimeMs={6000}>
-  {#if show}
-    <button
-      out:fade
-      class="tap-indicator"
-      on:click={() => {
-        show = false;
-        onClick();
-      }}
-    >
-      <img src={touchIcon} alt="Touch icon" />
-      <p for="draw-card">{message || ''}</p>
-    </button>
-  {/if}
-  <div class={show ? 'fade-in-out' : ''} on:click={onClick} on:keydown={onClick}>
-    <slot />
-  </div>
+  <button class="tap-indicator-wrapper" on:click={onClick}>
+    {#if show}
+      <div class="tap-indicator-content">
+        <img src={touchIcon} alt="Touch icon" />
+        <p for="draw-card">{message || ''}</p>
+      </div>
+    {/if}
+    <div class={show ? 'fade-in-out' : ''}>
+      <slot />
+    </div>
+  </button>
 </Timed>
 
 <style>
@@ -51,7 +46,7 @@
     all: unset;
   }
 
-  .tap-indicator {
+  .tap-indicator-content {
     position: absolute;
     z-index: 1;
     inset: 0;
@@ -60,5 +55,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .tap-indicator-wrapper {
+    position: relative;
   }
 </style>

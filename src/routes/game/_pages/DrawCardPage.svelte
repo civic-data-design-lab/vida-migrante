@@ -12,13 +12,13 @@
 
 <h1>{round}<sup>{ordinalSuffix}</sup> Month</h1>
 <!-- Game Data store will automatically draw a card -->
-<button id="draw-card" on:click={() => GameData.advanceGameState()}>
-  <TapIndicator message="Tap to draw a card">
+<TapIndicator message="Tap to draw a card" on:click={GameData.advanceGameState}>
+  <button id="draw-card">
     <img class="card-back" src={cardBack} alt="Card back" />
     <img class="card-back" src={cardBack} alt="Card back" />
     <img class="card-back" src={cardBack} alt="Card back" />
-  </TapIndicator>
-</button>
+  </button>
+</TapIndicator>
 
 <p>
   Migrants face many challenges on a daily basis. Draw your
