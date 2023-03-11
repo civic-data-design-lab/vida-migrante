@@ -51,7 +51,7 @@
 <TapIndicator message="Tap to show options" on:click={onCardTap}>
   {#key minimized}
     <article in:slide={{ duration: 200 }} style="height: {minimized ? 'max-content' : '510px'};">
-      <header style="background-color: {CARD_CATEGORY_COLOR_MAP[card.category]};">
+      <header style="background-color: var(--accent-{CARD_CATEGORY_COLOR_MAP[card.category]});">
         <h1>{card.title}</h1>
       </header>
       {#if !minimized}

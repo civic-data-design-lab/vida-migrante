@@ -162,7 +162,7 @@ export const INITIAL_GAME_DATA = {
 export const NUM_TO_ORDINAL_ARR = ['first', 'second', 'third', 'fourth'];
 
 export const CARD_CATEGORY_COLOR_MAP = {
-  'Personal Improvement': 'var(--accent-red)',
-  Assistance: 'var(--accent-blue)',
-  'Life Event': 'var(--accent-yellow)',
+  'Personal Improvement': 'red',
+  Assistance: 'blue',
+  'Life Event': 'yellow',
 };

@@ -3,6 +3,7 @@
   import { GameData } from '$gameData';
   import Card from '$components/Card.svelte';
   import Modal from '$lib/components/Modal.svelte';
+  import { CARD_CATEGORY_COLOR_MAP } from '$types';
 
   /** @type {import('$types').Card} */
   $: card = cardData[$GameData.currentCardId];
@@ -36,6 +37,9 @@
   };
 
   $: optionUpdatesDescription = stringifyOption(displayedOption);
+  $: backgroundColor = showOptions
+    ? `var(--light-${CARD_CATEGORY_COLOR_MAP[card.category]})`
+    : 'transparent';
 </script>
 
 <Modal showModal={displayedOption}>
@@ -46,21 +50,35 @@
     <button on:click={() => makeDecision(displayedOption.id)} class="button">Select</button>
   </div>
 </Modal>
-<Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} />
-{#if showOptions}
-  <h3 class="prompt">{card.prompt || 'MISSING PROMPT? 🥲'}</h3>
-  <ul>
-    {#each card.options as option (option.id)}
-      <li>
-        <button class="button button3" on:click={() => (displayedOption = option)}>
-          {option.description}
-        </button>
-      </li>
-    {/each}
-  </ul>
-{/if}
+<main style:background-color={backgroundColor}>
+  <Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} />
+  {#if showOptions}
+    <h3 class="prompt">{card.prompt || 'MISSING PROMPT? 🥲'}</h3>
+    <ul>
+      {#each card.options as option (option.id)}
+        <li>
+          <button class="button button3" on:click={() => (displayedOption = option)}>
+            {option.description}
+          </button>
+        </li>
+      {/each}
+    </ul>
+  {/if}
+</main>
 
 <style>
+  main {
+    width: 100vw;
+    height: 100vh;
+    margin-top: -20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 200ms ease;
+  }
   .implication-body {
     display: flex;
     flex-direction: column;
