@@ -94,8 +94,9 @@ export const CopingLevels = {
 /**
  * @typedef GameData
  * @prop {string} state - The current game state
- * @prop {string | null} currentCardId - The current card ID the user has drawn
- * @prop {string | null} migrantId - The selected migrant ID
+ * @prop {number | null} currentCardId - The current card ID the user has drawn
+ * @prop {number | null} migrantId - The selected migrant ID
+ * @prop {number | null} jobId - The selected job the migrant has
  * @prop {number} round - 0-indexed round number, can be used to index past actions
  * @prop {ResourcesObject} resources - The migrant's resources (e.g. time,
  *    money, wellbeing)

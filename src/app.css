@@ -33,6 +33,13 @@ h3 {
   font-weight: bolder;
 }
 
+h6 {
+  font-family: 'sirenia', sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0;
+}
+
 p {
   font-family: 'sirenia';
   font-size: 16pt;
