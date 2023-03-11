@@ -7,24 +7,26 @@
  */
 
 /**
- * Converts the number to the number with the ordinal suffix.
+ * Gets the number's ordinal suffix.
+ *
+ * Example: `getOrdinalSuffix(3) -> "rd"`
  *
  * @param {number} n - The provided number
- * @returns {string} - The number prepended to the ordinal suffix
+ * @returns {string} The ordinal suffix
  */
-export function convertToOrdinal(n) {
+export function getOrdinalSuffix(n) {
   const ones = n % 10,
     tens = n % 100;
   if (ones == 1 && tens != 11) {
-    return n + 'st';
+    return 'st';
   }
   if (ones == 2 && tens != 12) {
-    return n + 'nd';
+    return 'nd';
   }
   if (ones == 3 && tens != 13) {
-    return n + 'rd';
+    return 'rd';
   }
-  return n + 'th';
+  return 'th';
 }
 
 /**

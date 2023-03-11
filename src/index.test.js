@@ -1,4 +1,4 @@
-import { applyUpdates, convertToOrdinal } from '$lib/utils/functions';
+import { applyUpdates, getOrdinalSuffix } from '$lib/utils/functions';
 import { describe, it, expect } from 'vitest';
 
 describe('sum test', () => {
@@ -8,17 +8,17 @@ describe('sum test', () => {
 });
 
 describe('ordinal suffix test', () => {
-  it('converts 1 to 1st', () => {
-    expect(convertToOrdinal(1)).toBe('1st');
+  it('gets "st" from 1', () => {
+    expect(getOrdinalSuffix(1)).toBe('st');
   });
-  it('converts 2 to 2nd', () => {
-    expect(convertToOrdinal(2)).toBe('2nd');
+  it('gets "nd" from 2', () => {
+    expect(getOrdinalSuffix(2)).toBe('nd');
   });
-  it('converts 3 to 3rd', () => {
-    expect(convertToOrdinal(3)).toBe('3rd');
+  it('gets "rd" from 3', () => {
+    expect(getOrdinalSuffix(3)).toBe('rd');
   });
-  it('converts 4 to 4th', () => {
-    expect(convertToOrdinal(4)).toBe('4th');
+  it('gets "th" from 4', () => {
+    expect(getOrdinalSuffix(4)).toBe('th');
   });
 });
 
