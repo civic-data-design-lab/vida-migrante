@@ -4,6 +4,7 @@ import { GameStates, INITIAL_GAME_DATA, NUM_ROUNDS } from '$types';
 import allCards from '$gameFiles/card-data';
 import allMigrantData from '$gameFiles/migrant-data';
 import allJobsData from '$gameFiles/jobs';
+import allAssistanceData from '$gameFiles/assistances';
 import { applyUpdates, deepCopy, parseJSONSafe } from '$lib/utils/functions';
 
 // Get the possible game data on the browser's local storage
@@ -108,7 +109,9 @@ function createGameData() {
         case GameStates.ASSISTANCE:
           const { assistanceId } = kwargs;
 
-          // TODO: Figure out how to update resources based on assistance
+          // Apply the updates from the assistance card
+          const assistanceData = allAssistanceData.find((a) => a.id === assistanceId);
+          updateResources(g.resources, assistanceData.updates);
 
           // Start round 2 or 4 after assistance has been selected
           return { ...g, state: GameStates.ROUND_START, round: g.round + 1 };
