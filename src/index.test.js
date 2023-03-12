@@ -1,4 +1,4 @@
-import { convertToOrdinal } from '$lib/utils/functions';
+import { applyUpdates, getOrdinalSuffix } from '$lib/utils/functions';
 import { describe, it, expect } from 'vitest';
 
 describe('sum test', () => {
@@ -8,16 +8,94 @@ describe('sum test', () => {
 });
 
 describe('ordinal suffix test', () => {
-  it('converts 1 to 1st', () => {
-    expect(convertToOrdinal(1)).toBe('1st');
+  it('gets "st" from 1', () => {
+    expect(getOrdinalSuffix(1)).toBe('st');
   });
-  it('converts 2 to 2nd', () => {
-    expect(convertToOrdinal(2)).toBe('2nd');
+  it('gets "nd" from 2', () => {
+    expect(getOrdinalSuffix(2)).toBe('nd');
   });
-  it('converts 3 to 3rd', () => {
-    expect(convertToOrdinal(3)).toBe('3rd');
+  it('gets "rd" from 3', () => {
+    expect(getOrdinalSuffix(3)).toBe('rd');
   });
-  it('converts 4 to 4th', () => {
-    expect(convertToOrdinal(4)).toBe('4th');
+  it('gets "th" from 4', () => {
+    expect(getOrdinalSuffix(4)).toBe('th');
+  });
+});
+
+describe('resource updater test', () => {
+  it('updates numeric values', () => {
+    const originalObject = {
+      a: 10,
+      b: 10,
+    };
+    const updatesObject = {
+      a: 5,
+      b: -5,
+    };
+    applyUpdates(originalObject, updatesObject);
+    expect(originalObject).toStrictEqual({ a: 15, b: 5 });
+  });
+
+  it('updates array values', () => {
+    const originalObject = {
+      a: [],
+      b: ['item1'],
+    };
+    const updatesObject = {
+      a: [],
+      b: ['item2'],
+    };
+    applyUpdates(originalObject, updatesObject);
+    expect(originalObject).toStrictEqual({ a: [], b: ['item1', 'item2'] });
+  });
+
+  it('updates nested values', () => {
+    const originalObject = {
+      a: { b: ['item1'] },
+    };
+    const updatesObject = {
+      a: { b: ['item2'] },
+    };
+    applyUpdates(originalObject, updatesObject);
+    expect(originalObject).toStrictEqual({ a: { b: ['item1', 'item2'] } });
+  });
+
+  it('updates miscellaneous values', () => {
+    const originalObject = {
+      a: { b: false },
+      c: 'foo',
+    };
+    const updatesObject = {
+      a: { b: true },
+      c: 'bar',
+    };
+    applyUpdates(originalObject, updatesObject);
+    expect(originalObject).toStrictEqual({ a: { b: true }, c: 'bar' });
+  });
+
+  it('ignores items that are not being updated', () => {
+    const originalObject = {
+      a: { b: ['item1'] },
+      c: ['wow'],
+      d: 5,
+      e: 0,
+    };
+    const updatesObject = {
+      a: { b: ['item2'] },
+      e: 5,
+    };
+    applyUpdates(originalObject, updatesObject);
+    expect(originalObject).toStrictEqual({ a: { b: ['item1', 'item2'] }, c: ['wow'], d: 5, e: 5 });
+  });
+
+  it('sets values with the "!" prefix', () => {
+    const originalObject = {
+      a: 20,
+    };
+    const updatesObject = {
+      a: '!0',
+    };
+    applyUpdates(originalObject, updatesObject);
+    expect(originalObject).toStrictEqual({ a: 0 });
   });
 });

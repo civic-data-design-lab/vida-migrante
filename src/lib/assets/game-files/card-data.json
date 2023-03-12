@@ -5,25 +5,144 @@
     "title": "Hairdresser",
     "description": "You meet a friend who can teach you the skills needed to become a hairdresser.",
     "prompt": "Would you like to train to become a hairdresser?",
-    "resourcesRequired": ["time"],
-    "skillsEarned": [],
     "options": [
       {
         "id": 0,
         "description": "Yes, work fewer hours for training time",
-        "updates": { "money": 5, "time": -5 }
-      },
-      {
-        "id": 1,
-        "description": "Work longer hours to make up the time for the training",
-        "updates": { "money": 10, "time": -10 }
+        "updates": { "time": -5 },
+        "implicationText": "xxx migrants work extra hours to make ends meet"
       },
       {
         "id": 2,
         "description": "I Can't Afford Taking Time Off",
-        "updates": {}
+        "updates": {},
+        "implicationText": "xxx migrants work extra hours to make ends meet"
       }
     ],
     "image": "PI_hairdresser.png"
+  },
+  {
+    "id": 1,
+    "category": "Personal Improvement",
+    "title": "Digital Skills",
+    "description": "You saw an ad about a course on electronic commerce, which will help you increase your income. Would you like to take the course?",
+    "prompt": "Would you like to take the course?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Spend savings to take unpaid time off",
+        "updates": {
+          "time": -5,
+          "income": { "salary": 48 },
+          "skills": ["digital skills"]
+        },
+        "implicationText": "TODO"
+      },
+      { "id": 1, "description": "Maybe Next Time", "updates": {}, "implicationText": "TODO" }
+    ],
+    "image": "PI_digitalskills.png"
+  },
+  {
+    "id": 2,
+    "category": "Personal Improvement",
+    "title": "Financial Skills",
+    "description": "A new program to get a degree in finance is starting at your local technical school, but it requires a personal computer.",
+    "prompt": "Do you want to buy a computer?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Withdraw children from school to reduce expenses and acquire a computer",
+        "updates": {
+          "money": -5,
+          "income": { "salary": 79 },
+          "skills": ["financial"]
+        },
+        "implicationText": "TODO"
+      },
+      {
+        "id": 1,
+        "description": "I can't afford a computer",
+        "updates": {},
+        "implicationText": "TODO"
+      }
+    ],
+    "image": "PI_digitalskills.png"
+  },
+  {
+    "id": 3,
+    "category": "Life Event",
+    "title": "Remittances",
+    "description": "Your mother in Venezuela needs surgey for a health emergency, and you have to send remittances to cover the medical bills.",
+    "prompt": "How would you like to pay for the remittances?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Work longer hours to get extra money",
+        "updates": { "money": 5, "time": -5, "expenditures": { "remittances": 24 } },
+        "implicationText": "xxx migrants send money to Venezuela on a monthly basis."
+      },
+      {
+        "id": 1,
+        "description": "Borrow money from a friend",
+        "updates": {
+          "money": 10,
+          "time": 0,
+          "copingLevel": "stress",
+          "expenditures": { "remittances": 24 }
+        },
+        "implicationText": "xxx migrants borrow money from family and friends to cover essential expenses"
+      },
+      {
+        "id": 2,
+        "description": "I can't send money to mom now",
+        "updates": {},
+        "implicationText": "xxx"
+      }
+    ],
+    "image": "LE_remittances.png"
+  },
+  {
+    "id": 4,
+    "category": "Life Event",
+    "title": "Community Support",
+    "description": "Your close friend and neighbor had a personal emergency and asks you to take care of their kids for a couple of days.",
+    "prompt": "Unfortunately you only have one option.",
+    "options": [
+      {
+        "id": 0,
+        "description": "Take time off from work to help them",
+        "updates": { "time": -5 },
+        "implicationText": "TODO"
+      }
+    ],
+    "image": "LE_remittances.png"
+  },
+  {
+    "id": 5,
+    "category": "Life Event",
+    "title": "Health",
+    "description": "You are sick of a lung disease and need to buy medicines medicine to treat it.",
+    "prompt": "How would you like to pay for this?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Spend savings to buy the medicine",
+        "updates": { "money": -5, "expenditures": { "health": 23 } },
+        "implicationText": "TODO"
+      },
+      {
+        "id": 1,
+        "description": "Borrow money from a friend",
+        "updates": { "money": -5, "expenditures": { "health": 23 } },
+        "implicationText": "TODO"
+      },
+      {
+        "id": 2,
+        "description": "I can't pay for the medicines",
+        "updates": {},
+        "implicationText": "TODO"
+      }
+    ],
+    "image": "LE_health.png"
   }
 ]

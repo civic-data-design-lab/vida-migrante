@@ -9,23 +9,25 @@ export const Skills = {
   LEGALIZATION: 'legalization',
 };
 
-export const Resources = {
-  MONEY: 'money',
-  TIME: 'time',
-  WELLBEING: 'wellbeing',
-};
-
 export const GameStates = {
-  START: 'start',
+  START: 'start', // Start
   MIGRANT_SELECT: 'migrant-select',
   JOB_SELECT: 'job-select',
-  INSTRUCTIONS: 'instructions',
+  PROFILE: 'profile',
   ROUND_START: 'round-start',
   INCOME: 'income',
   EXPENSES: 'expenses',
   DRAW_CARD: 'draw-card',
   DECISION: 'decision',
+  /** Users select an assistance card, shows up after rounds 1 and 3 */
+  ASSISTANCE: 'assistance',
   GAME_END: 'game-end',
+};
+
+export const CopingLevels = {
+  STRESS: 'stress',
+  CRITICAL: 'critical',
+  EMERGENCY: 'emergency',
 };
 
 // ----------------
@@ -42,6 +44,8 @@ export const GameStates = {
  *    you would encode `{ time: -5 }`). Any skill gain is encoded in an array of
  *    skill strings. For example, if the user gains digital skills, you would
  *    encode `{ skills: ['digital skills'] }`
+ * @prop {string} implicationText - Describes qualitatively the implication of
+ *    the decision associated with this option
  */
 
 /**
@@ -72,20 +76,47 @@ export const GameStates = {
 /**
  * @typedef GameData
  * @prop {string} state - The current game state
- * @prop {string | null} currentCardId - The current card ID the user has drawn
- * @prop {string | null} migrantId - The selected migrant ID
+ * @prop {number | null} currentCardId - The current card ID the user has drawn
+ * @prop {number | null} migrantId - The selected migrant ID
+ * @prop {number | null} jobId - The selected job the migrant has
  * @prop {number} round - 0-indexed round number, can be used to index past actions
- * @prop {ResourcesObject} resources - The migrant's resources (e.g. time,
- *    money, wellbeing)
+ * @prop {ResourcesObject} resources - The migrant's resources
  * @prop {PastAction[]} pastActions - List of past actions in this game
  */
 
 /**
+ * @typedef ExpendituresObject
+ *
+ * Represents the monthly expenditures of a migrant broken down into different
+ * categories such as rent, food, health, etc.
+ *
+ * @prop {number} rent - Amount of rent expenses
+ * @prop {number} food - Amount of food expenses
+ * @prop {number} health - Amount of basic health expenses
+ * @prop {number} housholdUtilitiesEssential - *Essential* household expenses
+ * @prop {number} householdUtilitiesNonEssential - *Non-essential* household
+ *    expenses
+ * @prop {number} remittances - Amount spent on remittances each month
+ * @prop {number} internet - Amount spent on internet expenses
+ */
+
+/**
  * @typedef ResourcesObject
+ *
+ * Represents the resources a migrant has. This also includes "negative"
+ * resources such as expenditures.
+ *
  * @prop {string[]} skills - Array of skills (see Skills enum)
- * @prop {number} time - Time quantitative resource
+ * @prop {number} time - Number of hours working per week.
  * @prop {number} money - Money quantitative resource
- * @prop {number} wellbeing - Wellbeing quantitative resource
+ * @prop {ExpendituresObject} expenditures - Expenditures broken down into
+ *    several categories (see `ExpendituresObject`)
+ * @prop {object} income - Income object, broken down into salary and assistance
+ * @prop {number} income.salary - The migrant's income from job salary
+ * @prop {number} income.assistance - The migrant's income from assistance
+ * @prop {string | null} copingLevel - The coping level the migrant is
+ *    experiencing (see `CopingLevel` enum)
+ * @prop {string[]} accreditations - List of the migrant's accreditations
  */
 
 // ---------
@@ -102,15 +133,17 @@ export const INITIAL_GAME_DATA = {
   state: GameStates.START,
   currentCardId: null,
   migrantId: null,
+  jobId: null,
   round: 0,
-  resources: {
-    skills: [],
-    time: 0,
-    money: 0,
-    wellbeing: 0,
-  },
+  resources: null,
   pastActions: [],
 };
 
 // Used for round numbers (for 4 rounds)
 export const NUM_TO_ORDINAL_ARR = ['first', 'second', 'third', 'fourth'];
+
+export const CARD_CATEGORY_COLOR_MAP = {
+  'Personal Improvement': 'red',
+  Assistance: 'blue',
+  'Life Event': 'yellow',
+};

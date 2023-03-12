@@ -6,7 +6,8 @@
     {
       "label": "Open tunnel",
       "type": "shell",
-      "command": "ngrok http 5173"
+      "command": "ngrok http 5173",
+      "problemMatcher": []
     }
   ]
 }
