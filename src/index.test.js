@@ -87,4 +87,15 @@ describe('resource updater test', () => {
     applyUpdates(originalObject, updatesObject);
     expect(originalObject).toStrictEqual({ a: { b: ['item1', 'item2'] }, c: ['wow'], d: 5, e: 5 });
   });
+
+  it('sets values with the "!" prefix', () => {
+    const originalObject = {
+      a: 20,
+    };
+    const updatesObject = {
+      a: '!0',
+    };
+    applyUpdates(originalObject, updatesObject);
+    expect(originalObject).toStrictEqual({ a: 0 });
+  });
 });

@@ -62,6 +62,10 @@ export function deepCopy(obj) {
  * NOTE: Keys in the updates object MUST exist in the original object and must
  *    be in the same nested structure. Mutates the original object.
  *
+ * NOTE: To set a specific numeric value instead of providing a delta, use a
+ *    string prefixed by `"!"`. For example, to reset a numeric value to 0, use
+ *    `{"value": "!0"}` in the updates object. Currently only supports integers.
+ *
  * @param {object} originalObject
  * @param {object} updatesObject
  */
@@ -77,6 +81,9 @@ export const applyUpdates = (originalObject, updatesObject) => {
     } else if (typeof update === 'object') {
       // Recurse for nested values
       applyUpdates(originalObject[key], update);
+    } else if (typeof update === 'string' && update.startsWith('!')) {
+      const setValue = parseInt(update.substring(1));
+      originalObject[key] = setValue;
     } else {
       originalObject[key] = update;
     }
