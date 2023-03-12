@@ -46,23 +46,6 @@
       </ul>
     {/if}
   </nav>
-  <section>
-    <ul class="temp-resources">
-      {#if !$GameData.resources}
-        <li>No resources yet, select a migrant first</li>
-      {:else}
-        <li>
-          Salary: {$GameData.resources.income.salary}
-        </li>
-        <li>
-          Time: {$GameData.resources.time}
-        </li>
-        <li>
-          Skills: {$GameData.resources.skills}
-        </li>
-      {/if}
-    </ul>
-  </section>
 {/if}
 
 <style>
@@ -73,16 +56,5 @@
 
   ul {
     background-color: rgba(255, 255, 255, 0.5);
-  }
-
-  section {
-    position: absolute;
-    bottom: 0;
-  }
-
-  .temp-resources {
-    display: flex;
-    gap: 1rem;
-    margin: 0;
   }
 </style>

@@ -69,8 +69,8 @@
 <style>
   main {
     width: 100vw;
-    height: 100vh;
-    margin-top: -20px;
+    height: 110vh;
+    margin-top: -5vh;
 
     display: flex;
     flex-direction: column;
