@@ -52,8 +52,7 @@
       id="modal-button"
       class="button"
       on:click={() => {
-        GameData.selectJob(job);
-        GameData.advanceGameState();
+        GameData.advanceGameState({ jobId: job });
       }}>Select</button
     >
   </div>

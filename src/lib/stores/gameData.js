@@ -3,6 +3,7 @@ import { browser } from '$app/environment';
 import { GameStates, INITIAL_GAME_DATA, NUM_ROUNDS } from '$types';
 import allCards from '$gameFiles/card-data';
 import allMigrantData from '$gameFiles/migrant-data';
+import allJobsData from '$gameFiles/jobs';
 import { applyUpdates, deepCopy, parseJSONSafe } from '$lib/utils/functions';
 
 // Get the possible game data on the browser's local storage
@@ -42,7 +43,14 @@ function createGameData() {
             state: GameStates.JOB_SELECT,
           };
         case GameStates.JOB_SELECT:
-          return { ...g, state: GameStates.PROFILE };
+          const { jobId } = kwargs;
+
+          // Copy the job data into the resources object
+          const jobData = allJobsData.jobs[jobId];
+          g.resources.time = jobData.hours;
+          g.resources.income.salary = jobData.income;
+
+          return { ...g, jobId, state: GameStates.PROFILE };
         case GameStates.PROFILE:
           return { ...g, state: GameStates.ROUND_START };
         case GameStates.ROUND_START:
@@ -110,27 +118,11 @@ function createGameData() {
     });
   };
 
-  const selectMigrant = (migrant) => {
-    update((g) => {
-      g.migrantId = migrant;
-      return g;
-    });
-  };
-
-  const selectJob = (job) => {
-    update((g) => {
-      g.jobId = job;
-      return g;
-    });
-  };
-
   return {
     subscribe,
     set,
     update,
     advanceGameState,
-    selectMigrant,
-    selectJob,
   };
 }
 

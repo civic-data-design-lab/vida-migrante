@@ -126,7 +126,7 @@ export const CopingLevels = {
  * resources such as expenditures.
  *
  * @prop {string[]} skills - Array of skills (see Skills enum)
- * @prop {number} time - Time quantitative resource
+ * @prop {number} time - Number of hours working per week.
  * @prop {number} money - Money quantitative resource
  * @prop {ExpendituresObject} expenditures - Expenditures broken down into
  *    several categories (see `ExpendituresObject`)
