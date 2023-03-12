@@ -9,24 +9,6 @@ export const Skills = {
   LEGALIZATION: 'legalization',
 };
 
-export const Resources = {
-  MONEY: 'money',
-  TIME: 'time',
-  WELLBEING: 'wellbeing',
-};
-
-export const Assistances = {
-  TRAINING: 'training',
-  JOB_FINDING: 'jobFind',
-  LEGALIZATION_DOCS: 'legalDocs',
-  LEGALIZATION_ACRDT: 'legalAcrdt',
-  FOOD_ASSIST_CASH: 'foodAssistCash',
-  FOOD_ASSIST_IN_KIND: 'foodAssistIK',
-  MEDICINES_ASSIST_CASH: 'medAssistCash',
-  MEDICINES_ASSIST_IN_KIND: 'medAssistIK',
-  INTERNET: 'internet',
-};
-
 export const GameStates = {
   START: 'start', // Start
   MIGRANT_SELECT: 'migrant-select',
@@ -98,8 +80,7 @@ export const CopingLevels = {
  * @prop {number | null} migrantId - The selected migrant ID
  * @prop {number | null} jobId - The selected job the migrant has
  * @prop {number} round - 0-indexed round number, can be used to index past actions
- * @prop {ResourcesObject} resources - The migrant's resources (e.g. time,
- *    money, wellbeing)
+ * @prop {ResourcesObject} resources - The migrant's resources
  * @prop {PastAction[]} pastActions - List of past actions in this game
  */
 

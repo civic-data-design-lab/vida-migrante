@@ -59,6 +59,11 @@ export function deepCopy(obj) {
 /**
  * Applies the updates from the updates object to the original object.
  *
+ * Applies updates as deltas; for example, an original object with `{k: 5}`
+ * getting applied with update `{k: 10}` becomes `{k: 15}` (`5+10`). For lists,
+ * the update list is concatenated to the original list. Any other types are
+ * replaced entirely.
+ *
  * NOTE: Keys in the updates object MUST exist in the original object and must
  *    be in the same nested structure. Mutates the original object.
  *
