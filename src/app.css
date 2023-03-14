@@ -74,6 +74,7 @@ body {
   font: 16pt rubik;
   text-align: left;
   color: var(--gray);
+  user-select: none;
 }
 
 a {

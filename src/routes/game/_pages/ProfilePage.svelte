@@ -30,12 +30,12 @@
   </p>
   <button class="button" id="begin-button" on:click={GameData.advanceGameState}>Begin</button>
 </div>
-<!--<Drawer>-->
-<!--  <div id="drawer-body" slot="body">-->
-<!--    <h1>DRAWER</h1>-->
-<!--  </div>-->
+<Drawer>
+  <div id="drawer-body" slot="body">
+    <h1>DRAWER</h1>
+  </div>
+</Drawer>
 
-<!--</Drawer>-->
 <style>
   #container {
     display: flex;
