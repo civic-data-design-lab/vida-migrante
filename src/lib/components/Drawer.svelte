@@ -68,15 +68,29 @@
   function toggleDrawer() {
     if (cancelClick) cancelClick = false;
     else {
-      transition = 'top 1s ease';
-      const tolerance = (botThreshold - topThreshold) / 5;
+      transition = 'top 1s ease, background-color 1s ease';
+      const tolerance = (botThreshold - topThreshold) / 2.5;
       if (botThreshold - drawerTop < tolerance) drawerTop = topThreshold;
       else drawerTop = botThreshold;
     }
   }
+
+  function closeDrawer() {
+    transition = 'top 1s ease, background-color 1s ease';
+    drawerTop = botThreshold;
+  }
 </script>
 
-<div id="floating" style="top: {drawerTop}px; transition: {transition}">
+<div
+  id="drawer-backdrop"
+  style="
+    background-color: {`rgba(0, 0, 0, ${0.71 - drawerTop / windowHeight})`};
+    pointer-events: {botThreshold - drawerTop > (botThreshold - topThreshold) / 5 ? 'all' : 'none'};
+    transition: {transition}
+  "
+  on:click={closeDrawer}
+/>
+<div id="drawer" style="top: {drawerTop}px; transition: {transition}">
   <div
     id="drawer-handle-hitbox"
     on:touchstart={onTouchStart}
@@ -97,10 +111,11 @@
 />
 
 <style>
-  #floating {
+  #drawer {
     position: fixed;
     height: 85vh;
     width: 100vw;
+    z-index: 2;
 
     display: flex;
     flex-direction: column;
@@ -109,6 +124,14 @@
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     background: white;
+  }
+
+  #drawer-backdrop {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    z-index: 1;
   }
 
   #drawer-handle-hitbox {
