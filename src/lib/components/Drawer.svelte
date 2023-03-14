@@ -1,9 +1,10 @@
 <script>
   import { onMount } from 'svelte';
 
-  let previousTouch;
   let dragging = false;
   let windowHeight, topThreshold, botThreshold, drawerTop;
+  let previousTouch, drawer, cancelClick = false;
+  let transition = '';
 
   onMount(() => {
     const vh = windowHeight / 100;
@@ -19,10 +20,14 @@
   function onDragStart(e) {
     dragging = true;
     if (e.type === 'touchstart') previousTouch = e.touches[0];
+    transition = '';
   }
 
   function onMouseMove(e) {
-    if (dragging) boundDrag(drawerTop + e.movementY);
+    if (dragging) {
+      boundDrag(drawerTop + e.movementY);
+      cancelClick = true;
+    }
   }
 
   function onTouchMove(e) {
@@ -30,6 +35,7 @@
     if (dragging) {
       const movementY = touch.pageY - previousTouch.pageY;
       boundDrag(drawerTop + movementY);
+      cancelClick = true;
     }
     previousTouch = touch;
   }
@@ -37,11 +43,31 @@
   function onDragEnd() {
     dragging = false;
     previousTouch = null;
+    if (cancelClick) {
+      drawer.addEventListener('click', captureClick, {capture: true, once: true});
+    }
+    cancelClick = false;
+  }
+
+  function captureClick(e) {
+    e.stopPropagation();
+  }
+
+  function toggleDrawer() {
+    transition = 'top 1s ease';
+    const tolerance = (botThreshold - topThreshold) / 5;
+    if (botThreshold - drawerTop < tolerance) drawerTop = topThreshold;
+    else drawerTop = botThreshold;
   }
 </script>
 
-<div id="floating" style="top: {drawerTop}px">
-  <div id="drawer-handle" on:touchstart={onDragStart} on:mousedown={onDragStart} />
+<div id="floating" style="top: {drawerTop}px; transition: {transition}" bind:this={drawer}>
+  <div
+    id="drawer-handle"
+    on:touchstart={onDragStart}
+    on:mousedown={onDragStart}
+    on:click={toggleDrawer}
+  />
   <slot name="body" />
 </div>
 <svelte:window
