@@ -3,6 +3,7 @@
   import { migrants } from '$gameFiles/migrant-data.json';
   import { jobs } from '$gameFiles/jobs.json';
   import Drawer from '$components/Drawer.svelte';
+  import Dashboard from '$components/Dashboard.svelte';
 
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
@@ -32,7 +33,7 @@
 </div>
 <Drawer>
   <div id="drawer-body" slot="body">
-    <h1>DRAWER</h1>
+    <Dashboard />
   </div>
 </Drawer>
 
