@@ -10,26 +10,14 @@
 </script>
 
 <div id="container">
-  <h1>How to Play?</h1>
-  <p>You will draw a card on each round.</p>
-  <p>
-    There are four rounds, representing one full year in your life. The cards could be a <b
-      >Life Event</b
-    >
-    card or an <b>Assistance</b> card. When you get a <b>Life Event</b> card, you will have to make
-    a decision on how to cope with that event, a <b>Coping Strategy</b>. This decision will take
-    money and/or time from you.
-  </p>
-  <p>
-    The goal is to finish the game using fewest <b>Coping Strategies</b>, and with some money in
-    your balance.
-  </p>
-  <p>
-    Migrant: {migrant?.name}
-    <br />
-    Job: {job?.title}
-  </p>
-  <button class="button" id="begin-button" on:click={GameData.advanceGameState}>Begin</button>
+  <img src={`/images/migrants/${migrant.name}.png`} alt={migrant.name} />
+  <p><b>
+    You have acquired a job as a {job.title}. You will be working {job.hours} hours a week and earn a monthly
+    income of ${job.income}. Your expenses for your household's basic needs will be $TODO; this means you
+    will have only $TODO for other unexpected expenses.
+  </b></p>
+  <p><b>You are ready to start your journey in Ecuador.</b></p>
+  <button class="button" id="begin-button" on:click={GameData.advanceGameState}>Next</button>
 </div>
 <Drawer>
   <div id="drawer-body" slot="body">
@@ -41,8 +29,12 @@
   #container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+  }
+
+  img {
+    height: 30vh;
   }
 
   #begin-button {
