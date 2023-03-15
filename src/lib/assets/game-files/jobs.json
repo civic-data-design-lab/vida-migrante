@@ -6,7 +6,8 @@
       "demographics": "Two percent",
       "income": 280,
       "hours": 40,
-      "image": "Construction.png"
+      "image": "Construction.png",
+      "disabled": false
     },
     {
       "title": "Teacher",
@@ -14,7 +15,8 @@
       "demographics": "Less than one percent",
       "income": 420,
       "hours": 51,
-      "image": "Education.png"
+      "image": "Education.png",
+      "disabled": true
     },
     {
       "title": "Restaurant Waiter",
@@ -22,7 +24,8 @@
       "demographics": "Eleven percent",
       "income": 320,
       "hours": 56,
-      "image": "Food.png"
+      "image": "Food.png",
+      "disabled": false
     },
     {
       "title": "Nurse",
@@ -30,7 +33,8 @@
       "demographics": "Less than one percent",
       "income": 1800,
       "hours": 50,
-      "image": "Health.png"
+      "image": "Health.png",
+      "disabled": true
     },
     {
       "title": "Hotel Security Guard",
@@ -38,7 +42,8 @@
       "demographics": "Seventeen percent",
       "income": 320,
       "hours": 56,
-      "image": "Guard.png"
+      "image": "Guard.png",
+      "disabled": false
     },
     {
       "title": "Factory Worker",
@@ -46,7 +51,8 @@
       "demographics": "Five percent",
       "income": 310,
       "hours": 48,
-      "image": "Manufacturing.png"
+      "image": "Manufacturing.png",
+      "disabled": false
     },
     {
       "title": "Supermarket Cashier",
@@ -54,7 +60,8 @@
       "demographics": "Ten percent",
       "income": 300,
       "hours": 60,
-      "image": "Wholesale.png"
+      "image": "Wholesale.png",
+      "disabled": false
     },
     {
       "title": "Street Vendor",
@@ -62,7 +69,8 @@
       "demographics": "Forty two percent",
       "income": 240,
       "hours": 56,
-      "image": "Informal.png"
+      "image": "Informal.png",
+      "disabled": false
     }
   ]
 }

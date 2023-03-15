@@ -5,8 +5,8 @@
 
   let job = 0;
   let showModal = false;
-  let modalImgSrc, modalTitle, modalDemo, modalSector, modalIncome, modalHours;
-  function modalUpdater(imgSrc, title, demo, sector, income, hours, jobId) {
+  let modalImgSrc, modalTitle, modalDemo, modalSector, modalIncome, modalHours, buttonDisabled;
+  function modalUpdater(imgSrc, title, demo, sector, income, hours, jobId, button) {
     return function updater() {
       modalImgSrc = imgSrc;
       modalTitle = title;
@@ -16,6 +16,7 @@
       modalHours = hours;
       showModal = true;
       job = jobId;
+      buttonDisabled = button;
     };
   }
 </script>
@@ -34,7 +35,8 @@
         job.sector,
         job.income,
         job.hours,
-        i
+        i,
+        job.disabled
       )}
     />
   {/each}
@@ -51,10 +53,17 @@
     <button
       id="modal-button"
       class="button"
+      disabled={buttonDisabled}
       on:click={() => {
         GameData.advanceGameState({ jobId: job });
-      }}>Select</button
+      }}
     >
+      {#if buttonDisabled}
+        <span>You don't have the required accreditations</span>
+      {:else}
+        Select
+      {/if}
+    </button>
   </div>
 </Modal>
 
@@ -107,5 +116,14 @@
     width: 50%;
     border-radius: 2.5vh;
     font: 18pt 'sirenia';
+  }
+
+  #modal-button:disabled {
+    height: 8vh;
+    width: 65%;
+  }
+
+  span {
+    font-size: 15pt;
   }
 </style>
