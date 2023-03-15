@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
 
   let dragging = false;
-  let windowHeight, topThreshold, botThreshold, drawerTop;
+  let windowHeight, topThreshold, botThreshold, drawerTop, backdropThreshold;
   let handle, prevTouch;
   let cancelClick = false;
   let transition = '';
@@ -10,8 +10,9 @@
   onMount(() => {
     const vh = windowHeight / 100;
     topThreshold = vh * 15;
-    botThreshold = vh * 85;
+    botThreshold = vh * 90;
     drawerTop = botThreshold;
+    backdropThreshold = botThreshold - (botThreshold - topThreshold) / 5;
   });
 
   function boundDrag(newVal) {
@@ -83,8 +84,8 @@
 <div
   id="drawer-backdrop"
   style="
-    background-color: {`rgba(0, 0, 0, ${0.71 - drawerTop / windowHeight})`};
-    pointer-events: {botThreshold - drawerTop > (botThreshold - topThreshold) / 5 ? 'all' : 'none'};
+    background-color: {`rgba(0, 0, 0, ${1 - drawerTop / backdropThreshold})`};
+    pointer-events: {drawerTop < backdropThreshold ? 'all' : 'none'};
     transition: {transition}
   "
   on:click={closeDrawer}
