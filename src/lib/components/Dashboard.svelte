@@ -5,6 +5,7 @@
   import Modal from '$components/Modal.svelte';
   import { GameData } from '$gameData';
   import { intros } from 'svelte/internal';
+  import { slide } from 'svelte/transition';
 
   let displayedSpending = null;
 
@@ -69,10 +70,9 @@
       expense: 0,
     },
   ];
-  // player_expenses = 0;
-  // for (let item of spendings) {
-  //   player_expenses += item.expense;
-  // }
+
+  //slider
+  let slider_theme = "default";
 
   function onChangeExpense(spending, value) {
     console.log("changel, ", spending, value)
@@ -108,6 +108,7 @@
 
   }
 
+
 </script>
 
 <div style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
@@ -118,13 +119,14 @@
     {/each}
   </section>
 </div>
-  <div id="container2">
     <div class="circle" style="background-color: #505050"></div>
     <p2 style="color: #505050; font-weight: bold;">Your Total Expenses</p2>
     <p3 class="alignright" style="color: #505050; float: right; font-weight: bold;">
+    ${player_expenses}
+      </p3>
+    <!-- <p3 class="alignright" style="color: #505050; float: right; font-weight: bold;">
     <span>${player_expenses}</span>
-    </p3>
-  </div>
+    </p3> -->
   <div id="container2">
     <div class="circle" style="background-color: green"></div>
     <p2 style="color: green; font-weight: bold;">Your Income</p2>
@@ -162,10 +164,10 @@
   </div>
   <div style="display: flex; flex-direction: column; align-content: center; justify-content: center; padding: 1em">
     <h3>Allocate Your Spending</h3>
-  <body>Total Proposed Spending</body>
-  <body>{spendings[0].expense+spendings[1].expense+spendings[2].expense+spendings[3].expense+spendings[4].expense+spendings[5].expense}</body>
+  <!-- <body>{spendings[0].expense+spendings[1].expense+spendings[2].expense+spendings[3].expense+spendings[4].expense+spendings[5].expense}</body> -->
   <!-- <button on:click={() => updateChart()}>Update Expenses</button> -->
   {#each spendings as spending}
+    {slider_theme = spending.name}
     <section>
       <!-- <div id="container2"> -->
         <p>{spending.name}</p>
@@ -181,9 +183,14 @@
           -moz-border-radius:.75em;
           border-radius:.75em;">?
         </button>
-        <p>${spending.expense}</p>
     </section>
-    <Range on:change={
+    <div class:rent-theme={slider_theme == "Rent"} 
+          class:food-theme={slider_theme == "Food"}
+          class:health-theme={slider_theme == "Health & Hygiene"}
+          class:household-theme={slider_theme == "Household & Utilities"}
+          class:remittances-theme={slider_theme == "Remittances"}
+          class:internet-theme={slider_theme == "Internet"}>
+      <Range on:change={
       (e) => {
         spending.expense = e.detail.value; 
         updateChart();
@@ -195,22 +202,24 @@
           label={true}
           color="green"
         ></Range>
-            <!-- <Range on:change={(e) => onChangeExpense(spending, e.detail.value)} -->
+        </div>
   {/each}
 </div>
-
-
 
 <Modal showModal={displayedSpending}>
   <div id="modal-body" slot="body">
     <img
-      src="/src/lib/assets/images/dashboard/{displayedSpending?.icon}"
-      alt={displayedSpending?.name}
+      src={`/images/dashboard/${displayedSpending?.icon}`} 
+      alt={displayedSpending?.icon}
     />
     <div>
       <h2>{displayedSpending?.name}</h2>
-      <p>Your Expense</p>
-      <p>Average Migrant Household Expense</p>
+      <p style="float: left;">Your Expense</p>
+      <p style="float: right;">${displayedSpending?.expense}</p>
+      <br>
+      <p style="float: left;">Average Migrant Household Expense</p>
+      <p style="float: right;">$326</p>
+      <br>
       <p>Average National Expense</p>
     </div>
   </div>
@@ -229,7 +238,7 @@
 
   #container2 {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     
   }
 
@@ -287,18 +296,20 @@
     height: 12px;
     border-radius: 50%;
     margin: 1px;
-    margin-left: 10%;
+    /* display: flex; */
+    /* flex-direction: column; */
   }
 
   .alignleft {
 	float: left;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
   } 
   .alignright {
     float: right;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
   }
 
   :global(#small) { 
@@ -311,5 +322,30 @@
     align-items: center;
     justify-content: space-evenly;
   }
-	
+
+
+  /* slider */
+  .rent-theme {
+    --thumb-image: url("/images/dashboard/RENT.png");
+  }
+
+  .food-theme {
+    --thumb-image: url("/images/dashboard/FOOD3.png");
+  }
+
+  .health-theme {
+    --thumb-image: url("/images/dashboard/HEALTH.png");
+  }
+
+  .household-theme {
+    --thumb-image: url("/images/dashboard/HOUSEHOLD.png");
+  }
+
+  .remittances-theme {
+    --thumb-image: url("/images/dashboard/REMITTANCES.png");
+  }
+
+  .internet-theme {
+    --thumb-image: url("/images/dashboard/INTERNET.png");
+  }
 </style>

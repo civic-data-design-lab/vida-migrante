@@ -54,9 +54,9 @@ p2 {
   font-weight: normal;
   line-height: 22pt;
   color: var(--gray);
-  display: flex;
-  justify-content: space-between;
-  text-align: left;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* text-align: left; */
   color: blue;
 }
 p3 {
@@ -65,9 +65,9 @@ p3 {
   font-weight: normal;
   line-height: 22pt;
   color: var(--gray);
-  display: flex;
-  justify-content: space-between;
-  text-align: right;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* text-align: right; */
 }
 
 body {

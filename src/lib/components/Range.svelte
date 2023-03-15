@@ -269,19 +269,22 @@
       align-items: center;
       justify-content: center;
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: var(--thumb-bgcolor, white);
+      width: 100px;
+      height: 100px;
+      /* background-color: var(--thumb-bgcolor, white); */
+      background-image: var(--thumb-image, url("http://iconizer.net/files/Duesseldorf/orig/heart.png"));
       cursor: pointer;
-      border-radius: 999px;
-      margin-top: -8px;
+      /* border-radius: 999px; */
+      border: none;
+      margin-top: -58px;
       transition: box-shadow 100ms;
       user-select: none;
-      box-shadow: var(
+      object-fit: contain;
+      /* box-shadow: var(
         --thumb-boxshadow,
         0 1px 1px 0 rgba(0, 0, 0, 0.14),
         0 0px 2px 1px rgba(0, 0, 0, 0.2)
-      );
+      ); */
     }
   
     .range__thumb--holding {
