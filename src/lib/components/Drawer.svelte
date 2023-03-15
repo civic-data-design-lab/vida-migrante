@@ -3,10 +3,9 @@
 
   let dragging = false;
   let windowHeight, topThreshold, botThreshold, drawerTop;
-  let handle,
-    cancelClick = false;
-  let prevTouch,
-    transition = '';
+  let handle, prevTouch;
+  let cancelClick = false;
+  let transition = '';
 
   onMount(() => {
     const vh = windowHeight / 100;
@@ -54,14 +53,14 @@
 
   function onTouchEnd() {
     dragging = false;
-    if (prevTouch !== null) {
+    if (prevTouch !== undefined) {
       const rect = handle.getBoundingClientRect();
       const x = prevTouch.clientX,
         y = prevTouch.clientY;
       if (x < rect.left || y < rect.top || x > rect.right || y < rect.bottom) {
         cancelClick = false;
       }
-      prevTouch = null;
+      prevTouch = undefined;
     }
   }
 
