@@ -35,10 +35,6 @@
     -ms-overflow-style: none;
   }
 
-  .carousel::-webkit-scrollbar {
-    display: none;
-  }
-
   .carousel-viewport {
     position: absolute;
     top: 0;
@@ -49,6 +45,10 @@
     overflow-x: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+  }
+
+  .carousel-viewport::-webkit-scrollbar {
+    display: none;
   }
 
   .carousel-slide {
