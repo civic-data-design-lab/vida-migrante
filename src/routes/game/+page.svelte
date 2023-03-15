@@ -69,5 +69,6 @@
 <style>
   #drawer-body {
     text-align: center;
+    overflow: scroll;
   }
 </style>
