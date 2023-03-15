@@ -71,10 +71,6 @@
   {:else}
     <button class="button button" on:click={advancePage}> Next </button>
   {/if}
-
-  {#if page === lastPage}
-    <a href="/dashboard">Explore the data</a>
-  {/if}
 </div>
 
 <style>

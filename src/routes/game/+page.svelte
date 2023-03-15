@@ -17,8 +17,8 @@
   import StartPage from './_pages/StartPage.svelte';
   import RoundStartPage from './_pages/RoundStartPage.svelte';
 
-  import Drawer from "$components/Drawer.svelte";
-  import Dashboard from "$components/Dashboard.svelte";
+  import Drawer from '$components/Drawer.svelte';
+  import Dashboard from '$components/Dashboard.svelte';
 
   $: state = $GameData.state;
   $: migrant = migrants[$GameData.migrantId];
@@ -38,10 +38,10 @@
     [GameStates.GAME_END, TempGamePage],
   ]);
   const pagesWithDrawer = new Set([
-      GameStates.PROFILE,
-      GameStates.DECISION,
-      GameStates.ASSISTANCE,
-      GameStates.GAME_END
+    GameStates.PROFILE,
+    GameStates.DECISION,
+    GameStates.ASSISTANCE,
+    GameStates.GAME_END,
   ]);
 
   $: currentPage = gamePages.get(state);
@@ -59,15 +59,15 @@
   </GamePage>
 {/key}
 {#if pagesWithDrawer.has(state)}
-    <Drawer>
-        <div id="drawer-body" slot="body">
-            <Dashboard />
-        </div>
-    </Drawer>
+  <Drawer>
+    <div id="drawer-body" slot="body">
+      <Dashboard />
+    </div>
+  </Drawer>
 {/if}
 
 <style>
-    #drawer-body {
-        text-align: center;
-    }
+  #drawer-body {
+    text-align: center;
+  }
 </style>
