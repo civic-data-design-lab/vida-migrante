@@ -10,7 +10,7 @@
   import DecisionPage from './_pages/DecisionPage.svelte';
   import DrawCardPage from './_pages/DrawCardPage.svelte';
   import AssistancePage from './_pages/AssistancePage.svelte';
-  import TempGamePage from './_pages/TempGamePage.svelte';
+  import TempGamePage from './_pages/GameEndPage.svelte';
   import IncomePage from './_pages/IncomePage.svelte';
   import ExpensesPage from './_pages/ExpensesPage.svelte';
   import GamePage from './GamePage.svelte';
