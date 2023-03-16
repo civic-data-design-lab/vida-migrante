@@ -118,49 +118,55 @@
     {/each}
   </section>
 </div>
-<div class="circle" style="background-color: #505050" />
-<p2 style="color: #505050; font-weight: bold;">Your Total Expenses</p2>
-<p3 class="alignright" style="color: #505050; float: right; font-weight: bold;">
-  ${player_expenses}
-</p3>
-<!-- <p3 class="alignright" style="color: #505050; float: right; font-weight: bold;">
-    <span>${player_expenses}</span>
-    </p3> -->
-<div id="container2">
-  <div class="circle" style="background-color: green" />
-  <p2 style="color: green; font-weight: bold;">Your Income</p2>
-  <p3 class="alignright" style="color: green; float: right; font-weight: bold;">
-    <span>${player_income}</span>
-  </p3>
+<div id="expense-board">
+  <div id="name-board">
+    <div id="alignleft">
+      <div class="circle" style="background-color: #505050" />
+      <p2 style="color: #505050; font-weight: bold;">Your Total Expenses</p2>
+    </div>
+    <div id="alignleft">
+      <div class="circle" style="background-color: green" />
+      <p2 style="color: green; font-weight: bold;">Your Income</p2>
+    </div>
+    <div id="alignleft">
+      <div class="circle" style="background-color: gray" />
+      <p2 style="color: #505050;">Average Migrant Household Income</p2>
+    </div>
+    <div id="alignleft">
+      <div class="circle" style="background-color: #CF6348" />
+      <p2 style="color: #CF6348;">Average Ecuadorian Income</p2>
+    </div>
+    <div id="alignleft">
+      <div class="circle" style="background-color: #E5B257" />
+      <p2 style="color: #E5B257;">Ecuadorian Vital Family Basket</p2>
+    </div>
+    <div id="alignleft">
+      <div class="circle" style="background-color: #5273B0" />
+      <p2 style="color: #5273B0;">Ecuadorian Basic Family Basket</p2>
+    </div>
+  </div>
+  <div id="money-board">
+    <p3 style="color: #505050; float: right; font-weight: bold;">
+      ${player_expenses}
+    </p3>
+    <p3 style="color: green; float: right; font-weight: bold;">
+      <span>${player_income}</span>
+    </p3>
+    <p3 class="alignright" style="color: gray; float: right;">
+      <span>$326</span>
+    </p3>
+    <p3 class="alignright" style="color: #CF6348; float: right;">
+      <span>$793</span>
+    </p3>
+    <p3 class="alignright" style="color: #E5B257; float: right;">
+      <span>$540</span>
+    </p3>
+    <p3 class="alignright" style="color: #5273B0; float: right;">
+      <span>$765</span>
+    </p3>
+  </div>
 </div>
-<div id="container2">
-  <div class="circle" style="background-color: gray" />
-  <p2 style="color: #505050;">Average Migrant Household Income</p2>
-  <p3 class="alignright" style="color: gray; float: right;">
-    <span>$326</span>
-  </p3>
-</div>
-<div id="container2">
-  <div class="circle" style="background-color: #CF6348" />
-  <p2 style="color: #CF6348;">Average Ecuadorian Income</p2>
-  <p3 class="alignright" style="color: #CF6348; float: right;">
-    <span>$793</span>
-  </p3>
-</div>
-<div id="container2">
-  <div class="circle" style="background-color: #E5B257" />
-  <p2 style="color: #E5B257;">Ecuadorian Vital Family Basket</p2>
-  <p3 class="alignright" style="color: #E5B257; float: right;">
-    <span>$540</span>
-  </p3>
-</div>
-<div id="container2">
-  <div class="circle" style="background-color: #5273B0" />
-  <p2 style="color: #5273B0;">Ecuadorian Basic Family Basket</p2>
-  <p3 class="alignright" style="color: #5273B0; float: right;">
-    <span>$765</span>
-  </p3>
-</div>
+
 <div
   style="display: flex; flex-direction: column; align-content: center; justify-content: center; padding: 1em"
 >
@@ -242,6 +248,23 @@
     /* justify-content: space-between; */
   }
 
+  #expense-board {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #name-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+  }
+
+  #money-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+  }
+
   section {
     display: flex;
   }
@@ -295,18 +318,19 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    margin: 1px;
-    /* display: flex; */
-    /* flex-direction: column; */
+    margin-top: 0.3em;
+    margin-right: 0.5em;
   }
 
-  .alignleft {
-    float: left;
+  #alignleft {
+    display: flex;
+    justify-content: left;
     /* display: flex; */
     /* justify-content: space-between; */
   }
-  .alignright {
-    float: right;
+  #alignright {
+    display: flex;
+    justify-content: right;
     /* display: flex; */
     /* flex-direction: column; */
     /* justify-content: space-between; */
