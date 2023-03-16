@@ -1,9 +1,9 @@
 <script>
   import { GameData } from '$lib/stores/gameData';
+  import { WindowHeight } from '$lib/stores/windowHeight';
   import { GameStates } from '$lib/utils/types';
   import { onMount } from 'svelte';
   import Loading from './Loading.svelte';
-  import MigrantBanner from './MigrantBanner.svelte';
 
   let loading = true;
   onMount(() => {
@@ -14,19 +14,20 @@
   });
 
   let showDevNav = false;
+
+  let windowHeight;
+  $: {
+    WindowHeight.set(windowHeight);
+    console.log('Set window height to', windowHeight);
+  }
 </script>
 
 {#if loading}
   <Loading />
 {:else}
-  <MigrantBanner
-    migrantId={$GameData.migrantId}
-    jobId={$GameData.jobId}
-    resources={$GameData.resources}
-  />
   <slot />
   <nav>
-    <button class="button navbar-btn" on:click={() => (showDevNav = !showDevNav)}
+    <button class="button nav-btn" on:click={() => (showDevNav = !showDevNav)}
       >{showDevNav ? 'Hide' : 'Show'} dev nav</button
     >
     {#if showDevNav}
@@ -47,11 +48,20 @@
     {/if}
   </nav>
 {/if}
+<svelte:window bind:innerHeight={windowHeight} />
 
 <style>
   nav {
     position: absolute;
     top: 0;
+  }
+
+  .nav-btn {
+    transform: translateY(-110%);
+  }
+
+  .nav-btn:focus {
+    transform: none;
   }
 
   ul {
