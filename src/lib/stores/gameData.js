@@ -64,6 +64,7 @@ function createGameData() {
           return { ...g, currentCardId: null, state: GameStates.DRAW_CARD };
         case GameStates.DRAW_CARD:
           const cardId = drawCard(g);
+          // const cardId = 4;  // Temp card control
           return { ...g, state: GameStates.DECISION, currentCardId: cardId };
         case GameStates.DECISION:
           const { optionId } = kwargs;

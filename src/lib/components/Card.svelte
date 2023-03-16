@@ -4,6 +4,7 @@
   import moneyIcon from '$images/money.svg';
   import { CARD_CATEGORY_COLOR_MAP } from '$types';
   import TapIndicator from './TapIndicator.svelte';
+  import { sumValues } from '$lib/utils/functions';
 
   /** @type {import("$types").Card} */
   export let card;
@@ -25,10 +26,10 @@
     };
     card.options.forEach((option) => {
       const updates = option.updates;
-      if (updates.money < 0) {
+      if (updates.income?.salary < 0 || sumValues(updates.expenditures) > 0) {
         cardDetails.requiredResources.add(moneyIcon);
       }
-      if (updates.time < 0) {
+      if (updates.time) {
         cardDetails.requiredResources.add(timeIcon);
       }
       if (updates.skills?.length) {

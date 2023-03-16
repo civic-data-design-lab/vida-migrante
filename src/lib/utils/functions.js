@@ -94,3 +94,16 @@ export const applyUpdates = (originalObject, updatesObject) => {
     }
   }
 };
+
+/**
+ * Sums the values in the provided object (applies `+` operator).
+ *
+ * @param {object | undefined} obj - The object, values must be addable.
+ * @return {any} The added values, or undefined if the object is undefined.
+ */
+export const sumValues = (obj) => {
+  if (!obj) {
+    return;
+  }
+  return Object.values(obj).reduce((a, b) => a + b, 0);
+};
