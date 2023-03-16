@@ -1,17 +1,15 @@
 <script>
   import { GameData } from '$gameData';
-  import Timed from '$lib/components/Timed.svelte';
-
-  $: expenseKeys = [...Object.keys($GameData.resources.expenditures)];
 </script>
 
-<Timed callback={GameData.advanceGameState} waitTimeMs={2000}>
-  <h1>Your expenses for the month:</h1>
-  <ul>
-    {#each expenseKeys as expense}
-      <li>
-        {expense}: -${$GameData.resources.expenditures[expense]}
-      </li>
-    {/each}
-  </ul>
-</Timed>
+<h1>Your expenses for the month:</h1>
+<h3>Open the expenses panel to see how much you spent this month.</h3>
+
+<button class="button" on:click={GameData.advanceGameState}>Continue</button>
+
+<style>
+  h1,
+  h3 {
+    margin: 0;
+  }
+</style>

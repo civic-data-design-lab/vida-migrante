@@ -41,6 +41,7 @@
   const pagesWithDrawer = new Set([
     GameStates.PROFILE,
     GameStates.DECISION,
+    GameStates.EXPENSES,
     GameStates.ASSISTANCE,
     GameStates.GAME_END,
   ]);
