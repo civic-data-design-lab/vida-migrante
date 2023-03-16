@@ -93,7 +93,18 @@
     // let expenses = [];
     for (let i = 0; i < total_columns; i++) {
       if (i < Math.ceil((total_columns * player_expenses) / max_expense)) {
-        expenses[i] = 'oval_filled';
+        if (i == Math.ceil((total_columns * player_income) / max_expense)) {
+          expenses[i] = 'oval_filled_green';
+        } else if (i == 54) {
+          expenses[i] = 'oval_filled_red';
+        } else if (i == 37) {
+          //$540*55/800
+          expenses[i] = 'oval_filled_yellow';
+        } else if (i == 52) {
+          expenses[i] = 'oval_filled_blue';
+        } else {
+          expenses[i] = 'oval_filled';
+        }
       } else if (i == Math.ceil((total_columns * player_income) / max_expense)) {
         expenses[i] = 'oval_green';
       } else if (i == 54) {
@@ -171,8 +182,6 @@
   style="display: flex; flex-direction: column; align-content: center; justify-content: center; padding: 1em"
 >
   <h3>Allocate Your Spending</h3>
-  <!-- <body>{spendings[0].expense+spendings[1].expense+spendings[2].expense+spendings[3].expense+spendings[4].expense+spendings[5].expense}</body> -->
-  <!-- <button on:click={() => updateChart()}>Update Expenses</button> -->
   {#each spendings as spending}
     {(slider_theme = spending.name)}
     <section>
@@ -210,8 +219,6 @@
         min={0}
         max={200}
         value={spending.expense}
-        label={true}
-        color="green"
       />
     </div>
   {/each}
@@ -251,6 +258,7 @@
   #expense-board {
     display: flex;
     justify-content: space-between;
+    margin-top: 1em;
   }
 
   #name-board {
@@ -270,49 +278,84 @@
   }
 
   #oval {
-    width: 5px;
-    height: 75px;
+    width: 0.25em;
+    height: 2.9em;
     background: lightgray;
     border-radius: 40px;
     margin: 1px;
   }
   #oval_green {
-    width: 5px;
-    height: 75px;
+    width: 0.25em;
+    height: 2.9em;
     background: green;
     border-radius: 40px;
     margin: 1px;
   }
   #oval_red {
-    width: 5px;
-    height: 75px;
+    width: 0.25em;
+    height: 2.9em;
     background: #cf6348;
     border-radius: 40px;
     margin: 1px;
     /* border: 1.5px solid #CF6348; */
   }
   #oval_yellow {
-    width: 5px;
-    height: 75px;
+    width: 0.25em;
+    height: 2.9em;
     background: #e5b257;
     border-radius: 40px;
     margin: 1px;
     /* border: 1.5px solid #E5B257; */
   }
   #oval_blue {
-    width: 5px;
-    height: 75px;
+    width: 0.25em;
+    height: 2.9em;
     background: #5273b0;
     border-radius: 40px;
     margin: 1px;
     /* border: 1.5px solid #5273B0; */
   }
   #oval_filled {
-    width: 5px;
-    height: 75px;
+    width: 0.25em;
+    height: 2.9em;
     background: #505050;
     border-radius: 40px;
     margin: 1px;
+  }
+  #oval_filled_green {
+    width: 0.25em;
+    height: 2.9em;
+    background: green;
+    box-shadow: 0 0 0.1em #505050;
+    border-radius: 40px;
+    margin: 1px;
+  }
+  #oval_filled_red {
+    width: 0.25em;
+    height: 2.9em;
+    background: #cf6348;
+    box-shadow: 0 0 0.1em #505050;
+    border-radius: 40px;
+    margin: 1px;
+    /* border: 1.5px solid #CF6348; */
+  }
+  #oval_filled_yellow {
+    width: 0.25em;
+    height: 2.9em;
+    background: #e5b257;
+    box-shadow: 0 0 0.1em #505050;
+    border-radius: 40px;
+    margin: 1px;
+    /* border: 1.5px solid #E5B257; */
+  }
+  #oval_filled_blue {
+    width: 0.25em;
+    height: 2.9em;
+    background: #5273b0;
+    box-shadow: 0 0 0.1em #505050;
+    border-radius: 40px;
+    margin: 1px;
+    /* border: 1.5px solid #5273B0; */
   }
   .circle {
     width: 12px;

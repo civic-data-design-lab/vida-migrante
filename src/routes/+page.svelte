@@ -1,6 +1,5 @@
 <script>
   import { fade, fly } from 'svelte/transition';
-  // import AVILA from '../../static/images/welcomepage/landscape/AVILA.png';
 
   const lastPage = 2;
   let page = 0;
@@ -14,19 +13,85 @@
 
 <div id="container">
   {#if !page}
-    <h1>Welcome</h1>
-    <p>We will take you through the journey and struggles of Venezuelan migrants in Ecuador</p>
+    <h1 style="">Welcome</h1>
+    <p style="">
+      We will take you through the journey and struggles of Venezuelan migrants in Ecuador
+    </p>
   {:else if page === 1}
-    <p in:fly={{ y: 200, duration: 2000 }} out:fade>Flies in, fades out</p>
+    <img
+      src={'/images/welcomepage/landscape/QUITO_BG_VOLCANO.png'}
+      alt=""
+      style="position: absolute; z-index:1"
+      out:fly={{ x: 500, duration: 2000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/QUITO_2.png'}
+      alt=""
+      style="position: absolute; bottom: -2em; z-index:2"
+      in:fly={{ x: -500, duration: 6000 }}
+      out:fly={{ x: 500, duration: 2000 }}
+    />
     <img
       src={'/images/welcomepage/landscape/AVILA.png'}
       alt=""
-      in:fly={{ x: 200, duration: 2000 }}
-      out:fade
+      style="position: absolute; bottom: -2em; left: -40em; z-index:3"
+      in:fly={{ x: 500, duration: 6000 }}
+      out:fly={{ x: -500, duration: 2000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/CARACAS_3.png'}
+      alt=""
+      style="position: absolute; bottom: -2em; left: -40em; z-index:4"
+      in:fly={{ x: 500, duration: 6000 }}
+      out:fly={{ x: -500, duration: 2000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/CARACAS_BLDGA.png'}
+      alt=""
+      style="position: absolute; bottom: -2.5em; left: -5em; z-index:5"
+      in:fly={{ x: 500, duration: 6000 }}
+      out:fly={{ x: -500, duration: 2000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/QUITO_1.png'}
+      alt=""
+      style="position: absolute; bottom: -11em; left: -20em; z-index:6"
+      in:fly={{ x: -500, duration: 6000 }}
+      out:fly={{ x: 500, duration: 2000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/QUITO_HOUSES.png'}
+      alt=""
+      style="position: absolute; bottom: -9em; left: -20em; z-index:7"
+      in:fly={{ x: -500, duration: 6000 }}
+      out:fly={{ x: 500, duration: 2000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/CARACAS_2.png'}
+      alt=""
+      style="position: absolute; bottom: -2.5em; left: -5em; z-index:8"
+      in:fly={{ x: 500, duration: 6000 }}
+      out:fly={{ x: -500, duration: 2000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/CARACAS_1.png'}
+      alt=""
+      style="position: absolute; bottom: -3em; left: -15em; z-index:9"
+      in:fly={{ x: -500, duration: 6000 }}
+      out:fly={{ x: 500, duration: 2000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/QUITO_TREES.png'}
+      alt=""
+      style="position: absolute; bottom: -10em; z-index:10"
+      in:fly={{ x: -500, duration: 6000 }}
+      out:fly={{ x: 500, duration: 2000 }}
     />
 
-    <p>When migrants arrive in Ecuador, they face multiple challenges including:</p>
-    <ol>
+    <p style="z-index: 11;" out:fly={{ x: 200, duration: 2000 }}>
+      When migrants arrive in Ecuador, they face multiple challenges including:
+    </p>
+    <ol style="z-index: 11;" out:fly={{ x: 200, duration: 2000 }}>
       <li>Barriers to integration for migrants</li>
       <li>Trade-offs the migrants have to make to meet their basic daily needs</li>
       <li>
@@ -50,7 +115,7 @@
   {#if page === lastPage}
     <a href="/game" class="button">Start</a>
   {:else}
-    <button class="button button" on:click={advancePage}> Next </button>
+    <button style="z-index: 11;" class="button button" on:click={advancePage}> Next </button>
   {/if}
 </div>
 
