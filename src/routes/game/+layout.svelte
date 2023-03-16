@@ -26,7 +26,7 @@
   />
   <slot />
   <nav>
-    <button class="button navbar-btn" on:click={() => (showDevNav = !showDevNav)}
+    <button class="button nav-btn" on:click={() => (showDevNav = !showDevNav)}
       >{showDevNav ? 'Hide' : 'Show'} dev nav</button
     >
     {#if showDevNav}
@@ -52,6 +52,14 @@
   nav {
     position: absolute;
     top: 0;
+  }
+
+  .nav-btn {
+    transform: translateY(-100%);
+  }
+
+  .nav-btn:focus {
+    transform: none;
   }
 
   ul {
