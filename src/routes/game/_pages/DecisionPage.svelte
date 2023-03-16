@@ -101,7 +101,7 @@
     <ul>
       {#each card.options as option (option.id)}
         <li>
-          <button class="button button3" on:click={() => (displayedOption = option)}>
+          <button class="button full-width" on:click={() => (displayedOption = option)}>
             {option.description}
           </button>
         </li>
@@ -137,5 +137,6 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding: 0 1rem;
   }
 </style>

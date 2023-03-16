@@ -12,36 +12,38 @@
   --light-blue: #c5dcee;
   --light-red: #eec3b8;
   --light-yellow: #f6e0b1;
+
+  --font-sirenia: 'sirenia', sans-serif;
 }
 
 h1 {
-  font-family: 'sirenia', sans-serif;
+  font-family: var(--font-sirenia);
   font-size: 43pt;
   font-weight: bolder;
   color: var(--gray);
 }
 
 h2 {
-  font-family: 'sirenia', sans-serif;
+  font-family: var(--font-sirenia);
   font-size: 28pt;
   font-weight: bold;
 }
 
 h3 {
-  font-family: 'sirenia', sans-serif;
+  font-family: var(--font-sirenia);
   font-size: 23pt;
   font-weight: bolder;
 }
 
 h6 {
-  font-family: 'sirenia', sans-serif;
+  font-family: var(--font-sirenia);
   font-size: 16px;
   line-height: 16px;
   margin: 0;
 }
 
 p {
-  font-family: 'sirenia';
+  font-family: var(--font-sirenia);
   font-size: 16pt;
   font-weight: normal;
   line-height: 22pt;
@@ -49,7 +51,7 @@ p {
   text-align: center;
 }
 p2 {
-  font-family: 'sirenia';
+  font-family: var(--font-sirenia);
   font-size: 16pt;
   font-weight: normal;
   line-height: 22pt;
@@ -60,7 +62,7 @@ p2 {
   color: blue;
 }
 p3 {
-  font-family: 'sirenia';
+  font-family: var(--font-sirenia);
   font-size: 16pt;
   font-weight: normal;
   line-height: 22pt;
@@ -78,7 +80,7 @@ body {
 }
 
 a {
-  font-family: 'sirenia', sans-serif;
+  font-family: var(--font-sirenia);
   color: var(--gray);
   transition: color 150ms ease;
 }
@@ -87,24 +89,30 @@ a:hover {
   color: var(--dark-gray);
 }
 
+/* Primary button styling */
 .button {
-  border-radius: 16px;
-  width: 30vw;
-  height: 4vh;
-
-  /* Color and font */
-  background-color: var(--gray);
-  color: var(--white);
-  font: 12pt 'sirenia';
-  text-decoration: none;
-
   /* Alignment */
-  text-align: center;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 
-  position: relative;
+  /* Color */
+  background-color: var(--gray);
+
+  /* Font */
+  color: var(--white);
+  font-family: var(--font-sirenia);
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration: none; /* For converting links to buttons */
+
+  /* Sizing and shape*/
+  box-sizing: border-box;
+  padding: 0.5rem 3.5rem;
+  border-radius: 50rem;
+
   transition: all 150ms ease;
 }
 
@@ -127,38 +135,8 @@ a:hover {
   cursor: not-allowed;
 }
 
-.button2 {
-  background-color: var(--dark-gray);
-  color: black;
-}
-
-.button3 {
-  margin: auto;
-  position: relative;
-  border-radius: 16px;
-  width: 80vw;
-  height: 6vh;
-  background-color: var(--gray);
-  color: var(--white);
-}
-
-.button4 {
-  background-color: var(--white);
-  color: var(--gray);
-  border-color: var(--gray);
-  box-shadow: 5px 5px 10px 2px var(--gray);
-  cursor: not-allowed;
-  transform: none;
-  width: 16vw;
-  height: 8vh;
-}
-
-.button5 {
-  background-color: lightgray;
-  border-radius: 50%;
-  border: none;
-  width: 20px;
-  height: 20px;
+.full-width {
+  width: 100%;
 }
 
 ul {
