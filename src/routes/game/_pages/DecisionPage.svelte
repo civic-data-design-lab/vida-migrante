@@ -94,33 +94,26 @@
     <button on:click={() => makeDecision(displayedOption.id)} class="button">Select</button>
   </div>
 </Modal>
-<main style:background-color={backgroundColor}>
-  <Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} />
-  {#if showOptions}
-    <h3 class="prompt">{card.prompt || ''}</h3>
-    <ul>
-      {#each card.options as option (option.id)}
-        <li>
-          <button class="button full-width" on:click={() => (displayedOption = option)}>
-            {option.description}
-          </button>
-        </li>
-      {/each}
-    </ul>
-  {/if}
-</main>
+<Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} />
+{#if showOptions}
+  <h3 class="prompt">{card.prompt || ''}</h3>
+  <ul>
+    {#each card.options as option (option.id)}
+      <li>
+        <button class="button full-width" on:click={() => (displayedOption = option)}>
+          {option.description}
+        </button>
+      </li>
+    {/each}
+  </ul>
+{/if}
+<div class="bg-color" style:background-color={backgroundColor} />
 
 <style>
-  main {
-    width: 100vw;
-    height: 110vh;
-    margin-top: -5vh;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+  .bg-color {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     transition: background-color 200ms ease;
   }
   .implication-body {

@@ -1,5 +1,6 @@
 <script>
   import { GameData } from '$lib/stores/gameData';
+  import { WindowHeight } from '$lib/stores/windowHeight';
   import { GameStates } from '$lib/utils/types';
   import { onMount } from 'svelte';
   import Loading from './Loading.svelte';
@@ -13,6 +14,12 @@
   });
 
   let showDevNav = false;
+
+  let windowHeight;
+  $: {
+    WindowHeight.set(windowHeight);
+    console.log('Set window height to', windowHeight);
+  }
 </script>
 
 {#if loading}
@@ -41,6 +48,7 @@
     {/if}
   </nav>
 {/if}
+<svelte:window bind:innerHeight={windowHeight} />
 
 <style>
   nav {
@@ -49,7 +57,7 @@
   }
 
   .nav-btn {
-    transform: translateY(-100%);
+    transform: translateY(-110%);
   }
 
   .nav-btn:focus {
