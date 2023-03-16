@@ -3,6 +3,9 @@ overall styling. Actual page components can be found in the `_pages/` directory.
 -->
 <script>
   import { fade } from 'svelte/transition';
+
+  export let hasBanner;
+  export let hasDrawer;
 </script>
 
 <main in:fade={{ duration: 200, delay: 200 }} out:fade={{ duration: 200, delay: 0 }}>

@@ -3,7 +3,6 @@
   import { GameStates } from '$lib/utils/types';
   import { onMount } from 'svelte';
   import Loading from './Loading.svelte';
-  import MigrantBanner from './MigrantBanner.svelte';
 
   let loading = true;
   onMount(() => {
@@ -19,11 +18,6 @@
 {#if loading}
   <Loading />
 {:else}
-  <MigrantBanner
-    migrantId={$GameData.migrantId}
-    jobId={$GameData.jobId}
-    resources={$GameData.resources}
-  />
   <slot />
   <nav>
     <button class="button nav-btn" on:click={() => (showDevNav = !showDevNav)}
