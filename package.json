@@ -18,12 +18,14 @@
     "prettier": "^2.8.0",
     "prettier-plugin-svelte": "^2.8.1",
     "svelte": "^3.54.0",
+    "svelte-parallax": "^0.6.0",
     "svelte-range-slider-pips": "^2.1.1",
     "vite": "^4.0.0",
     "vitest": "^0.25.3"
   },
   "type": "module",
   "dependencies": {
-    "svelte-preprocess-import-assets": "^0.2.5"
+    "svelte-preprocess-import-assets": "^0.2.5",
+    "svelte-scrollto": "^0.2.0"
   }
 }

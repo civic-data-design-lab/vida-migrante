@@ -1,6 +1,8 @@
 <script>
   import { Languages } from '$lib/utils/types';
   import { fade, fly } from 'svelte/transition';
+  import { Parallax, ParallaxLayer } from 'svelte-parallax';
+  import { onMount } from 'svelte';
 
   /** Page data loaded from `+layout.server.svelte` */
   export let data;
@@ -10,17 +12,79 @@
   function advancePage() {
     if (page === lastPage) window.location.href = '/game';
     else page++;
-    visible = true;
+    // visible = true;
   }
-  let visible = false;
+
+  let ready = false;
+  onMount(() => (ready = true));
 
   $: language = data.language;
 </script>
 
 <div id="container">
-  {#if !page}
-    <h1 style="">Vida Migrante</h1>
-    <p style="">
+  {#if !page && ready}
+    <img
+      src={'/images/welcomepage/landscape/QUITO_BG_VOLCANO.png'}
+      alt=""
+      style="position: absolute; z-index: 1; height: 100%; width: 120%; bottom: -20%;"
+    />
+    <img
+      src={'/images/welcomepage/landscape/QUITO_2.png'}
+      alt=""
+      style="position: absolute; z-index: 2; height: 100%; width: 200%; bottom: -42%; right: -80%;"
+      in:fly={{ x: -500, duration: 6000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/AVILA.png'}
+      alt=""
+      style="position: absolute; z-index:3; height:60%; width: 250%; bottom: -10%; right: -50%;"
+      in:fly={{ x: 500, duration: 6000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/CARACAS_3.png'}
+      alt=""
+      style="position: absolute; z-index: 4; height: 36%; width: 150%; bottom: -10%; right: -5%;"
+      in:fly={{ x: 500, duration: 6000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/CARACAS_BLDGA.png'}
+      alt=""
+      style="position: absolute; z-index: 5; height: 44%; width: 100%; bottom: -6%; right: 10%;"
+      in:fly={{ x: 500, duration: 6000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/QUITO_1.png'}
+      alt=""
+      style="position: absolute; z-index: 6; height: 35%; width: 200%; left: -5%; bottom: -8%;"
+      in:fly={{ x: -500, duration: 6000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/QUITO_HOUSES.png'}
+      alt=""
+      style="position: absolute; z-index: 7; height: 50%; width: 100%; bottom: -10%; left: 10%;"
+      in:fly={{ x: -500, duration: 6000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/CARACAS_2.png'}
+      alt=""
+      style="position: absolute; z-index: 8; height: 60%; width: 120%; bottom: -20%;"
+      in:fly={{ x: 500, duration: 6000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/CARACAS_1.png'}
+      alt=""
+      style="position: absolute; z-index: 9; height: 40%; width: 100%; bottom: -20%; right: 10%;"
+      in:fly={{ x: -500, duration: 6000 }}
+    />
+    <img
+      src={'/images/welcomepage/landscape/QUITO_TREES.png'}
+      alt=""
+      style="position: absolute; z-index: 10; height: 50%; width: 120%; bottom: -12%;"
+      in:fly={{ x: -500, duration: 6000 }}
+    />
+
+    <h1 style="z-index: 11;">Vida Migrante</h1>
+    <p style="z-index: 11;">
       {#if language == Languages.ENGLISH}
         You will embark on a journey in the life of a Venezuelan migrant to experience the
         challenges of integrating into Ecuador.
@@ -30,80 +94,8 @@
       {/if}
     </p>
   {:else if page === 1}
-    <img
-      src={'/images/welcomepage/landscape/QUITO_BG_VOLCANO.png'}
-      alt=""
-      style="position: absolute; z-index: 1; height: 100%; width: 120%; bottom: -20%;"
-      out:fly={{ x: 500, duration: 2000 }}
-    />
-    <img
-      src={'/images/welcomepage/landscape/QUITO_2.png'}
-      alt=""
-      style="position: absolute; z-index: 2; height: 100%; width: 200%; bottom: -42%; right: -80%;"
-      in:fly={{ x: -500, duration: 6000 }}
-      out:fly={{ x: 500, duration: 2000 }}
-    />
-    <img
-      src={'/images/welcomepage/landscape/AVILA.png'}
-      alt=""
-      style="position: absolute; z-index:3; height:60%; width: 250%; bottom: -10%; right: -50%;"
-      in:fly={{ x: 500, duration: 6000 }}
-      out:fly={{ x: -500, duration: 2000 }}
-    />
-    <img
-      src={'/images/welcomepage/landscape/CARACAS_3.png'}
-      alt=""
-      style="position: absolute; z-index: 4; height: 36%; width: 150%; bottom: -10%; right: -5%;"
-      in:fly={{ x: 500, duration: 6000 }}
-      out:fly={{ x: -500, duration: 2000 }}
-    />
-    <img
-      src={'/images/welcomepage/landscape/CARACAS_BLDGA.png'}
-      alt=""
-      style="position: absolute; z-index: 5; height: 44%; width: 100%; bottom: -6%; right: 10%;"
-      in:fly={{ x: 500, duration: 6000 }}
-      out:fly={{ x: -500, duration: 2000 }}
-    />
-    <img
-      src={'/images/welcomepage/landscape/QUITO_1.png'}
-      alt=""
-      style="position: absolute; z-index: 6; height: 35%; width: 200%; left: -5%; bottom: -8%;"
-      in:fly={{ x: -500, duration: 6000 }}
-      out:fly={{ x: 500, duration: 2000 }}
-    />
-    <img
-      src={'/images/welcomepage/landscape/QUITO_HOUSES.png'}
-      alt=""
-      style="position: absolute; z-index: 7; height: 50%; width: 100%; bottom: -10%; left: 10%;"
-      in:fly={{ x: -500, duration: 6000 }}
-      out:fly={{ x: 500, duration: 2000 }}
-    />
-    <img
-      src={'/images/welcomepage/landscape/CARACAS_2.png'}
-      alt=""
-      style="position: absolute; z-index: 8; height: 60%; width: 120%; bottom: -20%;"
-      in:fly={{ x: 500, duration: 6000 }}
-      out:fly={{ x: -500, duration: 2000 }}
-    />
-    <img
-      src={'/images/welcomepage/landscape/CARACAS_1.png'}
-      alt=""
-      style="position: absolute; z-index: 9; height: 40%; width: 100%; bottom: -20%; right: 10%;"
-      in:fly={{ x: -500, duration: 6000 }}
-      out:fly={{ x: 500, duration: 2000 }}
-    />
-    <img
-      src={'/images/welcomepage/landscape/QUITO_TREES.png'}
-      alt=""
-      style="position: absolute; z-index: 10; height: 50%; width: 120%; bottom: -12%;"
-      in:fly={{ x: -500, duration: 6000 }}
-      out:fly={{ x: 500, duration: 2000 }}
-    />
-
-    <p style="z-index: 11;" out:fly={{ x: 200, duration: 2000 }}>
-      When migrants arrive in Ecuador, they face multiple challenges including:
-    </p>
-    <ol style="z-index: 11;" out:fly={{ x: 200, duration: 2000 }}>
+    <p>When migrants arrive in Ecuador, they face multiple challenges including:</p>
+    <ol>
       <li>Barriers to integration for migrants</li>
       <li>Trade-offs the migrants have to make to meet their basic daily needs</li>
       <li>
