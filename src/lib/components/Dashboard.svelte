@@ -175,7 +175,8 @@
   style="display: flex; flex-direction: column; align-content: center; justify-content: center; padding: 1em"
 >
   <h3>Allocate Your Spending</h3>
-  {#each spendings as spending}
+  {#each spendings as spending (spending.name)}
+    {(slider_theme = spending.name)}
     <section>
       <!-- <div id="container2"> -->
       <p>{(slider_theme = spending.name)}</p>
