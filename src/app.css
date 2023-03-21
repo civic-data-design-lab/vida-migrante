@@ -48,8 +48,8 @@ p {
   font-weight: normal;
   line-height: 22pt;
   color: var(--gray);
-  text-align: center;
 }
+
 p2 {
   font-family: var(--font-sirenia);
   font-size: 16pt;
@@ -61,6 +61,7 @@ p2 {
   /* text-align: left; */
   color: blue;
 }
+
 p3 {
   font-family: var(--font-sirenia);
   font-size: 16pt;
@@ -74,9 +75,12 @@ p3 {
 
 body {
   font: 16pt rubik;
-  text-align: left;
   color: var(--gray);
   user-select: none;
+}
+
+body2 {
+  font: 12pt rubik;
 }
 
 a {
@@ -106,7 +110,8 @@ a:hover {
   font-family: var(--font-sirenia);
   font-size: 20px;
   line-height: 24px;
-  text-decoration: none; /* For converting links to buttons */
+  text-decoration: none;
+  /* For converting links to buttons */
 
   /* Sizing and shape*/
   box-sizing: border-box;

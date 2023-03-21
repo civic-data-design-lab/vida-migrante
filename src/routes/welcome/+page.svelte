@@ -1,106 +1,87 @@
 <script>
-  import { Parallax, ParallaxLayer } from 'svelte-parallax';
+  const layers = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
-  let parallax;
-  let disabled = false;
-  let fancy = 'fancy'.split('');
+  let y;
 </script>
 
-<button class="disable" on:click={() => (disabled = !disabled)}>disable</button>
+<svelte:window bind:scrollY={y} />
+<div style="overflow: scroll;">
+  <a class="parallax-container" href="https://www.firewatchgame.com">
+    {#each layers as layer}
+      <img
+        style="transform: translate(0,{(-y * layer) / (layers.length - 1)}px)"
+        src="https://www.firewatchgame.com/images/parallax/parallax{layer}.png"
+        alt="parallax layer {layer}"
+      />
+    {/each}
+  </a>
 
-<Parallax sections={3} bind:this={parallax} {disabled}>
-  {#each fancy as char, index (index)}
-    <ParallaxLayer
-      rate={(index + 1) / (fancy.length - 1)}
-      offset={1}
-      style="
-			  margin-left: {38 + index * 5}%; 
-				display: flex; 
-				justify-content: flex-start; 
-				align-items: center;
-		  "
-    >
-      <p class="fancy">
-        {char}
-      </p>
-    </ParallaxLayer>
-  {/each}
+  <div class="text">
+    <span style="opacity: {1 - Math.max(0, y / 40)}"> scroll down </span>
 
-  <ParallaxLayer offset={1} rate={-2.5} style="display: flex; justify-content: flex-end;">
-    <div style="background-color: lightblue; opacity: 0.5; width: 50%; height: 100%;" />
-  </ParallaxLayer>
-
-  <ParallaxLayer offset={1} rate={2.5} style="display: flex; justify-content: flex-start;">
-    <div style="background-color: yellow; opacity: 0.5; width: 50%; height: 100%;" />
-  </ParallaxLayer>
-
-  <ParallaxLayer
-    rate="1"
-    style="
-		  background-color: pink; 
-			display: flex; 
-			justify-content: center; 
-			align-items: center; 
-			flex-direction: column;
-		"
-  >
-    <h1>svelte-parallax!</h1>
-    <button
-      class="bottom-btn"
-      on:click={() => parallax.scrollTo(3, { selector: '.top-btn', duration: 4000 })}
-    >
-      Click me!
-    </button>
-  </ParallaxLayer>
-
-  <ParallaxLayer
-    offset="2"
-    rate="2"
-    style="
-		  background-color: pink; 
-			display: flex; 
-			justify-content: center; 
-			align-items: center;
-		"
-  >
-    <button
-      class="top-btn"
-      on:click={() => parallax.scrollTo(1, { selector: '.bottom-btn', duration: 1000 })}
-    >
-      Scroll to top
-    </button>
-  </ParallaxLayer>
-</Parallax>
+    <div class="foreground">
+      You have scrolled {y} pixels
+    </div>
+  </div>
+</div>
 
 <style>
-  :global(body) {
-    padding: 0;
-    background-color: #0bdb8c;
-    color: #313131;
-    font-family: monospace;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  button {
-    font-size: 1rem;
-    cursor: pointer;
-  }
-
-  button:focus {
-    outline: 4px dashed #ff5c77;
-  }
-
-  .disable {
+  .parallax-container {
     position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 10;
+    width: 2400px;
+    height: 712px;
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 
-  .fancy {
-    font-size: 2.5rem;
+  .parallax-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    will-change: transform;
+  }
+
+  .parallax-container img:last-child::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(45, 10, 13);
+  }
+
+  .text {
+    position: relative;
+    width: 100%;
+    height: 300vh;
+    color: rgb(220, 113, 43);
+    text-align: center;
+    padding: 4em 0.5em 0.5em 0.5em;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+
+  span {
+    display: block;
+    font-size: 1em;
+    text-transform: uppercase;
+    will-change: transform, opacity;
+  }
+
+  .foreground {
+    position: absolute;
+    top: 711px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 712px);
+    background-color: rgb(32, 0, 1);
+    color: white;
+    padding: 50vh 0 0 0;
+  }
+
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(253, 174, 51);
   }
 </style>

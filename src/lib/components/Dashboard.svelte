@@ -8,6 +8,7 @@
   import { slide } from 'svelte/transition';
   import { page } from '$app/stores';
   import { isFoodSecure, sumValues } from '$lib/utils/functions';
+  import { spendings } from '$gameFiles/expenses.json';
 
   let displayedSpending = null;
 
@@ -54,7 +55,7 @@
   for (let i = 1; i <= 30; i++) {
     initial_expenses.push(0);
   }
-  let spendings = [
+  let spendings2 = [
     {
       name: 'Rent',
       icon: 'RENT.png',
@@ -99,6 +100,10 @@
     for (let item of spendings) {
       player_expenses += item.expense;
     }
+  }
+
+  function updateSlider(name) {
+    slider_theme = name;
   }
 
   function updateChart() {
@@ -203,10 +208,9 @@
 >
   <h3>Allocate Your Spending</h3>
   {#each spendings as spending}
-    {(slider_theme = spending.name)}
     <section>
       <!-- <div id="container2"> -->
-      <p>{spending.name}</p>
+      <p>{(slider_theme = spending.name)}</p>
       <button
         class="info"
         on:click={() => (displayedSpending = spending)}
@@ -250,15 +254,17 @@
       src={`/images/dashboard/${displayedSpending?.icon ?? 'RENT.png'}`}
       alt={displayedSpending?.icon}
     />
-    <div>
-      <h2>{displayedSpending?.name}</h2>
-      <p style="float: left;">Your Expense</p>
-      <p style="float: right;">${displayedSpending?.expense}</p>
-      <br />
-      <p style="float: left;">Average Migrant Household Expense</p>
-      <p style="float: right;">$326</p>
-      <br />
-      <p>Average National Expense</p>
+    <h2>{displayedSpending?.name}</h2>
+    <div style="display: flex; flex-direction: row;">
+      <div style="display: flex; flex-direction: column; align-content: left; text-align: left;">
+        <p>Your Expense</p>
+        <body2>Average Migrant Household Expense</body2>
+        <body2>Average National Expense</body2>
+      </div>
+      <div style="display: flex; flex-direction: column; align-content: right;">
+        <p>${displayedSpending?.expense}</p>
+        <body2>$326</body2>
+      </div>
     </div>
   </div>
 </Modal>
@@ -430,7 +436,7 @@
   }
 
   .food-theme {
-    --thumb-image: url('/images/dashboard/FOOD3.png');
+    --thumb-image: url('/images/dashboard/EGGS_FOOD_1.png');
   }
 
   .health-theme {
@@ -446,6 +452,6 @@
   }
 
   .internet-theme {
-    --thumb-image: url('/images/dashboard/INTERNET.png');
+    --thumb-image: url('/images/dashboard/WIFI.png');
   }
 </style>
