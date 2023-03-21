@@ -116,6 +116,12 @@ function createGameData() {
 
           // Start round 2 or 4 after assistance has been selected
           return { ...g, state: GameStates.ROUND_START, round: g.round + 1 };
+        case GameStates.GAME_END:
+          // On game end, an advancement in the game state entails resetting the
+          // game data and returning to the game START state.
+
+          // Reset game data (initial game data starts at `GameStates.START`)
+          return deepCopy(INITIAL_GAME_DATA);
         default:
           return g;
       }
