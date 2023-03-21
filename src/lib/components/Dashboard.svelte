@@ -176,7 +176,6 @@
 >
   <h3>Allocate Your Spending</h3>
   {#each spendings as spending (spending.name)}
-    {(slider_theme = spending.name)}
     <section>
       <!-- <div id="container2"> -->
       <p>{(slider_theme = spending.name)}</p>
@@ -197,12 +196,12 @@
       </button>
     </section>
     <div
-      class:rent-theme={slider_theme === 'Rent'}
-      class:food-theme={slider_theme === 'Food'}
-      class:health-theme={slider_theme === 'Health & Hygiene'}
-      class:household-theme={slider_theme === 'Household & Utilities'}
-      class:remittances-theme={slider_theme === 'Remittances'}
-      class:internet-theme={slider_theme === 'Internet'}
+      class:rent-theme={spending.name === 'Rent'}
+      class:food-theme={spending.name === 'Food'}
+      class:health-theme={spending.name === 'Health & Hygiene'}
+      class:household-theme={spending.name === 'Household & Utilities'}
+      class:remittances-theme={spending.name === 'Remittances'}
+      class:internet-theme={spending.name === 'Internet'}
     >
       <Range
         on:change={(e) => {
