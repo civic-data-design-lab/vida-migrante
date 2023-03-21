@@ -131,27 +131,27 @@
 </div>
 <div id="expense-board">
   <div id="name-board">
-    <div id="alignleft">
+    <div class="alignleft">
       <div class="circle" style="background-color: #505050" />
       <p2 style="color: #505050; font-weight: bold;">Your Total Expenses</p2>
     </div>
-    <div id="alignleft">
+    <div class="alignleft">
       <div class="circle" style="background-color: green" />
       <p2 style="color: green; font-weight: bold;">Your Income</p2>
     </div>
-    <div id="alignleft">
+    <div class="alignleft">
       <div class="circle" style="background-color: gray" />
       <p2 style="color: #505050;">Average Migrant Household Income</p2>
     </div>
-    <div id="alignleft">
+    <div class="alignleft">
       <div class="circle" style="background-color: #CF6348" />
       <p2 style="color: #CF6348;">Average Ecuadorian Income</p2>
     </div>
-    <div id="alignleft">
+    <div class="alignleft">
       <div class="circle" style="background-color: #E5B257" />
       <p2 style="color: #E5B257;">Ecuadorian Vital Family Basket</p2>
     </div>
-    <div id="alignleft">
+    <div class="alignleft">
       <div class="circle" style="background-color: #5273B0" />
       <p2 style="color: #5273B0;">Ecuadorian Basic Family Basket</p2>
     </div>
@@ -204,12 +204,12 @@
       </button>
     </section>
     <div
-      class:rent-theme={slider_theme == 'Rent'}
-      class:food-theme={slider_theme == 'Food'}
-      class:health-theme={slider_theme == 'Health & Hygiene'}
-      class:household-theme={slider_theme == 'Household & Utilities'}
-      class:remittances-theme={slider_theme == 'Remittances'}
-      class:internet-theme={slider_theme == 'Internet'}
+      class:rent-theme={slider_theme === 'Rent'}
+      class:food-theme={slider_theme === 'Food'}
+      class:health-theme={slider_theme === 'Health & Hygiene'}
+      class:household-theme={slider_theme === 'Household & Utilities'}
+      class:remittances-theme={slider_theme === 'Remittances'}
+      class:internet-theme={slider_theme === 'Internet'}
     >
       <Range
         on:change={(e) => {
@@ -226,7 +226,7 @@
 
 <Modal showModal={displayedSpending}>
   <div id="modal-body" slot="body">
-    <img src={`/images/dashboard/${displayedSpending?.icon}`} alt={displayedSpending?.icon} />
+    <img src={`/images/dashboard/${displayedSpending?.icon ?? 'RENT.png'}`} alt={displayedSpending?.icon} />
     <div>
       <h2>{displayedSpending?.name}</h2>
       <p style="float: left;">Your Expense</p>
@@ -365,7 +365,7 @@
     margin-right: 0.5em;
   }
 
-  #alignleft {
+  .alignleft {
     display: flex;
     justify-content: left;
     /* display: flex; */

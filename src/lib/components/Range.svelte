@@ -25,11 +25,12 @@
 
   // Dispatch 'change' events
   const dispatch = createEventDispatcher();
+  let mouseEventShield;
 
   onMount(() => {
     // Mouse shield used onMouseDown to prevent any mouse events penetrating other elements,
-    // ie. hover events on other elements while dragging. Especially for Safari
-    const mouseEventShield = document.createElement('div');
+    // i.e. hover events on other elements while dragging. Especially for Safari
+    mouseEventShield = document.createElement('div');
     mouseEventShield.setAttribute('class', 'mouse-over-shield');
     mouseEventShield.addEventListener('mouseover', (e) => {
       e.preventDefault();
@@ -54,7 +55,7 @@
   }
 
   function onHover(e) {
-    thumbHover = thumbHover ? false : true;
+    thumbHover = !thumbHover;
   }
 
   function onDragStart(e) {
