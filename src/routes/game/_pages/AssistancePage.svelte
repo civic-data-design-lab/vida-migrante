@@ -1,13 +1,16 @@
 <script>
-  import AssistanceData from '$gameFiles/assistances.json';
-
   import Modal from '$lib/components/Modal.svelte';
   import { GameData } from '$lib/stores/gameData';
+  import { page } from '$app/stores';
+  import { Languages } from '$lib/utils/types';
+
+  // Get the page data
+  $: language = $page.data.language;
+  $: assistances = $page.data.assistances;
 
   let displayedAssistance = null;
 
   const selectAssistance = (assistanceId) => {
-    console.debug(assistanceId);
     GameData.advanceGameState({ assistanceId });
   };
 </script>
@@ -22,13 +25,25 @@
     <p>
       {displayedAssistance?.description}
     </p>
-    <button class="button" on:click={() => selectAssistance(displayedAssistance.id)}>Select</button>
+    <button class="button" on:click={() => selectAssistance(displayedAssistance.id)}>
+      {#if language === Languages.ENGLISH}
+        Select
+      {:else}
+        Seleccionar
+      {/if}
+    </button>
   </div>
 </Modal>
 
-<h1>Select an assistance</h1>
+<h1>
+  {#if language === Languages.ENGLISH}
+    Select an assistance
+  {:else}
+    Selecciona una asistencia
+  {/if}
+</h1>
 <section>
-  {#each AssistanceData as assistance (assistance.id)}
+  {#each assistances as assistance (assistance.id)}
     <button class="assist-thumb" on:click={() => (displayedAssistance = assistance)}>
       <img src="/images/assistance/{assistance.image}" alt={assistance.name} />
     </button>

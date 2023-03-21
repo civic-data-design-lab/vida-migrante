@@ -2,16 +2,16 @@
   {
     "id": "training",
     "category": "Training and Education",
-    "name": "Training",
-    "description": "The World Food Program EMPACT project is providing training in digital and online tools.",
+    "name": "Capacitación",
+    "description": "El proyecto EMPACT del Programa Mundial de Alimentos está brindando capacitación en herramientas digitales.",
     "updates": { "income": { "assistance": 54 } },
     "image": "A_accreditation.png"
   },
   {
     "id": "regularization",
     "category": "Legal",
-    "name": "Regularization",
-    "description": "The Ecuadorian government expanded their regularization policy and you qualify to benefit from regular status documentation.",
+    "name": "Regularización",
+    "description": "El gobierno ecuatoriano amplió su política de regularización y calificas para beneficiarte.",
     "updates": { "income": { "assistance": 87 } },
     "image": "A_regularization.png"
   },
@@ -19,31 +19,31 @@
     "id": "accreditation",
     "category": "Legal",
     "name": "Accreditation",
-    "description": "The Ecuadorian government is legalizing Venezuelans accreditations, degrees, and certifications.",
+    "description": "Necesita traduccion",
     "updates": { "income": { "assistance": 70 } },
     "image": "A_accreditation.png"
   },
   {
     "id": "foodAssist",
     "category": "Food and Health",
-    "name": "Food Assistance",
-    "description": "The World Food Programme is providing food assistance to struggling households within your community and you qualify to receive aid.",
+    "name": "Asistencia Alimentaria",
+    "description": "El Programa Mundial de Alimentos está brindando asistencia alimentaria a los hogares en dificultades dentro de tu comunidad y calificas para recibir ayuda.",
     "updates": { "expenditures": { "food": -47 } },
     "image": "A_food.png"
   },
   {
     "id": "cashAssist",
     "category": "Food and Health",
-    "name": "Cash Assistance",
-    "description": "The World Food Program is providing cash assistance to buy nutritious food.",
+    "name": "Asistencia en Efectivo",
+    "description": "El Programa Mundial de Alimentos está proporcionando asistencia en efectivo para comprar alimentos nutritivos.",
     "updates": { "income": { "assistance": 47 } },
     "image": "A_cash.png"
   },
   {
     "id": "medicines",
     "category": "Food and Health",
-    "name": "Medicines",
-    "description": "The Ministry of Health is providing medicines at no cost for you and your family.",
+    "name": "Medicinas",
+    "description": "El Ministerio de Salud está brindando medicamentos sin costo para ti y tu familia.",
     "updates": { "expenditures": { "health": "!0" } },
     "image": "A_accreditation.png"
   }
