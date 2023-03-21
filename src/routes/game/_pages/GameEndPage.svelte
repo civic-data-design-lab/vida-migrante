@@ -14,12 +14,7 @@
 
 <div id="footer">
   <button on:click={toggle}>Toggle Success</button>
-  <button
-    class="button"
-    on:click={() => GameData.update((g) => ({ ...g, state: GameStates.START }))}
-  >
-    Try Again
-  </button>
+  <button class="button" on:click={GameData.advanceGameState}> Try Again </button>
   <a href="/about">About</a>
   <a href="/policy">Policy Recommendations</a>
 </div>
