@@ -55,39 +55,11 @@
   for (let i = 1; i <= 30; i++) {
     initial_expenses.push(0);
   }
-  let spendings2 = [
-    {
-      name: 'Rent',
-      icon: 'RENT.png',
-      expense: 2,
-    },
-    {
-      name: 'Food',
-      icon: 'FOOD3.png',
-      expense: 10,
-    },
-    {
-      name: 'Health & Hygiene',
-      icon: 'HEALTH.png',
-      expense: 20,
-    },
-    {
-      name: 'Household & Utilities',
-      icon: 'HOUSEHOLD.png',
-      expense: 100,
-    },
-
-    {
-      name: 'Remittances',
-      icon: 'REMITTANCES.png',
-      expense: 0,
-    },
-    {
-      name: 'Internet',
-      icon: 'INTERNET.png',
-      expense: 0,
-    },
-  ];
+  for (let spending of spendings) {
+    // spending.expense = $GameData.resources?.expenses;
+    // spending.name
+    spending.expense = 50;
+  }
 
   //slider
   let slider_theme = 'default';
@@ -100,10 +72,6 @@
     for (let item of spendings) {
       player_expenses += item.expense;
     }
-  }
-
-  function updateSlider(name) {
-    slider_theme = name;
   }
 
   function updateChart() {
