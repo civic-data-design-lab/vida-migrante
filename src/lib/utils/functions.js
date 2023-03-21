@@ -74,7 +74,7 @@ export function deepCopy(obj) {
  * @param {object} originalObject
  * @param {object} updatesObject
  */
-export const applyUpdates = (originalObject, updatesObject) => {
+export function applyUpdates(originalObject, updatesObject) {
   for (let key in updatesObject) {
     const update = updatesObject[key];
     if (Array.isArray(update)) {
@@ -93,7 +93,7 @@ export const applyUpdates = (originalObject, updatesObject) => {
       originalObject[key] = update;
     }
   }
-};
+}
 
 /**
  * Sums the values in the provided object (applies `+` operator).
@@ -101,12 +101,12 @@ export const applyUpdates = (originalObject, updatesObject) => {
  * @param {object | undefined} obj - The object, values must be addable.
  * @return {any} The added values, or undefined if the object is undefined.
  */
-export const sumValues = (obj) => {
+export function sumValues(obj) {
   if (!obj) {
     return;
   }
   return Object.values(obj).reduce((a, b) => a + b, 0);
-};
+}
 
 /**
  * Gets whether or not an entity is food secure.
@@ -116,7 +116,7 @@ export const sumValues = (obj) => {
  * @returns {boolean} True if the given data results in a status of "food
  *  secure", false otherwise.
  */
-export const isFoodSecure = (totalExpenses, householdSize) => {
+export function isFoodSecure(totalExpenses, householdSize) {
   const perCapitaExpense = totalExpenses / householdSize;
   let ecmen = 1;
   if (perCapitaExpense < 188) {
@@ -128,4 +128,4 @@ export const isFoodSecure = (totalExpenses, householdSize) => {
 
   if (CARI_ECMEN === 1 || CARI_ECMEN === 2) return true;
   return false;
-};
+}
