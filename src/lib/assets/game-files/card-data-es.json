@@ -2,26 +2,156 @@
   {
     "id": 0,
     "category": "Personal Improvement",
-    "title": "Peluquero",
-    "description": "Conoces a un amigo que puede enseñarte las habilidades necesarias para convertirte en peluquero.",
-    "resourcesRequired": ["tiempo"],
+    "title": "Hairdresser",
+    "description": "You meet a friend who can teach you the skills needed to become a hairdresser.",
+    "prompt": "Would you like to train to become a hairdresser?",
     "options": [
       {
         "id": 0,
-        "description": "Sí, trabajar menos horas por tiempo de entrenamiento",
-        "updates": { "money": 5, "time": -5, "skills": ["test"] }
+        "description": "Yes, work fewer hours for training time",
+        "updates": { "time": -5, "income": { "salary": -10 } }
       },
       {
         "id": 1,
-        "description": "Work longer hours to make up the time for the training",
-        "updates": { "money": 10, "time": -10, "skills": ["test"] }
+        "description": "I can't afford taking time off",
+        "updates": {},
+        "except": "but you won't be able to take the training"
+      }
+    ],
+    "image": "PI_hairdresser.png"
+  },
+  {
+    "id": 1,
+    "category": "Personal Improvement",
+    "title": "Digital Skills",
+    "description": "You saw an ad about a course on electronic commerce, which will help you increase your income. Would you like to take the course?",
+    "prompt": "Would you like to take the course?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Spend savings to take unpaid time off",
+        "updates": {
+          "time": 5,
+          "income": { "salary": 54 },
+          "skills": ["digital skills"]
+        },
+        "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
+      },
+      {
+        "id": 1,
+        "description": "Maybe next time",
+        "updates": {},
+        "except": "but you won't take the course"
+      }
+    ],
+    "image": "PI_digitalskills.png"
+  },
+  {
+    "id": 2,
+    "category": "Personal Improvement",
+    "title": "Financial Skills",
+    "description": "A new program to get a degree in finance is starting at your local technical school, but it requires a personal computer.",
+    "prompt": "Do you want to buy a computer?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Withdraw children from school to reduce expenses and acquire a computer",
+        "updates": {
+          "copingLevel": "stress",
+          "income": { "salary": 79 },
+          "skills": ["financial"]
+        }
+      },
+      {
+        "id": 1,
+        "description": "I can't afford a computer",
+        "updates": {},
+        "except": "and you won't be able to take the training"
+      }
+    ],
+    "image": "PI_financialskills.png"
+  },
+  {
+    "id": 3,
+    "category": "Life Event",
+    "title": "Remittances",
+    "description": "Your mother in Venezuela needs surgey for a health emergency, and you have to send remittances to cover the medical bills.",
+    "prompt": "How would you like to pay for the remittances?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Work longer hours to get extra money",
+        "updates": {
+          "income": { "salary": 24 },
+          "time": 12,
+          "expenditures": { "remittances": 24 }
+        },
+        "implicationText": "<b>24%</b> of migrants have to work longer hours to meet their essential needs."
+      },
+      {
+        "id": 1,
+        "description": "Borrow money from a friend",
+        "updates": {
+          "copingLevel": "stress",
+          "income": { "salary": 24 },
+          "expenditures": { "remittances": 24 }
+        },
+        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs."
       },
       {
         "id": 2,
-        "description": "I Can't Afford Taking Time Off",
-        "updates": {}
+        "description": "I can't send money to mom now",
+        "updates": {},
+        "except": "but your mom might not get better",
+        "implicationText": "<b>13%</b> of migrants don't send remittances to Venezuela"
       }
     ],
-    "image": "imgPath"
+    "image": "LE_remittances.png"
+  },
+  {
+    "id": 4,
+    "category": "Life Event",
+    "title": "Community Support",
+    "description": "Your close friend and neighbor had a personal emergency and asks you to take care of their kids for a couple of days.",
+    "prompt": "",
+    "options": [
+      {
+        "id": 0,
+        "description": "Take time off from work to help them",
+        "updates": { "time": 5, "income": { "salary": -10 } },
+        "except": "in order to make up for the time off",
+        "implicationText": "<b>9%</b> if migratns have to ask for support from their community to improve their conditions."
+      }
+    ],
+    "image": "LE_community.png"
+  },
+  {
+    "id": 5,
+    "category": "Life Event",
+    "title": "Health",
+    "description": "You are sick of a lung disease and need to buy medicines medicine to treat it.",
+    "prompt": "How would you like to pay for this?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Spend savings to buy the medicine",
+        "updates": { "income": { "salary": 23 }, "expenditures": { "health": 23 } },
+        "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
+      },
+      {
+        "id": 1,
+        "description": "Borrow money from a friend",
+        "updates": { "income": { "salary": 23 }, "expenditures": { "health": 23 } },
+        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs."
+      },
+      {
+        "id": 2,
+        "description": "I can't pay for the medicines",
+        "updates": {},
+        "except": "but you are at risk of getting sicker",
+        "implicationText": ""
+      }
+    ],
+    "image": "LE_health.png"
   }
 ]

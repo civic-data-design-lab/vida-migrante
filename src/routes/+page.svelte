@@ -1,5 +1,9 @@
 <script>
+  import { Languages } from '$lib/utils/types';
   import { fade, fly } from 'svelte/transition';
+
+  /** Page data loaded from `+layout.server.svelte` */
+  export let data;
 
   const lastPage = 2;
   let page = 0;
@@ -9,13 +13,21 @@
     visible = true;
   }
   let visible = false;
+
+  $: language = data.language;
 </script>
 
 <div id="container">
   {#if !page}
-    <h1 style="">Welcome</h1>
+    <h1 style="">Vida Migrante</h1>
     <p style="">
-      We will take you through the journey and struggles of Venezuelan migrants in Ecuador
+      {#if language == Languages.ENGLISH}
+        You will embark on a journey in the life of a Venezuelan migrant to experience the
+        challenges of integrating into Ecuador.
+      {:else}
+        Te embarcarás en un viaje en la vida de un migrante Venezolano y experimentarás los desafíos
+        de integrarse a Ecuador.
+      {/if}
     </p>
   {:else if page === 1}
     <img

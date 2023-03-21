@@ -1,6 +1,11 @@
 <script>
   import { browser } from '$app/environment';
+  import { page } from '$app/stores';
+  import { Languages } from '$types';
   import '../app.css';
+
+  /** Layout data (language) */
+  export let data;
 
   function calcViewportUnits() {
     let vh = window.innerHeight / 100;
@@ -14,6 +19,18 @@
 
 <svelte:window on:resize={calcViewportUnits} />
 <div id="bg">
+  <form method="post">
+    <li>
+      <button
+        style:background-color={data.language == Languages.ENGLISH ? 'red' : 'transparent'}
+        formaction="/?/setLanguage&language=en&redirectTo={$page.url.pathname}">English</button
+      >
+      <button
+        style:background-color={data.language == Languages.SPANISH ? 'red' : 'light-gray'}
+        formaction="/?/setLanguage&language=es&redirectTo={$page.url.pathname}">Spanish</button
+      >
+    </li>
+  </form>
   <slot />
 </div>
 
@@ -36,5 +53,10 @@
     background-image: url('$images/mountains-greyscale.png');
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  form {
+    position: absolute;
+    right: 0;
   }
 </style>

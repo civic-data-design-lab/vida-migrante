@@ -1,8 +1,6 @@
 <script>
   import { GameData } from '$gameData';
   import { GameStates } from '$types';
-  import { migrants } from '$gameFiles/migrant-data.json';
-  import { jobs } from '$gameFiles/jobs.json';
 
   import MigrantPage from './_pages/MigrantPage.svelte';
   import JobSelectPage from './_pages/JobSelectPage.svelte';
@@ -22,8 +20,6 @@
   import MigrantBanner from './MigrantBanner.svelte';
 
   $: state = $GameData.state;
-  $: migrant = migrants[$GameData.migrantId];
-  $: job = jobs[$GameData.jobId];
 
   const gamePages = new Map([
     [GameStates.START, StartPage],

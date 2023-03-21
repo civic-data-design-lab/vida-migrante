@@ -30,6 +30,11 @@ export const CopingLevels = {
   EMERGENCY: 'emergency',
 };
 
+export const Languages = {
+  ENGLISH: 'en',
+  SPANISH: 'es',
+};
+
 // ----------------
 // Type Definitions
 // ----------------

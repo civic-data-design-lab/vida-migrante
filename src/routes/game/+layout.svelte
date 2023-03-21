@@ -5,6 +5,10 @@
   import { onMount } from 'svelte';
   import Loading from './Loading.svelte';
 
+  /** Data from `+layout.server.js` */
+  export let data;
+  console.log(data);
+
   let loading = true;
   onMount(() => {
     // Client-side-rendering took over so loading can be set to false. This is

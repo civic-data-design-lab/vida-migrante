@@ -1,0 +1,116 @@
+{
+  "migrants": [
+    {
+      "id": 0,
+      "name": "Manuel",
+      "age": 25,
+      "maritalStatus": "married",
+      "introText": "<p>Manuel has been in Ecuador for <b>10 months</b> and lives with <b>6</b> of his family members. He used to work in the <b>construction</b> sector in Venezuela. He has a <b>high school degree</b>, but <b>no other legalized accreditations or certificates</b>.</p>",
+      "initialResources": {
+        "skills": ["construction"],
+        "time": 5,
+        "expenditures": {
+          "rent": 120,
+          "food": 132,
+          "health": 43,
+          "houshold_utilities_essential": 38,
+          "houshold_utilities_non_essential": 31,
+          "remittances": 21,
+          "internet": 14,
+          "other": []
+        },
+        "income": {
+          "salary": 305,
+          "assistance": 0
+        },
+        "copingLevel": null,
+        "accreditations": []
+      },
+      "immigration": false
+    },
+    {
+      "id": 1,
+      "name": "Amarilis",
+      "age": 27,
+      "maritalStatus": "single",
+      "introText": "<p>Amarilis has been in Ecuador for <b>9 months</b> and lives <b>by herself</b>. She used to work in the <b>wholesale and retail</b> sector in Venezuela. She completed <b>secondary education</b>, and doesn’t have other <b>legalized accreditations or certificates</b>.</p>",
+      "initialResources": {
+        "skills": ["wholesale and retail"],
+        "time": 5,
+        "expenditures": {
+          "rent": 76,
+          "food": 91,
+          "health": 35,
+          "houshold_utilities_essential": 25,
+          "houshold_utilities_non_essential": 25,
+          "remittances": 34,
+          "internet": 9,
+          "other": []
+        },
+        "income": {
+          "salary": 301,
+          "assistance": 0
+        },
+        "copingLevel": null,
+        "accreditations": []
+      },
+      "immigration": false
+    },
+    {
+      "id": 2,
+      "name": "Fernanda",
+      "age": 26,
+      "maritalStatus": "married",
+      "introText": "<p>Fernanda has been in Ecuador for <b>9 months</b> and lives with <b>four</b> of her family members. She used to work in the <b>agriculture</b> sector in Venezuela. She has a <b>high school degree</b>, and doesn’t have other <b>legalized accreditations or certificates</b>.</p>",
+      "initialResources": {
+        "skills": ["agriculture"],
+        "time": 5,
+        "expenditures": {
+          "rent": 104,
+          "food": 115,
+          "health": 54,
+          "housholdUtilitiesEssential": 30,
+          "housholdUtilitiesNonEssential": 31,
+          "remittances": 20,
+          "internet": 11,
+          "other": []
+        },
+        "income": {
+          "salary": 350,
+          "assistance": 0
+        },
+        "copingLevel": null,
+        "accreditations": []
+      },
+      "immigration": false
+    },
+    {
+      "id": 3,
+      "name": "Carlos",
+      "age": 26,
+      "maritalStatus": "married",
+      "introText": "<p>Carlos has been in Ecuador for <b>10 months</b> and lives with <b>his partner</b>. He used to work in the <b>manufacturing</b> sector in Venezuela. He completed <b>primary education</b> and has <b>no other legalized accreditations or certificates</b>.</p>",
+      "initialResources": {
+        "skills": ["manufacturing"],
+        "time": 5,
+        "expenditures": {
+          "rent": 67,
+          "food": 76,
+          "health": 40,
+          "houshold_utilities_essential": 19,
+          "houshold_utilities_non_essential": 15,
+          "remittances": 16,
+          "internet": 11,
+          "other": []
+        },
+        "income": {
+          "salary": 264,
+          "assistance": 0
+        },
+        "copingLevel": null,
+        "accreditations": []
+      },
+      "immigration": false
+    }
+  ]
+}
