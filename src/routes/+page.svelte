@@ -21,69 +21,69 @@
     <img
       src={'/images/welcomepage/landscape/QUITO_BG_VOLCANO.png'}
       alt=""
-      style="position: absolute; z-index:1"
+      style="position: absolute; z-index: 1; height: 100%; width: 120%; bottom: -20%;"
       out:fly={{ x: 500, duration: 2000 }}
     />
     <img
       src={'/images/welcomepage/landscape/QUITO_2.png'}
       alt=""
-      style="position: absolute; bottom: -2em; z-index:2"
+      style="position: absolute; z-index: 2; height: 100%; width: 200%; bottom: -42%; right: -80%;"
       in:fly={{ x: -500, duration: 6000 }}
       out:fly={{ x: 500, duration: 2000 }}
     />
     <img
       src={'/images/welcomepage/landscape/AVILA.png'}
       alt=""
-      style="position: absolute; bottom: -2em; left: -40em; z-index:3"
+      style="position: absolute; z-index:3; height:60%; width: 250%; bottom: -10%; right: -50%;"
       in:fly={{ x: 500, duration: 6000 }}
       out:fly={{ x: -500, duration: 2000 }}
     />
     <img
       src={'/images/welcomepage/landscape/CARACAS_3.png'}
       alt=""
-      style="position: absolute; bottom: -2em; left: -40em; z-index:4"
+      style="position: absolute; z-index: 4; height: 36%; width: 150%; bottom: -10%; right: -5%;"
       in:fly={{ x: 500, duration: 6000 }}
       out:fly={{ x: -500, duration: 2000 }}
     />
     <img
       src={'/images/welcomepage/landscape/CARACAS_BLDGA.png'}
       alt=""
-      style="position: absolute; bottom: -2.5em; left: -5em; z-index:5"
+      style="position: absolute; z-index: 5; height: 44%; width: 100%; bottom: -6%; right: 10%;"
       in:fly={{ x: 500, duration: 6000 }}
       out:fly={{ x: -500, duration: 2000 }}
     />
     <img
       src={'/images/welcomepage/landscape/QUITO_1.png'}
       alt=""
-      style="position: absolute; bottom: -11em; left: -20em; z-index:6"
+      style="position: absolute; z-index: 6; height: 35%; width: 200%; left: -5%; bottom: -8%;"
       in:fly={{ x: -500, duration: 6000 }}
       out:fly={{ x: 500, duration: 2000 }}
     />
     <img
       src={'/images/welcomepage/landscape/QUITO_HOUSES.png'}
       alt=""
-      style="position: absolute; bottom: -9em; left: -20em; z-index:7"
+      style="position: absolute; z-index: 7; height: 50%; width: 100%; bottom: -10%; left: 10%;"
       in:fly={{ x: -500, duration: 6000 }}
       out:fly={{ x: 500, duration: 2000 }}
     />
     <img
       src={'/images/welcomepage/landscape/CARACAS_2.png'}
       alt=""
-      style="position: absolute; bottom: -2.5em; left: -5em; z-index:8"
+      style="position: absolute; z-index: 8; height: 60%; width: 120%; bottom: -20%;"
       in:fly={{ x: 500, duration: 6000 }}
       out:fly={{ x: -500, duration: 2000 }}
     />
     <img
       src={'/images/welcomepage/landscape/CARACAS_1.png'}
       alt=""
-      style="position: absolute; bottom: -3em; left: -15em; z-index:9"
+      style="position: absolute; z-index: 9; height: 40%; width: 100%; bottom: -20%; right: 10%;"
       in:fly={{ x: -500, duration: 6000 }}
       out:fly={{ x: 500, duration: 2000 }}
     />
     <img
       src={'/images/welcomepage/landscape/QUITO_TREES.png'}
       alt=""
-      style="position: absolute; bottom: -10em; z-index:10"
+      style="position: absolute; z-index: 10; height: 50%; width: 120%; bottom: -12%;"
       in:fly={{ x: -500, duration: 6000 }}
       out:fly={{ x: 500, duration: 2000 }}
     />
