@@ -138,7 +138,7 @@
 </script>
 
 <div id="migrant-state">
-  <span>You work {$GameData.resources.time} hours daily</span>
+  <span>You work {$GameData.resources.time} hours weekly</span>
   <span>You are {foodSecurityStatus}</span>
 </div>
 <div style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
