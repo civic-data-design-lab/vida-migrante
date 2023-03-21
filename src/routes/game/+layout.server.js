@@ -18,18 +18,18 @@ import { Languages } from '$types';
 export async function load({ parent }) {
   const { language } = await parent();
 
-  let cardData, assistances, migrantData, jobs;
+  let cardData, assistances, migrantData, jobsData;
   if (language === Languages.ENGLISH) {
     cardData = cardDataEn;
     assistances = assistancesEn;
     migrantData = migrantDataEn;
-    jobs = jobsEn;
+    jobsData = jobsEn;
   } else {
     cardData = cardDataEs;
     assistances = assistancesEs;
     migrantData = migrantDataEs;
-    jobs = jobsEs;
+    jobsData = jobsEs;
   }
 
-  return { language, cardData, assistances, migrantData, jobs };
+  return { language, cardData, assistances, migrantData, jobsData };
 }

@@ -1,16 +1,26 @@
 <script>
   import { fly } from 'svelte/transition';
 
-  import migrantData from '$gameFiles/migrant-data.json';
-  import jobData from '$gameFiles/jobs.json';
+  import { page } from '$app/stores';
   import Info from '$lib/components/Info.svelte';
+  import { isFoodSecure, sumValues } from '$lib/utils/functions';
+  import { GameData } from '$lib/stores/gameData';
 
   export let migrantId = null;
   export let jobId = null;
   export let resources = null;
 
-  $: migrantInfo = migrantData.migrants.find((migrant) => migrant.id === migrantId);
-  $: jobInfo = jobData.jobs[jobId];
+  $: migrantInfo = $page.data.migrantData.migrants.find((migrant) => migrant.id === migrantId);
+  $: jobInfo = $page.data.jobsData.jobs[jobId];
+
+  let foodSecurityStatus;
+  $: {
+    const foodSecure = isFoodSecure(
+      sumValues($GameData.resources.expenditures),
+      migrantInfo.householdSize
+    );
+    foodSecurityStatus = foodSecure ? 'Food Secure' : 'Food Insecure';
+  }
   $: bannerTitle = [migrantInfo?.name, migrantInfo?.age, jobInfo?.title]
     .filter((x) => x)
     .join(', ');
@@ -27,7 +37,7 @@
     <section>
       <h6>{bannerTitle}</h6>
       <p>You are working <b><i>{resources.time}</i></b> hours daily.</p>
-      <p>You are <b><i>(food security status)</i></b></p>
+      <p>You are <b><i>{foodSecurityStatus}</i></b></p>
     </section>
   </div>
 </span>

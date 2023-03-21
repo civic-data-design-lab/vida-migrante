@@ -107,3 +107,25 @@ export const sumValues = (obj) => {
   }
   return Object.values(obj).reduce((a, b) => a + b, 0);
 };
+
+/**
+ * Gets whether or not an entity is food secure.
+ *
+ * @param {number} totalExpenses
+ * @param {number} householdSize
+ * @returns {boolean} True if the given data results in a status of "food
+ *  secure", false otherwise.
+ */
+export const isFoodSecure = (totalExpenses, householdSize) => {
+  const perCapitaExpense = totalExpenses / householdSize;
+  let ecmen = 1;
+  if (perCapitaExpense < 188) {
+    ecmen = 4;
+  }
+  const copingStrategy = 1;
+  const meanCopingECMEN = (ecmen + copingStrategy) / 2;
+  const CARI_ECMEN = Math.floor(Math.round((meanCopingECMEN + 2) / 2));
+
+  if (CARI_ECMEN === 1 || CARI_ECMEN === 2) return true;
+  return false;
+};
