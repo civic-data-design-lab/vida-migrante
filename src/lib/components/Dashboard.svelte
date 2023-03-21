@@ -121,6 +121,10 @@
   }
 </script>
 
+<div id="migrant-state">
+  <span>You work {$GameData.resources.time} hours daily</span>
+  <span>You are TODO</span>
+</div>
 <div style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
   <section>
     {#each expenses as color}
@@ -241,6 +245,17 @@
 </Modal>
 
 <style>
+  #migrant-state {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  span {
+    font-family: var(--font-sirenia);
+    font-size: 14pt;
+  }
+
   #container {
     display: flex;
     flex-direction: column;
