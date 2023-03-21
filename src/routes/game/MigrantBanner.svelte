@@ -3,27 +3,14 @@
 
   import { page } from '$app/stores';
   import Info from '$lib/components/Info.svelte';
-  import { isFoodSecure, sumValues } from '$lib/utils/functions';
-  import { GameData } from '$lib/stores/gameData';
 
   export let migrantId = null;
   export let jobId = null;
-  export let resources = null;
 
   $: migrantInfo = $page.data.migrantData.migrants.find((migrant) => migrant.id === migrantId);
   $: jobInfo = $page.data.jobsData.jobs[jobId];
 
-  let foodSecurityStatus;
-  $: {
-    const foodSecure = isFoodSecure(
-      sumValues($GameData.resources.expenditures),
-      migrantInfo.householdSize
-    );
-    foodSecurityStatus = foodSecure ? 'Food Secure' : 'Food Insecure';
-  }
-  $: bannerTitle = [migrantInfo?.name, migrantInfo?.age, jobInfo?.title]
-    .filter((x) => x)
-    .join(', ');
+  $: bannerTitle = [migrantInfo?.name, migrantInfo?.age].filter((x) => x).join(', ');
 </script>
 
 <span class="migrant-banner" transition:fly={{ y: -200 }}>
@@ -36,8 +23,8 @@
     </section>
     <section>
       <h6>{bannerTitle}</h6>
-      <p>You are working <b><i>{resources.time}</i></b> hours daily.</p>
-      <p>You are <b><i>{foodSecurityStatus}</i></b></p>
+      <p>{migrantInfo.age} Years old, {migrantInfo.maritalStatus}</p>
+      <p>{jobInfo.title}</p>
     </section>
   </div>
 </span>

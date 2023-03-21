@@ -58,11 +58,7 @@
   <title>Game | Ecuador Integration</title>
 </svelte:head>
 {#if hasBanner}
-  <MigrantBanner
-    migrantId={$GameData.migrantId}
-    jobId={$GameData.jobId}
-    resources={$GameData.resources}
-  />
+  <MigrantBanner migrantId={$GameData.migrantId} jobId={$GameData.jobId} />
 {/if}
 <!-- Key ensures that the animation gets applied on each state transition -->
 {#key state}

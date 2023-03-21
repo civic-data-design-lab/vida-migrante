@@ -6,6 +6,8 @@
   import { GameData } from '$gameData';
   import { intros } from 'svelte/internal';
   import { slide } from 'svelte/transition';
+  import { page } from '$app/stores';
+  import { isFoodSecure, sumValues } from '$lib/utils/functions';
 
   let displayedSpending = null;
 
@@ -14,6 +16,20 @@
 
   let player_expenses = 200;
   let player_income = $GameData.resources?.income.salary;
+
+  // Get the migrant's food security status
+  $: migrantInfo = $page.data.migrantData.migrants.find(
+    (migrant) => migrant.id === $GameData.migrantId
+  );
+  let foodSecurityStatus;
+  $: {
+    console.debug('Calculating food security');
+    const foodSecure = isFoodSecure(
+      sumValues($GameData.resources.expenditures),
+      migrantInfo.householdSize
+    );
+    foodSecurityStatus = foodSecure ? 'Food Secure' : 'Food Insecure';
+  }
 
   //create the oval charts
   let expenses = [];
@@ -123,7 +139,7 @@
 
 <div id="migrant-state">
   <span>You work {$GameData.resources.time} hours daily</span>
-  <span>You are TODO</span>
+  <span>You are {foodSecurityStatus}</span>
 </div>
 <div style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
   <section>
@@ -230,7 +246,10 @@
 
 <Modal showModal={displayedSpending}>
   <div id="modal-body" slot="body">
-    <img src={`/images/dashboard/${displayedSpending?.icon ?? 'RENT.png'}`} alt={displayedSpending?.icon} />
+    <img
+      src={`/images/dashboard/${displayedSpending?.icon ?? 'RENT.png'}`}
+      alt={displayedSpending?.icon}
+    />
     <div>
       <h2>{displayedSpending?.name}</h2>
       <p style="float: left;">Your Expense</p>
