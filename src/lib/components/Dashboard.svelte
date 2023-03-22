@@ -15,7 +15,7 @@
   let total_columns = 55;
   let max_expense = 800;
 
-  let player_expenses = 200;
+  let player_expenses = sumValues($GameData.resources.expenditures);
   let player_income = $GameData.resources?.income.salary;
 
   // Get the migrant's food security status
