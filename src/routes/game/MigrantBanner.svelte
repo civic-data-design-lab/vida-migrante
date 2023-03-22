@@ -3,6 +3,7 @@
 
   import { page } from '$app/stores';
   import Info from '$lib/components/Info.svelte';
+  import Profile from "$components/Profile.svelte";
 
   export let migrantId = null;
   export let jobId = null;
@@ -17,7 +18,7 @@
   <div class="migrant-banner-content">
     <section style="position: relative;">
       <Info pinned>
-        <h1>More migrant info</h1>
+        <Profile />
       </Info>
       <img class="migrant-image" src="/images/migrants/{migrantInfo.name}.png" alt="alt" />
     </section>
