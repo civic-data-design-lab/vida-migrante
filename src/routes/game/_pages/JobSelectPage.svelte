@@ -77,12 +77,9 @@
   #jobs {
     margin-top: 15vh;
     height: 85vh;
-    width: 100vw;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7vh 20vw;
-    align-content: center;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30vw;
   }
 
   .selection-icon {
