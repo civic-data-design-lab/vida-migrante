@@ -45,8 +45,8 @@
           </li>
         {/each}
         <li>
-          <button on:click={() => localStorage.removeItem('gameData')}
-            >Clear local storage/reset game data (needs refresh)</button
+          <a href="/game" data-sveltekit-reload on:click={() => localStorage.removeItem('gameData')}
+            >Clear local storage/reset game data</a
           >
         </li>
       </ul>
