@@ -7,7 +7,8 @@
 
   /** Data from `+layout.server.js` */
   export let data;
-  console.log(data);
+
+  $: language = data.language;
 
   let loading = true;
   onMount(() => {
@@ -31,7 +32,7 @@
 {:else}
   <slot />
   <nav>
-    <button class="button nav-btn" on:click={() => (showDevNav = !showDevNav)}
+    <button class="button" on:click={() => (showDevNav = !showDevNav)}
       >{showDevNav ? 'Hide' : 'Show'} dev nav</button
     >
     {#if showDevNav}
