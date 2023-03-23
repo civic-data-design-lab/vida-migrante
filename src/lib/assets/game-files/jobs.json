@@ -3,7 +3,7 @@
     {
       "title": "Construction Worker",
       "sector": "Construction",
-      "demographics": "Two percent",
+      "demographics": "2%",
       "income": 280,
       "hours": 40,
       "image": "Construction.png",
@@ -12,7 +12,7 @@
     {
       "title": "Teacher",
       "sector": "Education",
-      "demographics": "Less than one percent",
+      "demographics": "Less than 1%",
       "income": 420,
       "hours": 51,
       "image": "Education.png",
@@ -21,7 +21,7 @@
     {
       "title": "Restaurant Waiter",
       "sector": "Food and Beverages",
-      "demographics": "Eleven percent",
+      "demographics": "11%",
       "income": 320,
       "hours": 56,
       "image": "Food.png",
@@ -30,7 +30,7 @@
     {
       "title": "Nurse",
       "sector": "Health",
-      "demographics": "Less than one percent",
+      "demographics": "Less than 1%",
       "income": 1800,
       "hours": 50,
       "image": "Health.png",
@@ -39,7 +39,7 @@
     {
       "title": "Hotel Security Guard",
       "sector": "Non-specialized Personal Services",
-      "demographics": "Seventeen percent",
+      "demographics": "17%",
       "income": 320,
       "hours": 56,
       "image": "Guard.png",
@@ -48,7 +48,7 @@
     {
       "title": "Factory Worker",
       "sector": "Manufacturing",
-      "demographics": "Five percent",
+      "demographics": "5%",
       "income": 310,
       "hours": 48,
       "image": "Manufacturing.png",
@@ -57,7 +57,7 @@
     {
       "title": "Supermarket Cashier",
       "sector": "Non-specialized Personal Services",
-      "demographics": "Ten percent",
+      "demographics": "10%",
       "income": 300,
       "hours": 60,
       "image": "Wholesale.png",
@@ -66,7 +66,7 @@
     {
       "title": "Street Vendor",
       "sector": "Informal",
-      "demographics": "Forty two percent",
+      "demographics": "42%",
       "income": 240,
       "hours": 56,
       "image": "Informal.png",
