@@ -5,7 +5,7 @@
     "name": "Capacitación",
     "description": "El proyecto EMPACT del Programa Mundial de Alimentos está brindando capacitación en herramientas digitales.",
     "updates": { "income": { "assistance": 54 } },
-    "image": "A_accreditation.png"
+    "image": "A_training.png"
   },
   {
     "id": "regularization",
@@ -45,6 +45,6 @@
     "name": "Medicinas",
     "description": "El Ministerio de Salud está brindando medicamentos sin costo para ti y tu familia.",
     "updates": { "expenditures": { "health": "!0" } },
-    "image": "A_accreditation.png"
+    "image": "A_medicine.png"
   }
 ]
