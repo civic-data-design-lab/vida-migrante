@@ -16,7 +16,7 @@
   let max_expense = 800;
 
   let player_expenses = sumValues($GameData.resources.expenditures);
-  let player_income = $GameData.resources?.income.salary;
+  let player_income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
   // Get the migrant's food security status
   $: migrantInfo = $page.data.migrantData.migrants.find(
@@ -58,7 +58,8 @@
   for (let spending of spendings) {
     // spending.expense = $GameData.resources?.expenses;
     // spending.name
-    spending.expense = 50;
+    console.log($GameData.resources.expenditures[spending.name]);
+    // spending.expense = $GameData.resources.expenditures[spending.name];
   }
 
   //slider
