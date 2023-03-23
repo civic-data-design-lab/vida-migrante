@@ -135,13 +135,21 @@
       {
         "id": 0,
         "description": "Spend savings to buy the medicine",
-        "updates": { "income": { "salary": 23 }, "expenditures": { "health": 23 } },
+        "updates": {
+          "income": { "salary": 23 },
+          "expenditures": { "health": 23 },
+          "copingLevel": "stress"
+        },
         "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
       },
       {
         "id": 1,
         "description": "Borrow money from a friend",
-        "updates": { "income": { "salary": 23 }, "expenditures": { "health": 23 } },
+        "updates": {
+          "income": { "salary": 23 },
+          "expenditures": { "health": 23 },
+          "copingLevel": "stress"
+        },
         "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs."
       },
       {

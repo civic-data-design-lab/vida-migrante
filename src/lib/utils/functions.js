@@ -111,18 +111,19 @@ export function sumValues(obj) {
 /**
  * Gets whether or not an entity is food secure.
  *
- * @param {number} totalExpenses
- * @param {number} householdSize
+ * @param {number} totalExpenses - Total household expenses
+ * @param {number} householdSize - Household size
+ * @param {string} copingLevel - The coping level (see `$types.CopingLevels`)
  * @returns {boolean} True if the given data results in a status of "food
  *  secure", false otherwise.
  */
-export function isFoodSecure(totalExpenses, householdSize) {
+export function isFoodSecure(totalExpenses, householdSize, copingLevel) {
   const perCapitaExpense = totalExpenses / householdSize;
   let ecmen = 1;
   if (perCapitaExpense < 188) {
     ecmen = 4;
   }
-  const copingStrategy = 1;
+  const copingStrategy = !copingLevel ? 1 : 2;
   const meanCopingECMEN = (ecmen + copingStrategy) / 2;
   const CARI_ECMEN = Math.floor(Math.round((meanCopingECMEN + 2) / 2));
 

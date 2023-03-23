@@ -27,7 +27,8 @@
     console.debug('Calculating food security');
     const foodSecure = isFoodSecure(
       sumValues($GameData.resources.expenditures),
-      migrantInfo.householdSize
+      migrantInfo.householdSize,
+      $GameData.resources.copingLevel
     );
     foodSecurityStatus = foodSecure ? 'Food Secure' : 'Food Insecure';
   }
@@ -112,8 +113,8 @@
 </script>
 
 <div id="migrant-state">
-  <span>You work {$GameData.resources.time} hours weekly</span>
-  <span>You are {foodSecurityStatus}</span>
+  <span>You work <b><i>{$GameData.resources.time}</i></b> hours weekly</span>
+  <span>You are <b><i>{foodSecurityStatus}</i></b></span>
 </div>
 <div style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
   <section>
