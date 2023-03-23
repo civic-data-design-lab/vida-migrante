@@ -4,7 +4,7 @@
 export const Skills = {
   CONSTRUCTION: 'construction',
   DIGITAL: 'digital skills',
-  FINANCIAL: 'financial',
+  BUSINESS: 'business',
   MARKETING: 'marketing',
   LEGALIZATION: 'legalization',
 };

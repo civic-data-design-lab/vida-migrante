@@ -49,7 +49,7 @@
   {
     "id": 2,
     "category": "Personal Improvement",
-    "title": "Financial Skills",
+    "title": "Business Skills",
     "description": "A new program to get a degree in finance is starting at your local technical school, but it requires a personal computer.",
     "prompt": "Do you want to buy a computer?",
     "options": [
@@ -59,7 +59,7 @@
         "updates": {
           "copingLevel": "stress",
           "income": { "salary": 79 },
-          "skills": ["financial"]
+          "skills": ["business"]
         }
       },
       {
@@ -69,7 +69,7 @@
         "except": "and you won't be able to take the training"
       }
     ],
-    "image": "PI_financialskills.png"
+    "image": "PI_business-skills.png"
   },
   {
     "id": 3,
