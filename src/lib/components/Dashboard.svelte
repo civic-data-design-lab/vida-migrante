@@ -59,8 +59,8 @@
   for (let spending of spendings) {
     // spending.expense = $GameData.resources?.expenses;
     // spending.name
-    console.log($GameData.resources.expenditures[spending.name]);
-    // spending.expense = $GameData.resources.expenditures[spending.name];
+    // console.log($GameData.resources.expenditures[spending.name2]);
+    spending.expense = $GameData.resources.expenditures[spending.name2];
   }
 
   //slider
@@ -233,7 +233,8 @@
       </div>
       <div style="display: flex; flex-direction: column; align-content: right;">
         <p>${displayedSpending?.expense}</p>
-        <body2>$326</body2>
+        <body2>${displayedSpending?.avg_migrant_household}</body2>
+        <body2>${displayedSpending?.avg_national_expense}</body2>
       </div>
     </div>
   </div>

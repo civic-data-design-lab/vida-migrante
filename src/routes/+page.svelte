@@ -178,7 +178,7 @@
           offset={2}
           rate={1}
           style="
-        background-color: lightblue; 
+        background-color: #f6e0b1; 
         display: flex; 
         justify-content: center; 
         align-items: center; 
