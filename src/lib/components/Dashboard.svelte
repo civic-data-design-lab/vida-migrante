@@ -112,9 +112,14 @@
   }
 </script>
 
-<div id="migrant-state">
-  <span>You work <b><i>{$GameData.resources.time}</i></b> hours weekly</span>
-  <span>You are <b><i>{foodSecurityStatus}</i></b></span>
+<div id="expense-board">
+  <div class="alignleft">
+    <p4 style="color: #505050; font-weight: 500; font-size: 10.5pt">Expenses: ${player_expenses}</p4
+    >
+  </div>
+  <div class="alignleft">
+    <p4 style="color: #7BA522; font-weight: 500; font-size: 10.5pt">Income: ${player_income}</p4>
+  </div>
 </div>
 <div style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
   <section>
@@ -124,52 +129,32 @@
     {/each}
   </section>
 </div>
+<div id="migrant-state">
+  <p4 style="font-weight: 500 font-size: 9pt"
+    >You work <b><i>{$GameData.resources.time}</i></b> hours a week & you are
+    <b><i>{foodSecurityStatus}</i></b>.</p4
+  >
+</div>
 <div id="expense-board">
   <div id="name-board">
     <div class="alignleft">
-      <div class="circle" style="background-color: #505050" />
-      <p2 style="color: #505050; font-weight: bold;">Your Total Expenses</p2>
+      <p4 style="color: #505050;">Average Migrant Household Income</p4>
     </div>
     <div class="alignleft">
-      <div class="circle" style="background-color: green" />
-      <p2 style="color: green; font-weight: bold;">Your Income</p2>
+      <p4 style="color: #CF6348;">Average Ecuadorian Income</p4>
     </div>
     <div class="alignleft">
-      <div class="circle" style="background-color: gray" />
-      <p2 style="color: #505050;">Average Migrant Household Income</p2>
+      <p4 style="color: #E5B257;">Ecuadorian Vital Family Basket</p4>
     </div>
     <div class="alignleft">
-      <div class="circle" style="background-color: #CF6348" />
-      <p2 style="color: #CF6348;">Average Ecuadorian Income</p2>
-    </div>
-    <div class="alignleft">
-      <div class="circle" style="background-color: #E5B257" />
-      <p2 style="color: #E5B257;">Ecuadorian Vital Family Basket</p2>
-    </div>
-    <div class="alignleft">
-      <div class="circle" style="background-color: #5273B0" />
-      <p2 style="color: #5273B0;">Ecuadorian Basic Family Basket</p2>
+      <p4 style="color: #5273B0;">Ecuadorian Basic Family Basket</p4>
     </div>
   </div>
   <div id="money-board">
-    <p3 style="color: #505050; float: right; font-weight: bold;">
-      ${player_expenses}
-    </p3>
-    <p3 style="color: green; float: right; font-weight: bold;">
-      <span>${player_income}</span>
-    </p3>
-    <p3 class="alignright" style="color: gray; float: right;">
-      <span>$326</span>
-    </p3>
-    <p3 class="alignright" style="color: #CF6348; float: right;">
-      <span>$793</span>
-    </p3>
-    <p3 class="alignright" style="color: #E5B257; float: right;">
-      <span>$540</span>
-    </p3>
-    <p3 class="alignright" style="color: #5273B0; float: right;">
-      <span>$765</span>
-    </p3>
+    <p4 class="alignright" style="color: #505050; float: right;"> $326 </p4>
+    <p4 class="alignright" style="color: #CF6348; float: right;"> $793 </p4>
+    <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
+    <p4 class="alignright" style="color: #5273B0; float: right;"> $765 </p4>
   </div>
 </div>
 
@@ -220,21 +205,21 @@
 
 <Modal showModal={displayedSpending}>
   <div id="modal-body" slot="body">
+    <h2 style="color:var(--gray)">{displayedSpending?.name}</h2>
     <img
       src={`/images/dashboard/${displayedSpending?.icon ?? 'RENT.png'}`}
       alt={displayedSpending?.icon}
     />
-    <h2>{displayedSpending?.name}</h2>
     <div style="display: flex; flex-direction: row;">
       <div style="display: flex; flex-direction: column; align-content: left; text-align: left;">
-        <p>Your Expense</p>
-        <body2>Average Migrant Household Expense</body2>
-        <body2>Average National Expense</body2>
+        <p><b>Your Monthly Expense</b></p>
+        <p4>Average Migrant Household Expense</p4>
+        <p4>Average National Expense</p4>
       </div>
       <div style="display: flex; flex-direction: column; align-content: right;">
-        <p>${displayedSpending?.expense}</p>
-        <body2>${displayedSpending?.avg_migrant_household}</body2>
-        <body2>${displayedSpending?.avg_national_expense}</body2>
+        <p><b>${displayedSpending?.expense}</b></p>
+        <p4>${displayedSpending?.avg_migrant_household}</p4>
+        <p4>${displayedSpending?.avg_national_expense}</p4>
       </div>
     </div>
   </div>
@@ -290,21 +275,21 @@
 
   #oval {
     width: 0.25em;
-    height: 2.9em;
-    background: lightgray;
+    height: 2em;
+    background: #f3f3f3;
     border-radius: 40px;
     margin: 1px;
   }
   #oval_green {
     width: 0.25em;
-    height: 2.9em;
-    background: green;
+    height: 2em;
+    background: #7ba522;
     border-radius: 40px;
     margin: 1px;
   }
   #oval_red {
     width: 0.25em;
-    height: 2.9em;
+    height: 2em;
     background: #cf6348;
     border-radius: 40px;
     margin: 1px;
@@ -312,7 +297,7 @@
   }
   #oval_yellow {
     width: 0.25em;
-    height: 2.9em;
+    height: 2em;
     background: #e5b257;
     border-radius: 40px;
     margin: 1px;
@@ -320,7 +305,7 @@
   }
   #oval_blue {
     width: 0.25em;
-    height: 2.9em;
+    height: 2em;
     background: #5273b0;
     border-radius: 40px;
     margin: 1px;
@@ -328,22 +313,22 @@
   }
   #oval_filled {
     width: 0.25em;
-    height: 2.9em;
+    height: 2em;
     background: #505050;
     border-radius: 40px;
     margin: 1px;
   }
   #oval_filled_green {
     width: 0.25em;
-    height: 2.9em;
-    background: green;
+    height: 2em;
+    background: #7ba522;
     box-shadow: 0 0 0.1em #505050;
     border-radius: 40px;
     margin: 1px;
   }
   #oval_filled_red {
     width: 0.25em;
-    height: 2.9em;
+    height: 2em;
     background: #cf6348;
     box-shadow: 0 0 0.1em #505050;
     border-radius: 40px;
@@ -352,7 +337,7 @@
   }
   #oval_filled_yellow {
     width: 0.25em;
-    height: 2.9em;
+    height: 2em;
     background: #e5b257;
     box-shadow: 0 0 0.1em #505050;
     border-radius: 40px;
@@ -361,7 +346,7 @@
   }
   #oval_filled_blue {
     width: 0.25em;
-    height: 2.9em;
+    height: 2em;
     background: #5273b0;
     box-shadow: 0 0 0.1em #505050;
     border-radius: 40px;

@@ -13,6 +13,7 @@
   --light-red: #eec3b8;
   --light-yellow: #f6e0b1;
 
+  --font-sirenia: 'rubik', sans-serif;
   --font-sirenia: 'sirenia', sans-serif;
 }
 
@@ -64,10 +65,20 @@ p2 {
 
 p3 {
   font-family: var(--font-sirenia);
-  font-size: 16pt;
+  font-size: 7.5;
   font-weight: normal;
-  line-height: 22pt;
+  line-height: 10.5pt;
   color: var(--gray);
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* text-align: right; */
+}
+
+p4 {
+  font-family: var(--font-rubik);
+  font-size: 10.5pt;
+  font-weight: normal;
+  line-height: 18px;
   /* display: flex; */
   /* justify-content: space-between; */
   /* text-align: right; */
@@ -80,7 +91,10 @@ body {
 }
 
 body2 {
-  font: 12pt rubik;
+  font-family: var(--font-rubik);
+  font-size: 16pt;
+  font-weight: normal;
+  line-height: 22pt;
 }
 
 a {

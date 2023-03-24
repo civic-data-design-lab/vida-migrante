@@ -123,7 +123,10 @@
 
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    background: white;
+    background: #fcfcfc;
+    filter: drop-shadow(0px -5px 8px);
+    /* animation: wiggle 3s infinite;
+    animation-delay: 0.5s; */
   }
 
   #drawer-backdrop {
@@ -150,4 +153,20 @@
     width: 50px;
     border-radius: 4px;
   }
+
+  /* @keyframes wiggle {
+    0%,
+    100% {
+      transform: translate(0rem);
+    }
+    25% {
+      transform: translate(0, 0rem);
+    }
+    75% {
+      transform: translate(0, 0rem);
+    }
+    50% {
+      transform: translate(0, -5rem);
+    }
+  } */
 </style>

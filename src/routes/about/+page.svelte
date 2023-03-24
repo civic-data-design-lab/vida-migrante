@@ -42,7 +42,7 @@
       Sarah Williams, Director<br />
       Alberto Meouchi, Project Manager<br />
       Ashley Louie, Rohun Iyer, Jari Prachasartta, Gabriela Carucci, Enrique Casillas, Eric Lam, Christina
-      Chen, Ilana Strauss, Sylvia Jimenez, Ethan Harrison, Mauricio Darcourt.
+      Chen, Ilana Strauss, Sylvia Jimenez, Ethan Harrison, Mauricio Darcourt, Carlos Centeno.
     </p>
 
     <p>

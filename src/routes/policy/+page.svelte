@@ -4,31 +4,34 @@
   <div id="policy-body">
     <h1>1</h1>
     <p>
-      Regularization of immigration documents and recognition of accreditations aan help improve
-      migrants’ employment or working conditions, and access to financial services.
+      <b>Regularization of Documents</b><br />
+      Regularization of immigration documents and recognition of accreditations aan help improve migrants’
+      employment or working conditions, and access to financial services.
     </p>
     <h1>2</h1>
     <p>
-      Many migrants struggle to find a job that matches their skills, better connections should be
-      made between the skills immigrants bring with them and the potential job market in Ecuador.
+      <b>Skills</b><br />
+      Many migrants struggle to find a job that matches their skills, better connections should be made
+      between the skills immigrants bring with them and the potential job market in Ecuador.
     </p>
     <h1>3</h1>
     <p>
-      Migrants are able to contribute to the economy, but they lack training and stable access to
-      the internet, finding ways to provide better access to internet services and training could
-      help.
+      <b>Training and Internet</b><br />
+      Migrants are able to contribute to the economy, but they lack training and stable access to the
+      internet, finding ways to provide better access to internet services and training could help.
     </p>
     <h1>4</h1>
     <p>
-      The Ecuador economy is 51% informal which means that to help migrants in Ecuador we must also
-      help the Ecuadorian economy. Programs available for Migrants should also be available for
-      Ecuadorian.
+      <b>Informal Sector</b><br />
+      The Ecuador economy is 51% informal which means that to help migrants in Ecuador we must also help
+      the Ecuadorian economy. Programs available for Migrants should also be available for Ecuadorian.
     </p>
     <h1>5</h1>
     <p>
-      Migrants are willing to learn skills needed for the digital economy programs should be
-      developed for both Venezuelan and Ecuadorian living in Ecuador to help increase their ability
-      to work within this service economy.
+      <b>Digital Economy</b><br />
+      Migrants are willing to learn skills needed for the digital economy programs should be developed
+      for both Venezuelan and Ecuadorian living in Ecuador to help increase their ability to work within
+      this service economy.
     </p>
   </div>
 </div>

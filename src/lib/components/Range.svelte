@@ -233,20 +233,20 @@
   }
 
   .range__wrapper:focus-visible > .range__track {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px var(--track-focus, #6185ff);
+    box-shadow: 0 0 0 2px white, 0 0 0 3px var(--track-focus, #505050);
   }
 
   .range__track {
     height: 6px;
-    background-color: var(--track-bgcolor, #d0d0d0);
-    border-radius: 999px;
+    background-color: var(--track-bgcolor, #f3f3f3);
+    border-radius: 4px;
   }
 
   .range__track--highlighted {
-    background-color: var(--track-highlight-bgcolor, #6185ff);
-    background: var(--track-highlight-bg, linear-gradient(90deg, #6185ff, #9c65ff));
+    background-color: var(--track-highlight-bgcolor, #505050);
+    background: var(--track-highlight-bg, linear-gradient(90deg, #505050, #505050));
     width: 0;
-    height: 6px;
+    height: 8px;
     position: absolute;
     border-radius: 999px;
   }
@@ -292,8 +292,8 @@
     padding: 4px 0;
     border-radius: 4px;
     text-align: center;
-    background-color: var(--tooltip-bgcolor, #6185ff);
-    background: var(--tooltip-bg, linear-gradient(45deg, #6185ff, #9c65ff));
+    background-color: var(--tooltip-bgcolor, #505050);
+    background: var(--tooltip-bg, linear-gradient(45deg, #505050, #505050));
   }
 
   .range__tooltip::after {
@@ -302,7 +302,7 @@
     position: absolute;
     height: 7px;
     width: 7px;
-    background-color: var(--tooltip-bgcolor, #6185ff);
+    background-color: var(--tooltip-bgcolor, #505050);
     bottom: -3px;
     left: calc(50% - 3px);
     clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
