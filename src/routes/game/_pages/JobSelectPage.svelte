@@ -116,8 +116,9 @@
   }
 
   #modal-button:disabled {
-    height: 8vh;
+    height: 10%;
     width: 65%;
+    inline-size: 350px;
   }
 
   span {

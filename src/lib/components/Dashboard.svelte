@@ -115,14 +115,16 @@
 <div id="expense-board">
   <div class="alignleft">
     <p4 style="color: #505050; font-weight: 500; font-size: 10.5pt; margin-bottom:.5rem;"
-      >Expenses: ${player_expenses}</p4
+      >Expenses: <b>${player_expenses}</b></p4
     >
   </div>
   <div class="alignleft">
-    <p4 style="color: #7BA522; font-weight: 500; font-size: 10.5pt">Income: ${player_income}</p4>
+    <p4 style="color: #7BA522; font-weight: 500; font-size: 10.5pt"
+      >Income: <b>${player_income}</b></p4
+    >
   </div>
 </div>
-<div style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
+<div id="bars">
   <section>
     {#each expenses as color}
       <!-- <h4>{color}</h4> -->
@@ -136,7 +138,27 @@
     <b><i>{foodSecurityStatus}</i></b>.</p4
   >
 </div>
-<div id="expense-board">
+<div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
+  <button
+    id="modal-button"
+    class="button"
+    style="font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+
+  /* identical to box height, or 140% */
+  box-sizing: border-box;
+
+  /* FFFFFF */
+  color: #FFFFFF;"
+  >
+    Show Key Indicators +
+  </button>
+</div>
+
+<div id="expense-references">
   <div id="name-board">
     <div class="alignleft">
       <p4 style="color: #505050;">Average Migrant Household Income</p4>
@@ -242,6 +264,12 @@
   }
 
   #expense-board {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+  }
+
+  #expense-references {
     display: flex;
     justify-content: space-between;
     margin-top: 1em;
@@ -399,5 +427,12 @@
 
   .internet-theme {
     --thumb-image: url('/images/dashboard/WIFI.png');
+  }
+
+  #bars {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    place-content: center;
   }
 </style>

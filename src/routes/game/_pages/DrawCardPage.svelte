@@ -32,8 +32,8 @@
   button {
     /* TODO: Fix later */
     all: unset;
-    width: 250px;
-    height: 330px;
+    width: 200px;
+    height: 290px;
     position: relative;
   }
 

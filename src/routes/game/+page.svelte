@@ -80,5 +80,6 @@
   #drawer-body {
     text-align: center;
     overflow: scroll;
+    inline-size: 90%;
   }
 </style>

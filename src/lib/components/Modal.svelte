@@ -37,5 +37,6 @@
     background: transparent;
     border: none;
     font-size: 20pt;
+    color: var(--gray);
   }
 </style>

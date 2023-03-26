@@ -17,11 +17,11 @@
 
 <Modal showModal={displayedAssistance}>
   <div class="modal-body" slot="body">
-    <h2>{displayedAssistance?.name}</h2>
     <img
       src="images/assistance/{displayedAssistance?.image || 'A_accreditation.png'}"
       alt="Accreditation"
     />
+    <h2>{displayedAssistance?.name}</h2>
     <p>
       {displayedAssistance?.description}
     </p>
@@ -35,13 +35,13 @@
   </div>
 </Modal>
 
-<h1>
+<h2>
   {#if language === Languages.ENGLISH}
     Select an assistance
   {:else}
     Selecciona una asistencia
   {/if}
-</h1>
+</h2>
 <section>
   {#each assistances as assistance (assistance.id)}
     <button class="assist-thumb" on:click={() => (displayedAssistance = assistance)}>
@@ -74,6 +74,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
   }
 
   .modal-body img {

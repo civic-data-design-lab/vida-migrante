@@ -116,7 +116,7 @@
         <div style="z-index: 11;">
           <span style="display: flex; justify-content: center; opacity: {1 - Math.max(0, y / 40)}">
             <!-- svelte-ignore a11y-missing-attribute -->
-            <img src={arrowIcon} style="height: 20px; color: #505050;" />
+            <img class="arrowicon" src={arrowIcon} />
           </span>
         </div>
       </ParallaxLayer>
@@ -139,7 +139,7 @@
         flex-direction: column;
       "
         >
-          <div style="">
+          <div style="padding-left:3rem; padding-right:3rem">
             <h1 style="text-align: center;">Vida Migrante</h1>
             <p style="font-size:21pt; font-weight:400: line-height:24pt;text-align: center;">
               {#if language == Languages.ENGLISH}
@@ -162,7 +162,7 @@
         flex-direction: column;
       "
         >
-          <div style="z-index: 12;">
+          <div style="z-index: 12; padding-left:3rem; padding-right:3rem">
             <p style="text-align: center;">
               You will embark on a journey in the life of a Venezuelan migrant to experience the
               challenges of integrating into Ecuador.
@@ -186,7 +186,7 @@
         flex-direction: column;
       "
         >
-          <div style="z-index: 12;">
+          <div style="z-index: 12; padding-left:3rem; padding-right:3rem">
             <h1 style="text-align: center;">Venezuelan Migrants <br /> in Ecuador</h1>
             <p style="text-align: left;">
               When migrants arrive in Ecuador, they face <b>multiple challenges</b>. In this
@@ -240,5 +240,13 @@
     align-items: center;
     height: 100vh;
     padding: 2.5vw;
+  }
+  .arrowicon {
+    height: 8px;
+    color: #505050;
+    display: flex;
+    justify-content: center;
+    padding-top: 92vh;
+    z-index: 13;
   }
 </style>
