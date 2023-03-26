@@ -3,6 +3,7 @@
   import { fade, fly } from 'svelte/transition';
   import { Parallax, ParallaxLayer } from 'svelte-parallax';
   import { onMount } from 'svelte';
+  import arrowIcon from '$images/keyboard-arrow-down_119013.svg';
 
   /** Page data loaded from `+layout.server.svelte` */
   export let data;
@@ -114,7 +115,8 @@
         />
         <div style="z-index: 11;">
           <span style="display: flex; justify-content: center; opacity: {1 - Math.max(0, y / 40)}">
-            scroll down
+            <!-- svelte-ignore a11y-missing-attribute -->
+            <img src={arrowIcon} style="height: 20px; color: #505050;" />
           </span>
         </div>
       </ParallaxLayer>
@@ -138,14 +140,12 @@
       "
         >
           <div style="">
-            <h1 style="">Vida Migrante</h1>
-            <p style="">
+            <h1 style="text-align: center;">Vida Migrante</h1>
+            <p style="font-size:21pt; font-weight:400: line-height:24pt;text-align: center;">
               {#if language == Languages.ENGLISH}
-                You will embark on a journey in the life of a Venezuelan migrant to experience the
-                challenges of integrating into Ecuador.
+                Venezuelan Migrants' Integration in Ecuador.
               {:else}
-                Te embarcarás en un viaje en la vida de un migrante Venezolano y experimentarás los
-                desafíos de integrarse a Ecuador.
+                Integración de los Migrantes Venezolanos en Ecuador.
               {/if}
             </p>
           </div>
@@ -163,16 +163,17 @@
       "
         >
           <div style="z-index: 12;">
-            <p>When migrants arrive in Ecuador, they face multiple challenges including:</p>
-            <ol>
-              <li>Barriers to integration for migrants</li>
-              <li>Trade-offs the migrants have to make to meet their basic daily needs</li>
-              <li>
-                How support and assistances (food, access to internet, and legalization of
-                documents) can help change migrants' outcomes
-              </li>
-            </ol>
+            <p style="text-align: center;">
+              You will embark on a journey in the life of a Venezuelan migrant to experience the
+              challenges of integrating into Ecuador.
+            </p>
+            <br />
+
+            <p style="text-align: center;">
+              Scroll down to continue reading <br /> or
+            </p>
           </div>
+          <a href="/game" class="button">Start</a>
         </ParallaxLayer>
         <ParallaxLayer
           offset={2}
@@ -186,15 +187,15 @@
       "
         >
           <div style="z-index: 12;">
-            <p>
-              In this game you will learn about the struggles of the Venezuelan migrants in Ecuador,
-              how they face them, and how certain assistances can help them through their
-              integration process in Ecuador.
-            </p>
-            <p>
-              The goal of them game is to go through each one of the four rounds, which is an entire
-              year, by using as few coping strategies as possible, while maintaining some money,
-              time, and wellness.
+            <h1 style="text-align: center;">Venezuelan Migrants <br /> in Ecuador</h1>
+            <p style="text-align: left;">
+              When migrants arrive in Ecuador, they face <b>multiple challenges</b>. In this
+              simulation, you will learn about the <b>tough decisions</b> migrants have to make in
+              Ecuador on a daily basis, <b>how they face them</b>, and how
+              <b>assistances are essential</b>
+              to help them through their integration in Ecuador. All the simulation data is based on
+              a survey of
+              <b>920 household migrants</b> in Ecuador by the World Food Programme.
             </p>
           </div>
           <a href="/game" class="button">Start</a>

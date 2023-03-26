@@ -8,6 +8,7 @@
   $: round = $GameData.round + 1; // Round is 0-indexed
   $: ordinalSuffix = getOrdinalSuffix(round);
   $: ordinalRound = NUM_TO_ORDINAL_ARR[round];
+  $: ordinalRoundOrig = NUM_TO_ORDINAL_ARR[$GameData.round];
 </script>
 
 <h1>{round}<sup>{ordinalSuffix}</sup> Month</h1>
@@ -21,9 +22,9 @@
 </TapIndicator>
 
 <p>
-  Migrants face many challenges on a daily basis. Draw your
+  Draw your
   <b>{round}<sup>{ordinalSuffix}</sup></b>
-  card to see the {ordinalRound}
+  card to see the {ordinalRoundOrig}
   event and make a decision on how to cope with it.
 </p>
 
@@ -31,8 +32,8 @@
   button {
     /* TODO: Fix later */
     all: unset;
-    width: 200px;
-    height: 280px;
+    width: 250px;
+    height: 330px;
     position: relative;
   }
 

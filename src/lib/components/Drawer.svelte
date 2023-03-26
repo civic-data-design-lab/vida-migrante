@@ -8,7 +8,7 @@
   let transition = '';
 
   onMount(() => {
-    const vh = windowHeight / 100;
+    const vh = windowHeight / 112;
     topThreshold = vh * 15;
     botThreshold = vh * 90;
     drawerTop = botThreshold;
@@ -113,7 +113,7 @@
 <style>
   #drawer {
     position: fixed;
-    height: 85vh;
+    height: 100vh;
     width: 100vw;
     z-index: 2;
 
@@ -140,7 +140,8 @@
   #drawer-handle-hitbox {
     height: 20px;
     width: 75px;
-    margin-block: calc(2.5vh - 8px);
+    margin-block: calc(2.5vh - 6px);
+    margin-bottom: 0;
     cursor: ns-resize;
     display: flex;
     justify-content: center;
@@ -150,8 +151,9 @@
   #drawer-handle {
     background: rgba(150, 150, 150, 0.8);
     height: 8px;
-    width: 50px;
+    width: 70px;
     border-radius: 4px;
+    margin-bottom: 0;
   }
 
   /* @keyframes wiggle {

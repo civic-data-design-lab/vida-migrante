@@ -38,7 +38,7 @@ overall styling. Actual page components can be found in the `_pages/` directory.
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    padding: 2.5vw;
+    padding: 3vw;
     /* height: 100vh; */
 
     overflow-y: scroll;

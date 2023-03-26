@@ -3,7 +3,7 @@
 
   import { page } from '$app/stores';
   import Info from '$lib/components/Info.svelte';
-  import Profile from "$components/Profile.svelte";
+  import Profile from '$components/Profile.svelte';
 
   export let migrantId = null;
   export let jobId = null;
@@ -11,7 +11,7 @@
   $: migrantInfo = $page.data.migrantData.migrants.find((migrant) => migrant.id === migrantId);
   $: jobInfo = $page.data.jobsData.jobs[jobId];
 
-  $: bannerTitle = [migrantInfo?.name, migrantInfo?.age].filter((x) => x).join(', ');
+  $: bannerTitle = [migrantInfo?.name].filter((x) => x).join(', ');
 </script>
 
 <span class="migrant-banner" transition:fly={{ y: -200 }}>

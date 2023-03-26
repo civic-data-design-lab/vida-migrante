@@ -64,19 +64,6 @@
     "options": [
       {
         "id": 0,
-        "description": "Withdraw children from school to reduce expenses and acquire a computer",
-        "updates": {
-          "copingLevel": "stress",
-          "income": {
-            "salary": 79
-          },
-          "skills": [
-            "business"
-          ]
-        }
-      },
-      {
-        "id": 1,
         "description": "I can't afford a computer",
         "updates": {},
         "except": "and you won't be able to take the training"
@@ -134,7 +121,7 @@
     "category": "Life Event",
     "title": "Community Support",
     "description": "Your close friend and neighbor had a personal emergency and asks you to take care of their kids for a couple of days.",
-    "prompt": "",
+    "prompt": "Would you like to help your friend?",
     "options": [
       {
         "id": 0,

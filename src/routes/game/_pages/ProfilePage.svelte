@@ -20,6 +20,7 @@
   #begin-button {
     height: 5vh;
     width: 50%;
+    border: 0;
     border-radius: 2.5vh;
     font: 18pt 'sirenia';
   }

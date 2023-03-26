@@ -32,8 +32,8 @@
 </script>
 
 <div id="header">
-  <h1>Who are the</h1>
-  <h1>migrants?</h1>
+  <h1>Take the</h1>
+  <h1>journey as</h1>
 </div>
 <Carousel />
 <button

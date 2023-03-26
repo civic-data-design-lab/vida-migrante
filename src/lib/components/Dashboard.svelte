@@ -114,7 +114,8 @@
 
 <div id="expense-board">
   <div class="alignleft">
-    <p4 style="color: #505050; font-weight: 500; font-size: 10.5pt">Expenses: ${player_expenses}</p4
+    <p4 style="color: #505050; font-weight: 500; font-size: 10.5pt; margin-bottom:.5rem;"
+      >Expenses: ${player_expenses}</p4
     >
   </div>
   <div class="alignleft">
@@ -130,7 +131,7 @@
   </section>
 </div>
 <div id="migrant-state">
-  <p4 style="font-weight: 500 font-size: 9pt"
+  <p4 style="font-weight: 500; font-size: 9pt; margin-top:.5rem;"
     >You work <b><i>{$GameData.resources.time}</i></b> hours a week & you are
     <b><i>{foodSecurityStatus}</i></b>.</p4
   >
@@ -158,29 +159,18 @@
   </div>
 </div>
 
-<div
-  style="display: flex; flex-direction: column; align-content: center; justify-content: center; padding: 1em"
->
+<div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
   <h3>Allocate Your Spending</h3>
   {#each spendings as spending (spending.name)}
     <section>
       <!-- <div id="container2"> -->
-      <p>{(slider_theme = spending.name)}</p>
-      <button
-        class="info"
-        on:click={() => (displayedSpending = spending)}
-        style="
-          width: 1.5em;
-          height: 1.5em;
-          color: white;
-          margin-top: 1.5em;
-          margin-left: .5em;
-          background-color: #505050;
-          -webkit-border-radius:.75em;
-          -moz-border-radius:.75em;
-          border-radius:.75em;"
-        >?
-      </button>
+
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <href class="info" style="padding:.4em" on:click={() => (displayedSpending = spending)}
+        ><p4 style="font-size:9pt;   text-decoration-line: underline;"
+          >{(slider_theme = spending.name)}</p4
+        >
+      </href>
     </section>
     <div
       class:rent-theme={spending.name === 'Rent'}
