@@ -88,7 +88,7 @@
   article {
     position: relative;
     width: 320px;
-    max-width: 90vw;
+    max-width: 80vw;
 
     background-color: white;
     border: 2px solid #505050;

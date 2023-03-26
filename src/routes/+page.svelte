@@ -113,14 +113,7 @@
               1)}px); position: absolute; z-index: 10; height: 50%; width: 120%; bottom: -12%;"
           in:fly={{ x: -500, duration: 6000 }}
         />
-        <div style="z-index: 11;">
-          <span style="display: flex; justify-content: center; opacity: {1 - Math.max(0, y / 40)}">
-            <!-- svelte-ignore a11y-missing-attribute -->
-            <img class="arrowicon" src={arrowIcon} />
-          </span>
-        </div>
       </ParallaxLayer>
-
       <div
         style="
       display: flex;
@@ -139,7 +132,13 @@
         flex-direction: column;
       "
         >
-          <div style="padding-left:3rem; padding-right:3rem">
+          <div style="z-index: 11; ">
+            <span style="display: flex;">
+              <!-- svelte-ignore a11y-missing-attribute -->
+              <img class="arrowicon" src={arrowIcon} />
+            </span>
+          </div>
+          <div style="padding-left:2rem; padding-right:2rem">
             <h1 style="text-align: center;">Vida Migrante</h1>
             <p style="font-size:21pt; font-weight:400: line-height:24pt;text-align: center;">
               {#if language == Languages.ENGLISH}
@@ -150,6 +149,7 @@
             </p>
           </div>
         </ParallaxLayer>
+
         <ParallaxLayer
           offset={1}
           rate={1}
@@ -162,17 +162,21 @@
         flex-direction: column;
       "
         >
-          <div style="z-index: 12; padding-left:3rem; padding-right:3rem">
-            <p style="text-align: center;">
-              You will embark on a journey in the life of a Venezuelan migrant to experience the
+          <div style="z-index: 12; padding-left:2rem; padding-right:2rem;">
+            <h1 style="text-align: center;">Venezuelan Migrants <br /> in Ecuador</h1>
+            <p style="text-align: left;">
+              When migrants arrive in Ecuador, they face <b>multiple challenges</b>. In this
+              simulation, you will learn about the <b>tough decisions</b> migrants have to make in
+              Ecuador on a daily basis, <b>how they face them</b>, and how
+              <b>assistances are essential</b>
+              to help them through their integration in Ecuador. <br /><br />All the simulation data
+              is based on a survey of
+              <b>920 household migrants</b> in Ecuador by the World Food Programme. <br /><br />You
+              will embark on a journey in the life of a Venezuelan migrant to experience the
               challenges of integrating into Ecuador.
             </p>
-            <br />
-
-            <p style="text-align: center;">
-              Scroll down to continue reading <br /> or
-            </p>
           </div>
+
           <a href="/game" class="button">Start</a>
         </ParallaxLayer>
         <ParallaxLayer
@@ -186,18 +190,48 @@
         flex-direction: column;
       "
         >
-          <div style="z-index: 12; padding-left:3rem; padding-right:3rem">
-            <h1 style="text-align: center;">Venezuelan Migrants <br /> in Ecuador</h1>
+          <div style="z-index: 12; padding-left:2rem; padding-right:2rem">
+            <h1 style="text-align: center;">How to Play?</h1>
             <p style="text-align: left;">
-              When migrants arrive in Ecuador, they face <b>multiple challenges</b>. In this
-              simulation, you will learn about the <b>tough decisions</b> migrants have to make in
-              Ecuador on a daily basis, <b>how they face them</b>, and how
-              <b>assistances are essential</b>
-              to help them through their integration in Ecuador. All the simulation data is based on
-              a survey of
-              <b>920 household migrants</b> in Ecuador by the World Food Programme.
+              The goal of the game is to <b>improve part of your livelihood;</b> increasing your income
+              while working reasonable hours.
             </p>
+            <ol type="1" style="padding-left: 1em;">
+              <li>
+                <p style="margin: 0;">
+                  1. Select a migrant and an occupation. These selection will assign you a specific <b
+                    >monthly income and expenses.
+                  </b>
+                </p>
+              </li>
+              <li>
+                <p style="margin: 0;">
+                  2. You will play 4 rounds, each round is<b>one month.</b>
+                </p>
+              </li>
+              <li>
+                <p style="margin: 0;">
+                  3. Draw a card for every month. The card contains an event or a situation you
+                  <b>have to face through a decision.</b>
+                </p>
+              </li>
+              <li>
+                <p style="margin: 0;">
+                  4. The decision you make will
+                  <b>affect your income and your expenses.</b>
+                </p>
+              </li>
+              <li>
+                <p style="margin: 0;">
+                  5. You will have the opportunity to select certain
+                  <b>assistance, to help you through your journey.</b>
+                </p>
+              </li>
+            </ol>
           </div>
+          <a href="/about">About</a>
+          <a href="/policy">Policy Recommendations</a>
+          <br />
           <a href="/game" class="button">Start</a>
         </ParallaxLayer>
       </div>
@@ -223,7 +257,6 @@
         wellness.
       </p>
     {/if}
-
     {#if page === lastPage}
       <!-- <a href="/game" class="button">Start</a> -->
     {:else}
@@ -246,7 +279,8 @@
     color: #505050;
     display: flex;
     justify-content: center;
-    padding-top: 92vh;
     z-index: 13;
+    position: absolute;
+    bottom: 5%;
   }
 </style>

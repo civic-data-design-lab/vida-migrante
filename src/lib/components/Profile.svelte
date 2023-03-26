@@ -13,11 +13,10 @@
 <div id="container">
   <img src={`/images/migrants/${migrant.name}.png`} alt={migrant.name} />
   <p>
-    You have acquired a job as a <b>{job.title}</b>. You will be working <b>{job.hours}</b> hours a
-    week and earn a monthly income of <b>${job.income}</b>. Your expenses for your household's basic
-    needs will be
-    <b>${expenditures}</b>; this means you will have only
-    <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> for other unexpected expenses.
+    You are working as a <b>{job.title}</b> for <b>{job.hours}</b> hours a week and earn a monthly
+    income of <b>${job.income}</b>. The expenses for your household's basic needs are
+    <b>${expenditures}</b> this means this means that you have
+    <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> for other expenses.
   </p>
 </div>
 

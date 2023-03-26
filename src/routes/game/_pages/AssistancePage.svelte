@@ -35,13 +35,13 @@
   </div>
 </Modal>
 
-<h2>
+<h1>
   {#if language === Languages.ENGLISH}
     Select an assistance
   {:else}
     Selecciona una asistencia
   {/if}
-</h2>
+</h1>
 <section>
   {#each assistances as assistance (assistance.id)}
     <button class="assist-thumb" on:click={() => (displayedAssistance = assistance)}>

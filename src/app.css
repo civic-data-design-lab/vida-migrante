@@ -34,9 +34,9 @@ h2 {
 
 h3 {
   font-family: var(--font-sirenia);
-  font-size: 21pt;
-  line-height: 24pt;
-  font-weight: 500;
+  font-size: 15pt;
+  line-height: 18pt;
+  font-weight: 700;
   margin-top: 1.5rem;
   margin-bottom: .5rem;
   color: var(--gray);
@@ -51,9 +51,9 @@ h6 {
 
 p {
   font-family: var(--font-sirenia);
-  font-size: 14pt;
+  font-size: 13pt;
   font-weight: normal;
-  line-height: 22pt;
+  line-height: 17pt;
   color: var(--gray);
 }
 

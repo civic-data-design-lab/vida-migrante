@@ -1,4 +1,8 @@
 <div id="container">
+  <div style="z-index: 11;position:fixed; right:0">
+    <!-- svelte-ignore a11y-missing-attribute -->
+    <img class="backicon" src="$images/keyboard-arrow-down_119013.svg" onclick="history.back()" />
+  </div>
   <h1 id="policy-title">Policy Recommendations</h1>
 
   <div id="policy-body">
@@ -41,7 +45,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
     height: 100%;
     padding: 5vw;
     overflow: scroll;
@@ -57,5 +60,16 @@
 
   #policy-body {
     margin-bottom: 5vh;
+  }
+
+  .backicon {
+    height: 10px;
+    color: #505050;
+    display: flex;
+    justify-content: center;
+    z-index: 13;
+    transform: rotate(90deg);
+    position: relative;
+    padding-right: 1em;
   }
 </style>

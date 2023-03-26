@@ -1,4 +1,8 @@
 <div id="container">
+  <div style="z-index: 11;position:fixed; right:0">
+    <!-- svelte-ignore a11y-missing-attribute -->
+    <img class="backicon" src="$images/keyboard-arrow-down_119013.svg" onclick="history.back()" />
+  </div>
   <h1>About</h1>
   <p>
     Vida Migrante: Venezuelan Migrants Integration in Ecuador is a research project analyzing the
@@ -36,17 +40,20 @@
 
   <div id="credits">
     <h1>Credits</h1>
-
-    <p>
-      <b>Civic Data Design Lab</b><br />
+    <p style="margin:0.0em; ">
+      <a href="https://civicdatadesignlab.mit.edu"><b>Civic Data Design Lab</b></a>
+    </p>
+    <p style="margin-top:.5em; ">
       Sarah Williams, Director<br />
       Alberto Meouchi, Project Manager<br />
       Ashley Louie, Rohun Iyer, Jari Prachasartta, Gabriela Carucci, Enrique Casillas, Eric Lam, Christina
       Chen, Ilana Strauss, Sylvia Jimenez, Ethan Harrison, Mauricio Darcourt, Carlos Centeno.
     </p>
 
-    <p>
-      <b>UN World Food Programme</b><br />
+    <p style="margin:0.0em; ">
+      <a href="https://www.wfp.org/"><b>UN World Food Programme</b></a>
+    </p>
+    <p style="margin-top:.5em; ">
       Alessandro Donucci, Luis Fernández, Crescenzo Rubinotti, Espedito Nastro.
     </p>
   </div>
@@ -57,7 +64,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
     height: 100%;
     padding: 5vw;
     overflow: scroll;
@@ -69,5 +75,16 @@
 
   #credits {
     margin-bottom: 5vh;
+  }
+
+  .backicon {
+    height: 15px;
+    color: #505050;
+    display: flex;
+    justify-content: center;
+    z-index: 13;
+    transform: rotate(90deg);
+    position: relative;
+    padding-right: 1em;
   }
 </style>

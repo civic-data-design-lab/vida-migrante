@@ -21,7 +21,7 @@
   }
 </script>
 
-<h2>Choose your occupation</h2>
+<h1>Choose your occupation</h1>
 <div id="jobs">
   {#each jobs as job, i}
     <img

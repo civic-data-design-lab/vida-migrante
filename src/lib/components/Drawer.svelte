@@ -8,7 +8,7 @@
   let transition = '';
 
   onMount(() => {
-    const vh = windowHeight / 112;
+    const vh = windowHeight / 100;
     topThreshold = vh * 15;
     botThreshold = vh * 90;
     drawerTop = botThreshold;
@@ -123,10 +123,10 @@
 
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    background: #fcfcfc;
+    background: #f9f9f9;
     filter: drop-shadow(0px -5px 8px);
-    /* animation: wiggle 3s infinite;
-    animation-delay: 0.5s; */
+    animation: wiggle 5s infinite;
+    animation-delay: 2s;
   }
 
   #drawer-backdrop {
@@ -139,7 +139,7 @@
 
   #drawer-handle-hitbox {
     height: 20px;
-    width: 75px;
+    width: 137px;
     margin-block: calc(2.5vh - 6px);
     margin-bottom: 0;
     cursor: ns-resize;
@@ -150,25 +150,31 @@
 
   #drawer-handle {
     background: rgba(150, 150, 150, 0.8);
-    height: 8px;
-    width: 70px;
+    height: 3px;
+    width: 137px;
     border-radius: 4px;
     margin-bottom: 0;
   }
 
-  /* @keyframes wiggle {
+  @keyframes wiggle {
     0%,
     100% {
       transform: translate(0rem);
     }
+    12.5% {
+      transform: translate(0, 0rem);
+    }
     25% {
+      transform: translate(0, 0rem);
+    }
+    62.5% {
       transform: translate(0, 0rem);
     }
     75% {
       transform: translate(0, 0rem);
     }
     50% {
-      transform: translate(0, -5rem);
+      transform: translate(0, -1rem);
     }
-  } */
+  }
 </style>

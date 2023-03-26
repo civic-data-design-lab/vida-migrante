@@ -36,7 +36,7 @@
   #modal-close {
     background: transparent;
     border: none;
-    font-size: 20pt;
+    font-size: 2em;
     color: var(--gray);
   }
 </style>
