@@ -9,6 +9,9 @@
   import { page } from '$app/stores';
   import { isFoodSecure, sumValues } from '$lib/utils/functions';
   import { spendings } from '$gameFiles/expenses.json';
+  import { Languages } from '$lib/utils/types';
+
+  $: language = $page.data.language;
 
   let displayedSpending = null;
 
@@ -114,13 +117,15 @@
 
 <div id="expense-board">
   <div class="alignleft">
-    <p4 style="color: #505050; font-weight: 500; font-size: 10.5pt; margin-bottom:.5rem;"
-      >Expenses: <b>${player_expenses}</b></p4
+    <p4 style="color: #505050; font-weight: 500; font-size: 12.5pt; margin-bottom:.5rem;"
+      >{#if language == Languages.ENGLISH} Expenses: {:else} Gastos: {/if}
+      <b>${player_expenses}</b></p4
     >
   </div>
   <div class="alignleft">
-    <p4 style="color: #7BA522; font-weight: 500; font-size: 10.5pt"
-      >Income: <b>${player_income}</b></p4
+    <p4 style="color: #7BA522; font-weight: 500; font-size: 12.5pt"
+      >{#if language == Languages.ENGLISH} Income:{:else} Ingresos: {/if}
+      <b>${player_income}</b></p4
     >
   </div>
 </div>
@@ -133,10 +138,17 @@
   </section>
 </div>
 <div id="migrant-state">
-  <p4 style="font-weight: 500; font-size: 9pt; margin-top:.5rem;"
-    >You work <b><i>{$GameData.resources.time}</i></b> hours a week & you are
-    <b><i>{foodSecurityStatus}</i></b>.</p4
-  >
+  {#if language == Languages.ENGLISH}
+    <p4 style="font-weight: 500; font-size: 9pt; margin-top:.5rem;"
+      >You work <b><i>{$GameData.resources.time}</i></b> hours a week & you are
+      <b><i>{foodSecurityStatus}</i></b>.</p4
+    >
+  {:else}
+    <p4 style="font-weight: 500; font-size: 9pt; margin-top:.5rem;"
+      >Trabajas <b><i>{$GameData.resources.time}</i></b> horas a la semana &
+      <b><i>{foodSecurityStatus}</i></b>.</p4
+    >
+  {/if}
 </div>
 <div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
   <button
@@ -154,23 +166,43 @@
   /* FFFFFF */
   color: #FFFFFF;"
   >
-    Show Key Indicators +
+    {#if language == Languages.ENGLISH}
+      Show Key Indicators +
+    {:else}
+      Ver Indicadores Clave +
+    {/if}
   </button>
 </div>
 
 <div id="expense-references">
   <div id="name-board">
     <div class="alignleft">
-      <p4 style="color: #505050;">Average Migrant Household Income</p4>
+      <p4 style="color: #505050;"
+        >{#if language == Languages.ENGLISH}Average Migrant Household Income
+        {:else}
+          Ingreso Promedio de Migrantes{/if}</p4
+      >
     </div>
     <div class="alignleft">
-      <p4 style="color: #CF6348;">Average Ecuadorian Income</p4>
+      <p4 style="color: #CF6348;"
+        >{#if language == Languages.ENGLISH}Average Ecuadorian Income
+        {:else}
+          Ingreso Promedio de Hogar en Ecuador{/if}</p4
+      >
     </div>
     <div class="alignleft">
-      <p4 style="color: #E5B257;">Ecuadorian Vital Family Basket</p4>
+      <p4 style="color: #E5B257;"
+        >{#if language == Languages.ENGLISH}Ecuadorian Vital Family Basket
+        {:else}
+          Canasta Vital en Ecuador{/if}</p4
+      >
     </div>
     <div class="alignleft">
-      <p4 style="color: #5273B0;">Ecuadorian Basic Family Basket</p4>
+      <p4 style="color: #5273B0;"
+        >{#if language == Languages.ENGLISH}Ecuadorian Basic Family Basket
+        {:else}
+          Canasta Básica en Ecuador{/if}</p4
+      >
     </div>
   </div>
   <div id="money-board">
@@ -182,7 +214,9 @@
 </div>
 
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
-  <h2 style="margin-bottom: 0;">Allocate Your Spending</h2>
+  <h2 style="margin-bottom: 0;">
+    {#if language == Languages.ENGLISH}Allocate Your Spending{:else}Asigna tus Gastos {/if}
+  </h2>
   {#each spendings as spending (spending.name)}
     <section>
       <!-- <div id="container2"> -->
@@ -224,9 +258,24 @@
     />
     <div style="display: flex; flex-direction: row;">
       <div style="display: flex; flex-direction: column; align-content: left; text-align: left;">
-        <p><b>Your Monthly Expense</b></p>
-        <p4>Average Migrant Household Expense</p4>
-        <p4>Average National Expense</p4>
+        <p>
+          <b
+            >{#if language == Languages.ENGLISH}
+              Your Monthly Expense{:else}
+              Tu Gasto Mensual
+            {/if}</b
+          >
+        </p>
+        <p4
+          >{#if language == Languages.ENGLISH}Average Migrant Household Expense{:else}
+            Gasto promedio de hogares migrantes
+          {/if}</p4
+        >
+        <p4
+          >{#if language == Languages.ENGLISH}Average National Expense{:else}
+            Gasto Promedio Nacional
+          {/if}</p4
+        >
       </div>
       <div style="display: flex; flex-direction: column; align-content: right;">
         <p><b>${displayedSpending?.expense}</b></p>

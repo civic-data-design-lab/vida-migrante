@@ -2,8 +2,10 @@
   import { GameData } from '$gameData';
   import Modal from '$components/Modal.svelte';
   import { page } from '$app/stores';
+  import { Languages } from '$lib/utils/types';
 
   $: jobs = $page.data.jobsData.jobs;
+  $: language = $page.data.language;
 
   let job = 0;
   let showModal = false;
@@ -23,12 +25,21 @@
   }
 </script>
 
-<h1
-  style="width: 200px;
+{#if language == Languages.ENGLISH}
+  <h1
+    style="width: 200px;
 word-wrap: break-word;"
->
-  Choose your occupation
-</h1>
+  >
+    Choose your occupation
+  </h1>
+{:else}
+  <h1
+    style="width: 250px;
+word-wrap: break-word;"
+  >
+    Selecciona una ocupación
+  </h1>
+{/if}
 <div id="jobs">
   {#each jobs as job, i}
     <img
@@ -52,11 +63,18 @@ word-wrap: break-word;"
   <div id="modal-body" slot="body">
     <img id="modal-img" src={modalImgSrc} alt={modalSector} />
     <b id="modal-title">{modalTitle}</b>
-    <p id="modal-text">
-      <b>{modalDemo}</b> of Venezuelans work in the <b>{modalSector}</b> sector in Ecuador. Your
-      monthly income will be <b>${modalIncome}</b> and you will be working an average of
-      <b>{modalHours} hours</b> per week.
-    </p>
+    {#if language == Languages.ENGLISH}
+      <p id="modal-text">
+        <b>{modalDemo}</b> of migrants work in the <b>{modalSector}</b> sector in Ecuador. Your
+        monthly income will be <b>${modalIncome}</b> and you will be working an average of
+        <b>{modalHours} hours</b> per week.
+      </p>
+    {:else}
+      <p id="modal-text">
+        <b>{modalDemo}</b> de los migrantes <b>{modalSector}</b> en el sector de Ecuador. Tu ingreso
+        mensual será de <b>${modalIncome}</b> y trabajarás un promedio de
+        <b>{modalHours} horas</b> por semana.
+      </p>{/if}
     <button
       id="modal-button"
       class="button"
@@ -66,9 +84,15 @@ word-wrap: break-word;"
       }}
     >
       {#if buttonDisabled}
-        <span>You don't have the required accreditations</span>
-      {:else}
+        {#if language == Languages.ENGLISH}
+          <span>You don't have the required accreditations</span>
+        {:else}
+          <span>No tienes las acreditaciones necesarisas</span>
+        {/if}
+      {:else if language == Languages.ENGLISH}
         Select
+      {:else}
+        Seleccionar
       {/if}
     </button>
   </div>
@@ -82,7 +106,7 @@ word-wrap: break-word;"
   }
 
   #jobs {
-    margin-top: 15vh;
+    margin-top: 1em;
     height: 85vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -113,6 +137,7 @@ word-wrap: break-word;"
   #modal-text {
     margin-top: 0;
     margin-bottom: 12vh;
+    margin-bottom: 2em;
   }
 
   #modal-button {
@@ -125,10 +150,10 @@ word-wrap: break-word;"
   #modal-button:disabled {
     height: 10%;
     width: 65%;
-    inline-size: 350px;
+    inline-size: 100%;
   }
 
   span {
-    font-size: 15pt;
+    font-size: 14pt;
   }
 </style>

@@ -5,6 +5,10 @@
   import { CARD_CATEGORY_COLOR_MAP } from '$types';
   import TapIndicator from './TapIndicator.svelte';
   import { sumValues } from '$lib/utils/functions';
+  import { page } from '$app/stores';
+  import { Languages } from '$lib/utils/types';
+
+  $: language = $page.data.language;
 
   /** @type {import("$types").Card} */
   export let card;
@@ -66,16 +70,26 @@
       <section class="card-updates">
         {#if cardDetails.requiredResources.length}
           <span class="resources-required">
-            <p>Resources Required:</p>
+            {#if language === Languages.ENGLISH}
+              <p>Resources Required:</p>
+            {:else}
+              <p>Recursos Necesarios:</p>
+            {/if}
             {#each cardDetails.requiredResources as iconSrc}
               <img src={iconSrc} alt="Resource required" />
             {/each}
           </span>
         {/if}
         {#if cardDetails.skillsEarned.length}
-          <p style="text-transform: capitalize;">
-            Skills Earned: {cardDetails.skillsEarned.join(', ')}
-          </p>
+          {#if language === Languages.ENGLISH}
+            <p style="text-transform: capitalize;">
+              Skills Earned: {cardDetails.skillsEarned.join(', ')}
+            </p>
+          {:else}
+            <p style="text-transform: capitalize;">
+              Habilidades Obtenidas: {cardDetails.skillsEarned.join(', ')}
+            </p>
+          {/if}
         {/if}
         {#if cardDetails.accreditationsEarned.length}
           <p style="text-transform: capitalize;">

@@ -64,21 +64,12 @@
     "options": [
       {
         "id": 0,
-        "description": "Withdraw children from school to reduce expenses and acquire a computer",
-        "updates": {
-          "copingLevel": "stress",
-          "income": {
-            "salary": 79
-          },
-          "skills": [
-            "business"
-          ]
-        }
-      },
-      {
-        "id": 1,
         "description": "No tengo acceso a una computadora",
-        "updates": {},
+        "updates": {
+          "skills": [
+            "negocios"
+          ]
+        },
         "except": "and you won't be able to take the training"
       }
     ],

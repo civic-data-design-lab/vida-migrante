@@ -4,6 +4,10 @@
   import Modal from '$lib/components/Modal.svelte';
   import { CARD_CATEGORY_COLOR_MAP } from '$types';
   import { page } from '$app/stores';
+  import { Languages } from '$lib/utils/types';
+
+  // Get the page data
+  $: language = $page.data.language;
 
   /** @type {import('$types').Card} */
   $: card = $page.data.cardData[$GameData.currentCardId];
@@ -97,7 +101,13 @@
     <h3>{displayedOption?.description}</h3>
     <p>{@html optionUpdatesDescription}</p>
     <p>{@html displayedOption?.implicationText || ''}</p>
-    <button on:click={() => makeDecision(displayedOption.id)} class="button">Select</button>
+    <button on:click={() => makeDecision(displayedOption.id)} class="button">
+      {#if language === Languages.ENGLISH}
+        Select
+      {:else}
+        Seleccionar
+      {/if}
+    </button>
   </div>
 </Modal>
 <Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} {roundNum} />

@@ -34,6 +34,11 @@
 <div class="language-toggle-container">
   <LanguageToggle />
 </div>
+
+<div class="arrow-container">
+  <img class="arrowicon" src={arrowIcon} />
+</div>
+
 <Parallax sections={3} bind:this={parallax}>
   <div id="container" style="background-color: white;">
     {#if !page && ready}
@@ -136,12 +141,6 @@
         flex-direction: column;
       "
         >
-          <div style="z-index: 11; ">
-            <span style="display: flex;">
-              <!-- svelte-ignore a11y-missing-attribute -->
-              <img class="arrowicon" src={arrowIcon} />
-            </span>
-          </div>
           <div style="padding-left:2rem; padding-right:2rem">
             <h1 style="text-align: center;">Vida Migrante</h1>
             <p style="font-size:21pt; font-weight:400: line-height:24pt;text-align: center;">
@@ -167,21 +166,42 @@
       "
         >
           <div style="z-index: 12; padding-left:2rem; padding-right:2rem;">
-            <h1 style="text-align: center;">Venezuelan Migrants <br /> in Ecuador</h1>
+            {#if language == Languages.ENGLISH}
+              <h1 style="text-align: center;">Venezuelan Migrants <br /> in Ecuador</h1>
+            {:else}
+              <h1 style="text-align: center;">Migrantes Venezolanos <br /> en Ecuador</h1>
+            {/if}
             <p style="text-align: left;">
-              When migrants arrive in Ecuador, they face <b>multiple challenges</b>. In this
-              simulation, you will learn about the <b>tough decisions</b> migrants have to make in
-              Ecuador on a daily basis, <b>how they face them</b>, and how
-              <b>assistances are essential</b>
-              to help them through their integration in Ecuador. <br /><br />All the simulation data
-              is based on a survey of
-              <b>920 household migrants</b> in Ecuador by the World Food Programme. <br /><br />You
-              will embark on a journey in the life of a Venezuelan migrant to experience the
-              challenges of integrating into Ecuador.
+              {#if language == Languages.ENGLISH}
+                When migrants arrive in Ecuador, they face <b>multiple challenges</b>. In this
+                simulation, you will learn about the <b>tough decisions</b> migrants have to make in
+                Ecuador on a daily basis, <b>how they face them</b>, and how
+                <b>assistances are essential</b>
+                to help them through their integration in Ecuador. <br /><br />All the simulation
+                data is based on a survey of
+                <b>920 household migrants</b> in Ecuador by the World Food Programme. <br /><br
+                />You will embark on a journey in the life of a Venezuelan migrant to experience the
+                challenges of integrating into Ecuador.
+              {:else}
+                Cuando los migrantes llegan a Ecuador enfrentan <b>múltiples desafíos</b>. En esta
+                simulación aprenderás sobre lo <b>difícil de las decisiones</b> que diariamente
+                toman los migrantes en el Ecuador, <b>cómo las enfrentan </b> y cómo las
+                <b>asistencias, son esenciales</b>
+                para ayudarlos en su integración en el Ecuador. <br /><br />Todos los datos de la
+                simulación se basan en una encuesta realizada a
+                <b>920 hogares de migrantes</b> en el Ecuador realizada por el Programa Mundial de
+                Alimentos. <br /><br />
+                Te embarcarás en un viaje en la vida de un migrante venezolano para experimentar la Desafíos
+                de la integración al Ecuador.
+              {/if}
             </p>
           </div>
 
-          <a href="/game" class="button">Start</a>
+          {#if language == Languages.ENGLISH}
+            <a href="/game" class="button">Start</a>
+          {:else}
+            <a href="/game" class="button">Empezar</a>
+          {/if}
         </ParallaxLayer>
         <ParallaxLayer
           offset={2}
@@ -195,48 +215,106 @@
       "
         >
           <div style="z-index: 12; padding-left:2rem; padding-right:2rem">
-            <h1 style="text-align: center;">How to Play?</h1>
-            <p style="text-align: left;">
-              The goal of the game is to <b>improve part of your livelihood;</b> increasing your income
-              while working reasonable hours.
-            </p>
+            {#if language == Languages.ENGLISH}
+              <h1 style="text-align: center;">How to Play?</h1>
+            {:else}
+              <h1 style="text-align: center;">¿Cómo jugar?</h1>
+            {/if}
+            {#if language == Languages.ENGLISH}
+              <p style="text-align: left;">
+                The goal of the game is to <b>improve part of your livelihood;</b> increasing your income
+                while working reasonable hours.
+              </p>
+            {:else}
+              <p style="text-align: left;">
+                El objetivo del juego es <b>mejorar tu sustento;</b> aumentar tus ingresos, trabajando
+                horas razonables.
+              </p>
+            {/if}
             <ol type="1" style="padding-left: 1em;">
               <li>
-                <p style="margin: 0;">
-                  1. Select a migrant and an occupation. These selection will assign you a specific <b
-                    >monthly income and expenses.
-                  </b>
-                </p>
+                {#if language == Languages.ENGLISH}
+                  <p style="margin: 0;">
+                    1. Select a migrant and an occupation. These selection will assign you a
+                    specific <b>monthly income and expenses. </b>
+                  </p>
+                {:else}
+                  <p style="margin: 0;">
+                    1. Selecciona un migrante y una ocupación. Esta selección te asignará <b
+                      >ingresos y gastos mensuales.
+                    </b>
+                  </p>
+                {/if}
               </li>
               <li>
-                <p style="margin: 0;">
-                  2. You will play 4 rounds, each round is<b>one month.</b>
-                </p>
+                {#if language == Languages.ENGLISH}
+                  <p style="margin: 0;">
+                    2. You will play 4 rounds, each round is <b>one month.</b>
+                  </p>
+                {:else}
+                  <p style="margin: 0;">
+                    2. Jugarás 4 rondas, cada ronda representa <b>un mes.</b>
+                  </p>
+                {/if}
               </li>
               <li>
-                <p style="margin: 0;">
-                  3. Draw a card for every month. The card contains an event or a situation you
-                  <b>have to face through a decision.</b>
-                </p>
+                {#if language == Languages.ENGLISH}
+                  <p style="margin: 0;">
+                    3. Draw a card for every month. The card contains an event or a situation you
+                    <b>have to face through a decision.</b>
+                  </p>
+                {:else}
+                  <p style="margin: 0;">
+                    3. Tomarás una tarjeta para cada mes. Cada tarjeta contiene un evento o una
+                    situación que debes
+                    <b>enfrentar a través de una decisión.</b>
+                  </p>
+                {/if}
               </li>
               <li>
-                <p style="margin: 0;">
-                  4. The decision you make will
-                  <b>affect your income and your expenses.</b>
-                </p>
+                {#if language == Languages.ENGLISH}
+                  <p style="margin: 0;">
+                    4. The decision you make will
+                    <b>affect your income and your expenses.</b>
+                  </p>
+                {:else}
+                  <p style="margin: 0;">
+                    4. La decisión que tomes
+                    <b> afectará tus ingresos y tus gastos.</b>
+                  </p>
+                {/if}
               </li>
               <li>
-                <p style="margin: 0;">
-                  5. You will have the opportunity to select certain
-                  <b>assistance, to help you through your journey.</b>
-                </p>
+                {#if language == Languages.ENGLISH}
+                  <p style="margin: 0;">
+                    5. You will have the opportunity to select certain
+                    <b>assistance, to help you through your journey.</b>
+                  </p>
+                {:else}
+                  <p style="margin: 0;">
+                    5. Tendrás la oportunidad de seleccionar algunas
+                    <b>asistencias para hacer más llevadera tu experiencia </b>en el Ecuador.
+                  </p>
+                {/if}
               </li>
             </ol>
           </div>
-          <a href="/about">About</a>
-          <a href="/policy">Policy Recommendations</a>
+          {#if language == Languages.ENGLISH}
+            <a href="/about">About</a>
+          {:else}
+            <a href="/about">Acerca</a>
+          {/if}
+          {#if language == Languages.ENGLISH}
+            <a href="/policy">Policy Recommendations</a>
+          {:else}
+            <a href="/policy">Recomendaciones</a>
+          {/if}
           <br />
-          <a href="/game" class="button">Start</a>
+          {#if language == Languages.ENGLISH}
+            <a href="/game" class="button">Start</a>
+          {:else}
+            <a href="/game" class="button">Empezar</a>
+          {/if}
         </ParallaxLayer>
       </div>
     {:else if page === 1}
@@ -278,14 +356,23 @@
     height: 100vh;
     padding: 2.5vw;
   }
+
+  .arrow-container {
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    left: 40px;
+    bottom: 30px;
+  }
+
   .arrowicon {
     height: 8px;
     color: #505050;
     display: flex;
-    justify-content: center;
-    z-index: 13;
-    position: absolute;
-    bottom: 5%;
+    animation-name: flash;
+    animation: blinker 2s linear infinite;
   }
 
   .language-toggle-container {
@@ -293,5 +380,11 @@
     z-index: 999;
     right: 20px;
     bottom: 20px;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
   }
 </style>

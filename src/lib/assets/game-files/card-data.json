@@ -65,7 +65,11 @@
       {
         "id": 0,
         "description": "I can't afford a computer",
-        "updates": {},
+        "updates": {
+          "skills": [
+            "business"
+          ]
+        },
         "except": "and you won't be able to take the training"
       }
     ],

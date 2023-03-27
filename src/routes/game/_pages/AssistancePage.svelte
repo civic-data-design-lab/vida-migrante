@@ -86,6 +86,6 @@ word-wrap: break-word;"
 
   #modal-text {
     margin-top: 0;
-    margin-bottom: 12vh;
+    margin-bottom: 2em;
   }
 </style>

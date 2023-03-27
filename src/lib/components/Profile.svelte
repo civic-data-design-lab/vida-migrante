@@ -3,6 +3,10 @@
   import { migrants } from '$gameFiles/migrant-data.json';
   import { jobs } from '$gameFiles/jobs.json';
   import { sumValues } from '$utils/functions.js';
+  import { Languages } from '$lib/utils/types';
+  import { page } from '$app/stores';
+
+  $: language = $page.data.language;
 
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
@@ -12,12 +16,22 @@
 
 <div id="container">
   <img src={`/images/migrants/${migrant.name}.png`} alt={migrant.name} />
-  <p>
-    You are working as a <b>{job.title}</b> for <b>{job.hours}</b> hours a week and earn a monthly
-    income of <b>${job.income}</b>. The expenses for your household's basic needs are
-    <b>${expenditures}</b> this means this means that you have
-    <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> for other expenses.
-  </p>
+  {#if language == Languages.ENGLISH}
+    <p>
+      You are working as a <b>{job.title}</b> for <b>{job.hours}</b> hours a week and earn a monthly
+      income of <b>${job.income}</b>. The expenses for your household's basic needs are
+      <b>${expenditures}</b> this means this means that you have
+      <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> for other expenses.
+    </p>
+  {:else}
+    <p>
+      Tienes un empleo como <b>{job.title}</b>. Trabajas <b>{job.hours}</b> horas a la semana y
+      tienes un ingreso mensual de <b>${job.income}</b>. Los gastos para las necesidades básicas de
+      tu hogar son de
+      <b>${expenditures}</b>, esto significa que tienes
+      <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> para otros gastos.
+    </p>
+  {/if}
 </div>
 
 <style>

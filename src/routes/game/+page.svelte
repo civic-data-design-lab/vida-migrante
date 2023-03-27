@@ -81,5 +81,6 @@
     text-align: center;
     overflow: scroll;
     inline-size: 90%;
+    height: 100vh;
   }
 </style>

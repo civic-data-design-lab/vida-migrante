@@ -4,6 +4,10 @@
   import TapIndicator from '$components/TapIndicator.svelte';
   import { getOrdinalSuffix } from '$lib/utils/functions';
   import { NUM_TO_ORDINAL_ARR } from '$lib/utils/types';
+  import { Languages } from '$lib/utils/types';
+  import { page } from '$app/stores';
+
+  $: language = $page.data.language;
 
   $: round = $GameData.round + 1; // Round is 0-indexed in game data, 1 indexed here
   $: ordinalSuffix = getOrdinalSuffix(round);
@@ -11,7 +15,11 @@
   $: ordinalRoundOrig = NUM_TO_ORDINAL_ARR[$GameData.round];
 </script>
 
-<h1>{round}<sup>{ordinalSuffix}</sup> Month</h1>
+{#if language == Languages.ENGLISH}
+  <h1>{round}<sup>{ordinalSuffix}</sup> Month</h1>
+{:else}
+  <h1>{round}<sup>{ordinalSuffix}</sup> Mes</h1>
+{/if}
 <!-- Game Data store will automatically draw a card -->
 <TapIndicator
   message="Tap to draw a card"
@@ -25,12 +33,21 @@
   </button>
 </TapIndicator>
 
-<p>
-  Draw your
-  <b>{round}<sup>{ordinalSuffix}</sup></b>
-  card to see the {ordinalRoundOrig}
-  event and make a decision on how to cope with it.
-</p>
+{#if language == Languages.ENGLISH}
+  <p>
+    Draw your
+    <b>{round}<sup>{ordinalSuffix}</sup></b>
+    card to see the {ordinalRoundOrig}
+    event and make a decision on how to cope with it.
+  </p>
+{:else}
+  <p>
+    Selecciona la
+    <b>{round}<sup>{ordinalSuffix}</sup></b>
+    carta para ver el {ordinalRoundOrig}
+    evento y toma una decisión sobre cómo enfrentarlo.
+  </p>
+{/if}
 
 <style>
   button {
