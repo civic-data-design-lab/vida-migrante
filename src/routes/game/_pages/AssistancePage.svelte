@@ -22,7 +22,7 @@
       alt="Accreditation"
     />
     <h2>{displayedAssistance?.name}</h2>
-    <p>
+    <p id="modal-text">
       {displayedAssistance?.description}
     </p>
     <button class="button" on:click={() => selectAssistance(displayedAssistance.id)}>
@@ -35,7 +35,10 @@
   </div>
 </Modal>
 
-<h1>
+<h1
+  style="width: 250px;
+word-wrap: break-word;"
+>
   {#if language === Languages.ENGLISH}
     Select an assistance
   {:else}
@@ -74,10 +77,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    justify-content: space-evenly;
   }
 
   .modal-body img {
     width: 200px;
+  }
+
+  #modal-text {
+    margin-top: 0;
+    margin-bottom: 12vh;
   }
 </style>

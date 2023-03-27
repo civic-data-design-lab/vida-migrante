@@ -96,7 +96,7 @@
 </Modal>
 <Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} />
 {#if showOptions}
-  <h3 class="prompt">{card.prompt || ''}</h3>
+  <h4 class="prompt">{card.prompt || ''}</h4>
   <ul>
     {#each card.options as option (option.id)}
       <li>

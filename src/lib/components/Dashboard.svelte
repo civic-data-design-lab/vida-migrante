@@ -182,7 +182,7 @@
 </div>
 
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
-  <h2>Allocate Your Spending</h2>
+  <h2 style="margin-bottom: 0;">Allocate Your Spending</h2>
   {#each spendings as spending (spending.name)}
     <section>
       <!-- <div id="container2"> -->

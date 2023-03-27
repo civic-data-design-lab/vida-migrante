@@ -21,7 +21,12 @@
   }
 </script>
 
-<h1>Choose your occupation</h1>
+<h1
+  style="width: 200px;
+word-wrap: break-word;"
+>
+  Choose your occupation
+</h1>
 <div id="jobs">
   {#each jobs as job, i}
     <img

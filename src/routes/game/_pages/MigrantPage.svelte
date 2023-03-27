@@ -31,9 +31,12 @@
   });
 </script>
 
-<div id="header">
-  <h1>Take the</h1>
-  <h1>journey as</h1>
+<div
+  style="width: 200px;
+word-wrap: break-word;"
+  id="header"
+>
+  <h1>Take the journey as</h1>
 </div>
 <Carousel />
 <button

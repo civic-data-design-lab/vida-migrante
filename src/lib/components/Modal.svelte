@@ -38,5 +38,6 @@
     border: none;
     font-size: 2em;
     color: var(--gray);
+    padding: 0;
   }
 </style>
