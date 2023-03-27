@@ -1,12 +1,12 @@
 <script>
-  import cardData from '$gameFiles/card-data.json';
   import { GameData } from '$gameData';
   import Card from '$components/Card.svelte';
   import Modal from '$lib/components/Modal.svelte';
   import { CARD_CATEGORY_COLOR_MAP } from '$types';
+  import { page } from '$app/stores';
 
   /** @type {import('$types').Card} */
-  $: card = cardData[$GameData.currentCardId];
+  $: card = $page.data.cardData[$GameData.currentCardId];
 
   /** Where or not to show the card's options */
   let showOptions = false;

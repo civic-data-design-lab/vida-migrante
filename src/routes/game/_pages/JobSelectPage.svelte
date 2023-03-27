@@ -1,7 +1,9 @@
 <script>
-  import { jobs } from '$gameFiles/jobs.json';
   import { GameData } from '$gameData';
   import Modal from '$components/Modal.svelte';
+  import { page } from '$app/stores';
+
+  $: jobs = $page.data.jobsData.jobs;
 
   let job = 0;
   let showModal = false;
