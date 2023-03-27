@@ -1,33 +1,52 @@
-[
-    {
-        "name": "Rent",
-        "icon": "RENT.png",
-        "expense": 0
-    },
-    {
-        "name": "Food",
-        "icon": "FOOD3.png",
-        "expense": 0
-    },
-    {
-        "name": "Health & Hygiene",
-        "icon": "HEALTH.png",
-        "expense": 0
-    },
-    {
-        "name": "Household & Utilities",
-        "icon": "HOUSEHOLD.png",
-        "expense": 0
-    },
-
-    {
-        "name": "Remittances",
-        "icon": "REMITTANCES.png",
-        "expense": 0
-    },
-    {
-        "name": "Internet",
-        "icon": "INTERNET.png",
-        "expense": 0
-    }
-  ]
+{
+    "spendings": [
+        {
+            "name": "Rent",
+            "name2": "rent",
+            "icon": "RENT.png",
+            "expense": 0,
+            "avg_national_expense": "unknown",
+            "avg_migrant_household": 92
+        },
+        {
+            "name": "Food",
+            "name2": "food",
+            "icon": "EGGS_FOOD_1.png",
+            "expense": 0,
+            "avg_national_expense": "unknown",
+            "avg_migrant_household": 104
+        },
+        {
+            "name": "Health & Hygiene",
+            "name2": "health",
+            "icon": "HEALTH.png",
+            "expense": 0,
+            "avg_national_expense": "unknown",
+            "avg_migrant_household": 43
+        },
+        {
+            "name": "Household & Utilities",
+            "name2": "housholdUtilitiesEssential",
+            "icon": "HOUSEHOLD.png",
+            "expense": 0,
+            "avg_national_expense": "unknown",
+            "avg_migrant_household": 55
+        },
+        {
+            "name": "Remittances",
+            "name2": "remittances",
+            "icon": "REMITTANCES.png",
+            "expense": 0,
+            "avg_national_expense": "unknown",
+            "avg_migrant_household": 24
+        },
+        {
+            "name": "Internet",
+            "name2": "internet",
+            "icon": "WIFI.png",
+            "expense": 0,
+            "avg_national_expense": "unknown",
+            "avg_migrant_household": 11
+        }
+    ]
+}

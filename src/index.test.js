@@ -1,4 +1,5 @@
-import { applyUpdates, getOrdinalSuffix } from '$lib/utils/functions';
+import { applyUpdates, getOrdinalSuffix, isFoodSecure } from '$lib/utils/functions';
+import { CopingLevels } from '$lib/utils/types';
 import { describe, it, expect } from 'vitest';
 
 describe('sum test', () => {
@@ -98,4 +99,23 @@ describe('resource updater test', () => {
     applyUpdates(originalObject, updatesObject);
     expect(originalObject).toStrictEqual({ a: 0 });
   });
+});
+
+describe('food security calculation test', () => {
+  it('Displays food secure', () => {
+    const expenses = 100,
+      householdSize = 10;
+    const actual = isFoodSecure(expenses, householdSize, null);
+    expect(actual).toBe(true);
+  });
+
+  it('Displays food insecure', () => {
+    const expenses = 100,
+      householdSize = 10,
+      copingLevel = CopingLevels.STRESS;
+    const actual = isFoodSecure(expenses, householdSize, copingLevel);
+    expect(actual).toBe(false);
+  });
+
+  // TODO: Add more tests if needed
 });

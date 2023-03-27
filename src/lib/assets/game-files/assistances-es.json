@@ -1,0 +1,74 @@
+[
+  {
+    "id": "training",
+    "category": "Training and Education",
+    "name": "Capacitación",
+    "description": "El proyecto EMPACT del Programa Mundial de Alimentos está brindando capacitación en herramientas digitales.",
+    "updates": {
+      "income": {
+        "assistance": 54
+      }
+    },
+    "image": "A_training.png"
+  },
+  {
+    "id": "regularization",
+    "category": "Legal",
+    "name": "Regularización",
+    "description": "El gobierno ecuatoriano amplió su política de regularización y calificas para beneficiarte.",
+    "updates": {
+      "income": {
+        "assistance": 87
+      }
+    },
+    "image": "A_regularization.png"
+  },
+  {
+    "id": "accreditation",
+    "category": "Legal",
+    "name": "Acreditación",
+    "description": "El gobierno ecuatoriano está legalizando acreditaciones, títulos y certificaciones de los migrantes.",
+    "updates": {
+      "income": {
+        "assistance": 70
+      }
+    },
+    "image": "A_accreditation.png"
+  },
+  {
+    "id": "foodAssist",
+    "category": "Food and Health",
+    "name": "Asistencia Alimentaria",
+    "description": "El Programa Mundial de Alimentos está brindando asistencia alimentaria a los hogares en dificultades dentro de tu comunidad y calificas para recibir ayuda.",
+    "updates": {
+      "expenditures": {
+        "food": -47
+      }
+    },
+    "image": "A_food.png"
+  },
+  {
+    "id": "cashAssist",
+    "category": "Food and Health",
+    "name": "Asistencia en Efectivo",
+    "description": "El Programa Mundial de Alimentos está proporcionando asistencia en efectivo para comprar alimentos nutritivos.",
+    "updates": {
+      "income": {
+        "assistance": 47
+      }
+    },
+    "image": "A_cash.png"
+  },
+  {
+    "id": "medicines",
+    "category": "Food and Health",
+    "name": "Medicinas",
+    "description": "El Ministerio de Salud está brindando medicamentos sin costo para ti y tu familia.",
+    "updates": {
+      "expenditures": {
+        "health": "!0"
+      }
+    },
+    "image": "A_medicine.png"
+  }
+]

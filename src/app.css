@@ -3,7 +3,7 @@
 
   --dark-gray: #2d2d2d;
   --gray: #505050;
-  --light-gray: #232323;
+  --light-gray: rgba(35, 35, 35, 0.12);
 
   --accent-blue: #5273b0;
   --accent-red: #cf6348;
@@ -12,72 +12,115 @@
   --light-blue: #c5dcee;
   --light-red: #eec3b8;
   --light-yellow: #f6e0b1;
+
+  --font-sirenia: 'rubik', sans-serif;
+  --font-sirenia: 'sirenia', sans-serif;
 }
 
 h1 {
-  font-family: 'sirenia', sans-serif;
-  font-size: 43pt;
+  font-family: var(--font-sirenia);
+  font-size: 26pt;
   font-weight: bolder;
   color: var(--gray);
+  text-align: center;
 }
 
 h2 {
-  font-family: 'sirenia', sans-serif;
-  font-size: 28pt;
+  font-family: var(--font-sirenia);
+  font-size: 15pt;
   font-weight: bold;
+  color: var(--gray);
 }
 
 h3 {
-  font-family: 'sirenia', sans-serif;
-  font-size: 23pt;
-  font-weight: bolder;
+  font-family: var(--font-sirenia);
+  font-size: 17pt;
+  line-height: 19pt;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
+  text-align: center;
+  color: var(--gray);
+  width: 200px;
+  word-wrap: break-word;
+}
+
+h4 {
+  font-family: var(--font-sirenia);
+  font-size: 21pt;
+  line-height: 24pt;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
+  color: var(--gray);
+  width: 200px;
+  word-wrap: break-word;
 }
 
 h6 {
-  font-family: 'sirenia', sans-serif;
+  font-family: var(--font-sirenia);
   font-size: 16px;
   line-height: 16px;
   margin: 0;
 }
 
 p {
-  font-family: 'sirenia';
-  font-size: 16pt;
+  font-family: var(--font-sirenia);
+  font-size: 13pt;
   font-weight: normal;
-  line-height: 22pt;
+  line-height: 17pt;
   color: var(--gray);
-  text-align: center;
+
 }
+
 p2 {
-  font-family: 'sirenia';
-  font-size: 16pt;
+  font-family: var(--font-sirenia);
+  font-size: 15pt;
   font-weight: normal;
   line-height: 22pt;
   color: var(--gray);
-  display: flex;
-  justify-content: space-between;
-  text-align: left;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* text-align: left; */
   color: blue;
 }
+
 p3 {
-  font-family: 'sirenia';
-  font-size: 16pt;
+  font-family: var(--font-sirenia);
+  font-size: 7.5;
   font-weight: normal;
-  line-height: 22pt;
+  line-height: 10.5pt;
   color: var(--gray);
-  display: flex;
-  justify-content: space-between;
-  text-align: right;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* text-align: right; */
+}
+
+p4 {
+  font-family: var(--font-rubik);
+  font-size: 7.5pt;
+  font-weight: normal;
+  line-height: 18px;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* text-align: right; */
 }
 
 body {
   font: 16pt rubik;
-  text-align: left;
   color: var(--gray);
+  user-select: none;
+}
+
+body2 {
+  font-family: var(--font-rubik);
+  font-size: 16pt;
+  font-weight: normal;
+  line-height: 22pt;
 }
 
 a {
-  font-family: 'sirenia', sans-serif;
+  font-family: var(--font-sirenia);
   color: var(--gray);
   transition: color 150ms ease;
 }
@@ -86,24 +129,32 @@ a:hover {
   color: var(--dark-gray);
 }
 
+/* Primary button styling */
 .button {
-  border-radius: 16px;
-  width: 30vw;
-  height: 4vh;
-
-  /* Color and font */
-  background-color: var(--gray);
-  color: var(--white);
-  font: 12pt 'sirenia';
-  text-decoration: none;
-
   /* Alignment */
-  text-align: center;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 
-  position: relative;
+  /* Color */
+  background-color: var(--gray);
+  border: 0;
+
+  /* Font */
+  color: var(--white);
+  font-family: var(--font-sirenia);
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration: none;
+  /* For converting links to buttons */
+
+  /* Sizing and shape*/
+  box-sizing: border-box;
+  padding: 0.5rem 3.5rem;
+  border-radius: 50rem;
+
   transition: all 150ms ease;
 }
 
@@ -121,42 +172,13 @@ a:hover {
 
 .button:disabled {
   background-color: var(--light-gray);
+  color: rgba(35, 35, 35, 0.5);
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.button2 {
-  background-color: var(--dark-gray);
-  color: black;
-}
-
-.button3 {
-  margin: auto;
-  position: relative;
-  border-radius: 16px;
-  width: 80vw;
-  height: 6vh;
-  background-color: var(--gray);
-  color: var(--white);
-}
-
-.button4 {
-  background-color: var(--white);
-  color: var(--gray);
-  border-color: var(--gray);
-  box-shadow: 5px 5px 10px 2px var(--gray);
-  cursor: not-allowed;
-  transform: none;
-  width: 16vw;
-  height: 8vh;
-}
-
-.button5 {
-  background-color: lightgray;
-  border-radius: 50%;
-  border: none;
-  width: 20px;
-  height: 20px;
+.full-width {
+  width: 100%;
 }
 
 ul {

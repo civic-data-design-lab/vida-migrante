@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { browser } from '$app/environment';
+import { browser, dev } from '$app/environment';
 import { GameStates, INITIAL_GAME_DATA, NUM_ROUNDS } from '$types';
 import allCards from '$gameFiles/card-data';
 import allMigrantData from '$gameFiles/migrant-data';
@@ -7,9 +7,13 @@ import allJobsData from '$gameFiles/jobs';
 import allAssistanceData from '$gameFiles/assistances';
 import { applyUpdates, deepCopy, parseJSONSafe } from '$lib/utils/functions';
 
+console.debug('DEV MODE:', dev);
+
 // Get the possible game data on the browser's local storage
+// TODO: Currently only loads the game state from local storage in dev mode.
+// Need to implement a better way to allow users to persist games
 let initialValue = INITIAL_GAME_DATA;
-if (browser) {
+if (browser && dev) {
   const storedGameData = window.localStorage.getItem('gameData');
 
   // Parse the JSON; if there is an error, return the initial game data
@@ -64,6 +68,7 @@ function createGameData() {
           return { ...g, currentCardId: null, state: GameStates.DRAW_CARD };
         case GameStates.DRAW_CARD:
           const cardId = drawCard(g);
+          // const cardId = 4;  // Temp card control
           return { ...g, state: GameStates.DECISION, currentCardId: cardId };
         case GameStates.DECISION:
           const { optionId } = kwargs;
@@ -115,6 +120,12 @@ function createGameData() {
 
           // Start round 2 or 4 after assistance has been selected
           return { ...g, state: GameStates.ROUND_START, round: g.round + 1 };
+        case GameStates.GAME_END:
+          // On game end, an advancement in the game state entails resetting the
+          // game data and returning to the game START state.
+
+          // Reset game data (initial game data starts at `GameStates.START`)
+          return deepCopy(INITIAL_GAME_DATA);
         default:
           return g;
       }

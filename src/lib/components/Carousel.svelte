@@ -1,5 +1,7 @@
 <script>
-  import { migrants } from '$gameFiles/migrant-data.json';
+  import { page } from '$app/stores';
+
+  $: migrants = $page.data.migrantData.migrants;
 </script>
 
 <div class="carousel">
@@ -15,7 +17,7 @@
         <div class="carousel-content">
           <img src={`/images/migrants/${migrant.name}.png`} alt={migrant.name} />
           <h3>{migrant.name}</h3>
-          <span>{migrant.age}, {migrant.maritalStatus}</span>
+          <span style:text-transform="capitalize">{migrant.age}, {migrant.maritalStatus}</span>
           {@html migrant.introText}
         </div>
       </div>
@@ -35,10 +37,6 @@
     -ms-overflow-style: none;
   }
 
-  .carousel::-webkit-scrollbar {
-    display: none;
-  }
-
   .carousel-viewport {
     position: absolute;
     top: 0;
@@ -49,6 +47,10 @@
     overflow-x: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+  }
+
+  .carousel-viewport::-webkit-scrollbar {
+    display: none;
   }
 
   .carousel-slide {

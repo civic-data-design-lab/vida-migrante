@@ -1,0 +1,76 @@
+{
+  "jobs": [
+    {
+      "title": "Construction Trabajador",
+      "sector": "Construction",
+      "demographics": "Two percent",
+      "income": 280,
+      "hours": 40,
+      "image": "Construction.png",
+      "disabled": false
+    },
+    {
+      "title": "Teacher",
+      "sector": "Education",
+      "demographics": "Less than one percent",
+      "income": 420,
+      "hours": 51,
+      "image": "Education.png",
+      "disabled": true
+    },
+    {
+      "title": "Restaurant Waiter",
+      "sector": "Food and Beverages",
+      "demographics": "Eleven percent",
+      "income": 320,
+      "hours": 56,
+      "image": "Food.png",
+      "disabled": false
+    },
+    {
+      "title": "Nurse",
+      "sector": "Health",
+      "demographics": "Less than one percent",
+      "income": 1800,
+      "hours": 50,
+      "image": "Health.png",
+      "disabled": true
+    },
+    {
+      "title": "Hotel Security Guard",
+      "sector": "Non-specialized Personal Services",
+      "demographics": "Seventeen percent",
+      "income": 320,
+      "hours": 56,
+      "image": "Guard.png",
+      "disabled": false
+    },
+    {
+      "title": "Factory Worker",
+      "sector": "Manufacturing",
+      "demographics": "Five percent",
+      "income": 310,
+      "hours": 48,
+      "image": "Manufacturing.png",
+      "disabled": false
+    },
+    {
+      "title": "Supermarket Cashier",
+      "sector": "Non-specialized Personal Services",
+      "demographics": "Ten percent",
+      "income": 300,
+      "hours": 60,
+      "image": "Wholesale.png",
+      "disabled": false
+    },
+    {
+      "title": "Street Vendor",
+      "sector": "Informal",
+      "demographics": "Forty two percent",
+      "income": 240,
+      "hours": 56,
+      "image": "Informal.png",
+      "disabled": false
+    }
+  ]
+}

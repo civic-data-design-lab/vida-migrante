@@ -4,7 +4,7 @@
 export const Skills = {
   CONSTRUCTION: 'construction',
   DIGITAL: 'digital skills',
-  FINANCIAL: 'financial',
+  BUSINESS: 'business',
   MARKETING: 'marketing',
   LEGALIZATION: 'legalization',
 };
@@ -30,6 +30,11 @@ export const CopingLevels = {
   EMERGENCY: 'emergency',
 };
 
+export const Languages = {
+  ENGLISH: 'en',
+  SPANISH: 'es',
+};
+
 // ----------------
 // Type Definitions
 // ----------------
@@ -44,6 +49,9 @@ export const CopingLevels = {
  *    you would encode `{ time: -5 }`). Any skill gain is encoded in an array of
  *    skill strings. For example, if the user gains digital skills, you would
  *    encode `{ skills: ['digital skills'] }`
+ * @prop {string} [except] - Exception text. For example, if this is a "do
+ *    nothing" option, you may include exception such as "but you are at risk
+ *    of..."
  * @prop {string} implicationText - Describes qualitatively the implication of
  *    the decision associated with this option
  */

@@ -74,7 +74,7 @@ export function deepCopy(obj) {
  * @param {object} originalObject
  * @param {object} updatesObject
  */
-export const applyUpdates = (originalObject, updatesObject) => {
+export function applyUpdates(originalObject, updatesObject) {
   for (let key in updatesObject) {
     const update = updatesObject[key];
     if (Array.isArray(update)) {
@@ -93,4 +93,40 @@ export const applyUpdates = (originalObject, updatesObject) => {
       originalObject[key] = update;
     }
   }
-};
+}
+
+/**
+ * Sums the values in the provided object (applies `+` operator).
+ *
+ * @param {object | undefined} obj - The object, values must be addable.
+ * @return {any} The added values, or undefined if the object is undefined.
+ */
+export function sumValues(obj) {
+  if (!obj) {
+    return;
+  }
+  return Object.values(obj).reduce((a, b) => a + b, 0);
+}
+
+/**
+ * Gets whether or not an entity is food secure.
+ *
+ * @param {number} totalExpenses - Total household expenses
+ * @param {number} householdSize - Household size
+ * @param {string} copingLevel - The coping level (see `$types.CopingLevels`)
+ * @returns {boolean} True if the given data results in a status of "food
+ *  secure", false otherwise.
+ */
+export function isFoodSecure(totalExpenses, householdSize, copingLevel) {
+  const perCapitaExpense = totalExpenses / householdSize;
+  let ecmen = 1;
+  if (perCapitaExpense < 188) {
+    ecmen = 4;
+  }
+  const copingStrategy = !copingLevel ? 1 : 2;
+  const meanCopingECMEN = (ecmen + copingStrategy) / 2;
+  const CARI_ECMEN = Math.floor(Math.round((meanCopingECMEN + 2) / 2));
+
+  if (CARI_ECMEN === 1 || CARI_ECMEN === 2) return true;
+  return false;
+}

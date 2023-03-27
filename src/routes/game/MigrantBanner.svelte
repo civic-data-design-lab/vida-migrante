@@ -1,37 +1,34 @@
 <script>
-  import migrantData from '$gameFiles/migrant-data.json';
-  import jobData from '$gameFiles/jobs.json';
+  import { fly } from 'svelte/transition';
+
+  import { page } from '$app/stores';
   import Info from '$lib/components/Info.svelte';
+  import Profile from '$components/Profile.svelte';
 
   export let migrantId = null;
   export let jobId = null;
-  export let resources = null;
 
-  $: migrantInfo = migrantData.migrants.find((migrant) => migrant.id === migrantId);
-  $: jobInfo = jobData.jobs[jobId];
-  $: bannerTitle = [migrantInfo?.name, migrantInfo?.age, jobInfo?.title]
-    .filter((x) => x)
-    .join(', ');
+  $: migrantInfo = $page.data.migrantData.migrants.find((migrant) => migrant.id === migrantId);
+  $: jobInfo = $page.data.jobsData.jobs[jobId];
+
+  $: bannerTitle = [migrantInfo?.name].filter((x) => x).join(', ');
 </script>
 
-<!-- TODO: Figure out on which game pages to show this -->
-{#if migrantInfo && jobInfo}
-  <span class="migrant-banner">
-    <div class="migrant-banner-content">
-      <section style="position: relative;">
-        <Info pinned>
-          <h1>More migrant info</h1>
-        </Info>
-        <img class="migrant-image" src="/images/migrants/{migrantInfo.name}.png" alt="alt" />
-      </section>
-      <section>
-        <h6>{bannerTitle}</h6>
-        <p>You are working <b><i>{resources.time}</i></b> hours daily.</p>
-        <p>You are <b><i>(food security status)</i></b></p>
-      </section>
-    </div>
-  </span>
-{/if}
+<span class="migrant-banner" transition:fly={{ y: -200 }}>
+  <div class="migrant-banner-content">
+    <section style="position: relative;">
+      <Info pinned>
+        <Profile />
+      </Info>
+      <img class="migrant-image" src="/images/migrants/{migrantInfo.name}.png" alt="alt" />
+    </section>
+    <section>
+      <h6>{bannerTitle}</h6>
+      <p>{migrantInfo.age} Years old, {migrantInfo.maritalStatus}</p>
+      <p>{jobInfo.title}</p>
+    </section>
+  </div>
+</span>
 
 <style>
   .migrant-banner {

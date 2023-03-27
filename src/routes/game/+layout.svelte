@@ -1,9 +1,15 @@
 <script>
+  import LanguageToggle from '$lib/components/LanguageToggle.svelte';
   import { GameData } from '$lib/stores/gameData';
+  import { WindowHeight } from '$lib/stores/windowHeight';
   import { GameStates } from '$lib/utils/types';
   import { onMount } from 'svelte';
   import Loading from './Loading.svelte';
-  import MigrantBanner from './MigrantBanner.svelte';
+
+  /** Data from `+layout.server.js` */
+  export let data;
+
+  $: language = data.language;
 
   let loading = true;
   onMount(() => {
@@ -14,19 +20,20 @@
   });
 
   let showDevNav = false;
+
+  let windowHeight;
+  $: {
+    WindowHeight.set(windowHeight);
+    console.log('Set window height to', windowHeight);
+  }
 </script>
 
 {#if loading}
   <Loading />
 {:else}
-  <MigrantBanner
-    migrantId={$GameData.migrantId}
-    jobId={$GameData.jobId}
-    resources={$GameData.resources}
-  />
   <slot />
   <nav>
-    <button class="button navbar-btn" on:click={() => (showDevNav = !showDevNav)}
+    <button class="button" on:click={() => (showDevNav = !showDevNav)}
       >{showDevNav ? 'Hide' : 'Show'} dev nav</button
     >
     {#if showDevNav}
@@ -39,19 +46,31 @@
           </li>
         {/each}
         <li>
-          <button on:click={() => localStorage.removeItem('gameData')}
-            >Clear local storage/reset game data (needs refresh)</button
+          <a href="/game" data-sveltekit-reload on:click={() => localStorage.removeItem('gameData')}
+            >Clear local storage/reset game data</a
           >
+        </li>
+        <li>
+          <LanguageToggle />
         </li>
       </ul>
     {/if}
   </nav>
 {/if}
+<svelte:window bind:innerHeight={windowHeight} />
 
 <style>
   nav {
     position: absolute;
     top: 0;
+  }
+
+  .nav-btn {
+    transform: translateY(-110%);
+  }
+
+  .nav-btn:focus {
+    transform: none;
   }
 
   ul {

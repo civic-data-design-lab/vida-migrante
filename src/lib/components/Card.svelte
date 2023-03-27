@@ -4,6 +4,7 @@
   import moneyIcon from '$images/money.svg';
   import { CARD_CATEGORY_COLOR_MAP } from '$types';
   import TapIndicator from './TapIndicator.svelte';
+  import { sumValues } from '$lib/utils/functions';
 
   /** @type {import("$types").Card} */
   export let card;
@@ -14,7 +15,10 @@
    */
   export let minimized;
 
+  /** Callback function on card tap. */
   export let onCardTap;
+
+  export let roundNum;
 
   const getCardDetails = () => {
     // Use set to avoid adding duplicates
@@ -25,10 +29,10 @@
     };
     card.options.forEach((option) => {
       const updates = option.updates;
-      if (updates.money < 0) {
+      if (updates.income?.salary < 0 || sumValues(updates.expenditures) > 0) {
         cardDetails.requiredResources.add(moneyIcon);
       }
-      if (updates.time < 0) {
+      if (updates.time) {
         cardDetails.requiredResources.add(timeIcon);
       }
       if (updates.skills?.length) {
@@ -48,7 +52,7 @@
   $: cardDetails = getCardDetails();
 </script>
 
-<TapIndicator message="Tap to show options" on:click={onCardTap}>
+<TapIndicator message="Tap to show options" on:click={onCardTap} disabled={roundNum !== 1}>
   {#key minimized}
     <article in:slide={{ duration: 200 }} style="height: {minimized ? 'max-content' : '510px'};">
       <header style="background-color: var(--accent-{CARD_CATEGORY_COLOR_MAP[card.category]});">
@@ -87,7 +91,7 @@
   article {
     position: relative;
     width: 320px;
-    max-width: 90vw;
+    max-width: 80vw;
 
     background-color: white;
     border: 2px solid #505050;

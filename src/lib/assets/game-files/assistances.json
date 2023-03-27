@@ -5,7 +5,7 @@
     "name": "Training",
     "description": "The World Food Program EMPACT project is providing training in digital and online tools.",
     "updates": { "income": { "assistance": 54 } },
-    "image": "A_accreditation.png"
+    "image": "A_training.png"
   },
   {
     "id": "regularization",
@@ -45,6 +45,6 @@
     "name": "Medicines",
     "description": "The Ministry of Health is providing medicines at no cost for you and your family.",
     "updates": { "expenditures": { "health": "!0" } },
-    "image": "A_accreditation.png"
+    "image": "A_medicine.png"
   }
 ]

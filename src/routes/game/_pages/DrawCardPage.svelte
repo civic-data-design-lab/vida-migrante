@@ -5,14 +5,19 @@
   import { getOrdinalSuffix } from '$lib/utils/functions';
   import { NUM_TO_ORDINAL_ARR } from '$lib/utils/types';
 
-  $: round = $GameData.round + 1; // Round is 0-indexed
+  $: round = $GameData.round + 1; // Round is 0-indexed in game data, 1 indexed here
   $: ordinalSuffix = getOrdinalSuffix(round);
   $: ordinalRound = NUM_TO_ORDINAL_ARR[round];
+  $: ordinalRoundOrig = NUM_TO_ORDINAL_ARR[$GameData.round];
 </script>
 
 <h1>{round}<sup>{ordinalSuffix}</sup> Month</h1>
 <!-- Game Data store will automatically draw a card -->
-<TapIndicator message="Tap to draw a card" on:click={GameData.advanceGameState}>
+<TapIndicator
+  message="Tap to draw a card"
+  on:click={GameData.advanceGameState}
+  disabled={round !== 1}
+>
   <button id="draw-card">
     <img class="card-back" src={cardBack} alt="Card back" />
     <img class="card-back" src={cardBack} alt="Card back" />
@@ -21,9 +26,9 @@
 </TapIndicator>
 
 <p>
-  Migrants face many challenges on a daily basis. Draw your
+  Draw your
   <b>{round}<sup>{ordinalSuffix}</sup></b>
-  card to see the {ordinalRound}
+  card to see the {ordinalRoundOrig}
   event and make a decision on how to cope with it.
 </p>
 
@@ -32,7 +37,7 @@
     /* TODO: Fix later */
     all: unset;
     width: 200px;
-    height: 280px;
+    height: 290px;
     position: relative;
   }
 
