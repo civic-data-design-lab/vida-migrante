@@ -15,7 +15,10 @@
    */
   export let minimized;
 
+  /** Callback function on card tap. */
   export let onCardTap;
+
+  export let roundNum;
 
   const getCardDetails = () => {
     // Use set to avoid adding duplicates
@@ -49,7 +52,7 @@
   $: cardDetails = getCardDetails();
 </script>
 
-<TapIndicator message="Tap to show options" on:click={onCardTap}>
+<TapIndicator message="Tap to show options" on:click={onCardTap} disabled={roundNum !== 1}>
   {#key minimized}
     <article in:slide={{ duration: 200 }} style="height: {minimized ? 'max-content' : '510px'};">
       <header style="background-color: var(--accent-{CARD_CATEGORY_COLOR_MAP[card.category]});">

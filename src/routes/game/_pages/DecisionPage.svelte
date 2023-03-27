@@ -8,6 +8,12 @@
   /** @type {import('$types').Card} */
   $: card = $page.data.cardData[$GameData.currentCardId];
 
+  /**
+   * 1-indexed round number
+   * @type {number}
+   */
+  $: roundNum = $GameData.round + 1;
+
   /** Where or not to show the card's options */
   let showOptions = false;
 
@@ -94,7 +100,7 @@
     <button on:click={() => makeDecision(displayedOption.id)} class="button">Select</button>
   </div>
 </Modal>
-<Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} />
+<Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} {roundNum} />
 {#if showOptions}
   <h4 class="prompt">{card.prompt || ''}</h4>
   <ul>
