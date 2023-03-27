@@ -1,4 +1,5 @@
 <script>
+  import LanguageToggle from '$lib/components/LanguageToggle.svelte';
   import { GameData } from '$lib/stores/gameData';
   import { WindowHeight } from '$lib/stores/windowHeight';
   import { GameStates } from '$lib/utils/types';
@@ -48,6 +49,9 @@
           <a href="/game" data-sveltekit-reload on:click={() => localStorage.removeItem('gameData')}
             >Clear local storage/reset game data</a
           >
+        </li>
+        <li>
+          <LanguageToggle />
         </li>
       </ul>
     {/if}

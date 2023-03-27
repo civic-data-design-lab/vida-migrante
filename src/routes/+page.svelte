@@ -4,6 +4,7 @@
   import { Parallax, ParallaxLayer } from 'svelte-parallax';
   import { onMount } from 'svelte';
   import arrowIcon from '$images/keyboard-arrow-down_119013.svg';
+  import LanguageToggle from '$lib/components/LanguageToggle.svelte';
 
   /** Page data loaded from `+layout.server.svelte` */
   export let data;
@@ -30,6 +31,9 @@
 
 <svelte:window bind:scrollY={y} />
 
+<div class="language-toggle-container">
+  <LanguageToggle />
+</div>
 <Parallax sections={3} bind:this={parallax}>
   <div id="container" style="background-color: white;">
     {#if !page && ready}
@@ -282,5 +286,12 @@
     z-index: 13;
     position: absolute;
     bottom: 5%;
+  }
+
+  .language-toggle-container {
+    position: fixed;
+    z-index: 999;
+    right: 20px;
+    bottom: 20px;
   }
 </style>
