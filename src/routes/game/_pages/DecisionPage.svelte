@@ -98,9 +98,9 @@
 
 <Modal showModal={displayedOption}>
   <div class="implication-body" slot="body">
-    <h3>{displayedOption?.description}</h3>
-    <p>{@html optionUpdatesDescription}</p>
-    <p>{@html displayedOption?.implicationText || ''}</p>
+    <h3 style="margin-top:.2em;">{displayedOption?.description}</h3>
+    <p style="margin-bottom:0;">{@html optionUpdatesDescription}</p>
+    <p style="margin-top:0;">{@html displayedOption?.implicationText || ''}</p>
     <button on:click={() => makeDecision(displayedOption.id)} class="button">
       {#if language === Languages.ENGLISH}
         Select

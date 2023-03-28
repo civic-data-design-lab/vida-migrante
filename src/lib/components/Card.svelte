@@ -118,7 +118,7 @@
 
   header {
     /* Keep header at the top even if card scrolls */
-    position: sticky;
+    position: relative;
     top: 0;
 
     border-radius: 22px 22px 0 0;

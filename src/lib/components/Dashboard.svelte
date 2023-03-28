@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import Range from '$components/Range.svelte';
+  import value from '$components/Range.svelte';
   import RangeSlider from 'svelte-range-slider-pips';
   import Modal from '$components/Modal.svelte';
   import { GameData } from '$gameData';
@@ -117,13 +118,13 @@
 
 <div id="expense-board">
   <div class="alignleft">
-    <p4 style="color: #505050; font-weight: 500; font-size: 12.5pt; margin-bottom:.5rem;"
+    <p4 style="color: #505050; font-weight: 500; font-size: 11.5pt; margin-bottom:.4em;"
       >{#if language == Languages.ENGLISH} Expenses: {:else} Gastos: {/if}
       <b>${player_expenses}</b></p4
     >
   </div>
   <div class="alignleft">
-    <p4 style="color: #7BA522; font-weight: 500; font-size: 12.5pt"
+    <p4 style="color: #7BA522; font-weight: 500; font-size: 11.5pt; margin-bottom:.4em;"
       >{#if language == Languages.ENGLISH} Income:{:else} Ingresos: {/if}
       <b>${player_income}</b></p4
     >
@@ -151,21 +152,7 @@
   {/if}
 </div>
 <div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
-  <button
-    id="modal-button"
-    class="button"
-    style="font-family: 'Rubik';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 14px;
-
-  /* identical to box height, or 140% */
-  box-sizing: border-box;
-
-  /* FFFFFF */
-  color: #FFFFFF;"
-  >
+  <button id="modal-button-key" class="button">
     {#if language == Languages.ENGLISH}
       Show Key Indicators +
     {:else}
@@ -251,14 +238,14 @@
 
 <Modal showModal={displayedSpending}>
   <div id="modal-body" slot="body">
-    <h2 style="color:var(--gray)">{displayedSpending?.name}</h2>
     <img
       src={`/images/dashboard/${displayedSpending?.icon ?? 'RENT.png'}`}
       alt={displayedSpending?.icon}
     />
+    <h1 class="modal-title" style="color:var(--gray)">{displayedSpending?.name}</h1>
     <div style="display: flex; flex-direction: row;">
       <div style="display: flex; flex-direction: column; align-content: left; text-align: left;">
-        <p>
+        <p style="margin-bottom:.2em;">
           <b
             >{#if language == Languages.ENGLISH}
               Your Monthly Expense{:else}
@@ -268,7 +255,7 @@
         </p>
         <p4
           >{#if language == Languages.ENGLISH}Average Migrant Household Expense{:else}
-            Gasto promedio de hogares migrantes
+            Gasto Promedio de Hogares Migrantes
           {/if}</p4
         >
         <p4
@@ -278,9 +265,9 @@
         >
       </div>
       <div style="display: flex; flex-direction: column; align-content: right;">
-        <p><b>${displayedSpending?.expense}</b></p>
-        <p4>${displayedSpending?.avg_migrant_household}</p4>
-        <p4>${displayedSpending?.avg_national_expense}</p4>
+        <p style="text-align:right; margin-bottom:.2em;"><b>${displayedSpending?.expense}</b></p>
+        <p4 style="text-align:right"><b>${displayedSpending?.avg_migrant_household}</b></p4>
+        <p4 style="text-align:right"><b>${displayedSpending?.avg_national_expense}</b></p4>
       </div>
     </div>
   </div>
@@ -293,10 +280,10 @@
     align-items: center;
   }
 
-  span {
+  /* span {
     font-family: var(--font-sirenia);
     font-size: 14pt;
-  }
+  } */
 
   #container {
     display: flex;
@@ -315,7 +302,7 @@
   #expense-board {
     display: flex;
     justify-content: space-between;
-    margin-top: 1em;
+    margin-top: 0.5em;
   }
 
   #expense-references {
@@ -420,13 +407,13 @@
     margin: 1px;
     /* border: 1.5px solid #5273B0; */
   }
-  .circle {
+  /* .circle {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     margin-top: 0.3em;
     margin-right: 0.5em;
-  }
+  } */
 
   .alignleft {
     display: flex;
@@ -451,6 +438,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    width: 80vw;
+    margin-bottom: 1em;
+  }
+
+  .modal-title {
+    font-family: 'sirenia', sans-serif;
+    color: #505050;
+    margin-block: 3vh;
   }
 
   /* slider */
@@ -483,5 +478,19 @@
     display: flex;
     flex-direction: row;
     place-content: center;
+  }
+
+  #modal-button-key {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  #expense-references {
   }
 </style>

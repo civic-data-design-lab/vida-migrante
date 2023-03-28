@@ -65,7 +65,7 @@
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
-    padding: 5vw;
+    padding: 2em;
     overflow: scroll;
   }
 
@@ -78,13 +78,14 @@
   }
 
   .backicon {
-    height: 15px;
-    color: #505050;
+    height: 10px;
+    color: #6f6f6f;
     display: flex;
     justify-content: center;
     z-index: 13;
     transform: rotate(90deg);
     position: relative;
-    padding-right: 1em;
+    padding-right: 0.5em;
+    padding-top: 1em;
   }
 </style>

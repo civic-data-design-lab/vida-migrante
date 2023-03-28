@@ -10,7 +10,7 @@ overall styling. Actual page components can be found in the `_pages/` directory.
 
   const rootPadding = 10;
 
-  $: paddingTop = hasBanner ? 120 : rootPadding;
+  $: paddingTop = hasBanner ? 100 : rootPadding;
   let paddingBottom;
   let botThreshold;
   $: {
@@ -42,5 +42,9 @@ overall styling. Actual page components can be found in the `_pages/` directory.
     /* height: 100vh; */
 
     overflow-y: scroll;
+  }
+
+  .game-page::-webkit-scrollbar {
+    display: none;
   }
 </style>

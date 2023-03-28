@@ -10,7 +10,7 @@
   onMount(() => {
     const vh = windowHeight / 100;
     topThreshold = vh * 15;
-    botThreshold = vh * 90;
+    botThreshold = vh * 85;
     drawerTop = botThreshold;
     backdropThreshold = botThreshold - (botThreshold - topThreshold) / 5;
   });
@@ -116,16 +116,14 @@
     height: 100vh;
     width: 100vw;
     z-index: 2;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     background: #f9f9f9;
     filter: drop-shadow(0px -5px 8px);
-    animation: wiggle 5s infinite;
+    animation: wiggle 7s infinite;
     animation-delay: 2s;
   }
 
@@ -140,7 +138,7 @@
   #drawer-handle-hitbox {
     height: 20px;
     width: 137px;
-    margin-block: calc(2.5vh - 6px);
+    margin-block: calc(2vh - 6px);
     margin-bottom: 0;
     cursor: ns-resize;
     display: flex;
@@ -161,20 +159,32 @@
     100% {
       transform: translate(0rem);
     }
-    12.5% {
+    10% {
       transform: translate(0, 0rem);
     }
-    25% {
+    20% {
       transform: translate(0, 0rem);
     }
-    62.5% {
+    30% {
       transform: translate(0, 0rem);
     }
-    75% {
+    40% {
       transform: translate(0, 0rem);
     }
     50% {
       transform: translate(0, -1rem);
+    }
+    60% {
+      transform: translate(0, 0rem);
+    }
+    70% {
+      transform: translate(0, 0rem);
+    }
+    80% {
+      transform: translate(0, 0rem);
+    }
+    90% {
+      transform: translate(0, 0rem);
     }
   }
 </style>

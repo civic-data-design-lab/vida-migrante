@@ -28,17 +28,29 @@
 {#if language == Languages.ENGLISH}
   <h1
     style="width: 200px;
-word-wrap: break-word;"
+word-wrap: break-word;margin-bottom:.2em;"
   >
     Choose your occupation
   </h1>
+  <p
+    style="width: 80%;
+word-wrap: break-word;margin-top:.1em; text-align:center"
+  >
+    Migrants have limited options to get a job.
+  </p>
 {:else}
   <h1
     style="width: 250px;
-word-wrap: break-word;"
+word-wrap: break-word;margin-bottom:.2em;"
   >
     Selecciona una ocupación
   </h1>
+  <p
+    style="width: 80%;
+word-wrap: break-word; margin-top:.1em; text-align:center"
+  >
+    Los migrantes tienen opciones limitadas para encontrar empleo.
+  </p>
 {/if}
 <div id="jobs">
   {#each jobs as job, i}
@@ -62,7 +74,7 @@ word-wrap: break-word;"
 <Modal bind:showModal>
   <div id="modal-body" slot="body">
     <img id="modal-img" src={modalImgSrc} alt={modalSector} />
-    <b id="modal-title">{modalTitle}</b>
+    <h1 id="modal-title">{modalTitle}</h1>
     {#if language == Languages.ENGLISH}
       <p id="modal-text">
         <b>{modalDemo}</b> of migrants work in the <b>{modalSector}</b> sector in Ecuador. Your

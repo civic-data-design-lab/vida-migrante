@@ -81,6 +81,10 @@
     text-align: center;
     overflow: scroll;
     inline-size: 90%;
-    height: 100vh;
+    height: 80vh;
+  }
+
+  #drawer-body::-webkit-scrollbar {
+    display: none;
   }
 </style>

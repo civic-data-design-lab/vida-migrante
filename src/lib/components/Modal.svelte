@@ -22,6 +22,11 @@
     max-width: 80vw;
     max-height: 80vh;
     border-radius: 32px;
+    border-width: 2px;
+  }
+
+  dialog::-webkit-scrollbar {
+    display: none;
   }
 
   dialog::backdrop {

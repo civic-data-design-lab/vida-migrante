@@ -41,7 +41,7 @@
   .migrant-banner {
     position: absolute;
     width: 100%;
-    top: 57px;
+    top: 1.5em;
   }
 
   .migrant-banner-content {
