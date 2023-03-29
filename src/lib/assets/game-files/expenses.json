@@ -26,7 +26,7 @@
         },
         {
             "name": "Household & Utilities",
-            "name2": "householdUtilitiesEssential",
+            "name2": "household_utilities_essential",
             "icon": "HOUSEHOLD.png",
             "expense": 0,
             "avg_national_expense": "unknown",

@@ -23,8 +23,8 @@
   let foodInsecureText =
     language === Languages.ENGLISH ? 'Food Insecure' : 'Inseguridad Alimentaria';
 
-  $: player_expenses = sumValues($GameData.resources.expenditures);
-  $: player_income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
+  let player_expenses = sumValues($GameData.resources.expenditures);
+  let player_income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
   // Get the migrant's food security status
   $: migrantInfo = $page.data.migrantData.migrants.find(
@@ -65,30 +65,15 @@
     initial_expenses.push(0);
   }
   for (let spending of spendings) {
-    // spending.expense = $GameData.resources?.expenses;
-    // spending.name
-    // console.log($GameData.resources.expenditures[spending.name2]);
     spending.expense = $GameData.resources.expenditures[spending.name2];
   }
 
   //slider
   let slider_theme = 'default';
 
-  function onChangeExpense(spending, value) {
-    console.log('changel, ', spending, value);
-    //update total expenses
-    spending.expense = value;
-    player_expenses = 0;
-    for (let item of spendings) {
-      player_expenses += item.expense;
-    }
-  }
-
   function updateChart() {
     player_expenses = 0;
     for (let item of spendings) {
-      console.log(item);
-      console.log(item.expense);
       player_expenses += item.expense;
     }
     // let expenses = [];

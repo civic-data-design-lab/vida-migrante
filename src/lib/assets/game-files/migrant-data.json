@@ -72,8 +72,8 @@
           "rent": 104,
           "food": 115,
           "health": 54,
-          "householdUtilitiesEssential": 30,
-          "householdUtilitiesNonEssential": 31,
+          "household_utilities_essential": 30,
+          "household_utilities_non_essential": 31,
           "remittances": 20,
           "internet": 11,
           "other": []
