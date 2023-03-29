@@ -19,12 +19,12 @@
   let total_columns = 55;
   let max_expense = 800;
 
-  let foodSecureText = language == Languages.ENGLISH ? 'Food Secure' : 'Seguridad Alimentaria';
+  let foodSecureText = language === Languages.ENGLISH ? 'Food Secure' : 'Seguridad Alimentaria';
   let foodInsecureText =
-    language == Languages.ENGLISH ? 'Food Insecure' : 'Inseguridad Alimentaria';
+    language === Languages.ENGLISH ? 'Food Insecure' : 'Inseguridad Alimentaria';
 
-  let player_expenses = sumValues($GameData.resources.expenditures);
-  let player_income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
+  $: player_expenses = sumValues($GameData.resources.expenditures);
+  $: player_income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
   // Get the migrant's food security status
   $: migrantInfo = $page.data.migrantData.migrants.find(
@@ -46,14 +46,14 @@
   for (let i = 0; i < total_columns; i++) {
     if (i < Math.ceil((total_columns * player_expenses) / max_expense)) {
       expenses.push('oval_filled');
-    } else if (i == Math.ceil((total_columns * player_income) / max_expense)) {
+    } else if (i === Math.ceil((total_columns * player_income) / max_expense)) {
       expenses.push('oval_green');
-    } else if (i == 54) {
+    } else if (i === 54) {
       expenses.push('oval_red');
-    } else if (i == 37) {
+    } else if (i === 37) {
       //$540*55/800
       expenses.push('oval_yellow');
-    } else if (i == 52) {
+    } else if (i === 52) {
       expenses.push('oval_blue');
     } else {
       expenses.push('oval');
@@ -87,31 +87,33 @@
   function updateChart() {
     player_expenses = 0;
     for (let item of spendings) {
+      console.log(item);
+      console.log(item.expense);
       player_expenses += item.expense;
     }
     // let expenses = [];
     for (let i = 0; i < total_columns; i++) {
       if (i < Math.ceil((total_columns * player_expenses) / max_expense)) {
-        if (i == Math.ceil((total_columns * player_income) / max_expense)) {
+        if (i === Math.ceil((total_columns * player_income) / max_expense)) {
           expenses[i] = 'oval_filled_green';
-        } else if (i == 54) {
+        } else if (i === 54) {
           expenses[i] = 'oval_filled_red';
-        } else if (i == 37) {
+        } else if (i === 37) {
           //$540*55/800
           expenses[i] = 'oval_filled_yellow';
-        } else if (i == 52) {
+        } else if (i === 52) {
           expenses[i] = 'oval_filled_blue';
         } else {
           expenses[i] = 'oval_filled';
         }
-      } else if (i == Math.ceil((total_columns * player_income) / max_expense)) {
+      } else if (i === Math.ceil((total_columns * player_income) / max_expense)) {
         expenses[i] = 'oval_green';
-      } else if (i == 54) {
+      } else if (i === 54) {
         expenses[i] = 'oval_red';
-      } else if (i == 37) {
+      } else if (i === 37) {
         //$540*55/800
         expenses[i] = 'oval_yellow';
-      } else if (i == 52) {
+      } else if (i === 52) {
         expenses[i] = 'oval_blue';
       } else {
         expenses[i] = 'oval';
@@ -123,18 +125,18 @@
 <div id="expense-board">
   <div class="alignleft">
     <p4 style="color: #505050; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
-      >{#if language == Languages.ENGLISH} Expenses: {:else} Gastos: {/if}
+      >{#if language === Languages.ENGLISH} Expenses: {:else} Gastos: {/if}
       <b>${player_expenses}</b></p4
     >
   </div>
   <div class="alignleft">
     <p4 style="color: #7BA522; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
-      >{#if language == Languages.ENGLISH} Income:{:else} Ingresos: {/if}
+      >{#if language === Languages.ENGLISH} Income:{:else} Ingresos: {/if}
       <b>${player_income}</b></p4
     >
   </div>
 </div>
-<div id="">
+<div id="expense-bars">
   <section>
     {#each expenses as color}
       <!-- <h4>{color}</h4> -->
@@ -143,7 +145,7 @@
   </section>
 </div>
 <div id="migrant-state">
-  {#if language == Languages.ENGLISH}
+  {#if language === Languages.ENGLISH}
     <p4 style="width:100%; font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
       >You work <b><i>{$GameData.resources.time}</i></b> hours a week & you are
       <b><i>{foodSecurityStatus}</i></b>.</p4
@@ -157,7 +159,7 @@
 </div>
 <div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
   <button id="modal-button-key" class="button">
-    {#if language == Languages.ENGLISH}
+    {#if language === Languages.ENGLISH}
       Show Key Indicators +
     {:else}
       Ver Indicadores Clave +
@@ -169,28 +171,28 @@
   <div id="name-board">
     <div class="alignleft">
       <p4 style="color: #505050;"
-        >{#if language == Languages.ENGLISH}Average Migrant Household Income
+        >{#if language === Languages.ENGLISH}Average Migrant Household Income
         {:else}
           Ingreso Promedio de Migrantes{/if}</p4
       >
     </div>
     <div class="alignleft">
       <p4 style="color: #CF6348;"
-        >{#if language == Languages.ENGLISH}Average Ecuadorian Income
+        >{#if language === Languages.ENGLISH}Average Ecuadorian Income
         {:else}
           Ingreso Promedio de Hogar en Ecuador{/if}</p4
       >
     </div>
     <div class="alignleft">
       <p4 style="color: #E5B257;"
-        >{#if language == Languages.ENGLISH}Ecuadorian Vital Family Basket
+        >{#if language === Languages.ENGLISH}Ecuadorian Vital Family Basket
         {:else}
           Canasta Vital en Ecuador{/if}</p4
       >
     </div>
     <div class="alignleft">
       <p4 style="color: #5273B0;"
-        >{#if language == Languages.ENGLISH}Ecuadorian Basic Family Basket
+        >{#if language === Languages.ENGLISH}Ecuadorian Basic Family Basket
         {:else}
           Canasta Básica en Ecuador{/if}</p4
       >
@@ -206,7 +208,7 @@
 
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
   <h2 style="margin-bottom: 0;">
-    {#if language == Languages.ENGLISH}Allocate Your Spending{:else}Asigna tus Gastos {/if}
+    {#if language === Languages.ENGLISH}Allocate Your Spending{:else}Asigna tus Gastos {/if}
   </h2>
   {#each spendings as spending (spending.name)}
     <section>
@@ -251,19 +253,19 @@
       <div style="display: flex; flex-direction: column; align-content: left; text-align: left;">
         <p style="margin-bottom:.2em;">
           <b
-            >{#if language == Languages.ENGLISH}
+            >{#if language === Languages.ENGLISH}
               Your Monthly Expense{:else}
               Tu Gasto Mensual
             {/if}</b
           >
         </p>
         <p4
-          >{#if language == Languages.ENGLISH}Average Migrant Household Expense{:else}
+          >{#if language === Languages.ENGLISH}Average Migrant Household Expense{:else}
             Gasto Promedio de Hogares Migrantes
           {/if}</p4
         >
         <p4
-          >{#if language == Languages.ENGLISH}Average National Expense{:else}
+          >{#if language === Languages.ENGLISH}Average National Expense{:else}
             Gasto Promedio Nacional
           {/if}</p4
         >
