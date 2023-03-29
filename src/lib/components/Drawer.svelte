@@ -6,6 +6,7 @@
   let handle, prevTouch;
   let cancelClick = false;
   let transition = '';
+  let drawer;
 
   onMount(() => {
     const vh = windowHeight / 100;
@@ -16,6 +17,7 @@
   });
 
   function boundDrag(newVal) {
+    drawer.style.animation = 'none';
     drawerTop = Math.min(Math.max(newVal, topThreshold), botThreshold);
   }
 
@@ -66,6 +68,7 @@
   }
 
   function toggleDrawer() {
+    drawer.style.animation = 'none';
     if (cancelClick) cancelClick = false;
     else {
       transition = 'top 1s ease, background-color 1s ease';
@@ -90,7 +93,7 @@
   "
   on:click={closeDrawer}
 />
-<div id="drawer" style="top: {drawerTop}px; transition: {transition}">
+<div id="drawer" style="top: {drawerTop}px; transition: {transition}" bind:this={drawer}>
   <div
     id="drawer-handle-hitbox"
     on:touchstart={onTouchStart}
