@@ -101,7 +101,7 @@ export const Languages = {
  * @prop {number} rent - Amount of rent expenses
  * @prop {number} food - Amount of food expenses
  * @prop {number} health - Amount of basic health expenses
- * @prop {number} housholdUtilitiesEssential - *Essential* household expenses
+ * @prop {number} householdUtilitiesEssential - *Essential* household expenses
  * @prop {number} householdUtilitiesNonEssential - *Non-essential* household
  *    expenses
  * @prop {number} remittances - Amount spent on remittances each month

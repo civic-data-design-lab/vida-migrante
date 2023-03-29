@@ -14,8 +14,8 @@
           "rent": 120,
           "food": 132,
           "health": 43,
-          "houshold_utilities_essential": 38,
-          "houshold_utilities_non_essential": 31,
+          "household_utilities_essential": 38,
+          "household_utilities_non_essential": 31,
           "remittances": 21,
           "internet": 14,
           "other": []
@@ -43,8 +43,8 @@
           "rent": 76,
           "food": 91,
           "health": 35,
-          "houshold_utilities_essential": 25,
-          "houshold_utilities_non_essential": 25,
+          "household_utilities_essential": 25,
+          "household_utilities_non_essential": 25,
           "remittances": 34,
           "internet": 9,
           "other": []
@@ -72,8 +72,8 @@
           "rent": 104,
           "food": 115,
           "health": 54,
-          "housholdUtilitiesEssential": 30,
-          "housholdUtilitiesNonEssential": 31,
+          "householdUtilitiesEssential": 30,
+          "householdUtilitiesNonEssential": 31,
           "remittances": 20,
           "internet": 11,
           "other": []
@@ -101,8 +101,8 @@
           "rent": 67,
           "food": 76,
           "health": 40,
-          "houshold_utilities_essential": 19,
-          "houshold_utilities_non_essential": 15,
+          "household_utilities_essential": 19,
+          "household_utilities_non_essential": 15,
           "remittances": 16,
           "internet": 11,
           "other": []
