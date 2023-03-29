@@ -122,7 +122,7 @@
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     background: #f9f9f9;
-    filter: drop-shadow(0px -5px 8px);
+    filter: drop-shadow(0px -5px 5px rgba(0, 0, 0, 0.3));
     animation: wiggle 7s infinite;
     animation-delay: 2s;
   }

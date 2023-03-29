@@ -10,6 +10,8 @@
 
   $: language = $page.data.language;
 
+  let tapText = language == Languages.ENGLISH ? 'Tap to show options' : 'Click para ver opciones';
+
   /** @type {import("$types").Card} */
   export let card;
 
@@ -56,7 +58,7 @@
   $: cardDetails = getCardDetails();
 </script>
 
-<TapIndicator message="Tap to show options" on:click={onCardTap} disabled={roundNum !== 1}>
+<TapIndicator message={tapText} on:click={onCardTap} disabled={roundNum !== 1}>
   {#key minimized}
     <article in:slide={{ duration: 200 }} style="height: {minimized ? 'max-content' : '510px'};">
       <header style="background-color: var(--accent-{CARD_CATEGORY_COLOR_MAP[card.category]});">

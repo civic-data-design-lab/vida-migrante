@@ -82,7 +82,10 @@
     const incomeAdjustmentText = getIncomeAdjustmentText(updates.income?.salary);
     const hoursAdjustmentText = getHoursAdjustmentText(updates.time);
 
-    let finalText = `If you choose this option you ${incomeAdjustmentText} and ${hoursAdjustmentText}`;
+    let finalText =
+      language == Languages.ENGLISH
+        ? `If you choose this option you ${incomeAdjustmentText} and ${hoursAdjustmentText}`
+        : `Si eliges esta opción, obtendrás ${incomeAdjustmentText} y ${hoursAdjustmentText}`;
     if (option.except) {
       finalText += `, ${option.except}`;
     }

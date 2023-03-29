@@ -167,9 +167,13 @@
         >
           <div style="z-index: 12; padding-left:2rem; padding-right:2rem;">
             {#if language == Languages.ENGLISH}
-              <h1 style="text-align: center;">Venezuelan Migrants <br /> in Ecuador</h1>
+              <h1 style="text-align: center; width: auto;">
+                Venezuelan Migrants <br /> in Ecuador
+              </h1>
             {:else}
-              <h1 style="text-align: center;">Migrantes Venezolanos <br /> en Ecuador</h1>
+              <h1 style="text-align: center; width: auto;">
+                Migrantes Venezolanos <br /> en Ecuador
+              </h1>
             {/if}
             <p style="text-align: left;">
               {#if language == Languages.ENGLISH}
@@ -207,7 +211,7 @@
           offset={2}
           rate={1}
           style="
-        background-color: #f6e0b1; 
+        background-color: 0; 
         display: flex; 
         justify-content: center; 
         align-items: center; 

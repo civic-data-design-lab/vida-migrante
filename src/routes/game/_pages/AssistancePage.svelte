@@ -18,13 +18,13 @@
 {#if language === Languages.ENGLISH}
   <h1
     style="width: 250px;
-word-wrap: break-word; margin-bottom:.2em;"
+word-wrap: break-word; margin-bottom:.2em; "
   >
     Select an assistance
   </h1>
   <p
     style="width: 80%;
-word-wrap: break-word;margin-top:.1em; text-align:center;margin-bottom:.1em;"
+word-wrap: break-word; text-align:center;margin-bottom:.1em;"
   >
     Assistance help migrants' basic needs.
   </p>
@@ -78,11 +78,12 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20vw;
+    overflow-y: hidden;
   }
 
   .assist-thumb {
     all: unset;
-    width: 50%;
+    width: 100%;
   }
 
   .assist-thumb:hover {

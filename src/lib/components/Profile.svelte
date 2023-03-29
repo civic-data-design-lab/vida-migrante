@@ -15,6 +15,9 @@
 </script>
 
 <div id="container">
+  <div class="">
+    <h1 style="padding:0; margin:0;">{migrant.name}</h1>
+  </div>
   <img src={`/images/migrants/${migrant.name}.png`} alt={migrant.name} />
   {#if language == Languages.ENGLISH}
     <p>

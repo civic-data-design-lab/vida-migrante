@@ -28,7 +28,7 @@
 {#if language == Languages.ENGLISH}
   <h1
     style="width: 200px;
-word-wrap: break-word;margin-bottom:.2em;"
+word-wrap: break-word;margin-bottom:.2em; "
   >
     Choose your occupation
   </h1>
@@ -83,8 +83,8 @@ word-wrap: break-word; margin-top:.1em; text-align:center"
       </p>
     {:else}
       <p id="modal-text">
-        <b>{modalDemo}</b> de los migrantes <b>{modalSector}</b> en el sector de Ecuador. Tu ingreso
-        mensual será de <b>${modalIncome}</b> y trabajarás un promedio de
+        <b>{modalDemo}</b> de los migrantes trabaja en el sector de <b>{modalSector}</b> en Ecuador.
+        Tu ingreso mensual será de <b>${modalIncome}</b> y trabajarás un promedio de
         <b>{modalHours} horas</b> por semana.
       </p>{/if}
     <button
@@ -123,6 +123,7 @@ word-wrap: break-word; margin-top:.1em; text-align:center"
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 30vw;
+    overflow-y: hidden;
   }
 
   .selection-icon {
@@ -156,13 +157,12 @@ word-wrap: break-word; margin-top:.1em; text-align:center"
     height: 5vh;
     width: 50%;
     border-radius: 2.5vh;
-    font: 18pt 'sirenia';
   }
 
   #modal-button:disabled {
     height: 10%;
     width: 65%;
-    inline-size: 100%;
+    inline-size: 80%;
   }
 
   span {

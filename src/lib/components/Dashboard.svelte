@@ -19,6 +19,10 @@
   let total_columns = 55;
   let max_expense = 800;
 
+  let foodSecureText = language == Languages.ENGLISH ? 'Food Secure' : 'Seguridad Alimentaria';
+  let foodInsecureText =
+    language == Languages.ENGLISH ? 'Food Insecure' : 'Inseguridad Alimentaria';
+
   let player_expenses = sumValues($GameData.resources.expenditures);
   let player_income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
@@ -34,7 +38,7 @@
       migrantInfo.householdSize,
       $GameData.resources.copingLevel
     );
-    foodSecurityStatus = foodSecure ? 'Food Secure' : 'Food Insecure';
+    foodSecurityStatus = foodSecure ? foodSecureText : foodInsecureText;
   }
 
   //create the oval charts
@@ -118,19 +122,19 @@
 
 <div id="expense-board">
   <div class="alignleft">
-    <p4 style="color: #505050; font-weight: 500; font-size: 11.5pt; margin-bottom:.4em;"
+    <p4 style="color: #505050; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if language == Languages.ENGLISH} Expenses: {:else} Gastos: {/if}
       <b>${player_expenses}</b></p4
     >
   </div>
   <div class="alignleft">
-    <p4 style="color: #7BA522; font-weight: 500; font-size: 11.5pt; margin-bottom:.4em;"
+    <p4 style="color: #7BA522; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if language == Languages.ENGLISH} Income:{:else} Ingresos: {/if}
       <b>${player_income}</b></p4
     >
   </div>
 </div>
-<div id="bars">
+<div id="">
   <section>
     {#each expenses as color}
       <!-- <h4>{color}</h4> -->
@@ -140,13 +144,13 @@
 </div>
 <div id="migrant-state">
   {#if language == Languages.ENGLISH}
-    <p4 style="font-weight: 500; font-size: 9pt; margin-top:.5rem;"
+    <p4 style="width:100%; font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
       >You work <b><i>{$GameData.resources.time}</i></b> hours a week & you are
       <b><i>{foodSecurityStatus}</i></b>.</p4
     >
   {:else}
-    <p4 style="font-weight: 500; font-size: 9pt; margin-top:.5rem;"
-      >Trabajas <b><i>{$GameData.resources.time}</i></b> horas a la semana &
+    <p4 style="font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
+      >Trabajas <b><i>{$GameData.resources.time}</i></b> horas a la semana & tienes
       <b><i>{foodSecurityStatus}</i></b>.</p4
     >
   {/if}
@@ -440,6 +444,10 @@
     justify-content: space-evenly;
     width: 80vw;
     margin-bottom: 1em;
+  }
+
+  img {
+    width: 50%;
   }
 
   .modal-title {

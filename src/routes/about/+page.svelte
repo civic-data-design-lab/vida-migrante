@@ -69,6 +69,10 @@
     overflow: scroll;
   }
 
+  #container::-webkit-scrollbar {
+    display: none;
+  }
+
   p {
     text-align: left;
   }
@@ -85,7 +89,7 @@
     z-index: 13;
     transform: rotate(90deg);
     position: relative;
-    padding-right: 0.5em;
+    padding-right: 1.5em;
     padding-top: 1em;
   }
 </style>

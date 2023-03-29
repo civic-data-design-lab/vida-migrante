@@ -95,10 +95,12 @@
 
   .carousel-content {
     height: 100%;
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: hidden;
+    justify-content: space-evenly;
   }
 
   h3 {
