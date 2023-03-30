@@ -8,6 +8,7 @@
   --accent-blue: #5273b0;
   --accent-red: #cf6348;
   --accent-yellow: #e5b257;
+  --accent-green: #7ba522;
 
   --light-blue: #c5dcee;
   --light-red: #eec3b8;
@@ -217,4 +218,20 @@ li {
   padding: 6px 1px 1px 1px;
   font-size: 3px;
   text-align: center;
+}
+
+.accent-red {
+  color: var(--accent-red);
+}
+
+.accent-blue {
+  color: var(--accent-blue);
+}
+
+.accent-yellow {
+  color: var(--accent-yellow);
+}
+
+.accent-green {
+  color: var(--accent-green);
 }

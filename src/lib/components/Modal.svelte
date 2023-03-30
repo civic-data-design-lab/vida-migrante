@@ -1,7 +1,10 @@
 <script>
   export let showModal;
   let dialog;
-  $: if (dialog && showModal) dialog.showModal();
+  $: if (dialog) {
+    if (showModal) dialog.showModal();
+    else dialog.close();
+  }
 </script>
 
 <dialog
