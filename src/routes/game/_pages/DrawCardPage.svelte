@@ -15,7 +15,7 @@
   $: ordinalRoundOrig = NUM_TO_ORDINAL_ARR[$GameData.round];
 </script>
 
-{#if language == Languages.ENGLISH}
+{#if language === Languages.ENGLISH}
   <h1>{round}<sup>{ordinalSuffix}</sup> Month</h1>
 {:else}
   <h1>{round}<sup>{ordinalSuffix}</sup> Mes</h1>
