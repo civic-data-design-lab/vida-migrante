@@ -145,9 +145,9 @@
             <h1 style="text-align: center;">Vida Migrante</h1>
             <p style="font-size:21pt; font-weight:400: line-height:24pt;text-align: center;">
               {#if language == Languages.ENGLISH}
-                Venezuelan Migrants' Integration in Ecuador.
+                Venezuelan Migrants' Inclusion in Ecuador.
               {:else}
-                Integración de los Migrantes Venezolanos en Ecuador.
+                Inclusión de los Migrantes Venezolanos en Ecuador.
               {/if}
             </p>
           </div>
@@ -181,8 +181,8 @@
                 simulation, you will learn about the <b>tough decisions</b> migrants have to make in
                 Ecuador on a daily basis, <b>how they face them</b>, and how
                 <b>assistances are essential</b>
-                to help them through their integration in Ecuador. <br /><br />All the simulation
-                data is based on a survey of
+                to help them through their inclusion in Ecuador. <br /><br />All the simulation data
+                is based on a survey of
                 <b>920 household migrants</b> in Ecuador by the World Food Programme. <br /><br
                 />You will embark on a journey in the life of a Venezuelan migrant to experience the
                 challenges of integrating into Ecuador.
@@ -191,12 +191,12 @@
                 simulación aprenderás sobre lo <b>difícil de las decisiones</b> que diariamente
                 toman los migrantes en el Ecuador, <b>cómo las enfrentan </b> y cómo las
                 <b>asistencias, son esenciales</b>
-                para ayudarlos en su integración en el Ecuador. <br /><br />Todos los datos de la
+                para ayudarlos en su inclusión en el Ecuador. <br /><br />Todos los datos de la
                 simulación se basan en una encuesta realizada a
                 <b>920 hogares de migrantes</b> en el Ecuador realizada por el Programa Mundial de
                 Alimentos. <br /><br />
                 Te embarcarás en un viaje en la vida de un migrante venezolano para experimentar la Desafíos
-                de la integración al Ecuador.
+                de la inclusión al Ecuador.
               {/if}
             </p>
           </div>
@@ -324,7 +324,7 @@
     {:else if page === 1}
       <p>When migrants arrive in Ecuador, they face multiple challenges including:</p>
       <ol>
-        <li>Barriers to integration for migrants</li>
+        <li>Barriers to inclusion for migrants</li>
         <li>Trade-offs the migrants have to make to meet their basic daily needs</li>
         <li>
           How support and assistances (food, access to internet, and legalization of documents) can
@@ -334,8 +334,8 @@
     {:else if page === 2}
       <p>
         In this game you will learn about the struggles of the Venezuelan migrants in Ecuador, how
-        they face them, and how certain assistances can help them through their integration process
-        in Ecuador.
+        they face them, and how certain assistances can help them through their inclusion process in
+        Ecuador.
       </p>
       <p>
         The goal of them game is to go through each one of the four rounds, which is an entire year,

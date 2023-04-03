@@ -5,8 +5,8 @@
   </div>
   <h1>About</h1>
   <p>
-    Vida Migrante: Venezuelan Migrants Integration in Ecuador is a research project analyzing the
-    food security, economic conditions, trade-offs and integration of recent Venezuelan migrants in
+    Vida Migrante: Venezuelan Migrants Inclusion in Ecuador is a research project analyzing the food
+    security, economic conditions, trade-offs and inclusion of recent Venezuelan migrants in
     Ecuador. According to the R4V platform more than 500,000 Venezuelans are living in Ecuador in
     2022. Many of these migrants living in Ecuador struggle to meet their basic needs, during the
     summer of 2022 the United Nations World Food Programme (WFP) interviewed 920 migrants at 16
@@ -29,8 +29,7 @@
   <p>
     Our findings suggest that policy assistances such as programs to regularize immigration
     documents, legalize Venezuelan professional accreditations, or provide significant food
-    assistance would alleviate financial burdens and catalyze integration into the Ecuadorian
-    economy.
+    assistance would alleviate financial burdens and catalyze Inclusion into the Ecuadorian economy.
   </p>
   <p>
     To help understand the financial tribulations and difficult choices made by Venezuelan migrants
