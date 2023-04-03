@@ -42,7 +42,7 @@
       alt="Civic Data Design
     Lab Logo"
     />
-    <img src={wfpLogo} alt="World Food Programme Logo (English)" />
+    <img style="height:28px" src={wfpLogo} alt="World Food Programme Logo (English)" />
   </span>
   <img class="arrowicon" src={arrowIcon} alt="Scroll to see more" />
   <LanguageToggle />
