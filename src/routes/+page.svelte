@@ -5,6 +5,9 @@
   import { onMount } from 'svelte';
   import arrowIcon from '$images/keyboard-arrow-down_119013.svg';
   import LanguageToggle from '$lib/components/LanguageToggle.svelte';
+  import cddlLogo from '$images/cddl_logo_black.svg';
+  import mitLogo from '$images/mit-logo-black-blue.png';
+  import wfpLogo from '$images/wfp-logo-standard-white-en.svg';
 
   /** Page data loaded from `+layout.server.svelte` */
   export let data;
@@ -31,13 +34,19 @@
 
 <svelte:window bind:scrollY={y} />
 
-<div class="language-toggle-container">
+<footer>
+  <span class="logos">
+    <img src={mitLogo} alt="MIT Logo" />
+    <img
+      src={cddlLogo}
+      alt="Civic Data Design
+    Lab Logo"
+    />
+    <img src={wfpLogo} alt="World Food Programme Logo (English)" />
+  </span>
+  <img class="arrowicon" src={arrowIcon} alt="Scroll to see more" />
   <LanguageToggle />
-</div>
-
-<div class="arrow-container">
-  <img class="arrowicon" src={arrowIcon} />
-</div>
+</footer>
 
 <Parallax sections={3} bind:this={parallax}>
   <div id="container" style="background-color: white;">
@@ -361,16 +370,6 @@
     padding: 2.5vw;
   }
 
-  .arrow-container {
-    position: fixed;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    left: 40px;
-    bottom: 30px;
-  }
-
   .arrowicon {
     height: 8px;
     color: #505050;
@@ -379,11 +378,26 @@
     animation: blinker 2s linear infinite;
   }
 
-  .language-toggle-container {
+  footer {
     position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
     z-index: 999;
-    right: 20px;
-    bottom: 20px;
+
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .logos {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .logos img {
+    height: 20px;
   }
 
   @keyframes blinker {
