@@ -55,14 +55,14 @@
         <img
           src={'/images/welcomepage/landscape/QUITO_BG_VOLCANO.png'}
           alt=""
-          style="transform: translate(0,{(-y * 10) /
+          style="transform: translate(0em,{(-y * 10) /
             (layers.length -
               1)}px); position: absolute; z-index: 1; height: 100%; width: 120%; bottom: -20%; left: -10%;"
         />
         <img
           src={'/images/welcomepage/landscape/QUITO_2.png'}
           alt=""
-          style="transform: translate(0,{(-y * 9) /
+          style="transform: translate({-y * 0.2}em,{(-y * 9) /
             (layers.length -
               1)}px); position: absolute; z-index: 2; height: 100%; width: 200%; bottom: -42%; right: -80%;"
           in:fly={{ x: -500, duration: 6000 }}
@@ -70,7 +70,7 @@
         <img
           src={'/images/welcomepage/landscape/AVILA.png'}
           alt=""
-          style="transform: translate(0,{(-y * 8) /
+          style="transform: translate({y * 0.2}em,{(-y * 8) /
             (layers.length -
               1)}px); position: absolute; z-index:3; height:60%; width: 250%; bottom: -10%; right: -50%;"
           in:fly={{ x: 500, duration: 6000 }}
@@ -78,7 +78,7 @@
         <img
           src={'/images/welcomepage/landscape/CARACAS_3.png'}
           alt=""
-          style="transform: translate(0,{(-y * 7) /
+          style="transform: translate({y * 0.2}em,{(-y * 7) /
             (layers.length -
               1)}px); position: absolute; z-index: 4; height: 36%; width: 150%; bottom: -10%; right: -5%;"
           in:fly={{ x: 500, duration: 6000 }}
@@ -86,7 +86,7 @@
         <img
           src={'/images/welcomepage/landscape/CARACAS_BLDGA.png'}
           alt=""
-          style="transform: translate(0,{(-y * 6.5) /
+          style="transform: translate({y * 0.2}em,{(-y * 6.5) /
             (layers.length -
               1)}px); position: absolute; z-index: 5; height: 44%; width: 100%; bottom: -6%; right: 10%;"
           in:fly={{ x: 500, duration: 6000 }}
@@ -94,7 +94,7 @@
         <img
           src={'/images/welcomepage/landscape/QUITO_1.png'}
           alt=""
-          style="transform: translate(0,{(-y * 6) /
+          style="transform: translate({-y * 0.2}em,{(-y * 6) /
             (layers.length -
               1)}px); position: absolute; z-index: 6; height: 35%; width: 200%; left: -5%; bottom: -8%;"
           in:fly={{ x: -500, duration: 6000 }}
@@ -102,7 +102,7 @@
         <img
           src={'/images/welcomepage/landscape/QUITO_HOUSES.png'}
           alt=""
-          style="transform: translate(0,{(-y * 5.5) /
+          style="transform: translate({-y * 0.2}em,{(-y * 5.5) /
             (layers.length -
               1)}px); position: absolute; z-index: 7; height: 50%; width: 100%; bottom: -10%; left: 10%;"
           in:fly={{ x: -500, duration: 6000 }}
@@ -110,7 +110,7 @@
         <img
           src={'/images/welcomepage/landscape/CARACAS_2.png'}
           alt=""
-          style="transform: translate(0,{(-y * 5) /
+          style="transform: translate({y * 0.2}em,{(-y * 5) /
             (layers.length -
               1)}px); position: absolute; z-index: 8; height: 60%; width: 120%; bottom: -20%;"
           in:fly={{ x: 500, duration: 6000 }}
@@ -118,7 +118,7 @@
         <img
           src={'/images/welcomepage/landscape/CARACAS_1.png'}
           alt=""
-          style="transform: translate(0,{(-y * 4.5) /
+          style="transform: translate({-y * 0.2}em,{(-y * 4.5) /
             (layers.length -
               1)}px); position: absolute; z-index: 9; height: 40%; width: 100%; bottom: -20%; right: 10%;"
           in:fly={{ x: -500, duration: 6000 }}
@@ -126,7 +126,7 @@
         <img
           src={'/images/welcomepage/landscape/QUITO_TREES.png'}
           alt=""
-          style="transform: translate(0,{(-y * 4) /
+          style="transform: translate({-y * 0.2}em,{(-y * 4) /
             (layers.length -
               1)}px); position: absolute; z-index: 10; height: 50%; width: 120%; bottom: -12%;"
           in:fly={{ x: -500, duration: 6000 }}
@@ -167,6 +167,7 @@
           rate={1}
           style="
         <!-- background: url('images/welcomepage/background-mountains.png') no-repeat center center fixed;  -->
+        background-color: #f6e0b1;
         width: 100%;
         display: flex; 
         justify-content: center; 
