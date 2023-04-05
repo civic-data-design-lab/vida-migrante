@@ -1,12 +1,8 @@
 <script>
   import { onMount } from 'svelte';
   import Range from '$components/Range.svelte';
-  import value from '$components/Range.svelte';
-  import RangeSlider from 'svelte-range-slider-pips';
   import Modal from '$components/Modal.svelte';
   import { GameData } from '$gameData';
-  import { intros } from 'svelte/internal';
-  import { slide } from 'svelte/transition';
   import { page } from '$app/stores';
   import { isFoodSecure, sumValues } from '$lib/utils/functions';
   import { spendings } from '$gameFiles/expenses.json';
@@ -15,12 +11,7 @@
   $: language = $page.data.language;
   $: isEn = language === Languages.ENGLISH;
 
-  let displayedSpending = null;
-
-  let total_columns = 55;
-  let max_expense = 800;
-
-  $: playerExpenses = sumValues($GameData.resources.expenditures);
+  $: playerExpenses = parseInt(sumValues($GameData.resources.expenditures));
   $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
   // Get the migrant's food security status
@@ -42,50 +33,36 @@
   }
 
   //create the oval charts
-  let expenses = [];
-  for (let spending of spendings) {
-    spending.expense = $GameData.resources.expenditures[spending.name2];
-  }
+  let displayedSpending = null;
+  const total_columns = 55;
+  const max_expense = 800;
+  let expenses = new Array(total_columns).fill('oval');
+  $: columns = Math.floor(total_columns * playerExpenses / max_expense);
+  $: income_column = Math.ceil(total_columns * playerIncome / max_expense);
+  $: expenses = expenses.map((_, i) => {
+    let ovalClass = 'oval';
+    switch (i) {
+      case income_column:
+        ovalClass += '_green';
+        break;
+      case 54:
+        ovalClass += '_red';
+        break;
+      case 52:
+        ovalClass += '_blue';
+        break;
+      case 37:
+        ovalClass += '_yellow';
+    }
+    if (i <= columns) ovalClass += '_filled';
+    return ovalClass;
+  });
 
   //slider
   let slider_theme = 'default';
-
-  function updateChart() {
-    playerExpenses = $GameData.resources.expenditures.household_utilities_non_essential;
-    for (let item of spendings) {
-      playerExpenses += item.expense;
-    }
-    // let expenses = [];
-    for (let i = 0; i < total_columns; i++) {
-      if (i < Math.ceil((total_columns * playerExpenses) / max_expense)) {
-        if (i === Math.ceil((total_columns * playerIncome) / max_expense)) {
-          expenses[i] = 'oval_filled_green';
-        } else if (i === 54) {
-          expenses[i] = 'oval_filled_red';
-        } else if (i === 37) {
-          //$540*55/800
-          expenses[i] = 'oval_filled_yellow';
-        } else if (i === 52) {
-          expenses[i] = 'oval_filled_blue';
-        } else {
-          expenses[i] = 'oval_filled';
-        }
-      } else if (i === Math.ceil((total_columns * playerIncome) / max_expense)) {
-        expenses[i] = 'oval_green';
-      } else if (i === 54) {
-        expenses[i] = 'oval_red';
-      } else if (i === 37) {
-        //$540*55/800
-        expenses[i] = 'oval_yellow';
-      } else if (i === 52) {
-        expenses[i] = 'oval_blue';
-      } else {
-        expenses[i] = 'oval';
-      }
-    }
+  for (let spending of spendings) {
+    spending.expense = $GameData.resources.expenditures[spending.name2];
   }
-
-  onMount(updateChart);
 </script>
 
 <div id="expense-board">
@@ -105,8 +82,7 @@
 <div id="expense-bars">
   <section>
     {#each expenses as color}
-      <!-- <h4>{color}</h4> -->
-      <div id={color} />
+      <div class={color} />
     {/each}
   </section>
 </div>
@@ -123,6 +99,7 @@
     >
   {/if}
 </div>
+
 <div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
   <button id="modal-button-key" class="button">
     {#if isEn}
@@ -132,7 +109,6 @@
     {/if}
   </button>
 </div>
-
 <div id="expense-references">
   <div id="name-board">
     <div class="alignleft">
@@ -197,8 +173,9 @@
     >
       <Range
         on:change={(e) => {
+          let old = spending.expense;
           spending.expense = e.detail.value;
-          updateChart();
+          playerExpenses += spending.expense - old;
         }}
         min={0}
         max={200}
@@ -216,7 +193,7 @@
     />
     <h1 class="modal-title" style="color:var(--gray)">{displayedSpending?.name}</h1>
     <div style="display: flex; flex-direction: row;">
-      <div style="display: flex; flex-direction: column; align-content: left; text-align: left;">
+      <div style="display: flex; flex-direction: column; align-content: start; text-align: left;">
         <p style="margin-bottom:.2em;">
           <b
             >{#if isEn}
@@ -236,7 +213,7 @@
           {/if}</p4
         >
       </div>
-      <div style="display: flex; flex-direction: column; align-content: right;">
+      <div style="display: flex; flex-direction: column; align-content: end">
         <p style="text-align:right; margin-bottom:.2em;"><b>${displayedSpending?.expense}</b></p>
         <p4 style="text-align:right"><b>${displayedSpending?.avg_migrant_household}</b></p4>
         <p4 style="text-align:right"><b>${displayedSpending?.avg_national_expense}</b></p4>
@@ -251,11 +228,6 @@
     justify-content: space-between;
     align-items: center;
   }
-
-  /* span {
-    font-family: var(--font-sirenia);
-    font-size: 14pt;
-  } */
 
   #container {
     display: flex;
@@ -299,21 +271,21 @@
     display: flex;
   }
 
-  #oval {
+  .oval {
     width: 0.25em;
     height: 2em;
     background: #f3f3f3;
     border-radius: 40px;
     margin: 1px;
   }
-  #oval_green {
+  .oval_green {
     width: 0.25em;
     height: 2em;
     background: #7ba522;
     border-radius: 40px;
     margin: 1px;
   }
-  #oval_red {
+  .oval_red {
     width: 0.25em;
     height: 2em;
     background: #cf6348;
@@ -321,7 +293,7 @@
     margin: 1px;
     /* border: 1.5px solid #CF6348; */
   }
-  #oval_yellow {
+  .oval_yellow {
     width: 0.25em;
     height: 2em;
     background: #e5b257;
@@ -329,7 +301,7 @@
     margin: 1px;
     /* border: 1.5px solid #E5B257; */
   }
-  #oval_blue {
+  .oval_blue {
     width: 0.25em;
     height: 2em;
     background: #5273b0;
@@ -337,14 +309,14 @@
     margin: 1px;
     /* border: 1.5px solid #5273B0; */
   }
-  #oval_filled {
+  .oval_filled {
     width: 0.25em;
     height: 2em;
     background: #505050;
     border-radius: 40px;
     margin: 1px;
   }
-  #oval_filled_green {
+  .oval_green_filled {
     width: 0.25em;
     height: 2em;
     background: #7ba522;
@@ -352,7 +324,7 @@
     border-radius: 40px;
     margin: 1px;
   }
-  #oval_filled_red {
+  .oval_red_filled {
     width: 0.25em;
     height: 2em;
     background: #cf6348;
@@ -361,7 +333,7 @@
     margin: 1px;
     /* border: 1.5px solid #CF6348; */
   }
-  #oval_filled_yellow {
+  .oval_yellow_filled {
     width: 0.25em;
     height: 2em;
     background: #e5b257;
@@ -370,7 +342,7 @@
     margin: 1px;
     /* border: 1.5px solid #E5B257; */
   }
-  #oval_filled_blue {
+  .oval_blue_filled {
     width: 0.25em;
     height: 2em;
     background: #5273b0;
@@ -379,6 +351,7 @@
     margin: 1px;
     /* border: 1.5px solid #5273B0; */
   }
+
   /* .circle {
     width: 12px;
     height: 12px;
