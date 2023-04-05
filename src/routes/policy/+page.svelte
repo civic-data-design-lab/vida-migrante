@@ -1,8 +1,9 @@
+<script>
+  import BackButton from '$lib/components/BackButton.svelte';
+</script>
+
 <div id="container">
-  <div style="z-index: 11;position:fixed; right:0">
-    <!-- svelte-ignore a11y-missing-attribute -->
-    <img class="backicon" src="$images/keyboard-arrow-down_119013.svg" onclick="history.back()" />
-  </div>
+  <BackButton />
   <h1 id="policy-title">Policy Recommendations</h1>
 
   <div id="policy-body">
@@ -64,17 +65,5 @@
 
   #policy-body {
     margin-bottom: 5vh;
-  }
-
-  .backicon {
-    height: 10px;
-    color: #6f6f6f;
-    display: flex;
-    justify-content: center;
-    z-index: 13;
-    transform: rotate(90deg);
-    position: relative;
-    padding-right: 1.5em;
-    padding-top: 1em;
   }
 </style>
