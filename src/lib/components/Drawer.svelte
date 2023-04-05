@@ -11,7 +11,7 @@
   onMount(() => {
     const vh = windowHeight / 100;
     topThreshold = vh * 15;
-    botThreshold = vh * 85;
+    botThreshold = Math.min(vh * 85, windowHeight - 155);
     drawerTop = botThreshold;
     backdropThreshold = botThreshold - (botThreshold - topThreshold) / 5;
   });
