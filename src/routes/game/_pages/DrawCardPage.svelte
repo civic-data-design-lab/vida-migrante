@@ -13,6 +13,9 @@
   $: ordinalSuffix = getOrdinalSuffix(round);
   $: ordinalRound = NUM_TO_ORDINAL_ARR[round];
   $: ordinalRoundOrig = NUM_TO_ORDINAL_ARR[$GameData.round];
+
+  $: tapMessage =
+    language === Languages.ENGLISH ? 'Tap to draw a card' : 'Click para sacar tarjeta';
 </script>
 
 {#if language === Languages.ENGLISH}
@@ -21,11 +24,7 @@
   <h1>{round}<sup>{ordinalSuffix}</sup> Mes</h1>
 {/if}
 <!-- Game Data store will automatically draw a card -->
-<TapIndicator
-  message="Tap to draw a card"
-  on:click={GameData.advanceGameState}
-  disabled={round !== 1}
->
+<TapIndicator message={tapMessage} on:click={GameData.advanceGameState} disabled={round !== 1}>
   <button id="draw-card">
     <img class="card-back" src={cardBack} alt="Card back" />
     <img class="card-back" src={cardBack} alt="Card back" />
@@ -51,7 +50,6 @@
 
 <style>
   button {
-    /* TODO: Fix later */
     all: unset;
     width: 200px;
     height: 290px;
