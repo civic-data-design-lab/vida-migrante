@@ -43,27 +43,6 @@
 
   //create the oval charts
   let expenses = [];
-  for (let i = 0; i < total_columns; i++) {
-    if (i < Math.ceil((total_columns * playerExpenses) / max_expense)) {
-      expenses.push('oval_filled');
-    } else if (i === Math.ceil((total_columns * playerIncome) / max_expense)) {
-      expenses.push('oval_green');
-    } else if (i === 54) {
-      expenses.push('oval_red');
-    } else if (i === 37) {
-      //$540*55/800
-      expenses.push('oval_yellow');
-    } else if (i === 52) {
-      expenses.push('oval_blue');
-    } else {
-      expenses.push('oval');
-    }
-  }
-
-  let initial_expenses = [];
-  for (let i = 1; i <= 30; i++) {
-    initial_expenses.push(0);
-  }
   for (let spending of spendings) {
     spending.expense = $GameData.resources.expenditures[spending.name2];
   }
@@ -72,7 +51,7 @@
   let slider_theme = 'default';
 
   function updateChart() {
-    playerExpenses = 0;
+    playerExpenses = $GameData.resources.expenditures.household_utilities_non_essential;
     for (let item of spendings) {
       playerExpenses += item.expense;
     }
