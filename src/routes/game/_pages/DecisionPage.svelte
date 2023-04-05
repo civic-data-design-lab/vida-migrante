@@ -2,7 +2,7 @@
   import { GameData } from '$gameData';
   import Card from '$components/Card.svelte';
   import Modal from '$lib/components/Modal.svelte';
-  import { CARD_CATEGORY_COLOR_MAP } from '$types';
+  import { CARD_CATEGORY_COLOR_MAP, DRAWER_ANIM_DURATION } from '$types';
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
 
@@ -29,8 +29,22 @@
   let displayedOption = null;
 
   const makeDecision = (optionId) => {
-    // TODO: Handle invalid decision
-    // GameData.advanceGameState({ optionId });
+    // Close the option modal
+    displayedOption = null;
+
+    // Open drawer for animation
+    toggleDrawer();
+    const optionUpdates = card.options.find((option) => option.id === optionId).updates;
+    // Start animation when the drawer is fully up
+    setTimeout(() => {
+      GameData.resourceUpdater($GameData.resources, optionUpdates).then(() => {
+        // Close drawer and advance game state after animations are finished
+        toggleDrawer();
+        setTimeout(() => {
+          GameData.advanceGameState({ optionId });
+        }, DRAWER_ANIM_DURATION);
+      });
+    }, DRAWER_ANIM_DURATION);
   };
 
   /**

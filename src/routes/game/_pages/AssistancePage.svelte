@@ -2,7 +2,9 @@
   import Modal from '$lib/components/Modal.svelte';
   import { GameData } from '$lib/stores/gameData';
   import { page } from '$app/stores';
-  import { Languages } from '$lib/utils/types';
+  import { DRAWER_ANIM_DURATION, Languages } from '$lib/utils/types';
+
+  export let toggleDrawer;
 
   // Get the page data
   $: language = $page.data.language;
@@ -11,7 +13,22 @@
   let displayedAssistance = null;
 
   const selectAssistance = (assistanceId) => {
-    GameData.advanceGameState({ assistanceId });
+    // Close the option modal
+    displayedAssistance = null;
+
+    // Open drawer for animation
+    toggleDrawer();
+    const assisstanceUpdates = assistances.find((a) => a.id === assistanceId).updates;
+    // Start animation when the drawer is fully up
+    setTimeout(() => {
+      GameData.resourceUpdater($GameData.resources, assisstanceUpdates).then(() => {
+        // Close drawer and advance game state after animations are finished
+        toggleDrawer();
+        setTimeout(() => {
+          GameData.advanceGameState({ assistanceId });
+        }, DRAWER_ANIM_DURATION);
+      });
+    }, DRAWER_ANIM_DURATION);
   };
 </script>
 

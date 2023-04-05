@@ -20,8 +20,8 @@
   let total_columns = 55;
   let max_expense = 800;
 
-  let player_expenses = sumValues($GameData.resources.expenditures);
-  let player_income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
+  $: playerExpenses = sumValues($GameData.resources.expenditures);
+  $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
   // Get the migrant's food security status
   $: migrantInfo = $page.data.migrantData.migrants.find(
@@ -44,9 +44,9 @@
   //create the oval charts
   let expenses = [];
   for (let i = 0; i < total_columns; i++) {
-    if (i < Math.ceil((total_columns * player_expenses) / max_expense)) {
+    if (i < Math.ceil((total_columns * playerExpenses) / max_expense)) {
       expenses.push('oval_filled');
-    } else if (i === Math.ceil((total_columns * player_income) / max_expense)) {
+    } else if (i === Math.ceil((total_columns * playerIncome) / max_expense)) {
       expenses.push('oval_green');
     } else if (i === 54) {
       expenses.push('oval_red');
@@ -72,14 +72,14 @@
   let slider_theme = 'default';
 
   function updateChart() {
-    player_expenses = 0;
+    playerExpenses = 0;
     for (let item of spendings) {
-      player_expenses += item.expense;
+      playerExpenses += item.expense;
     }
     // let expenses = [];
     for (let i = 0; i < total_columns; i++) {
-      if (i < Math.ceil((total_columns * player_expenses) / max_expense)) {
-        if (i === Math.ceil((total_columns * player_income) / max_expense)) {
+      if (i < Math.ceil((total_columns * playerExpenses) / max_expense)) {
+        if (i === Math.ceil((total_columns * playerIncome) / max_expense)) {
           expenses[i] = 'oval_filled_green';
         } else if (i === 54) {
           expenses[i] = 'oval_filled_red';
@@ -91,7 +91,7 @@
         } else {
           expenses[i] = 'oval_filled';
         }
-      } else if (i === Math.ceil((total_columns * player_income) / max_expense)) {
+      } else if (i === Math.ceil((total_columns * playerIncome) / max_expense)) {
         expenses[i] = 'oval_green';
       } else if (i === 54) {
         expenses[i] = 'oval_red';
@@ -111,13 +111,13 @@
   <div class="alignleft">
     <p4 style="color: #505050; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Expenses: {:else} Gastos: {/if}
-      <b>${player_expenses}</b></p4
+      <b>${playerExpenses}</b></p4
     >
   </div>
   <div class="alignleft">
     <p4 style="color: #7BA522; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Income:{:else} Ingresos: {/if}
-      <b>${player_income}</b></p4
+      <b>${playerIncome}</b></p4
     >
   </div>
 </div>

@@ -1,13 +1,19 @@
 import { writable } from 'svelte/store';
 import { browser, dev } from '$app/environment';
-import { GameStates, INITIAL_GAME_DATA, NUM_ROUNDS } from '$types';
+import {
+  GameStates,
+  INITIAL_GAME_DATA,
+  NUM_ROUNDS,
+  RESOURCE_UPDATE_ANIM_DELAY,
+  RESOURCE_UPDATE_ANIM_DURATION,
+} from '$types';
 import allCards from '$gameFiles/card-data';
 import allMigrantData from '$gameFiles/migrant-data';
 import allJobsData from '$gameFiles/jobs';
 import allAssistanceData from '$gameFiles/assistances';
-import { applyUpdates, deepCopy, parseJSONSafe } from '$lib/utils/functions';
+import { applyUpdates, deepCopy, delay, parseJSONSafe, sumValues } from '$lib/utils/functions';
 
-console.debug('DEV MODE:', dev);
+console.log('DEV MODE:', dev);
 
 // Get the possible game data on the browser's local storage
 // TODO: Currently only loads the game state from local storage in dev mode.
@@ -72,15 +78,6 @@ function createGameData() {
           return { ...g, state: GameStates.DECISION, currentCardId: cardId };
         case GameStates.DECISION:
           const { optionId } = kwargs;
-          const updates = allCards[g.currentCardId].options.find(
-            (option) => option.id === optionId
-          ).updates;
-
-          // Update the resources
-          updateResources(g.resources, updates);
-
-          // TODO: Make sure resources cannot go negative (either here or in the
-          // front end)
 
           /**
            * Stores the action into the past actions array
@@ -113,10 +110,7 @@ function createGameData() {
           };
         case GameStates.ASSISTANCE:
           const { assistanceId } = kwargs;
-
-          // Apply the updates from the assistance card
-          const assistanceData = allAssistanceData.find((a) => a.id === assistanceId);
-          updateResources(g.resources, assistanceData.updates);
+          console.log('Selected assisstance', assistanceId);
 
           // Start round 2 or 4 after assistance has been selected
           return { ...g, state: GameStates.ROUND_START, round: g.round + 1 };
@@ -132,11 +126,93 @@ function createGameData() {
     });
   };
 
+  /**
+   * Updates the resources of the game state given the updates.
+   *
+   * Applies animations to specific resource objects.
+   *
+   * @param {import('$types').ResourcesObject} oldResources
+   * @param {import('$types').ResourcesObject} updates
+   */
+  const resourceUpdater = (oldResources, updates) => {
+    return new Promise((resolve) => {
+      // Create a copy of the old resources and update them to see which values
+      // get updated. Note that we don't update the game state yet.
+      let newResources = deepCopy(oldResources);
+      console.debug('Old resources', oldResources);
+      updateResources(newResources, updates);
+      console.debug('New resources', newResources);
+
+      // Update/amimate the expenses in parallel
+      for (const expenseKey in oldResources.expenditures) {
+        if (expenseKey === 'other') {
+          // 'other' is an array so we can't really animate this
+          continue;
+        }
+        const oldValue = oldResources.expenditures[expenseKey];
+        const newValue = newResources.expenditures[expenseKey];
+        animateValue(
+          oldValue,
+          newValue,
+          (g, current) => (g.resources.expenditures[expenseKey] = current),
+          RESOURCE_UPDATE_ANIM_DURATION
+        );
+      }
+
+      // Animate the salary, assistance, and hours worked sequentially, spaced
+      // out by small time delays
+      const oldSalary = oldResources.income.salary,
+        newSalary = newResources.income.salary;
+      const oldAssisstance = oldResources.income.assistance,
+        newAssisstance = newResources.income.assistance;
+      const oldHoursWorked = oldResources.time,
+        newHoursWorked = newResources.time;
+      animateValue(
+        oldSalary,
+        newSalary,
+        (g, current) => (g.resources.income.salary = current),
+        RESOURCE_UPDATE_ANIM_DURATION
+      )
+        .then(() => delay(RESOURCE_UPDATE_ANIM_DELAY))
+        .then(() =>
+          animateValue(
+            oldAssisstance,
+            newAssisstance,
+            (g, current) => (g.resources.income.assistance = current),
+            RESOURCE_UPDATE_ANIM_DURATION
+          )
+        )
+        .then(() => delay(RESOURCE_UPDATE_ANIM_DELAY))
+        .then(() =>
+          animateValue(
+            oldHoursWorked,
+            newHoursWorked,
+            (g, current) => (g.resources.time = current),
+            RESOURCE_UPDATE_ANIM_DURATION
+          )
+        )
+        .then(() => delay(RESOURCE_UPDATE_ANIM_DELAY))
+        .then(() => {
+          // Only resolve the promise when all of the animations are finished.
+          console.log('Finished animation');
+
+          // Make sure remaining non-animated resources get updated
+          update((g) => {
+            g.resources = newResources;
+            return g;
+          });
+
+          resolve();
+        });
+    });
+  };
+
   return {
     subscribe,
     set,
     update,
     advanceGameState,
+    resourceUpdater,
   };
 }
 
@@ -202,4 +278,33 @@ function updateResources(oldResources, updates) {
     return;
   }
   applyUpdates(oldResources, updates);
+}
+
+function animateValue(startValue, endValue, updater, durationMs) {
+  return new Promise((resolve) => {
+    // Don't animate anything if the start and end values are the same
+    if (startValue === endValue) {
+      resolve();
+      return;
+    }
+    const range = endValue - startValue;
+    const step = endValue > startValue ? 1 : -1;
+    const stepTime = Math.abs(Math.floor(durationMs / range));
+
+    // Update the value over an interval
+    let current = startValue;
+    const timer = setInterval(function () {
+      current += step;
+      // Use the updater to update the game state
+      GameData.update((g) => {
+        updater(g, current);
+        return g;
+      });
+      // Reached the target value, resolve and return
+      if (current === endValue) {
+        clearInterval(timer);
+        resolve();
+      }
+    }, stepTime);
+  });
 }

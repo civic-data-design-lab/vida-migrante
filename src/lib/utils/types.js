@@ -155,3 +155,12 @@ export const CARD_CATEGORY_COLOR_MAP = {
   Assistance: 'blue',
   'Life Event': 'yellow',
 };
+
+/** Time in milliseconds of a resource update animation */
+export const RESOURCE_UPDATE_ANIM_DURATION = 1000;
+
+/** Amount of time to wait between resource update animations. */
+export const RESOURCE_UPDATE_ANIM_DELAY = 300;
+
+/** Time in milliseconds of the drawer slide up/down animation. */
+export const DRAWER_ANIM_DURATION = 1000;
