@@ -1,12 +1,17 @@
 <script>
   import { GameData } from '$gameData';
   import { migrants } from '$gameFiles/migrant-data.json';
-  import { jobs } from '$gameFiles/jobs.json';
-  import { sumValues } from '$utils/functions.js';
+  import { jobs as jobsEN} from '$gameFiles/jobs.json';
+  import { jobs as jobsES} from '$gameFiles/jobs-es.json';
   import { Languages } from '$lib/utils/types';
   import { page } from '$app/stores';
 
   $: language = $page.data.language;
+  let jobs;
+  $: if (language === Languages.ENGLISH) jobs = jobsEN;
+  else jobs = jobsES;
+
+
 
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
@@ -23,7 +28,7 @@
     <h1 style="padding:0; margin:0;">{migrant.name}</h1>
   </div>
   <img src={`/images/migrants/${migrant.name}.png`} alt={migrant.name} />
-  {#if language == Languages.ENGLISH}
+  {#if language === Languages.ENGLISH}
     <p>
       You are working as a <b>{job.title}</b> for <b>{job.hours}</b> hours a week and earn a monthly
       income of <b>${job.income}</b>. The expenses for your household's basic needs are
