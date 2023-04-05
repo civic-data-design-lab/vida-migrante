@@ -37,8 +37,8 @@
   const total_columns = 55;
   const max_expense = 800;
   let expenses = new Array(total_columns).fill('oval');
-  $: columns = Math.floor(total_columns * playerExpenses / max_expense);
-  $: income_column = Math.ceil(total_columns * playerIncome / max_expense);
+  $: columns = Math.floor((total_columns * playerExpenses) / max_expense);
+  $: income_column = Math.ceil((total_columns * playerIncome) / max_expense);
   $: expenses = expenses.map((_, i) => {
     let ovalClass = 'oval';
     switch (i) {
@@ -63,6 +63,8 @@
   for (let spending of spendings) {
     spending.expense = $GameData.resources.expenditures[spending.name2];
   }
+
+  let expenseReferences = false;
 </script>
 
 <div id="expense-board">
@@ -101,15 +103,22 @@
 </div>
 
 <div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
-  <button id="modal-button-key" class="button">
-    {#if isEn}
-      Show Key Indicators +
+  <button
+    id="modal-button-key"
+    class="button"
+    on:click={() => (expenseReferences = !expenseReferences)}
+  >
+    {#if isEn}Show Key Indicators
+    {:else}Ver Indicadores Clave
+    {/if}
+    {#if expenseReferences}
+      -
     {:else}
-      Ver Indicadores Clave +
+      +
     {/if}
   </button>
 </div>
-<div id="expense-references">
+<div id="expense-references" class={expenseReferences? 'visible':'hidden'}>
   <div id="name-board">
     <div class="alignleft">
       <p4 style="color: #505050;"
@@ -147,6 +156,7 @@
     <p4 class="alignright" style="color: #5273B0; float: right;"> $765 </p4>
   </div>
 </div>
+<hr />
 
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
   <h2 style="margin-bottom: 0;">
@@ -253,6 +263,19 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1em;
+    transform-origin: top center;
+    transition: transform 0.5s ease-in-out, max-height 0.5s ease-in-out;
+  }
+
+  .hidden {
+    max-height: 0;
+    transform: scaleY(0);
+    visibility: hidden;
+  }
+
+  .visible {
+    max-height: 72px;
+    transform: scaleY(1);
   }
 
   #name-board {
@@ -440,6 +463,9 @@
     cursor: pointer;
   }
 
-  #expense-references {
+  hr {
+    height: 2px;
+    background-color: rgba(156, 156, 156, 0.5);
+    border: none;
   }
 </style>
