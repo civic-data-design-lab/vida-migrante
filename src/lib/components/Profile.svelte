@@ -1,8 +1,8 @@
 <script>
   import { GameData } from '$gameData';
   import { migrants } from '$gameFiles/migrant-data.json';
-  import { jobs as jobsEN} from '$gameFiles/jobs.json';
-  import { jobs as jobsES} from '$gameFiles/jobs-es.json';
+  import { jobs as jobsEN } from '$gameFiles/jobs.json';
+  import { jobs as jobsES } from '$gameFiles/jobs-es.json';
   import { Languages } from '$lib/utils/types';
   import { page } from '$app/stores';
 
@@ -11,12 +11,10 @@
   $: if (language === Languages.ENGLISH) jobs = jobsEN;
   else jobs = jobsES;
 
-
-
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
   const essentials = new Set(['rent', 'food', 'health', 'household_utilities_essential']);
-  $: expenditures = Object.entries($GameData.resources.expenditures).reduce(
+  $: expenditures = Object.entries($GameData.resources?.expenditures).reduce(
     (a, b) => a + (essentials.has(b[0]) ? b[1] : 0),
     0
   );

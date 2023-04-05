@@ -11,7 +11,7 @@
   $: language = $page.data.language;
   $: isEn = language === Languages.ENGLISH;
 
-  $: playerExpenses = parseInt(sumValues($GameData.resources.expenditures));
+  $: playerExpenses = parseInt(sumValues($GameData.resources?.expenditures));
   $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
   // Get the migrant's food security status
@@ -25,9 +25,9 @@
   $: {
     console.debug('Calculating food security');
     const foodSecure = isFoodSecure(
-      sumValues($GameData.resources.expenditures),
+      sumValues($GameData.resources?.expenditures),
       migrantInfo.householdSize,
-      $GameData.resources.copingLevel
+      $GameData.resources?.copingLevel
     );
     foodSecurityStatus = foodSecure ? foodSecureText : foodInsecureText;
   }
@@ -61,7 +61,7 @@
   //slider
   let slider_theme = 'default';
   for (let spending of spendings) {
-    spending.expense = $GameData.resources.expenditures[spending.name2];
+    spending.expense = $GameData.resources?.expenditures[spending.name2];
   }
 
   let expenseReferences = false;
@@ -91,12 +91,12 @@
 <div id="migrant-state">
   {#if isEn}
     <p4 style="width:100%; font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >You work <b><i>{$GameData.resources.time}</i></b> hours a week & you are
+      >You work <b><i>{$GameData.resources?.time}</i></b> hours a week & you are
       <b><i>{foodSecurityStatus}</i></b>.</p4
     >
   {:else}
     <p4 style="font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >Trabajas <b><i>{$GameData.resources.time}</i></b> horas a la semana & tienes
+      >Trabajas <b><i>{$GameData.resources?.time}</i></b> horas a la semana & tienes
       <b><i>{foodSecurityStatus}</i></b>.</p4
     >
   {/if}
