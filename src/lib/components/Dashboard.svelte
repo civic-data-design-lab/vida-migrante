@@ -105,6 +105,8 @@
       }
     }
   }
+
+  onMount(updateChart);
 </script>
 
 <div id="expense-board">
