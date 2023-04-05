@@ -10,7 +10,7 @@
 
   $: language = $page.data.language;
 
-  let tapText = language == Languages.ENGLISH ? 'Tap to show options' : 'Click para ver opciones';
+  $: tapText = language == Languages.ENGLISH ? 'Tap to show options' : 'Click para ver opciones';
 
   /** @type {import("$types").Card} */
   export let card;
