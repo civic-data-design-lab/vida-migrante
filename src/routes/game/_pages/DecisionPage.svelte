@@ -8,6 +8,7 @@
 
   // Get the page data
   $: language = $page.data.language;
+  $: isEn = language === Languages.ENGLISH;
 
   /** @type {import('$types').Card} */
   $: card = $page.data.cardData[$GameData.currentCardId];
@@ -37,16 +38,19 @@
    */
   const getIncomeAdjustmentText = (salaryUpdate) => {
     if (!salaryUpdate) {
-      return "won't get any money";
+      return isEn ? "won't get any money" : 'no obtendrás dinero';
     }
 
-    let updateText = 'get';
+    let updateText = isEn ? 'get' : 'obtendrás';
     if (salaryUpdate < 0) {
       salaryUpdate = -salaryUpdate;
-      updateText = 'stop earning';
+      updateText = isEn ? 'stop earning' : 'dejarás de obtener';
     }
 
-    return `will ${updateText} <b>$${salaryUpdate}</b>`;
+    if (isEn) {
+      return `will ${updateText} <b>$${salaryUpdate}</b>`;
+    }
+    return `${updateText} <b>$${salaryUpdate}</b>`;
   };
 
   /**
@@ -57,14 +61,20 @@
    */
   const getHoursAdjustmentText = (hoursUpdate) => {
     if (!hoursUpdate) {
-      return "won't have to work any additional hours";
+      return isEn
+        ? "won't have to work any additional hours"
+        : 'no tendrás que trabajar horas adicionales';
     }
 
     if (hoursUpdate < 0) {
-      return `will work <b>${-hoursUpdate}</b> fewer hours`;
+      return isEn
+        ? `will work <b>${-hoursUpdate}</b> fewer hours every month`
+        : `dejarás de trabajar <b>${-hoursUpdate}</b> horas cada mes`;
     }
 
-    return `will have to work <b>${hoursUpdate}</b> additional hours`;
+    return isEn
+      ? `will have to work <b>${hoursUpdate}</b> additional hours every month`
+      : `tendrás que trabajar <b>${hoursUpdate}</b> horas adicionales cada mes`;
   };
 
   /**
@@ -85,7 +95,7 @@
     let finalText =
       language == Languages.ENGLISH
         ? `If you choose this option you ${incomeAdjustmentText} and ${hoursAdjustmentText}`
-        : `Si eliges esta opción, obtendrás ${incomeAdjustmentText} y ${hoursAdjustmentText}`;
+        : `Si eliges esta opción, ${incomeAdjustmentText} y ${hoursAdjustmentText}`;
     if (option.except) {
       finalText += `, ${option.except}`;
     }
@@ -105,11 +115,7 @@
     <p style="margin-bottom:0;">{@html optionUpdatesDescription}</p>
     <p style="margin-top:0;">{@html displayedOption?.implicationText || ''}</p>
     <button on:click={() => makeDecision(displayedOption.id)} class="button">
-      {#if language === Languages.ENGLISH}
-        Select
-      {:else}
-        Seleccionar
-      {/if}
+      {#if isEn}Select{:else}Seleccionar{/if}
     </button>
   </div>
 </Modal>
