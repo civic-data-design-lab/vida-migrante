@@ -1,6 +1,7 @@
 <script>
   import { GameData } from '$gameData';
   import { GameStates } from '$types';
+  import { onMount } from 'svelte';
 
   import MigrantPage from './_pages/MigrantPage.svelte';
   import JobSelectPage from './_pages/JobSelectPage.svelte';
@@ -9,67 +10,84 @@
   import DrawCardPage from './_pages/DrawCardPage.svelte';
   import AssistancePage from './_pages/AssistancePage.svelte';
   import GameEndPage from './_pages/GameEndPage.svelte';
-  import IncomePage from './_pages/IncomePage.svelte';
-  import ExpensesPage from './_pages/ExpensesPage.svelte';
   import GamePage from './GamePage.svelte';
   import StartPage from './_pages/StartPage.svelte';
   import RoundStartPage from './_pages/RoundStartPage.svelte';
-
   import Drawer from '$components/Drawer.svelte';
   import Dashboard from '$components/Dashboard.svelte';
   import MigrantBanner from './MigrantBanner.svelte';
 
   $: state = $GameData.state;
 
-  const gamePages = new Map([
-    [GameStates.START, StartPage],
-    [GameStates.MIGRANT_SELECT, MigrantPage],
-    [GameStates.JOB_SELECT, JobSelectPage],
-    [GameStates.PROFILE, ProfilePage],
-    [GameStates.ROUND_START, RoundStartPage],
-    [GameStates.INCOME, IncomePage],
-    [GameStates.EXPENSES, ExpensesPage],
-    [GameStates.DRAW_CARD, DrawCardPage],
-    [GameStates.DECISION, DecisionPage],
-    [GameStates.ASSISTANCE, AssistancePage],
-    [GameStates.GAME_END, GameEndPage],
-  ]);
-  const pagesWithDrawer = new Set([
-    GameStates.PROFILE,
-    GameStates.DECISION,
-    GameStates.EXPENSES,
-    GameStates.ASSISTANCE,
-    GameStates.GAME_END,
-  ]);
-  const pagesWithMigrantBanner = new Set([
-    GameStates.INCOME,
-    GameStates.EXPENSES,
-    GameStates.DRAW_CARD,
-    GameStates.DECISION,
-    GameStates.GAME_END,
+  let drawer;
+  let toggleDrawer;
+  onMount(() => {
+    toggleDrawer = () => drawer.toggleDrawer();
+  });
+
+  $: gamePages = new Map([
+    [
+      GameStates.START,
+      { component: StartPage, hasDrawer: false, hasMigrantBanner: false, props: {} },
+    ],
+    [
+      GameStates.MIGRANT_SELECT,
+      { component: MigrantPage, hasDrawer: false, hasMigrantBanner: false, props: {} },
+    ],
+    [
+      GameStates.JOB_SELECT,
+      { component: JobSelectPage, hasDrawer: false, hasMigrantBanner: false, props: {} },
+    ],
+    [
+      GameStates.PROFILE,
+      { component: ProfilePage, hasDrawer: true, hasMigrantBanner: false, props: {} },
+    ],
+    [
+      GameStates.ROUND_START,
+      { component: RoundStartPage, hasDrawer: false, hasMigrantBanner: false, props: {} },
+    ],
+    [
+      GameStates.DRAW_CARD,
+      { component: DrawCardPage, hasDrawer: false, hasMigrantBanner: true, props: {} },
+    ],
+    [
+      GameStates.DECISION,
+      { component: DecisionPage, hasDrawer: true, hasMigrantBanner: true, props: { toggleDrawer } },
+    ],
+    [
+      GameStates.ASSISTANCE,
+      {
+        component: AssistancePage,
+        hasDrawer: true,
+        hasMigrantBanner: false,
+        props: { toggleDrawer },
+      },
+    ],
+    [
+      GameStates.GAME_END,
+      { component: GameEndPage, hasDrawer: true, hasMigrantBanner: true, props: {} },
+    ],
   ]);
 
-  $: currentPage = gamePages.get(state);
-  $: hasBanner = pagesWithMigrantBanner.has(state);
-  $: hasDrawer = pagesWithDrawer.has(state);
+  $: pageData = gamePages.get(state);
 </script>
 
 <svelte:head>
   <title>Game | Ecuador Integration</title>
 </svelte:head>
-{#if hasBanner}
+{#if pageData.hasMigrantBanner}
   <MigrantBanner migrantId={$GameData.migrantId} jobId={$GameData.jobId} />
 {/if}
 <!-- Key ensures that the animation gets applied on each state transition -->
 {#key state}
-  <GamePage {hasBanner} {hasDrawer}>
+  <GamePage hasBanner={pageData.hasMigrantBanner} hasDrawer={pageData.hasDrawer}>
     <!-- See https://svelte.dev/repl/74593f36569a4c268d8a6ab277db34b5?version=3.12.1
       for passing props -->
-    <svelte:component this={currentPage} />
+    <svelte:component this={pageData.component} {...pageData.props} />
   </GamePage>
 {/key}
-{#if hasDrawer}
-  <Drawer>
+{#if pageData.hasDrawer}
+  <Drawer bind:this={drawer}>
     <div id="drawer-body" slot="body">
       <Dashboard />
     </div>

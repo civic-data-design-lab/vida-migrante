@@ -67,7 +67,10 @@
     }
   }
 
-  function toggleDrawer() {
+  /**
+   * Toggles the drawer (up or down)
+   */
+  export function toggleDrawer() {
     drawer.style.animation = 'none';
     if (cancelClick) cancelClick = false;
     else {

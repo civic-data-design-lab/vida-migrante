@@ -6,6 +6,9 @@
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
 
+  // Toggles the drawer
+  export let toggleDrawer;
+
   // Get the page data
   $: language = $page.data.language;
   $: isEn = language === Languages.ENGLISH;
@@ -27,7 +30,7 @@
 
   const makeDecision = (optionId) => {
     // TODO: Handle invalid decision
-    GameData.advanceGameState({ optionId });
+    // GameData.advanceGameState({ optionId });
   };
 
   /**
