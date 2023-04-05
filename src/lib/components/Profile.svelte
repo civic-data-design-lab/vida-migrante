@@ -10,7 +10,11 @@
 
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
-  $: expenditures = sumValues($GameData.resources.expenditures);
+  const essentials = new Set(['rent', 'food', 'health', 'household_utilities_essential']);
+  $: expenditures = Object.entries($GameData.resources.expenditures).reduce(
+    (a, b) => a + (essentials.has(b[0]) ? b[1] : 0),
+    0
+  );
   $: savings = job.income - expenditures;
 </script>
 
