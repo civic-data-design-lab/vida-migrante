@@ -20,7 +20,8 @@
     (a, b) => a + (essentials.has(b[0]) ? b[1] : 0),
     0
   );
-  $: savings = job.income - expenditures;
+  $: income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
+  $: savings = income - expenditures;
 </script>
 
 <div id="container">
@@ -31,8 +32,8 @@
   {#if language === Languages.ENGLISH}
     <p>
       You are working as a <b>{job.title}</b> for <b>{job.hours}</b> hours a week and earn a monthly
-      income of <b>${job.income}</b>. The expenses for your household's basic needs are
-      <b>${expenditures}</b> this means this means that you have
+      income of <b>${income}</b>. The expenses for your household's basic needs are
+      <b>${expenditures}</b>; this means that you have
       <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> for other expenses.
     </p>
   {:else}
