@@ -138,6 +138,7 @@ export function isFoodSecure(totalExpenses, householdSize, copingLevel) {
  * @returns {Promise} A promise that completes after the given duration
  */
 export function delay(durationMs) {
+  console.debug(`Delaying for ${durationMs} ms`);
   return new Promise((resolve) => {
     setTimeout(resolve, durationMs);
   });
