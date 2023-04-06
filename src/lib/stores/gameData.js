@@ -144,6 +144,7 @@ function createGameData() {
       console.debug('New resources', newResources);
 
       // Update/amimate the expenses in parallel
+      let hadExpenseUpdates = false;
       for (const expenseKey in oldResources.expenditures) {
         if (expenseKey === 'other') {
           // 'other' is an array so we can't really animate this
@@ -151,6 +152,11 @@ function createGameData() {
         }
         const oldValue = oldResources.expenditures[expenseKey];
         const newValue = newResources.expenditures[expenseKey];
+        if (oldValue === newValue) {
+          continue;
+        }
+
+        hadExpenseUpdates = true;
         animateValue(
           oldValue,
           newValue,
@@ -167,13 +173,21 @@ function createGameData() {
         newAssisstance = newResources.income.assistance;
       const oldHoursWorked = oldResources.time,
         newHoursWorked = newResources.time;
-      animateValue(
-        oldSalary,
-        newSalary,
-        (g, current) => (g.resources.income.salary = current),
-        RESOURCE_UPDATE_ANIM_DURATION
-      )
-        .then(() => delay(RESOURCE_UPDATE_ANIM_DELAY))
+
+      const initialDelayTime = hadExpenseUpdates
+        ? RESOURCE_UPDATE_ANIM_DURATION + RESOURCE_UPDATE_ANIM_DELAY
+        : 0;
+
+      delay(initialDelayTime)
+        .then(() =>
+          animateValue(
+            oldSalary,
+            newSalary,
+            (g, current) => (g.resources.income.salary = current),
+            RESOURCE_UPDATE_ANIM_DURATION
+          )
+        )
+        .then(delay)
         .then(() =>
           animateValue(
             oldAssisstance,
@@ -182,7 +196,7 @@ function createGameData() {
             RESOURCE_UPDATE_ANIM_DURATION
           )
         )
-        .then(() => delay(RESOURCE_UPDATE_ANIM_DELAY))
+        .then(delay)
         .then(() =>
           animateValue(
             oldHoursWorked,
@@ -191,7 +205,7 @@ function createGameData() {
             RESOURCE_UPDATE_ANIM_DURATION
           )
         )
-        .then(() => delay(RESOURCE_UPDATE_ANIM_DELAY))
+        .then(delay)
         .then(() => {
           // Only resolve the promise when all of the animations are finished.
           console.log('Finished animation');
@@ -284,7 +298,7 @@ function animateValue(startValue, endValue, updater, durationMs) {
   return new Promise((resolve) => {
     // Don't animate anything if the start and end values are the same
     if (startValue === endValue) {
-      resolve();
+      resolve(0);
       return;
     }
     const range = endValue - startValue;
@@ -303,7 +317,7 @@ function animateValue(startValue, endValue, updater, durationMs) {
       // Reached the target value, resolve and return
       if (current === endValue) {
         clearInterval(timer);
-        resolve();
+        resolve(RESOURCE_UPDATE_ANIM_DELAY);
       }
     }, stepTime);
   });
