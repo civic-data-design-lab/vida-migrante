@@ -394,33 +394,38 @@
 
   .indicator {
     width: 0.25em;
-    height: 0.5em;
+    height: 0.65em;
     background-color: transparent;
     margin: 1px;
+    margin-top: 6px;
   }
   .indicator_gray {
     width: 0.25em;
-    height: 0.5em;
+    height: 0.65em;
     background: #9c9c9c;
     margin: 1px;
+    margin-top: 6px;
   }
   .indicator_red {
     width: 0.25em;
-    height: 0.5em;
+    height: 0.65em;
     background: #cf6348;
     margin: 1px;
+    margin-top: 6px;
   }
   .indicator_yellow {
     width: 0.25em;
-    height: 0.5em;
+    height: 0.65em;
     background: #e5b257;
     margin: 1px;
+    margin-top: 6px;
   }
   .indicator_blue {
     width: 0.25em;
-    height: 0.5em;
+    height: 0.65em;
     background: #5273b0;
     margin: 1px;
+    margin-top: 6px;
   }
 
   /* .circle {
