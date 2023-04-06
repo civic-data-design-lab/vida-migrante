@@ -2,50 +2,50 @@
     "spendings": [
         {
             "name": "Rent",
+            "spanish_name": "Alquiler",
             "name2": "rent",
             "icon": "RENT.png",
             "expense": 0,
-            "avg_national_expense": "unknown",
             "avg_migrant_household": 92
         },
         {
             "name": "Food",
+            "spanish_name": "Alimentos",
             "name2": "food",
-            "icon": "EGGS_FOOD_1.png",
+            "icon": "EGGS_FOOD_2.png",
             "expense": 0,
-            "avg_national_expense": "unknown",
             "avg_migrant_household": 104
         },
         {
             "name": "Health & Hygiene",
+            "spanish_name": "Salud e Higiene",
             "name2": "health",
             "icon": "HEALTH.png",
             "expense": 0,
-            "avg_national_expense": "unknown",
             "avg_migrant_household": 43
         },
         {
             "name": "Household & Utilities",
+            "spanish_name": "Hogar y Servicios",
             "name2": "household_utilities_essential",
             "icon": "HOUSEHOLD.png",
             "expense": 0,
-            "avg_national_expense": "unknown",
             "avg_migrant_household": 55
         },
         {
             "name": "Remittances",
+            "spanish_name": "Remesas",
             "name2": "remittances",
             "icon": "REMITTANCES.png",
             "expense": 0,
-            "avg_national_expense": "unknown",
             "avg_migrant_household": 24
         },
         {
             "name": "Internet",
+            "spanish_name": "Internet",
             "name2": "internet",
             "icon": "WIFI.png",
             "expense": 0,
-            "avg_national_expense": "unknown",
             "avg_migrant_household": 11
         }
     ]

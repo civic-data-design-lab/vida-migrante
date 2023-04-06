@@ -35,7 +35,7 @@
   //create the oval charts
   let displayedSpending = null;
   const total_columns = 55;
-  const max_expense = 800;
+  const max_expense = 850;
   let expenses = new Array(total_columns).fill('oval');
   $: columns = Math.floor((total_columns * playerExpenses) / max_expense);
   $: income_column = Math.ceil((total_columns * playerIncome) / max_expense);
@@ -45,17 +45,27 @@
       case income_column:
         ovalClass += '_green';
         break;
-      case 54:
-        ovalClass += '_red';
-        break;
-      case 52:
-        ovalClass += '_blue';
-        break;
-      case 37:
-        ovalClass += '_yellow';
     }
     if (i <= columns) ovalClass += '_filled';
     return ovalClass;
+  });
+  let indicators = new Array(total_columns).fill('indicator');
+  $: indicators = indicators.map((_, i) => {
+    let indicatorClass = 'indicator';
+    switch (i) {
+      case 54: //840*55/850 avg migrant income
+        indicatorClass += '_gray';
+        break;
+      case 51: //793*55/850 avg ecuadorian incomee
+        indicatorClass += '_red';
+        break;
+      case 35: //540*55/850 vital family basket
+        indicatorClass += '_yellow';
+        break;
+      case 49: //761*55/850 basic family basket
+        indicatorClass += '_blue';
+    }
+    return indicatorClass;
   });
 
   //slider
@@ -85,6 +95,11 @@
   <section>
     {#each expenses as color}
       <div class={color} />
+    {/each}
+  </section>
+  <section>
+    {#each indicators as indicator_color}
+      <div class={indicator_color} />
     {/each}
   </section>
 </div>
@@ -118,7 +133,7 @@
     {/if}
   </button>
 </div>
-<div id="expense-references" class={expenseReferences? 'visible':'hidden'}>
+<div id="expense-references" class={expenseReferences ? 'visible' : 'hidden'}>
   <div id="name-board">
     <div class="alignleft">
       <p4 style="color: #505050;"
@@ -150,10 +165,10 @@
     </div>
   </div>
   <div id="money-board">
-    <p4 class="alignright" style="color: #505050; float: right;"> $326 </p4>
+    <p4 class="alignright" style="color: #505050; float: right;"> $840 </p4>
     <p4 class="alignright" style="color: #CF6348; float: right;"> $793 </p4>
     <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
-    <p4 class="alignright" style="color: #5273B0; float: right;"> $765 </p4>
+    <p4 class="alignright" style="color: #5273B0; float: right;"> $761 </p4>
   </div>
 </div>
 <hr />
@@ -163,23 +178,26 @@
     {#if isEn}Allocate Your Spending{:else}Asigna tus Gastos {/if}
   </h2>
   {#each spendings as spending (spending.name)}
-    <section>
-      <!-- <div id="container2"> -->
-
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <href class="info" style="padding:.4em" on:click={() => (displayedSpending = spending)}
-        ><p4 style="font-size:9pt;   text-decoration-line: underline;"
-          >{(slider_theme = spending.name)}</p4
+    <div style="display: flex; justify-content: space-between;">
+      <href class="info" style="padding:.4em" on:click={() => (displayedSpending = spending)}>
+        <p4 style="font-size:9pt;   text-decoration-line: underline;"
+          >{#if isEn}
+            {(slider_theme = spending.name)}{:else}
+            {(slider_theme = spending.spanish_name)}
+          {/if}</p4
         >
       </href>
-    </section>
+      <p4>${spending.expense}</p4>
+    </div>
     <div
-      class:rent-theme={spending.name === 'Rent'}
-      class:food-theme={spending.name === 'Food'}
-      class:health-theme={spending.name === 'Health & Hygiene'}
-      class:household-theme={spending.name === 'Household & Utilities'}
-      class:remittances-theme={spending.name === 'Remittances'}
-      class:internet-theme={spending.name === 'Internet'}
+      class:rent-theme={spending.name === 'Rent' || spending.name === 'Alquiler'}
+      class:food-theme={spending.name === 'Food' || spending.name === 'Alimentos'}
+      class:health-theme={spending.name === 'Health & Hygiene' ||
+        spending.name === 'Salud e Higiene'}
+      class:household-theme={spending.name === 'Household & Utilities' ||
+        spending.name === 'Hogar y Servicios'}
+      class:remittances-theme={spending.name === 'Remittances' || spending.name === 'Remesas'}
+      class:internet-theme={spending.name === 'Internet' || spending.name === 'Internet'}
     >
       <Range
         on:change={(e) => {
@@ -201,7 +219,12 @@
       src={`/images/dashboard/${displayedSpending?.icon ?? 'RENT.png'}`}
       alt={displayedSpending?.icon}
     />
-    <h1 class="modal-title" style="color:var(--gray)">{displayedSpending?.name}</h1>
+    <h1 class="modal-title" style="color:var(--gray)">
+      {#if isEn}
+        {displayedSpending?.name}{:else}
+        {displayedSpending?.spanish_name}
+      {/if}
+    </h1>
     <div style="display: flex; flex-direction: row;">
       <div style="display: flex; flex-direction: column; align-content: start; text-align: left;">
         <p style="margin-bottom:.2em;">
@@ -217,16 +240,10 @@
             Gasto Promedio de Hogares Migrantes
           {/if}</p4
         >
-        <p4
-          >{#if isEn}Average National Expense{:else}
-            Gasto Promedio Nacional
-          {/if}</p4
-        >
       </div>
       <div style="display: flex; flex-direction: column; align-content: end">
         <p style="text-align:right; margin-bottom:.2em;"><b>${displayedSpending?.expense}</b></p>
         <p4 style="text-align:right"><b>${displayedSpending?.avg_migrant_household}</b></p4>
-        <p4 style="text-align:right"><b>${displayedSpending?.avg_national_expense}</b></p4>
       </div>
     </div>
   </div>
@@ -375,6 +392,37 @@
     /* border: 1.5px solid #5273B0; */
   }
 
+  .indicator {
+    width: 0.25em;
+    height: 0.5em;
+    background-color: transparent;
+    margin: 1px;
+  }
+  .indicator_gray {
+    width: 0.25em;
+    height: 0.5em;
+    background: #9c9c9c;
+    margin: 1px;
+  }
+  .indicator_red {
+    width: 0.25em;
+    height: 0.5em;
+    background: #cf6348;
+    margin: 1px;
+  }
+  .indicator_yellow {
+    width: 0.25em;
+    height: 0.5em;
+    background: #e5b257;
+    margin: 1px;
+  }
+  .indicator_blue {
+    width: 0.25em;
+    height: 0.5em;
+    background: #5273b0;
+    margin: 1px;
+  }
+
   /* .circle {
     width: 12px;
     height: 12px;
@@ -426,7 +474,7 @@
   }
 
   .food-theme {
-    --thumb-image: url('/images/dashboard/EGGS_FOOD_1.png');
+    --thumb-image: url('/images/dashboard/EGGS_FOOD_2.png');
   }
 
   .health-theme {
