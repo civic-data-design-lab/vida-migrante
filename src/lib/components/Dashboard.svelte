@@ -53,10 +53,10 @@
   $: indicators = indicators.map((_, i) => {
     let indicatorClass = 'indicator';
     switch (i) {
-      case 54: //840*55/850 avg migrant income
+      case 20: //313*55/850 avg migrant income
         indicatorClass += '_gray';
         break;
-      case 51: //793*55/850 avg ecuadorian incomee
+      case 54: //840*55/850 avg ecuadorian incomee
         indicatorClass += '_red';
         break;
       case 35: //540*55/850 vital family basket
@@ -165,8 +165,8 @@
     </div>
   </div>
   <div id="money-board">
-    <p4 class="alignright" style="color: #505050; float: right;"> $840 </p4>
-    <p4 class="alignright" style="color: #CF6348; float: right;"> $793 </p4>
+    <p4 class="alignright" style="color: #505050; float: right;"> $313 </p4>
+    <p4 class="alignright" style="color: #CF6348; float: right;"> $840 </p4>
     <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
     <p4 class="alignright" style="color: #5273B0; float: right;"> $761 </p4>
   </div>
