@@ -1,28 +1,42 @@
 <script>
   import { GameData } from '$gameData';
   import { jobs } from '$gameFiles/jobs.json';
+  import { isFoodSecure, sumValues } from '$utils/functions.js';
+  import { page } from '$app/stores';
 
   $: job = jobs[$GameData.jobId];
   let income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
-  $: success = income > job.income;
+  $: incomeSuccess = income > job.income;
+  $: migrantInfo = $page.data.migrantData.migrants.find(
+    (migrant) => migrant.id === $GameData.migrantId
+  );
+  $: foodSecure = isFoodSecure(
+    sumValues($GameData.resources?.expenditures),
+    migrantInfo.householdSize,
+    $GameData.resources?.copingLevel
+  );
 </script>
 
 <h1>
-  You and your family are {#if success}doing better!{:else}still struggling{/if}
+  You and your family are {#if incomeSuccess && foodSecure}doing better!{:else}still struggling{/if}
 </h1>
 <div id="body">
   <p>
-    Your income went from <b>${job.income}</b> to <b class="accent-green">${income}</b>. Your
-    household income is still below
-    <b class="accent-red">$793, the National Average in Ecuador</b>{#if success}.{:else}, and it's
-      still not enough to provide for your family's basic needs, including the <b>Family Baskets</b>
-      of food.{/if}
+    Your income went from <b>${job.income}</b> to
+    <b class={incomeSuccess ? 'accent-green' : 'accent-red'}>${income}</b>. Your household income is
+    still below
+    <b class="accent-red">$793, the National Average in Ecuador</b>{#if incomeSuccess}.{:else}, and
+      it's still not enough to provide for your family's basic needs, including the <b>Family Baskets</b>
+      of food. {#if foodSecure}Despite this, your family is still <b class="accent-green">food secure</b>
+      {:else}Due to some life events, your family is also <b class="accent-red">food insecure</b>{/if}.{/if}
   </p>
-  {#if success}
+  {#if incomeSuccess}
     <p>
       Your income is still not enough to buy a <b class="accent-yellow">Basic Family Basket</b> of
-      food, but you can afford a <b class="accent-blue">Vital Family Basket</b>.
+      food, but you can afford a <b class="accent-blue">Vital Family Basket</b>. {#if foodSecure}Your
+        family is <b class="accent-green">food secure</b>{:else}Despite your increased income, your
+        family is still <b class="accent-red">food insecure</b>{/if}.
     </p>
   {/if}
   <p>
