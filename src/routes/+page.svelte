@@ -185,7 +185,7 @@
                 Migrantes Venezolanos <br /> en Ecuador
               </h1>
             {/if}
-            <p style="text-align: left;">
+            <p style="text-align: left; font-family: 'Roboto', sans-serif;">
               {#if language == Languages.ENGLISH}
                 When migrants arrive in Ecuador, they face <b>multiple challenges</b>. In this
                 simulation, you will learn about the <b>tough decisions</b> migrants have to make in
@@ -228,19 +228,19 @@
         flex-direction: column;
       "
         >
-          <div style="z-index: 12; padding-left:2rem; padding-right:2rem">
+          <div style="z-index: 12; padding-left:2rem; padding-right:2rem; ">
             {#if language == Languages.ENGLISH}
               <h1 style="text-align: center;">How to Play?</h1>
             {:else}
               <h1 style="text-align: center;">¿Cómo jugar?</h1>
             {/if}
             {#if language == Languages.ENGLISH}
-              <p style="text-align: left;">
+              <p style="text-align: left; font-family: 'Roboto', sans-serif;">
                 The goal of the game is to <b>improve part of your livelihood;</b> increasing your income
                 while working reasonable hours.
               </p>
             {:else}
-              <p style="text-align: left;">
+              <p style="text-align: left; font-family: 'Roboto', sans-serif;">
                 El objetivo del juego es <b>mejorar tu sustento;</b> aumentar tus ingresos, trabajando
                 horas razonables.
               </p>
@@ -248,12 +248,12 @@
             <ol type="1" style="padding-left: 1em;">
               <li>
                 {#if language == Languages.ENGLISH}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     1. Select a migrant and an occupation. These selection will assign you a
                     specific <b>monthly income and expenses. </b>
                   </p>
                 {:else}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     1. Selecciona un migrante y una ocupación. Esta selección te asignará <b
                       >ingresos y gastos mensuales.
                     </b>
@@ -262,23 +262,23 @@
               </li>
               <li>
                 {#if language == Languages.ENGLISH}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     2. You will play 4 rounds, each round is <b>one month.</b>
                   </p>
                 {:else}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     2. Jugarás 4 rondas, cada ronda representa <b>un mes.</b>
                   </p>
                 {/if}
               </li>
               <li>
                 {#if language == Languages.ENGLISH}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     3. Draw a card for every month. The card contains an event or a situation you
                     <b>have to face through a decision.</b>
                   </p>
                 {:else}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     3. Tomarás una tarjeta para cada mes. Cada tarjeta contiene un evento o una
                     situación que debes
                     <b>enfrentar a través de una decisión.</b>
@@ -287,12 +287,12 @@
               </li>
               <li>
                 {#if language == Languages.ENGLISH}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     4. The decision you make will
                     <b>affect your income and your expenses.</b>
                   </p>
                 {:else}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     4. La decisión que tomes
                     <b> afectará tus ingresos y tus gastos.</b>
                   </p>
@@ -300,12 +300,12 @@
               </li>
               <li>
                 {#if language == Languages.ENGLISH}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     5. You will have the opportunity to select certain
                     <b>assistance, to help you through your journey.</b>
                   </p>
                 {:else}
-                  <p style="margin: 0;">
+                  <p style="margin: 0; font-family: 'Roboto', sans-serif;">
                     5. Tendrás la oportunidad de seleccionar algunas
                     <b>asistencias para hacer más llevadera tu experiencia </b>en el Ecuador.
                   </p>
