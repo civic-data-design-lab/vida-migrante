@@ -68,12 +68,6 @@ function createGameData() {
           return { ...g, state: GameStates.ROUND_START };
         case GameStates.ROUND_START:
           return { ...g, state: GameStates.DRAW_CARD };
-        case GameStates.INCOME:
-          // TODO: Update monthly income
-          return { ...g, state: GameStates.EXPENSES };
-        case GameStates.EXPENSES:
-          // TODO: Update monthly expenses
-          return { ...g, currentCardId: null, state: GameStates.DRAW_CARD };
         case GameStates.DRAW_CARD:
           const cardId = drawCard(g);
           // const cardId = 4;  // Temp card control

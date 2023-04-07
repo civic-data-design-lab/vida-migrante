@@ -15,8 +15,6 @@ export const GameStates = {
   JOB_SELECT: 'job-select',
   PROFILE: 'profile',
   ROUND_START: 'round-start',
-  INCOME: 'income',
-  EXPENSES: 'expenses',
   DRAW_CARD: 'draw-card',
   DECISION: 'decision',
   /** Users select an assistance card, shows up after rounds 1 and 3 */
