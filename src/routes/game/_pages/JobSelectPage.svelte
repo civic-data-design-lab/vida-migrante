@@ -4,8 +4,8 @@
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
 
-  $: jobs = $page.data.jobsData.jobs;
   $: language = $page.data.language;
+  const jobs = $page.data.jobsData.jobs;
 
   let job = 0;
   let showModal = false;

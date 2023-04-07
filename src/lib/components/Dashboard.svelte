@@ -8,6 +8,8 @@
   import { spendings } from '$gameFiles/expenses.json';
   import { Languages } from '$lib/utils/types';
 
+  const migrants = $page.data.migrantData.migrants;
+
   $: language = $page.data.language;
   $: isEn = language === Languages.ENGLISH;
 
@@ -15,9 +17,7 @@
   $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
   // Get the migrant's food security status
-  $: migrantInfo = $page.data.migrantData.migrants.find(
-    (migrant) => migrant.id === $GameData.migrantId
-  );
+  $: migrantInfo = migrants.find((migrant) => migrant.id === $GameData.migrantId);
 
   $: foodSecureText = isEn ? 'Food Secure' : 'Seguridad Alimentaria';
   $: foodInsecureText = isEn ? 'Food Insecure' : 'Inseguridad Alimentaria';

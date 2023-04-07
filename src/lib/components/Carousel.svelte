@@ -1,7 +1,7 @@
 <script>
   import { page } from '$app/stores';
 
-  $: migrants = $page.data.migrantData.migrants;
+  const migrants = $page.data.migrantData.migrants;
 </script>
 
 <div class="carousel">

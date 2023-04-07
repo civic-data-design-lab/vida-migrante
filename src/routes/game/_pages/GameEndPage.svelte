@@ -1,16 +1,16 @@
 <script>
   import { GameData } from '$gameData';
-  import { jobs } from '$gameFiles/jobs.json';
   import { isFoodSecure, sumValues } from '$utils/functions.js';
   import { page } from '$app/stores';
+
+  const jobs = $page.data.jobsData.jobs;
+  const migrants = $page.data.migrantData.migrants;
 
   $: job = jobs[$GameData.jobId];
   let income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
   $: incomeSuccess = income > job.income;
-  $: migrantInfo = $page.data.migrantData.migrants.find(
-    (migrant) => migrant.id === $GameData.migrantId
-  );
+  $: migrantInfo = migrants.find((migrant) => migrant.id === $GameData.migrantId);
   $: foodSecure = isFoodSecure(
     sumValues($GameData.resources?.expenditures),
     migrantInfo.householdSize,
@@ -27,9 +27,14 @@
     <b class={incomeSuccess ? 'accent-green' : 'accent-red'}>${income}</b>. Your household income is
     still below
     <b class="accent-red">$793, the National Average in Ecuador</b>{#if incomeSuccess}.{:else}, and
-      it's still not enough to provide for your family's basic needs, including the <b>Family Baskets</b>
-      of food. {#if foodSecure}Despite this, your family is still <b class="accent-green">food secure</b>
-      {:else}Due to some life events, your family is also <b class="accent-red">food insecure</b>{/if}.{/if}
+      it's still not enough to provide for your family's basic needs, including the <b
+        >Family Baskets</b
+      >
+      of food. {#if foodSecure}Despite this, your family is still <b class="accent-green"
+          >food secure</b
+        >
+      {:else}Due to some life events, your family is also <b class="accent-red">food insecure</b
+        >{/if}.{/if}
   </p>
   {#if incomeSuccess}
     <p>

@@ -9,10 +9,13 @@
   export let migrantId = null;
   export let jobId = null;
 
+  const migrants = $page.data.migrantData.migrants;
+  const jobs = $page.data.jobsData.jobs;
+
   $: language = $page.data.language;
 
-  $: migrantInfo = $page.data.migrantData.migrants.find((migrant) => migrant.id === migrantId);
-  $: jobInfo = $page.data.jobsData.jobs[jobId];
+  $: migrantInfo = migrants.find((migrant) => migrant.id === migrantId);
+  $: jobInfo = jobs[jobId];
 
   $: bannerTitle = [migrantInfo?.name].filter((x) => x).join(', ');
 </script>

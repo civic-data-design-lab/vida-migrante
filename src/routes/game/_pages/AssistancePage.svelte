@@ -8,7 +8,7 @@
 
   // Get the page data
   $: language = $page.data.language;
-  $: assistances = $page.data.assistances;
+  const assistances = $page.data.assistances;
 
   let displayedAssistance = null;
 
