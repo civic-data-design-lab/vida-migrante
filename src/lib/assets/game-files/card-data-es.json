@@ -20,7 +20,7 @@
         "id": 1,
         "description": "No tengo tiempo suficiente",
         "updates": {},
-        "except": "but you won't be able to take the training"
+        "except": "pero no podrá tomar el entrenamiento"
       }
     ],
     "image": "PI_hairdresser.png"
@@ -40,9 +40,7 @@
           "income": {
             "salary": 54
           },
-          "skills": [
-            "digital skills"
-          ]
+          "skills": ["Tecnologías Digitales"]
         },
         "implicationText": "El <b>42%</b> de los migrantes tiene que gastar sus ahorros, si los tienen, para satisfacer sus necesidades esenciales."
       },
@@ -50,7 +48,7 @@
         "id": 1,
         "description": "Tal vez la próxima vez",
         "updates": {},
-        "except": "but you won't take the course"
+        "except": "pero no podrá tomar la capacitación"
       }
     ],
     "image": "PI_digitalskills.png"
@@ -64,22 +62,11 @@
     "options": [
       {
         "id": 0,
-        "description": "Withdraw children from school to reduce expenses and acquire a computer",
-        "updates": {
-          "copingLevel": "stress",
-          "income": {
-            "salary": 79
-          },
-          "skills": [
-            "business"
-          ]
-        }
-      },
-      {
-        "id": 1,
         "description": "No tengo acceso a una computadora",
-        "updates": {},
-        "except": "and you won't be able to take the training"
+        "updates": {
+          "skills": ["negocios"]
+        },
+        "except": "pero no podrá tomar la capacitación"
       }
     ],
     "image": "PI_business-skills.png"
@@ -123,7 +110,7 @@
         "id": 2,
         "description": "No puedo mandar dinero a mi madre.",
         "updates": {},
-        "except": "but your mom might not get better",
+        "except": "pero es posible que tu madre no mejore",
         "implicationText": "El <b>13%</b> de los migrantes no mandan remesas a Venezuela."
       }
     ],
@@ -145,7 +132,7 @@
             "salary": -10
           }
         },
-        "except": "in order to make up for the time off",
+        "except": "para compensar",
         "implicationText": "El <b>9%</b> de los migrantes tienen que pedir ayuda a miembros de la comunidad."
       }
     ],
@@ -190,7 +177,7 @@
         "id": 2,
         "description": "No puedo pagar las medicinas",
         "updates": {},
-        "except": "but you are at risk of getting sicker",
+        "except": "pero es posible que no mejores",
         "implicationText": ""
       }
     ],

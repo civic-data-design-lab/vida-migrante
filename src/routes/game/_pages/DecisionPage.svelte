@@ -2,8 +2,16 @@
   import { GameData } from '$gameData';
   import Card from '$components/Card.svelte';
   import Modal from '$lib/components/Modal.svelte';
-  import { CARD_CATEGORY_COLOR_MAP } from '$types';
+  import { CARD_CATEGORY_COLOR_MAP, DRAWER_ANIM_DURATION } from '$types';
   import { page } from '$app/stores';
+  import { Languages } from '$lib/utils/types';
+
+  // Toggles the drawer
+  export let toggleDrawer;
+
+  // Get the page data
+  $: language = $page.data.language;
+  $: isEn = language === Languages.ENGLISH;
 
   /** @type {import('$types').Card} */
   $: card = $page.data.cardData[$GameData.currentCardId];
@@ -21,8 +29,22 @@
   let displayedOption = null;
 
   const makeDecision = (optionId) => {
-    // TODO: Handle invalid decision
-    GameData.advanceGameState({ optionId });
+    // Close the option modal
+    displayedOption = null;
+
+    // Open drawer for animation
+    toggleDrawer();
+    const optionUpdates = card.options.find((option) => option.id === optionId).updates;
+    // Start animation when the drawer is fully up
+    setTimeout(() => {
+      GameData.resourceUpdater($GameData.resources, optionUpdates).then(() => {
+        // Close drawer and advance game state after animations are finished
+        toggleDrawer();
+        setTimeout(() => {
+          GameData.advanceGameState({ optionId });
+        }, DRAWER_ANIM_DURATION);
+      });
+    }, DRAWER_ANIM_DURATION);
   };
 
   /**
@@ -33,16 +55,19 @@
    */
   const getIncomeAdjustmentText = (salaryUpdate) => {
     if (!salaryUpdate) {
-      return "won't get any money";
+      return isEn ? "won't get any money" : 'no obtendrás dinero';
     }
 
-    let updateText = 'get';
+    let updateText = isEn ? 'get' : 'obtendrás';
     if (salaryUpdate < 0) {
       salaryUpdate = -salaryUpdate;
-      updateText = 'stop earning';
+      updateText = isEn ? 'stop earning' : 'dejarás de obtener';
     }
 
-    return `will ${updateText} <b>$${salaryUpdate}</b>`;
+    if (isEn) {
+      return `will ${updateText} <b>$${salaryUpdate}</b>`;
+    }
+    return `${updateText} <b>$${salaryUpdate}</b>`;
   };
 
   /**
@@ -53,14 +78,20 @@
    */
   const getHoursAdjustmentText = (hoursUpdate) => {
     if (!hoursUpdate) {
-      return "won't have to work any additional hours";
+      return isEn
+        ? "won't have to work any additional hours"
+        : 'no tendrás que trabajar horas adicionales';
     }
 
     if (hoursUpdate < 0) {
-      return `will work <b>${-hoursUpdate}</b> fewer hours`;
+      return isEn
+        ? `will work <b>${-hoursUpdate}</b> fewer hours every month`
+        : `dejarás de trabajar <b>${-hoursUpdate}</b> horas cada mes`;
     }
 
-    return `will have to work <b>${hoursUpdate}</b> additional hours`;
+    return isEn
+      ? `will have to work <b>${hoursUpdate}</b> additional hours every month`
+      : `tendrás que trabajar <b>${hoursUpdate}</b> horas adicionales cada mes`;
   };
 
   /**
@@ -78,7 +109,10 @@
     const incomeAdjustmentText = getIncomeAdjustmentText(updates.income?.salary);
     const hoursAdjustmentText = getHoursAdjustmentText(updates.time);
 
-    let finalText = `If you choose this option you ${incomeAdjustmentText} and ${hoursAdjustmentText}`;
+    let finalText =
+      language == Languages.ENGLISH
+        ? `If you choose this option you ${incomeAdjustmentText} and ${hoursAdjustmentText}`
+        : `Si eliges esta opción, ${incomeAdjustmentText} y ${hoursAdjustmentText}`;
     if (option.except) {
       finalText += `, ${option.except}`;
     }
@@ -94,10 +128,12 @@
 
 <Modal showModal={displayedOption}>
   <div class="implication-body" slot="body">
-    <h3>{displayedOption?.description}</h3>
-    <p>{@html optionUpdatesDescription}</p>
-    <p>{@html displayedOption?.implicationText || ''}</p>
-    <button on:click={() => makeDecision(displayedOption.id)} class="button">Select</button>
+    <h3 style="margin-top:.2em;">{displayedOption?.description}</h3>
+    <p style="margin-bottom:0;">{@html optionUpdatesDescription}</p>
+    <p style="margin-top:0;">{@html displayedOption?.implicationText || ''}</p>
+    <button on:click={() => makeDecision(displayedOption.id)} class="button">
+      {#if isEn}Select{:else}Seleccionar{/if}
+    </button>
   </div>
 </Modal>
 <Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} {roundNum} />

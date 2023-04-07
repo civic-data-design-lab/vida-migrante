@@ -4,12 +4,18 @@
   import { page } from '$app/stores';
   import Info from '$lib/components/Info.svelte';
   import Profile from '$components/Profile.svelte';
+  import { Languages } from '$lib/utils/types';
 
   export let migrantId = null;
   export let jobId = null;
 
-  $: migrantInfo = $page.data.migrantData.migrants.find((migrant) => migrant.id === migrantId);
-  $: jobInfo = $page.data.jobsData.jobs[jobId];
+  const migrants = $page.data.migrantData.migrants;
+  const jobs = $page.data.jobsData.jobs;
+
+  $: language = $page.data.language;
+
+  $: migrantInfo = migrants.find((migrant) => migrant.id === migrantId);
+  $: jobInfo = jobs[jobId];
 
   $: bannerTitle = [migrantInfo?.name].filter((x) => x).join(', ');
 </script>
@@ -24,7 +30,11 @@
     </section>
     <section>
       <h6>{bannerTitle}</h6>
-      <p>{migrantInfo.age} Years old, {migrantInfo.maritalStatus}</p>
+      {#if language == Languages.ENGLISH}
+        <p>{migrantInfo.age} Years old, {migrantInfo.maritalStatus}</p>
+      {:else}
+        <p>{migrantInfo.age} Años, {migrantInfo.maritalStatus}</p>
+      {/if}
       <p>{jobInfo.title}</p>
     </section>
   </div>
@@ -34,7 +44,7 @@
   .migrant-banner {
     position: absolute;
     width: 100%;
-    top: 57px;
+    top: 1.5em;
   }
 
   .migrant-banner-content {

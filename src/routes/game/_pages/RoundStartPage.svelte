@@ -3,7 +3,7 @@
 </script>
 
 <h1>
-  MONTH {$GameData.round + 1}
+  Month {$GameData.round + 1}
 </h1>
 <button class="button" on:click={GameData.advanceGameState}>Continue</button>
 

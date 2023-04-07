@@ -5,17 +5,19 @@
       "name": "Manuel",
       "age": 25,
       "maritalStatus": "casado",
-      "introText": "<p>Manuel lleva <b>10 meses</b> en Ecuador y vive con <b>6</b> familiares. Trabajaba en el sector de la <b>construction</b> en Venezuela. Tiene un título de <b>escuela secundaria</b>, y <b>no tiene otras acreditaciones o certificados legalizados</b>.</p>",
+      "introText": "<p>Manuel lleva <b>10 meses</b> en Ecuador y vive con <b>6</b> familiares. Trabajaba en el sector de la <b>construcción</b> en Venezuela. Tiene un título de <b>escuela secundaria</b>, y <b>no tiene otras acreditaciones o certificados legalizados</b>.</p>",
       "householdSize": 7,
       "initialResources": {
-        "skills": ["construction"],
+        "skills": [
+          "construction"
+        ],
         "time": 5,
         "expenditures": {
           "rent": 120,
           "food": 132,
           "health": 43,
-          "houshold_utilities_essential": 38,
-          "houshold_utilities_non_essential": 31,
+          "household_utilities_essential": 38,
+          "household_utilities_non_essential": 31,
           "remittances": 21,
           "internet": 14,
           "other": []
@@ -37,14 +39,16 @@
       "introText": "<p>Amarilis lleva <b>9 meses</b> en Ecuador y vive <b>sola</b>. Trabajaba en el sector de la <b>comercio al por mayor y al por menor</b> en Venezuela. Tiene un título de <b>escuela secundaria</b>, y <b>no tiene otras acreditaciones o certificados legalizados</b>.</p>",
       "householdSize": 1,
       "initialResources": {
-        "skills": ["wholesale and retail"],
+        "skills": [
+          "wholesale and retail"
+        ],
         "time": 5,
         "expenditures": {
           "rent": 76,
           "food": 91,
           "health": 35,
-          "houshold_utilities_essential": 25,
-          "houshold_utilities_non_essential": 25,
+          "household_utilities_essential": 25,
+          "household_utilities_non_essential": 25,
           "remittances": 34,
           "internet": 9,
           "other": []
@@ -66,14 +70,16 @@
       "introText": "<p>Fernanda lleva <b>9 meses</b> en Ecuador y vive con <b>cuatro</b> familiares. Trabajaba en el sector de la <b>agricultura</b> en Venezuela. Tiene un título de <b>escuela preparatoria o bachillerato</b>, y <b>no tiene otras acreditaciones o certificados legalizados</b>.</p>",
       "householdSize": 5,
       "initialResources": {
-        "skills": ["agriculture"],
+        "skills": [
+          "agriculture"
+        ],
         "time": 5,
         "expenditures": {
           "rent": 104,
           "food": 115,
           "health": 54,
-          "housholdUtilitiesEssential": 30,
-          "housholdUtilitiesNonEssential": 31,
+          "householdUtilitiesEssential": 30,
+          "householdUtilitiesNonEssential": 31,
           "remittances": 20,
           "internet": 11,
           "other": []
@@ -95,14 +101,16 @@
       "introText": "<p>Carlos lleva <b>10 meses</b> en Ecuador y vive con <b>su pareja</b>. Trabajaba en el sector de la <b>manufactura</b> en Venezuela. Tiene un título de <b>escuela primaria</b> y <b>no tiene otras acreditaciones o certificados legalizados</b>.</p>",
       "householdSize": 2,
       "initialResources": {
-        "skills": ["manufacturing"],
+        "skills": [
+          "manufacturing"
+        ],
         "time": 5,
         "expenditures": {
           "rent": 67,
           "food": 76,
           "health": 40,
-          "houshold_utilities_essential": 19,
-          "houshold_utilities_non_essential": 15,
+          "household_utilities_essential": 19,
+          "household_utilities_non_essential": 15,
           "remittances": 16,
           "internet": 11,
           "other": []

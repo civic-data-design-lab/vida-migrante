@@ -8,6 +8,7 @@
   --accent-blue: #5273b0;
   --accent-red: #cf6348;
   --accent-yellow: #e5b257;
+  --accent-green: #7ba522;
 
   --light-blue: #c5dcee;
   --light-red: #eec3b8;
@@ -23,6 +24,8 @@ h1 {
   font-weight: bolder;
   color: var(--gray);
   text-align: center;
+  width: 82vw;
+  word-wrap: break-word;
 }
 
 h2 {
@@ -41,7 +44,7 @@ h3 {
   margin-bottom: .5rem;
   text-align: center;
   color: var(--gray);
-  width: 200px;
+  width: 70%;
   word-wrap: break-word;
 }
 
@@ -53,7 +56,7 @@ h4 {
   margin-top: 1.5rem;
   margin-bottom: .5rem;
   color: var(--gray);
-  width: 200px;
+  width: 280px;
   word-wrap: break-word;
 }
 
@@ -98,9 +101,10 @@ p3 {
 
 p4 {
   font-family: var(--font-rubik);
-  font-size: 7.5pt;
+  font-size: 9pt;
   font-weight: normal;
   line-height: 18px;
+  color: var(--gray);
   /* display: flex; */
   /* justify-content: space-between; */
   /* text-align: right; */
@@ -110,6 +114,7 @@ body {
   font: 16pt rubik;
   color: var(--gray);
   user-select: none;
+  margin: 0;
 }
 
 body2 {
@@ -213,4 +218,20 @@ li {
   padding: 6px 1px 1px 1px;
   font-size: 3px;
   text-align: center;
+}
+
+.accent-red {
+  color: var(--accent-red);
+}
+
+.accent-blue {
+  color: var(--accent-blue);
+}
+
+.accent-yellow {
+  color: var(--accent-yellow);
+}
+
+.accent-green {
+  color: var(--accent-green);
 }

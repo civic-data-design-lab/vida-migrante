@@ -1,7 +1,7 @@
 <script>
   import { page } from '$app/stores';
 
-  $: migrants = $page.data.migrantData.migrants;
+  const migrants = $page.data.migrantData.migrants;
 </script>
 
 <div class="carousel">
@@ -95,10 +95,12 @@
 
   .carousel-content {
     height: 100%;
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: hidden;
+    justify-content: space-evenly;
   }
 
   h3 {

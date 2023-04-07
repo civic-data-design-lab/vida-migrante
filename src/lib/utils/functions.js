@@ -130,3 +130,16 @@ export function isFoodSecure(totalExpenses, householdSize, copingLevel) {
   if (CARI_ECMEN === 1 || CARI_ECMEN === 2) return true;
   return false;
 }
+
+/**
+ * Creates a promise that resolves after a certain delay.
+ *
+ * @param {number} durationMs - Amount of time to delay
+ * @returns {Promise} A promise that completes after the given duration
+ */
+export function delay(durationMs) {
+  console.debug(`Delaying for ${durationMs} ms`);
+  return new Promise((resolve) => {
+    setTimeout(resolve, durationMs);
+  });
+}

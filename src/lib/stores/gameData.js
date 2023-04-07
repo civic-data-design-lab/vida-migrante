@@ -1,13 +1,19 @@
 import { writable } from 'svelte/store';
 import { browser, dev } from '$app/environment';
-import { GameStates, INITIAL_GAME_DATA, NUM_ROUNDS } from '$types';
+import {
+  GameStates,
+  INITIAL_GAME_DATA,
+  NUM_ROUNDS,
+  RESOURCE_UPDATE_ANIM_DELAY,
+  RESOURCE_UPDATE_ANIM_DURATION,
+} from '$types';
 import allCards from '$gameFiles/card-data';
 import allMigrantData from '$gameFiles/migrant-data';
 import allJobsData from '$gameFiles/jobs';
 import allAssistanceData from '$gameFiles/assistances';
-import { applyUpdates, deepCopy, parseJSONSafe } from '$lib/utils/functions';
+import { applyUpdates, deepCopy, delay, parseJSONSafe, sumValues } from '$lib/utils/functions';
 
-console.debug('DEV MODE:', dev);
+console.log('DEV MODE:', dev);
 
 // Get the possible game data on the browser's local storage
 // TODO: Currently only loads the game state from local storage in dev mode.
@@ -33,7 +39,9 @@ function createGameData() {
     update((g) => {
       switch (g.state) {
         case GameStates.START:
-          return { ...g, state: GameStates.MIGRANT_SELECT };
+          console.log('Clearing game data...');
+          // Clear the data when we move out of the START state
+          return { ...deepCopy(INITIAL_GAME_DATA), state: GameStates.MIGRANT_SELECT };
         case GameStates.MIGRANT_SELECT:
           const { migrantId } = kwargs;
 
@@ -59,28 +67,13 @@ function createGameData() {
         case GameStates.PROFILE:
           return { ...g, state: GameStates.ROUND_START };
         case GameStates.ROUND_START:
-          return { ...g, state: GameStates.INCOME };
-        case GameStates.INCOME:
-          // TODO: Update monthly income
-          return { ...g, state: GameStates.EXPENSES };
-        case GameStates.EXPENSES:
-          // TODO: Update monthly expenses
-          return { ...g, currentCardId: null, state: GameStates.DRAW_CARD };
+          return { ...g, state: GameStates.DRAW_CARD };
         case GameStates.DRAW_CARD:
           const cardId = drawCard(g);
           // const cardId = 4;  // Temp card control
           return { ...g, state: GameStates.DECISION, currentCardId: cardId };
         case GameStates.DECISION:
           const { optionId } = kwargs;
-          const updates = allCards[g.currentCardId].options.find(
-            (option) => option.id === optionId
-          ).updates;
-
-          // Update the resources
-          updateResources(g.resources, updates);
-
-          // TODO: Make sure resources cannot go negative (either here or in the
-          // front end)
 
           /**
            * Stores the action into the past actions array
@@ -113,22 +106,114 @@ function createGameData() {
           };
         case GameStates.ASSISTANCE:
           const { assistanceId } = kwargs;
-
-          // Apply the updates from the assistance card
-          const assistanceData = allAssistanceData.find((a) => a.id === assistanceId);
-          updateResources(g.resources, assistanceData.updates);
+          console.log('Selected assisstance', assistanceId);
 
           // Start round 2 or 4 after assistance has been selected
           return { ...g, state: GameStates.ROUND_START, round: g.round + 1 };
         case GameStates.GAME_END:
-          // On game end, an advancement in the game state entails resetting the
-          // game data and returning to the game START state.
-
-          // Reset game data (initial game data starts at `GameStates.START`)
-          return deepCopy(INITIAL_GAME_DATA);
+          // On game end, an advancement in the game state entails returning to
+          // the game START state. Note that we don't clear the game data in
+          // case there are any residual components that haven't been unmounted
+          // that require game data. (Reset happens in the START state.)
+          return { ...g, state: GameStates.START };
         default:
           return g;
       }
+    });
+  };
+
+  /**
+   * Updates the resources of the game state given the updates.
+   *
+   * Applies animations to specific resource objects.
+   *
+   * @param {import('$types').ResourcesObject} oldResources
+   * @param {import('$types').ResourcesObject} updates
+   */
+  const resourceUpdater = (oldResources, updates) => {
+    return new Promise((resolve) => {
+      // Create a copy of the old resources and update them to see which values
+      // get updated. Note that we don't update the game state yet.
+      let newResources = deepCopy(oldResources);
+      console.debug('Old resources', oldResources);
+      updateResources(newResources, updates);
+      console.debug('New resources', newResources);
+
+      // Update/amimate the expenses in parallel
+      let hadExpenseUpdates = false;
+      for (const expenseKey in oldResources.expenditures) {
+        if (expenseKey === 'other') {
+          // 'other' is an array so we can't really animate this
+          continue;
+        }
+        const oldValue = oldResources.expenditures[expenseKey];
+        const newValue = newResources.expenditures[expenseKey];
+        if (oldValue === newValue) {
+          continue;
+        }
+
+        hadExpenseUpdates = true;
+        animateValue(
+          oldValue,
+          newValue,
+          (g, current) => (g.resources.expenditures[expenseKey] = current),
+          RESOURCE_UPDATE_ANIM_DURATION
+        );
+      }
+
+      // Animate the salary, assistance, and hours worked sequentially, spaced
+      // out by small time delays
+      const oldSalary = oldResources.income.salary,
+        newSalary = newResources.income.salary;
+      const oldAssisstance = oldResources.income.assistance,
+        newAssisstance = newResources.income.assistance;
+      const oldHoursWorked = oldResources.time,
+        newHoursWorked = newResources.time;
+
+      const initialDelayTime = hadExpenseUpdates
+        ? RESOURCE_UPDATE_ANIM_DURATION + RESOURCE_UPDATE_ANIM_DELAY
+        : 0;
+
+      delay(initialDelayTime)
+        .then(() =>
+          animateValue(
+            oldSalary,
+            newSalary,
+            (g, current) => (g.resources.income.salary = current),
+            RESOURCE_UPDATE_ANIM_DURATION
+          )
+        )
+        .then(delay)
+        .then(() =>
+          animateValue(
+            oldAssisstance,
+            newAssisstance,
+            (g, current) => (g.resources.income.assistance = current),
+            RESOURCE_UPDATE_ANIM_DURATION
+          )
+        )
+        .then(delay)
+        .then(() =>
+          animateValue(
+            oldHoursWorked,
+            newHoursWorked,
+            (g, current) => (g.resources.time = current),
+            RESOURCE_UPDATE_ANIM_DURATION
+          )
+        )
+        .then(delay)
+        .then(() => {
+          // Only resolve the promise when all of the animations are finished.
+          console.log('Finished animation');
+
+          // Make sure remaining non-animated resources get updated
+          update((g) => {
+            g.resources = newResources;
+            return g;
+          });
+
+          resolve();
+        });
     });
   };
 
@@ -137,6 +222,7 @@ function createGameData() {
     set,
     update,
     advanceGameState,
+    resourceUpdater,
   };
 }
 
@@ -152,14 +238,24 @@ GameData.subscribe((value) => {
 });
 
 /**
- * Draws a random card, making sure to avoid duplicates based on past actions.
+ * Draws a random card, making sure to draw a life event by round 3 and avoid duplicates based on past actions.
  *
  * @returns {number} The drawn card ID
  */
 function drawCard(gameData) {
   const alreadyDrawn = gameData.pastActions.map((action) => action.cardId);
   // Make sure we don't draw a repeat card
-  const availableCards = allCards.filter((card) => !alreadyDrawn.includes(card.id));
+  let availableCards = allCards.filter((card) => !alreadyDrawn.includes(card.id));
+  // Draw a life event by round 3
+  if (
+    gameData.round === 2 &&
+    alreadyDrawn.reduce(
+      (a, b) => a && allCards.find((card) => card.id === b).category !== 'Life Event',
+      true
+    )
+  ) {
+    availableCards = availableCards.filter((card) => card.category === 'Life Event');
+  }
 
   if (!availableCards.length) {
     console.error(
@@ -192,4 +288,33 @@ function updateResources(oldResources, updates) {
     return;
   }
   applyUpdates(oldResources, updates);
+}
+
+function animateValue(startValue, endValue, updater, durationMs) {
+  return new Promise((resolve) => {
+    // Don't animate anything if the start and end values are the same
+    if (startValue === endValue) {
+      resolve(0);
+      return;
+    }
+    const range = endValue - startValue;
+    const step = endValue > startValue ? 1 : -1;
+    const stepTime = Math.abs(Math.floor(durationMs / range));
+
+    // Update the value over an interval
+    let current = startValue;
+    const timer = setInterval(function () {
+      current += step;
+      // Use the updater to update the game state
+      GameData.update((g) => {
+        updater(g, current);
+        return g;
+      });
+      // Reached the target value, resolve and return
+      if (current === endValue) {
+        clearInterval(timer);
+        resolve(RESOURCE_UPDATE_ANIM_DELAY);
+      }
+    }, stepTime);
+  });
 }

@@ -1,23 +1,44 @@
 <script>
   import { GameData } from '$gameData';
   import { migrants } from '$gameFiles/migrant-data.json';
-  import { jobs } from '$gameFiles/jobs.json';
-  import { sumValues } from '$utils/functions.js';
+  import { Languages } from '$lib/utils/types';
+  import { page } from '$app/stores';
+
+  $: language = $page.data.language;
+  const jobs = $page.data.jobsData.jobs;
 
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];
-  $: expenditures = sumValues($GameData.resources.expenditures);
-  $: savings = job.income - expenditures;
+  const essentials = new Set(['rent', 'food', 'health', 'household_utilities_essential']);
+  $: expenditures = Object.entries($GameData.resources?.expenditures).reduce(
+    (a, b) => a + (essentials.has(b[0]) ? b[1] : 0),
+    0
+  );
+  $: income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
+  $: savings = income - expenditures;
 </script>
 
 <div id="container">
+  <div class="">
+    <h1 style="padding:0; margin:0;">{migrant.name}</h1>
+  </div>
   <img src={`/images/migrants/${migrant.name}.png`} alt={migrant.name} />
-  <p>
-    You are working as a <b>{job.title}</b> for <b>{job.hours}</b> hours a week and earn a monthly
-    income of <b>${job.income}</b>. The expenses for your household's basic needs are
-    <b>${expenditures}</b> this means this means that you have
-    <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> for other expenses.
-  </p>
+  {#if language === Languages.ENGLISH}
+    <p>
+      You are working as a <b>{job.title}</b> for <b>{job.hours}</b> hours a week and earn a monthly
+      income of <b>${income}</b>. The expenses for your household's basic needs are
+      <b>${expenditures}</b>; this means that you have
+      <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> for other expenses.
+    </p>
+  {:else}
+    <p>
+      Tienes un empleo como <b>{job.title}</b>. Trabajas <b>{job.hours}</b> horas a la semana y
+      tienes un ingreso mensual de <b>${job.income}</b>. Los gastos para las necesidades básicas de
+      tu hogar son de
+      <b>${expenditures}</b>, esto significa que tienes
+      <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> para otros gastos.
+    </p>
+  {/if}
 </div>
 
 <style>
