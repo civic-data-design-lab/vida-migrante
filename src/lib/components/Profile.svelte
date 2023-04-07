@@ -1,15 +1,11 @@
 <script>
   import { GameData } from '$gameData';
   import { migrants } from '$gameFiles/migrant-data.json';
-  import { jobs as jobsEN } from '$gameFiles/jobs.json';
-  import { jobs as jobsES } from '$gameFiles/jobs-es.json';
   import { Languages } from '$lib/utils/types';
   import { page } from '$app/stores';
 
   $: language = $page.data.language;
-  let jobs;
-  $: if (language === Languages.ENGLISH) jobs = jobsEN;
-  else jobs = jobsES;
+  const jobs = $page.data.jobsData.jobs;
 
   $: migrant = migrants[$GameData.migrantId];
   $: job = jobs[$GameData.jobId];

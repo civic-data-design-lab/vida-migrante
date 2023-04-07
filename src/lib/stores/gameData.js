@@ -39,7 +39,9 @@ function createGameData() {
     update((g) => {
       switch (g.state) {
         case GameStates.START:
-          return { ...g, state: GameStates.MIGRANT_SELECT };
+          console.log('Clearing game data...');
+          // Clear the data when we move out of the START state
+          return { ...deepCopy(INITIAL_GAME_DATA), state: GameStates.MIGRANT_SELECT };
         case GameStates.MIGRANT_SELECT:
           const { migrantId } = kwargs;
 
@@ -115,11 +117,11 @@ function createGameData() {
           // Start round 2 or 4 after assistance has been selected
           return { ...g, state: GameStates.ROUND_START, round: g.round + 1 };
         case GameStates.GAME_END:
-          // On game end, an advancement in the game state entails resetting the
-          // game data and returning to the game START state.
-
-          // Reset game data (initial game data starts at `GameStates.START`)
-          return deepCopy(INITIAL_GAME_DATA);
+          // On game end, an advancement in the game state entails returning to
+          // the game START state. Note that we don't clear the game data in
+          // case there are any residual components that haven't been unmounted
+          // that require game data. (Reset happens in the START state.)
+          return { ...g, state: GameStates.START };
         default:
           return g;
       }

@@ -50,15 +50,7 @@
 </div>
 
 <div id="footer">
-  <button
-    class="button"
-    on:click={() => {
-      GameData.advanceGameState();
-      location.reload();
-    }}
-  >
-    Try Again
-  </button>
+  <button class="button" on:click={GameData.advanceGameState}>Try Again</button>
   <a href="/about">About</a>
   <a href="/policy">Policy Recommendations</a>
 </div>
