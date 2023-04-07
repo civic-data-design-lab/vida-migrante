@@ -18,9 +18,10 @@
     economy due to factors such as legalized documents, there’s a strong willingness to pursue
     trainings and programs to improve their economic situation. A mismatch of vocational skills and
     attainable careers, coupled with insufficient resources to improve the employment opportunities
-    such as internet and trainings, has led to high food insecurity and _____. Migrants put ___% of
-    their income towards basic necessities like food, rent and health and cannot afford to pursue
-    opportunities such as trainings to improve their economic situation.
+    such as internet and trainings, has led to high food insecurity and an inability to integrate
+    into the economy. Nearly two-thirds of migrants put 75% of their income towards basic
+    necessities like food, rent and health and cannot afford to pursue opportunities such as
+    trainings to improve their economic situation.
   </p>
   <p>
     Migrants with regularized immigration documents or legalized professional accreditations earn
