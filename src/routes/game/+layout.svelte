@@ -33,7 +33,7 @@
 {:else}
   <slot />
   <nav>
-    <button class="" on:click={() => (showDevNav = !showDevNav)}
+    <button class="nav-btn" on:click={() => (showDevNav = !showDevNav)}
       >{showDevNav ? 'Hide' : 'Show'} dev nav</button
     >
     {#if showDevNav}
