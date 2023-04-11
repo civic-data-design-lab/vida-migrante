@@ -135,12 +135,11 @@ function createGameData() {
       // Create a copy of the old resources and update them to see which values
       // get updated. Note that we don't update the game state yet.
       let newResources = deepCopy(oldResources);
-      console.debug('Old resources', oldResources);
       updateResources(newResources, updates);
-      console.debug('New resources', newResources);
 
       // Update/amimate the expenses in parallel
       let hadExpenseUpdates = false;
+      console.debug('Animating expenses...');
       for (const expenseKey in oldResources.expenditures) {
         if (expenseKey === 'other') {
           // 'other' is an array so we can't really animate this
@@ -148,17 +147,15 @@ function createGameData() {
         }
         const oldValue = oldResources.expenditures[expenseKey];
         const newValue = newResources.expenditures[expenseKey];
-        if (oldValue === newValue) {
-          continue;
-        }
 
-        hadExpenseUpdates = true;
-        animateValue(
+        const delayTime = animateResource(
           oldValue,
           newValue,
-          (g, current) => (g.resources.expenditures[expenseKey] = current),
-          RESOURCE_UPDATE_ANIM_DURATION
+          (g) => (g.resources.expenditures[expenseKey] = newValue)
         );
+        if (delayTime > 0) {
+          hadExpenseUpdates = true;
+        }
       }
 
       // Animate the salary, assistance, and hours worked sequentially, spaced
@@ -176,29 +173,22 @@ function createGameData() {
 
       delay(initialDelayTime)
         .then(() =>
-          animateValue(
-            oldSalary,
-            newSalary,
-            (g, current) => (g.resources.income.salary = current),
-            RESOURCE_UPDATE_ANIM_DURATION
-          )
+          animateResource(oldSalary, newSalary, (g) => (g.resources.income.salary = newSalary))
         )
         .then(delay)
         .then(() =>
-          animateValue(
+          animateResource(
             oldAssisstance,
             newAssisstance,
-            (g, current) => (g.resources.income.assistance = current),
-            RESOURCE_UPDATE_ANIM_DURATION
+            (g) => (g.resources.income.assistance = newAssisstance)
           )
         )
         .then(delay)
         .then(() =>
-          animateValue(
+          animateResource(
             oldHoursWorked,
             newHoursWorked,
-            (g, current) => (g.resources.time = current),
-            RESOURCE_UPDATE_ANIM_DURATION
+            (g) => (g.resources.time = newHoursWorked)
           )
         )
         .then(delay)
@@ -290,31 +280,28 @@ function updateResources(oldResources, updates) {
   applyUpdates(oldResources, updates);
 }
 
-function animateValue(startValue, endValue, updater, durationMs) {
+/**
+ *
+ * @param {number} oldValue - The old value of the resource
+ * @param {number} newValue - The new value of the resource
+ * @param {any} updater - Updater function that takes in the game state and
+ *    updates the appropriate resource based on the new value
+ * @returns {Promise} The promise, resolves with time duration of the delay that
+ *    the resource updater should wait
+ */
+function animateResource(oldValue, newValue, updater) {
   return new Promise((resolve) => {
-    // Don't animate anything if the start and end values are the same
-    if (startValue === endValue) {
+    if (oldValue == newValue) {
+      // Don't invoke a delay if there are no updates to be made
       resolve(0);
       return;
     }
-    const range = endValue - startValue;
-    const step = endValue > startValue ? 1 : -1;
-    const stepTime = Math.abs(Math.floor(durationMs / range));
 
-    // Update the value over an interval
-    let current = startValue;
-    const timer = setInterval(function () {
-      current += step;
-      // Use the updater to update the game state
-      GameData.update((g) => {
-        updater(g, current);
-        return g;
-      });
-      // Reached the target value, resolve and return
-      if (current === endValue) {
-        clearInterval(timer);
-        resolve(RESOURCE_UPDATE_ANIM_DELAY);
-      }
-    }, stepTime);
+    GameData.update((g) => {
+      updater(g);
+      return g;
+    });
+
+    resolve(RESOURCE_UPDATE_ANIM_DURATION + RESOURCE_UPDATE_ANIM_DELAY);
   });
 }
