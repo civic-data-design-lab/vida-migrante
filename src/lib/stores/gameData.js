@@ -139,7 +139,6 @@ function createGameData() {
 
       // Update/amimate the expenses in parallel
       let hadExpenseUpdates = false;
-      console.debug('Animating expenses...');
       for (const expenseKey in oldResources.expenditures) {
         if (expenseKey === 'other') {
           // 'other' is an array so we can't really animate this
@@ -148,14 +147,17 @@ function createGameData() {
         const oldValue = oldResources.expenditures[expenseKey];
         const newValue = newResources.expenditures[expenseKey];
 
-        const delayTime = animateResource(
+        if (oldValue === newValue) {
+          continue;
+        }
+
+        hadExpenseUpdates = true;
+
+        animateResource(
           oldValue,
           newValue,
           (g) => (g.resources.expenditures[expenseKey] = newValue)
         );
-        if (delayTime > 0) {
-          hadExpenseUpdates = true;
-        }
       }
 
       // Animate the salary, assistance, and hours worked sequentially, spaced
@@ -167,6 +169,9 @@ function createGameData() {
       const oldHoursWorked = oldResources.time,
         newHoursWorked = newResources.time;
 
+      if (hadExpenseUpdates) {
+        console.debug('Animating expenses...');
+      }
       const initialDelayTime = hadExpenseUpdates
         ? RESOURCE_UPDATE_ANIM_DURATION + RESOURCE_UPDATE_ANIM_DELAY
         : 0;
