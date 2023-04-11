@@ -7,7 +7,8 @@
   import LanguageToggle from '$lib/components/LanguageToggle.svelte';
   import cddlLogo from '$images/cddl_logo_black.svg';
   import mitLogo from '$images/mit-logo-black-blue.png';
-  import wfpLogo from '$images/wfp-logo-standard-white-en.svg';
+  import wfpLogo from '$images/wfp-logo-standard-black-en.svg';
+  import usaidLogo from '$images/usaid_horizontal_RGB_Black.png';
 
   /** Page data loaded from `+layout.server.svelte` */
   export let data;
@@ -42,8 +43,15 @@
       alt="Civic Data Design
     Lab Logo"
     />
-    <img style="height:28px" src={wfpLogo} alt="World Food Programme Logo (English)" />
+    <img
+      src={wfpLogo}
+      alt="World Food Programme Logo
+    (English)"
+      style:height="28px"
+    />
+    <img src={usaidLogo} alt="USAID Logo" style:height="28px" />
   </span>
+
   <img class="arrowicon" src={arrowIcon} alt="Scroll to see more" />
   <LanguageToggle />
 </footer>
@@ -390,11 +398,14 @@
 
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-end;
   }
 
   .logos {
+    max-width: 45vw;
+
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
   .logos img {
