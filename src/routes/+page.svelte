@@ -234,6 +234,7 @@
         justify-content: center; 
         align-items: center; 
         flex-direction: column;
+        padding-bottom: 10rem;
       "
         >
           <div style="z-index: 12; padding-left:2rem; padding-right:2rem; ">
