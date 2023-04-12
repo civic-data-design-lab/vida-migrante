@@ -75,8 +75,9 @@ export const Languages = {
 
 /**
  * @typedef PastAction
- * @prop {number} cardId - The card that was drawn
- * @prop {number} optionId - The ID of the option that was selected
+ * @prop {number} [cardId] - The card that was drawn
+ * @prop {number} [optionId] - The ID of the option that was selected
+ * @prop {number} [assistanceId] - The ID of the assistance card that was drawn
  */
 
 /**

@@ -30,6 +30,10 @@
       });
     }, DRAWER_ANIM_DURATION);
   };
+
+  $: alreadySelectedAssisstanceIds = $GameData.pastActions
+    .filter((action) => action.assistanceId)
+    .map((action) => action.assistanceId);
 </script>
 
 {#if language === Languages.ENGLISH}
@@ -82,7 +86,11 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
 
 <section>
   {#each assistances as assistance (assistance.id)}
-    <button class="assist-thumb" on:click={() => (displayedAssistance = assistance)}>
+    <button
+      class="assist-thumb"
+      disabled={alreadySelectedAssisstanceIds.includes(assistance.id)}
+      on:click={() => (displayedAssistance = assistance)}
+    >
       <img src="/images/assistance/{assistance.image}" alt={assistance.name} />
     </button>
   {/each}
@@ -126,5 +134,10 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
   #modal-text {
     margin-top: 0;
     margin-bottom: 2em;
+  }
+
+  button:disabled > img {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
   }
 </style>

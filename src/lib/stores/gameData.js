@@ -108,6 +108,9 @@ function createGameData() {
           const { assistanceId } = kwargs;
           console.log('Selected assisstance', assistanceId);
 
+          // Add the assisstance ID to the list of past actions
+          g.pastActions.push({ assistanceId });
+
           // Start round 2 or 4 after assistance has been selected
           return { ...g, state: GameStates.ROUND_START, round: g.round + 1 };
         case GameStates.GAME_END:
@@ -240,7 +243,7 @@ GameData.subscribe((value) => {
 function drawCard(gameData) {
   const alreadyDrawn = gameData.pastActions.map((action) => action.cardId);
   // Make sure we don't draw a repeat card
-  let availableCards = allCards.filter((card) => !alreadyDrawn.includes(card.id));
+  let availableCards = allCards.filter((card) => card && !alreadyDrawn.includes(card.id));
   // Draw a life event by round 3
   if (
     gameData.round === 2 &&
