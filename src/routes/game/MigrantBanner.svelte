@@ -26,7 +26,7 @@
       <Info pinned>
         <Profile />
       </Info>
-      <img class="migrant-image" src="/images/migrants/{migrantInfo.name}.png" alt="alt" />
+      <img class="migrant-image" src="/images/migrants/{migrantInfo.name}.svg" alt={migrantInfo.name} />
     </section>
     <section>
       <h6>{bannerTitle}</h6>
