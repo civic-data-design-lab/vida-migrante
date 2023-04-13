@@ -9,6 +9,7 @@
   import { Languages, RESOURCE_UPDATE_ANIM_DURATION } from '$lib/utils/types';
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
+  import { slide } from 'svelte/transition';
 
   const migrants = $page.data.migrantData.migrants;
 
@@ -154,44 +155,50 @@
     {/if}
   </button>
 </div>
-<div id="expense-references" class={expenseReferences ? 'visible' : 'hidden'}>
-  <div id="name-board">
-    <div class="alignleft">
-      <p4 style="color: #505050;"
-        >{#if isEn}Average Migrant Household Income
-        {:else}
-          Ingreso Promedio de Migrantes{/if}</p4
-      >
+{#key expenseReferences}
+  <div
+    id="expense-references"
+    class={expenseReferences ? 'visible' : 'hidden'}
+    transition:slide={{ duration: 200 }}
+  >
+    <div id="name-board">
+      <div class="alignleft">
+        <p4 style="color: #505050;"
+          >{#if isEn}Average Migrant Household Income
+          {:else}
+            Ingreso Promedio de Migrantes{/if}</p4
+        >
+      </div>
+      <div class="alignleft">
+        <p4 style="color: #CF6348;"
+          >{#if isEn}Average Ecuadorian Income
+          {:else}
+            Ingreso Promedio de Hogar en Ecuador{/if}</p4
+        >
+      </div>
+      <div class="alignleft">
+        <p4 style="color: #E5B257;"
+          >{#if isEn}Ecuadorian Vital Family Basket
+          {:else}
+            Canasta Vital en Ecuador{/if}</p4
+        >
+      </div>
+      <div class="alignleft">
+        <p4 style="color: #5273B0;"
+          >{#if isEn}Ecuadorian Basic Family Basket
+          {:else}
+            Canasta Básica en Ecuador{/if}</p4
+        >
+      </div>
     </div>
-    <div class="alignleft">
-      <p4 style="color: #CF6348;"
-        >{#if isEn}Average Ecuadorian Income
-        {:else}
-          Ingreso Promedio de Hogar en Ecuador{/if}</p4
-      >
-    </div>
-    <div class="alignleft">
-      <p4 style="color: #E5B257;"
-        >{#if isEn}Ecuadorian Vital Family Basket
-        {:else}
-          Canasta Vital en Ecuador{/if}</p4
-      >
-    </div>
-    <div class="alignleft">
-      <p4 style="color: #5273B0;"
-        >{#if isEn}Ecuadorian Basic Family Basket
-        {:else}
-          Canasta Básica en Ecuador{/if}</p4
-      >
+    <div id="money-board">
+      <p4 class="alignright" style="color: #505050; float: right;"> $313 </p4>
+      <p4 class="alignright" style="color: #CF6348; float: right;"> $840 </p4>
+      <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
+      <p4 class="alignright" style="color: #5273B0; float: right;"> $761 </p4>
     </div>
   </div>
-  <div id="money-board">
-    <p4 class="alignright" style="color: #505050; float: right;"> $313 </p4>
-    <p4 class="alignright" style="color: #CF6348; float: right;"> $840 </p4>
-    <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
-    <p4 class="alignright" style="color: #5273B0; float: right;"> $761 </p4>
-  </div>
-</div>
+{/key}
 <hr />
 
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
@@ -302,7 +309,6 @@
     justify-content: space-between;
     margin-top: 1em;
     transform-origin: top center;
-    transition: transform 0.5s ease-in-out, max-height 0.5s ease-in-out;
   }
 
   .hidden {
