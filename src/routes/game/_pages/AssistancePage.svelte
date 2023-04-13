@@ -136,6 +136,10 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
     margin-bottom: 2em;
   }
 
+  button:disabled:hover {
+    cursor: default;
+  }
+
   button:disabled > img {
     -webkit-filter: grayscale(1);
     filter: grayscale(1);
