@@ -10,7 +10,7 @@
         "id": 0,
         "description": "Yes, work fewer hours for training time",
         "updates": {
-          "time": -5,
+          "time": 8,
           "income": {
             "salary": -10
           }
@@ -36,13 +36,11 @@
         "id": 0,
         "description": "Spend savings to take unpaid time off",
         "updates": {
-          "time": 5,
+          "time": 8,
           "income": {
             "salary": 54
           },
-          "skills": [
-            "digital skills"
-          ]
+          "skills": ["digital skills"]
         },
         "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
       },
@@ -66,9 +64,7 @@
         "id": 0,
         "description": "I can't afford a computer",
         "updates": {
-          "skills": [
-            "business"
-          ]
+          "skills": ["business"]
         },
         "except": "and you won't be able to take the training"
       }
