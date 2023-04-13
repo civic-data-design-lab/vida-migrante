@@ -44,7 +44,11 @@
   .migrant-banner {
     position: absolute;
     width: 100%;
-    top: 1.5em;
+    top: 0;
+    padding-top: 30px;
+    z-index: 1;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
   }
 
   .migrant-banner-content {

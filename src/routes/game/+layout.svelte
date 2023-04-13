@@ -66,7 +66,7 @@
   }
 
   .nav-btn {
-    transform: translateY(-110%);
+    transform: translateY(-130%);
   }
 
   .nav-btn:focus {

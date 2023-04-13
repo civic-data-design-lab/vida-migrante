@@ -1,17 +1,19 @@
 <script>
+  import { WindowHeight } from '$lib/stores/windowHeight';
   import { onMount } from 'svelte';
 
   let dragging = false;
-  let windowHeight, topThreshold, botThreshold, drawerTop, backdropThreshold;
+  let topThreshold, drawerTop, backdropThreshold;
   let handle, prevTouch;
   let cancelClick = false;
   let transition = '';
   let drawer;
 
+  export let botThreshold;
+
   onMount(() => {
-    const vh = windowHeight / 100;
+    const vh = $WindowHeight / 100;
     topThreshold = vh * 15;
-    botThreshold = Math.min(vh * 85, windowHeight - 155);
     drawerTop = botThreshold;
     backdropThreshold = botThreshold - (botThreshold - topThreshold) / 5;
   });
@@ -109,7 +111,6 @@
   <slot name="body" />
 </div>
 <svelte:window
-  bind:innerHeight={windowHeight}
   on:touchmove={onTouchMove}
   on:touchend={onTouchEnd}
   on:mousemove={onMouseMove}

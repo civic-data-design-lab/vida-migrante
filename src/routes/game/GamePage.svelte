@@ -8,15 +8,14 @@ overall styling. Actual page components can be found in the `_pages/` directory.
   export let hasBanner;
   export let hasDrawer;
 
+  export let drawerBottomThreshold;
+
   const rootPadding = 10;
 
-  $: paddingTop = hasBanner ? 100 : rootPadding;
+  $: paddingTop = hasBanner ? 135 : rootPadding;
   let paddingBottom;
-  let botThreshold;
   $: {
-    let vh = $WindowHeight / 100;
-    botThreshold = vh * 10;
-    paddingBottom = (hasDrawer ? botThreshold : 0) + rootPadding;
+    paddingBottom = (hasDrawer ? drawerBottomThreshold : 0) + rootPadding;
   }
 </script>
 
@@ -39,7 +38,6 @@ overall styling. Actual page components can be found in the `_pages/` directory.
     justify-content: space-evenly;
     align-items: center;
     padding: 3vw;
-    /* height: 100vh; */
 
     overflow-y: scroll;
   }
