@@ -18,10 +18,10 @@
 
     // Open drawer for animation
     toggleDrawer();
-    const assisstanceUpdates = assistances.find((a) => a.id === assistanceId).updates;
+    const assistanceUpdates = assistances.find((a) => a.id === assistanceId).updates;
     // Start animation when the drawer is fully up
     setTimeout(() => {
-      GameData.resourceUpdater($GameData.resources, assisstanceUpdates).then(() => {
+      GameData.resourceUpdater($GameData.resources, assistanceUpdates).then(() => {
         // Close drawer and advance game state after animations are finished
         toggleDrawer();
         setTimeout(() => {
@@ -31,7 +31,7 @@
     }, DRAWER_ANIM_DURATION);
   };
 
-  $: alreadySelectedAssisstanceIds = $GameData.pastActions
+  $: alreadySelectedAssistanceIds = $GameData.pastActions
     .filter((action) => action.assistanceId)
     .map((action) => action.assistanceId);
 </script>
@@ -88,7 +88,7 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
   {#each assistances as assistance (assistance.id)}
     <button
       class="assist-thumb"
-      disabled={alreadySelectedAssisstanceIds.includes(assistance.id)}
+      disabled={alreadySelectedAssistanceIds.includes(assistance.id)}
       on:click={() => (displayedAssistance = assistance)}
     >
       <img src="/images/assistance/{assistance.image}" alt={assistance.name} />

@@ -106,9 +106,9 @@ function createGameData() {
           };
         case GameStates.ASSISTANCE:
           const { assistanceId } = kwargs;
-          console.log('Selected assisstance', assistanceId);
+          console.log('Selected assistance', assistanceId);
 
-          // Add the assisstance ID to the list of past actions
+          // Add the assistance ID to the list of past actions
           g.pastActions.push({ assistanceId });
 
           // Start round 2 or 4 after assistance has been selected
@@ -167,8 +167,8 @@ function createGameData() {
       // out by small time delays
       const oldSalary = oldResources.income.salary,
         newSalary = newResources.income.salary;
-      const oldAssisstance = oldResources.income.assistance,
-        newAssisstance = newResources.income.assistance;
+      const oldAssistance = oldResources.income.assistance,
+        newAssistance = newResources.income.assistance;
       const oldHoursWorked = oldResources.time,
         newHoursWorked = newResources.time;
 
@@ -186,9 +186,9 @@ function createGameData() {
         .then(delay)
         .then(() =>
           animateResource(
-            oldAssisstance,
-            newAssisstance,
-            (g) => (g.resources.income.assistance = newAssisstance)
+            oldAssistance,
+            newAssistance,
+            (g) => (g.resources.income.assistance = newAssistance)
           )
         )
         .then(delay)
