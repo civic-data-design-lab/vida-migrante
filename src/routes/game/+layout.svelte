@@ -63,6 +63,7 @@
   nav {
     position: absolute;
     top: 0;
+    z-index: 3;
   }
 
   .nav-btn {
