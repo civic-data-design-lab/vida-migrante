@@ -238,12 +238,17 @@ GameData.subscribe((value) => {
 /**
  * Draws a random card, making sure to draw a life event by round 3 and avoid duplicates based on past actions.
  *
+ * @param {import('$types').GameData} gameData - The game data
  * @returns {number} The drawn card ID
  */
 function drawCard(gameData) {
-  const alreadyDrawn = gameData.pastActions.map((action) => action.cardId);
+  // Get the already drawn cards from past actions (ignore assistances)
+  const alreadyDrawn = gameData.pastActions
+    .filter((action) => action.cardId)
+    .map((action) => action.cardId);
+
   // Make sure we don't draw a repeat card
-  let availableCards = allCards.filter((card) => card && !alreadyDrawn.includes(card.id));
+  let availableCards = allCards.filter((card) => !alreadyDrawn.includes(card.id));
   // Draw a life event by round 3
   if (
     gameData.round === 2 &&
