@@ -1,6 +1,7 @@
 <script>
   import { WindowHeight } from '$lib/stores/windowHeight';
   import { onMount } from 'svelte';
+  import { fly } from 'svelte/transition';
 
   let dragging = false;
   let topThreshold, drawerTop, backdropThreshold;
@@ -98,7 +99,12 @@
   "
   on:click={closeDrawer}
 />
-<div id="drawer" style="top: {drawerTop}px; transition: {transition}" bind:this={drawer}>
+<div
+  id="drawer"
+  style="top: {drawerTop}px; transition: {transition}"
+  bind:this={drawer}
+  transition:fly={{ y: 200 }}
+>
   <div
     id="drawer-handle-hitbox"
     on:touchstart={onTouchStart}

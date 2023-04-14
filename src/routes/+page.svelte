@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
-  import { tweened } from "svelte/motion";
-  import { cubicInOut } from "svelte/easing";
+  import { tweened } from 'svelte/motion';
+  import { cubicInOut } from 'svelte/easing';
 
   import { Parallax, ParallaxLayer } from 'svelte-parallax';
 
@@ -21,7 +21,7 @@
   let ready = false;
   let offset = tweened(0, {
     duration: 4500,
-    easing: cubicInOut
+    easing: cubicInOut,
   });
   onMount(() => {
     ready = true;
@@ -407,7 +407,7 @@
   }
 
   .logos {
-    max-width: calc(45 * var(--vh));
+    max-width: calc(45 * var(--vw));
 
     display: flex;
     flex-wrap: wrap;

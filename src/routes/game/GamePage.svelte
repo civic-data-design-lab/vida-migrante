@@ -12,7 +12,7 @@ overall styling. Actual page components can be found in the `_pages/` directory.
 
   const rootPadding = 10;
 
-  $: paddingTop = hasBanner ? 135 : rootPadding;
+  $: paddingTop = hasBanner ? 150 : rootPadding;
   let paddingBottom;
   $: {
     paddingBottom = (hasDrawer ? drawerBottomThreshold : 0) + rootPadding;
@@ -26,7 +26,6 @@ overall styling. Actual page components can be found in the `_pages/` directory.
   style:padding-top="{paddingTop}px"
   style:padding-bottom="{paddingBottom}px"
   style:height="{$WindowHeight}px"
-  style:overflow="hidden"
 >
   <slot />
 </main>
