@@ -2,6 +2,10 @@
   import { GameData } from '$gameData';
   import { isFoodSecure, sumValues } from '$utils/functions.js';
   import { page } from '$app/stores';
+  import { Languages } from '$lib/utils/types';
+  import { elasticOut } from 'svelte/easing';
+
+  $: language = $page.data.language;
 
   const jobs = $page.data.jobsData.jobs;
   const migrants = $page.data.migrantData.migrants;
@@ -18,35 +22,78 @@
   );
 </script>
 
-<h1>
-  You and your family are {#if incomeSuccess && foodSecure}doing better!{:else}still struggling{/if}
-</h1>
+{#if language == Languages.ENGLISH}
+  <h1>
+    You and your family are {#if incomeSuccess && foodSecure}doing better!{:else}still struggling{/if}
+  </h1>
+{:else}
+  <h1>
+    Tu familia y tú {#if incomeSuccess && foodSecure}están un poco mejor!{:else}todavía tienen
+      dificultades{/if}
+  </h1>
+{/if}
 <div id="body">
-  <p>
-    Your income went from <b>${job.income}</b> to
-    <b class={incomeSuccess ? 'accent-green' : 'accent-red'}>${income}</b>. Your household income is
-    still below
-    <b class="accent-red">$793, the National Average in Ecuador</b>{#if incomeSuccess}.{:else}, and
-      it's still not enough to provide for your family's basic needs, including the <b
-        >Family Baskets</b
-      >
-      of food. {#if foodSecure}Despite this, your family is still <b class="accent-green"
-          >food secure</b
-        >
-      {:else}Due to some life events, your family is also <b class="accent-red">food insecure</b
-        >{/if}.{/if}
-  </p>
-  {#if incomeSuccess}
+  {#if language == Languages.ENGLISH}
     <p>
-      Your income is still not enough to buy a <b class="accent-yellow">Basic Family Basket</b> of
-      food, but you can afford a <b class="accent-blue">Vital Family Basket</b>. {#if foodSecure}Your
-        family is <b class="accent-green">food secure</b>{:else}Despite your increased income, your
-        family is still <b class="accent-red">food insecure</b>{/if}.
+      Your income went from <b>${job.income}</b> to
+      <b class={incomeSuccess ? 'accent-green' : 'accent-red'}>${income}</b>. Your household income
+      is still below
+      <b class="accent-red">$793, the National Average in Ecuador</b>{#if incomeSuccess}.{:else},
+        and it's still not enough to provide for your family's basic needs, including the <b
+          >Family Baskets</b
+        >
+        of food. {#if foodSecure}Despite this, your family is still <b class="accent-green"
+            >food secure</b
+          >
+        {:else}Due to some life events, your family is also <b class="accent-red">food insecure</b
+          >{/if}.{/if}
+    </p>
+  {:else}
+    <p>
+      Tus ingresos cambiaron de <b>${job.income}</b> a
+      <b class={incomeSuccess ? 'accent-green' : 'accent-red'}>${income}</b>. Los ingresos de tu
+      hogar siguen por debajo de
+      <b class="accent-red">$793, el promedio en Ecuador</b>{#if incomeSuccess}.{:else}, y aún no
+        son suficientes cubrir las necesidades básicas de tú familia incluyendo las <b
+          >Canastas Básicas</b
+        >
+        de comida. {#if foodSecure}A pesar de esto, tu familia aún tiene <b class="accent-green"
+            >seguridad alimentaria</b
+          >
+        {:else}Debido a ciertos eventos, tu familia también tiene <b class="accent-red"
+            >inseguridad alimentaria</b
+          >{/if}.{/if}
     </p>
   {/if}
-  <p>
-    You work {job.hours} hours every week.
-  </p>
+  {#if incomeSuccess}
+    {#if language == Languages.ENGLISH}
+      <p>
+        Your income is still not enough to buy a <b class="accent-yellow">Basic Family Basket</b>,
+        but you can afford a <b class="accent-blue">Vital Family Basket</b>. {#if foodSecure}Your
+          family is <b class="accent-green">food secure</b>{:else}Despite your increased income,
+          your family is still <b class="accent-red">food insecure</b>{/if}.
+      </p>
+    {:else}
+      <p>
+        Tus ingresos aún no son suficientes para adquirir una <b class="accent-yellow"
+          >Canasta Familiar Básica</b
+        >, pero puedes adquirir una <b class="accent-blue">Canasta Familiar Vital</b>. {#if foodSecure}Tu
+          familia tiene <b class="accent-green">food secure</b>{:else}A pesar de que tus ingresos
+          aumentaron, tu y tú familia aún tienen <b class="accent-red"
+            >{#if language == Languages.ENGLISH}food insecure{:else}inseguridad alimentaria {/if}</b
+          >{/if}.
+      </p>
+    {/if}
+  {/if}
+  {#if language == Languages.ENGLISH}
+    <p>
+      You work <b>{job.hours}</b> hours every week.
+    </p>
+  {:else}
+    <p>
+      Trabajas <b>{job.hours}</b> horas a la semana.
+    </p>
+  {/if}
 </div>
 
 <div id="footer">

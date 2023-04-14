@@ -26,7 +26,11 @@
       <Info pinned>
         <Profile />
       </Info>
-      <img class="migrant-image" src="/images/migrants/{migrantInfo.name}.png" alt="alt" />
+      <img
+        class="migrant-image"
+        src="/images/migrants/{migrantInfo.name}.svg"
+        alt={migrantInfo.name}
+      />
     </section>
     <section>
       <h6>{bannerTitle}</h6>
@@ -44,7 +48,11 @@
   .migrant-banner {
     position: absolute;
     width: 100%;
-    top: 1.5em;
+    top: 0;
+    padding-top: 30px;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   }
 
   .migrant-banner-content {

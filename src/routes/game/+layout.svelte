@@ -63,10 +63,11 @@
   nav {
     position: absolute;
     top: 0;
+    z-index: 3;
   }
 
   .nav-btn {
-    transform: translateY(-110%);
+    transform: translateY(-130%);
   }
 
   .nav-btn:focus {

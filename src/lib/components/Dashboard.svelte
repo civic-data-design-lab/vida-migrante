@@ -6,7 +6,10 @@
   import { page } from '$app/stores';
   import { isFoodSecure, sumValues } from '$lib/utils/functions';
   import { spendings } from '$gameFiles/expenses.json';
-  import { Languages } from '$lib/utils/types';
+  import { Languages, RESOURCE_UPDATE_ANIM_DURATION } from '$lib/utils/types';
+  import { tweened } from 'svelte/motion';
+  import { linear } from 'svelte/easing';
+  import { slide } from 'svelte/transition';
 
   const migrants = $page.data.migrantData.migrants;
 
@@ -15,6 +18,25 @@
 
   $: playerExpenses = parseInt(sumValues($GameData.resources?.expenditures));
   $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
+  $: hoursWorked = $GameData.resources?.time;
+
+  const animatedPlayerExpenses = tweened(playerExpenses, {
+    duration: RESOURCE_UPDATE_ANIM_DURATION,
+    easing: linear,
+  });
+
+  const animatedPlayerIncome = tweened(playerIncome, {
+    duration: RESOURCE_UPDATE_ANIM_DURATION,
+    easing: linear,
+  });
+  const animatedHoursWorked = tweened(hoursWorked, {
+    duration: RESOURCE_UPDATE_ANIM_DURATION,
+    easing: linear,
+  });
+
+  $: animatedPlayerExpenses.set(playerExpenses);
+  $: animatedPlayerIncome.set(playerIncome);
+  $: animatedHoursWorked.set(hoursWorked);
 
   // Get the migrant's food security status
   $: migrantInfo = migrants.find((migrant) => migrant.id === $GameData.migrantId);
@@ -37,8 +59,8 @@
   const total_columns = 55;
   const max_expense = 850;
   let expenses = new Array(total_columns).fill('oval');
-  $: columns = Math.floor((total_columns * playerExpenses) / max_expense);
-  $: income_column = Math.ceil((total_columns * playerIncome) / max_expense);
+  $: columns = Math.floor((total_columns * $animatedPlayerExpenses) / max_expense);
+  $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
   $: expenses = expenses.map((_, i) => {
     let ovalClass = 'oval';
     switch (i) {
@@ -81,13 +103,13 @@
   <div class="alignleft">
     <p4 style="color: #505050; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Expenses: {:else} Gastos: {/if}
-      <b>${playerExpenses}</b></p4
+      <b>${Math.floor($animatedPlayerExpenses)}</b></p4
     >
   </div>
   <div class="alignleft">
     <p4 style="color: #7BA522; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Income:{:else} Ingresos: {/if}
-      <b>${playerIncome}</b></p4
+      <b>${Math.floor($animatedPlayerIncome)}</b></p4
     >
   </div>
 </div>
@@ -106,12 +128,12 @@
 <div id="migrant-state">
   {#if isEn}
     <p4 style="width:100%; font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >You work <b><i>{$GameData.resources?.time}</i></b> hours a week & you are
+      >You work <b><i>{Math.floor($animatedHoursWorked)}</i></b> hours a week & you are
       <b><i>{foodSecurityStatus}</i></b>.</p4
     >
   {:else}
     <p4 style="font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >Trabajas <b><i>{$GameData.resources?.time}</i></b> horas a la semana & tienes
+      >Trabajas <b><i>{Math.floor($animatedHoursWorked)}</i></b> horas a la semana & tienes
       <b><i>{foodSecurityStatus}</i></b>.</p4
     >
   {/if}
@@ -133,44 +155,50 @@
     {/if}
   </button>
 </div>
-<div id="expense-references" class={expenseReferences ? 'visible' : 'hidden'}>
-  <div id="name-board">
-    <div class="alignleft">
-      <p4 style="color: #505050;"
-        >{#if isEn}Average Migrant Household Income
-        {:else}
-          Ingreso Promedio de Migrantes{/if}</p4
-      >
+{#key expenseReferences}
+  <div
+    id="expense-references"
+    class={expenseReferences ? 'visible' : 'hidden'}
+    transition:slide={{ duration: 200 }}
+  >
+    <div id="name-board">
+      <div class="alignleft">
+        <p4 style="color: #505050;"
+          >{#if isEn}Average Migrant Household Income
+          {:else}
+            Ingreso Promedio de Migrantes{/if}</p4
+        >
+      </div>
+      <div class="alignleft">
+        <p4 style="color: #CF6348;"
+          >{#if isEn}Average Ecuadorian Income
+          {:else}
+            Ingreso Promedio de Hogar en Ecuador{/if}</p4
+        >
+      </div>
+      <div class="alignleft">
+        <p4 style="color: #E5B257;"
+          >{#if isEn}Ecuadorian Vital Family Basket
+          {:else}
+            Canasta Vital en Ecuador{/if}</p4
+        >
+      </div>
+      <div class="alignleft">
+        <p4 style="color: #5273B0;"
+          >{#if isEn}Ecuadorian Basic Family Basket
+          {:else}
+            Canasta Básica en Ecuador{/if}</p4
+        >
+      </div>
     </div>
-    <div class="alignleft">
-      <p4 style="color: #CF6348;"
-        >{#if isEn}Average Ecuadorian Income
-        {:else}
-          Ingreso Promedio de Hogar en Ecuador{/if}</p4
-      >
-    </div>
-    <div class="alignleft">
-      <p4 style="color: #E5B257;"
-        >{#if isEn}Ecuadorian Vital Family Basket
-        {:else}
-          Canasta Vital en Ecuador{/if}</p4
-      >
-    </div>
-    <div class="alignleft">
-      <p4 style="color: #5273B0;"
-        >{#if isEn}Ecuadorian Basic Family Basket
-        {:else}
-          Canasta Básica en Ecuador{/if}</p4
-      >
+    <div id="money-board">
+      <p4 class="alignright" style="color: #505050; float: right;"> $313 </p4>
+      <p4 class="alignright" style="color: #CF6348; float: right;"> $840 </p4>
+      <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
+      <p4 class="alignright" style="color: #5273B0; float: right;"> $761 </p4>
     </div>
   </div>
-  <div id="money-board">
-    <p4 class="alignright" style="color: #505050; float: right;"> $313 </p4>
-    <p4 class="alignright" style="color: #CF6348; float: right;"> $840 </p4>
-    <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
-    <p4 class="alignright" style="color: #5273B0; float: right;"> $761 </p4>
-  </div>
-</div>
+{/key}
 <hr />
 
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
@@ -281,7 +309,6 @@
     justify-content: space-between;
     margin-top: 1em;
     transform-origin: top center;
-    transition: transform 0.5s ease-in-out, max-height 0.5s ease-in-out;
   }
 
   .hidden {
@@ -479,7 +506,7 @@
   }
 
   .food-theme {
-    --thumb-image: url('/images/dashboard/EGGS_FOOD_2.png');
+    --thumb-image: url('/images/dashboard/FOOD_APPLE 2.png');
   }
 
   .health-theme {

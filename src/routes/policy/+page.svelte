@@ -1,43 +1,94 @@
 <script>
   import BackButton from '$lib/components/BackButton.svelte';
+  import { page } from '$app/stores';
+  import { Languages } from '$lib/utils/types';
+
+  $: language = $page.data.language;
 </script>
 
 <div id="container">
   <BackButton />
-  <h1 id="policy-title">Policy Recommendations</h1>
+  {#if language == Languages.ENGLISH}
+    <h1 id="policy-title">Policy Recommendations</h1>
+  {:else}
+    <h1 id="policy-title">Recomendaciones</h1>
+  {/if}
 
   <div id="policy-body">
     <h1>1</h1>
-    <p>
-      <b>Regularization of Documents</b><br />
-      Regularization of immigration documents and recognition of accreditations aan help improve migrants’
-      employment or working conditions, and access to financial services.
-    </p>
+    {#if language == Languages.ENGLISH}
+      <p>
+        <b>Regularization of Documents</b><br />
+        Regularization of immigration documents and recognition of accreditations aan help improve migrants’
+        employment or working conditions, and access to financial services.
+      </p>
+    {:else}
+      <p>
+        <b>Regularización de Documentos</b><br />
+        Expandir la regularización de documentos migratorios y el reconocimiento de acreditaciones pueden
+        ayudar a mejorar el empleo o las condiciones de trabajo y el acceso a los servicios financieros.
+      </p>
+    {/if}
     <h1>2</h1>
-    <p>
-      <b>Skills</b><br />
-      Many migrants struggle to find a job that matches their skills, better connections should be made
-      between the skills immigrants bring with them and the potential job market in Ecuador.
-    </p>
+    {#if language == Languages.ENGLISH}
+      <p>
+        <b>Skills</b><br />
+        Many migrants struggle to find a job that matches their skills, better connections should be
+        made between the skills immigrants bring with them and the potential job market in Ecuador.
+      </p>
+    {:else}
+      <p>
+        <b>Habilidades</b><br />
+        Muchos migrantes luchan por encontrar un trabajo que coincida con sus habilidades; se deben hacer
+        mejores conexiones entre las habilidades que los migrantes traen consigo y el mercado laboral
+        potencial en Ecuador.
+      </p>
+    {/if}
     <h1>3</h1>
-    <p>
-      <b>Training and Internet</b><br />
-      Migrants are able to contribute to the economy, but they lack training and stable access to the
-      internet, finding ways to provide better access to internet services and training could help.
-    </p>
+    {#if language == Languages.ENGLISH}
+      <p>
+        <b>Training and Internet</b><br />
+        Migrants are able to contribute to the economy, but they lack training and stable access to the
+        internet, finding ways to provide better access to internet services and training could help.
+      </p>
+    {:else}
+      <p>
+        <b>Capacitación e Internet</b><br />
+        Los migrantes pueden contribuir al desarrollo de las economías digitales, pero carecen de ca-
+        pacitación y acceso estable a Internet; es necesario hallar formas de brindar un mejor acceso
+        a los servicios de Internet y la capacitación para ayudarles.
+      </p>
+    {/if}
     <h1>4</h1>
-    <p>
-      <b>Informal Sector</b><br />
-      The Ecuador economy is 51% informal which means that to help migrants in Ecuador we must also help
-      the Ecuadorian economy. Programs available for Migrants should also be available for Ecuadorian.
-    </p>
+    {#if language == Languages.ENGLISH}
+      <p>
+        <b>Informal Sector</b><br />
+        The Ecuador economy is 51% informal which means that to help migrants in Ecuador we must also
+        help the Ecuadorian economy. Programs available for Migrants should also be available for Ecuadorian.
+      </p>
+    {:else}
+      <p>
+        <b>Sector Informal</b><br />
+        The Ecuador economy is 51% informal which means that to help migrants in Ecuador we must also
+        help the Ecuadorian economy. Programs available for Migrants should also be available for Ecuadorian.
+      </p>
+    {/if}
     <h1>5</h1>
-    <p>
-      <b>Digital Economy</b><br />
-      Migrants are willing to learn skills needed for the digital economy programs should be developed
-      for both Venezuelan and Ecuadorian living in Ecuador to help increase their ability to work within
-      this service economy.
-    </p>
+    {#if language == Languages.ENGLISH}
+      <p>
+        <b>Digital Economy</b><br />
+        Migrants are willing to learn skills needed for the digital economy programs should be developed
+        for both Venezuelan and Ecuadorian living in Ecuador to help increase their ability to work within
+        this service economy.
+      </p>
+    {:else}
+      <p>
+        <b>Economías Digitales</b><br />
+        Los migrantes están dispuestos a aprender las habilidades necesarias para las economías dig-
+        itales. Se deben desarrollar programas para ambos, venezolano y ecuatorianos, para ayudar a aumentar
+        su capacidad de trabajar dentro de la economía de servicios.
+      </p>
+    {/if}
   </div>
 </div>
 

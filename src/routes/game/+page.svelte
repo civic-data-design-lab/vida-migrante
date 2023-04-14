@@ -16,6 +16,7 @@
   import Drawer from '$components/Drawer.svelte';
   import Dashboard from '$components/Dashboard.svelte';
   import MigrantBanner from './MigrantBanner.svelte';
+  import { WindowHeight } from '$lib/stores/windowHeight';
 
   $: state = $GameData.state;
 
@@ -70,6 +71,14 @@
   ]);
 
   $: pageData = gamePages.get(state);
+
+  /** The bottom y position of the drawer from the top in pixels. */
+  let drawerBottomThreshold;
+  $: {
+    const windowHeightVh = $WindowHeight / 100;
+    drawerBottomThreshold = Math.min(windowHeightVh * 85, $WindowHeight - 155);
+    console.debug('Set drawer bottom to', drawerBottomThreshold);
+  }
 </script>
 
 <svelte:head>
@@ -80,14 +89,18 @@
 {/if}
 <!-- Key ensures that the animation gets applied on each state transition -->
 {#key state}
-  <GamePage hasBanner={pageData.hasMigrantBanner} hasDrawer={pageData.hasDrawer}>
+  <GamePage
+    hasBanner={pageData.hasMigrantBanner}
+    hasDrawer={pageData.hasDrawer}
+    drawerBottomThreshold={$WindowHeight - drawerBottomThreshold}
+  >
     <!-- See https://svelte.dev/repl/74593f36569a4c268d8a6ab277db34b5?version=3.12.1
       for passing props -->
     <svelte:component this={pageData.component} {...pageData.props} />
   </GamePage>
 {/key}
 {#if pageData.hasDrawer}
-  <Drawer bind:this={drawer}>
+  <Drawer bind:this={drawer} botThreshold={drawerBottomThreshold}>
     <div id="drawer-body" slot="body">
       <Dashboard />
     </div>

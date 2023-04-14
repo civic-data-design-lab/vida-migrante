@@ -1,5 +1,5 @@
 <script>
-  import { browser } from '$app/environment';
+  import { onMount } from 'svelte';
   import '../app.css';
 
   function calcViewportUnits() {
@@ -9,7 +9,7 @@
     document.documentElement.style.setProperty('--vw', `${vw}px`);
   }
 
-  if (browser) calcViewportUnits();
+  onMount(calcViewportUnits);
 </script>
 
 <svelte:window on:resize={calcViewportUnits} />
@@ -19,21 +19,21 @@
 
 <style>
   #bg {
-    /* position: fixed; */
     height: 100%;
     width: 100%;
-    top: 0;
-    left: 0;
   }
 
   #bg:before {
     content: ' ';
     position: fixed;
+    top: 30%;
     z-index: -1;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
-    background-image: url('$images/mountains-greyscale.png');
+    opacity: 0.5;
+    filter: saturate(0%);
+    background-image: url('$images/mountains.png');
+    background-position: 60% 0;
     background-repeat: no-repeat;
     background-size: cover;
   }

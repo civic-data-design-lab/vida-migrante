@@ -18,10 +18,10 @@
 
     // Open drawer for animation
     toggleDrawer();
-    const assisstanceUpdates = assistances.find((a) => a.id === assistanceId).updates;
+    const assistanceUpdates = assistances.find((a) => a.id === assistanceId).updates;
     // Start animation when the drawer is fully up
     setTimeout(() => {
-      GameData.resourceUpdater($GameData.resources, assisstanceUpdates).then(() => {
+      GameData.resourceUpdater($GameData.resources, assistanceUpdates).then(() => {
         // Close drawer and advance game state after animations are finished
         toggleDrawer();
         setTimeout(() => {
@@ -30,6 +30,10 @@
       });
     }, DRAWER_ANIM_DURATION);
   };
+
+  $: alreadySelectedAssistanceIds = $GameData.pastActions
+    .filter((action) => action.assistanceId)
+    .map((action) => action.assistanceId);
 </script>
 
 {#if language === Languages.ENGLISH}
@@ -82,7 +86,11 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
 
 <section>
   {#each assistances as assistance (assistance.id)}
-    <button class="assist-thumb" on:click={() => (displayedAssistance = assistance)}>
+    <button
+      class="assist-thumb"
+      disabled={alreadySelectedAssistanceIds.includes(assistance.id)}
+      on:click={() => (displayedAssistance = assistance)}
+    >
       <img src="/images/assistance/{assistance.image}" alt={assistance.name} />
     </button>
   {/each}
@@ -91,11 +99,10 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
 <style>
   section {
     margin-top: 1em;
-    height: 85vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20vw;
-    overflow-y: hidden;
+    row-gap: 0.4rem;
   }
 
   .assist-thumb {
@@ -126,5 +133,14 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
   #modal-text {
     margin-top: 0;
     margin-bottom: 2em;
+  }
+
+  button:disabled:hover {
+    cursor: default;
+  }
+
+  button:disabled > img {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
   }
 </style>

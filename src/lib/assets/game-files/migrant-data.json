@@ -2,10 +2,10 @@
   "migrants": [
     {
       "id": 0,
-      "name": "Manuel",
+      "name": "Luis",
       "age": 25,
       "maritalStatus": "married",
-      "introText": "<p>Manuel has been in Ecuador for <b>10 months</b> and lives with <b>6</b> of his family members. He used to work in the <b>construction</b> sector in Venezuela. He has a <b>high school degree</b>, but <b>no other legalized accreditations or certificates</b>.</p>",
+      "introText": "<p>Luis has been in Ecuador for <b>10 months</b> and lives with <b>6</b> of his family members. He used to work in the <b>construction</b> sector in Venezuela. He has a <b>high school degree</b>, but <b>no other legalized accreditations or certificates</b>.</p>",
       "householdSize": 7,
       "initialResources": {
         "skills": ["construction"],
@@ -31,10 +31,10 @@
     },
     {
       "id": 1,
-      "name": "Amarilis",
+      "name": "Génesis",
       "age": 27,
       "maritalStatus": "single",
-      "introText": "<p>Amarilis has been in Ecuador for <b>9 months</b> and lives <b>by herself</b>. She used to work in the <b>wholesale and retail</b> sector in Venezuela. She completed <b>secondary education</b>, and doesn’t have other <b>legalized accreditations or certificates</b>.</p>",
+      "introText": "<p>Génesis has been in Ecuador for <b>9 months</b> and lives <b>by herself</b>. She used to work in the <b>wholesale and retail</b> sector in Venezuela. She completed <b>secondary education</b>, and doesn’t have other <b>legalized accreditations or certificates</b>.</p>",
       "householdSize": 1,
       "initialResources": {
         "skills": ["wholesale and retail"],
@@ -60,10 +60,10 @@
     },
     {
       "id": 2,
-      "name": "Fernanda",
+      "name": "María",
       "age": 26,
       "maritalStatus": "married",
-      "introText": "<p>Fernanda has been in Ecuador for <b>9 months</b> and lives with <b>four</b> of her family members. She used to work in the <b>agriculture</b> sector in Venezuela. She has a <b>high school degree</b>, and doesn’t have other <b>legalized accreditations or certificates</b>.</p>",
+      "introText": "<p>María has been in Ecuador for <b>9 months</b> and lives with <b>four</b> of her family members. She used to work in the <b>agriculture</b> sector in Venezuela. She has a <b>high school degree</b>, and doesn’t have other <b>legalized accreditations or certificates</b>.</p>",
       "householdSize": 5,
       "initialResources": {
         "skills": ["agriculture"],
@@ -89,10 +89,10 @@
     },
     {
       "id": 3,
-      "name": "Carlos",
+      "name": "José",
       "age": 26,
       "maritalStatus": "married",
-      "introText": "<p>Carlos has been in Ecuador for <b>10 months</b> and lives with <b>his partner</b>. He used to work in the <b>manufacturing</b> sector in Venezuela. He completed <b>primary education</b> and has <b>no other legalized accreditations or certificates</b>.</p>",
+      "introText": "<p>José has been in Ecuador for <b>10 months</b> and lives with <b>his partner</b>. He used to work in the <b>manufacturing</b> sector in Venezuela. He completed <b>primary education</b> and has <b>no other legalized accreditations or certificates</b>.</p>",
       "householdSize": 2,
       "initialResources": {
         "skills": ["manufacturing"],
