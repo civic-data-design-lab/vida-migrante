@@ -26,6 +26,7 @@ overall styling. Actual page components can be found in the `_pages/` directory.
   style:padding-top="{paddingTop}px"
   style:padding-bottom="{paddingBottom}px"
   style:height="{$WindowHeight}px"
+  style:overflow="hidden"
 >
   <slot />
 </main>

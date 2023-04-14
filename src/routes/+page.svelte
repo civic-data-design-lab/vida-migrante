@@ -1,10 +1,13 @@
 <script>
-  import { Languages } from '$lib/utils/types';
-  import { fade, fly } from 'svelte/transition';
-  import { Parallax, ParallaxLayer } from 'svelte-parallax';
   import { onMount } from 'svelte';
-  import arrowIcon from '$images/keyboard-arrow-down_119013.svg';
+  import { tweened } from "svelte/motion";
+  import { cubicInOut } from "svelte/easing";
+
+  import { Parallax, ParallaxLayer } from 'svelte-parallax';
+
+  import { Languages } from '$lib/utils/types';
   import LanguageToggle from '$lib/components/LanguageToggle.svelte';
+  import arrowIcon from '$images/keyboard-arrow-down_119013.svg';
   import cddlLogo from '$images/cddl_logo_black.svg';
   import mitLogo from '$images/mit-logo-black-blue.png';
   import wfpLogo from '$images/wfp-logo-standard-black-en.svg';
@@ -12,156 +15,91 @@
 
   /** Page data loaded from `+layout.server.svelte` */
   export let data;
-
-  const lastPage = 2;
-  let page = 0;
-  function advancePage() {
-    if (page === lastPage) window.location.href = '/game';
-    else page++;
-  }
+  $: language = data.language;
 
   //for transition
   let ready = false;
-  onMount(() => (ready = true));
-
-  $: language = data.language;
+  let offset = tweened(0, {
+    duration: 4500,
+    easing: cubicInOut
+  });
+  onMount(() => {
+    ready = true;
+    offset.set(500);
+  });
 
   //for scrolling
   let y;
-  let layer;
-  const layers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  let parallax;
 </script>
 
 <svelte:window bind:scrollY={y} />
 
-<footer>
-  <span class="logos">
-    <img src={mitLogo} alt="MIT Logo" />
-    <img
-      src={cddlLogo}
-      alt="Civic Data Design
-    Lab Logo"
-    />
-    <img
-      src={wfpLogo}
-      alt="World Food Programme Logo
-    (English)"
-      style:height="28px"
-    />
-    <img src={usaidLogo} alt="USAID Logo" style:height="28px" />
-  </span>
+{#if ready}
+  <div id="container" class="centered-column">
+    <div id="intro" style="filter: saturate(max(0, calc(1 - {y / window.innerHeight})))">
+      <img
+        id="quito-2"
+        src={'/images/welcomepage/landscape/QUITO_2.png'}
+        alt=""
+        style="transform: translateX({$offset - 500}px);"
+      />
+      <img
+        id="avila"
+        src={'/images/welcomepage/landscape/AVILA.png'}
+        alt=""
+        style="transform: translateX(calc({y * 0.2}em + {500 - $offset}px));"
+      />
+      <img
+        id="caracas-3"
+        src={'/images/welcomepage/landscape/CARACAS_3.png'}
+        alt=""
+        style="transform: translateX(calc({y * 0.2}em + {500 - $offset}px));"
+      />
+      <img
+        id="caracas-bldgs"
+        src={'/images/welcomepage/landscape/CARACAS_BLDGS.png'}
+        alt=""
+        style="transform: translateX(calc({y * 0.2}em + {500 - $offset}px));"
+      />
+      <img
+        id="quito-1"
+        src={'/images/welcomepage/landscape/QUITO_1.png'}
+        alt=""
+        style="transform: translateX(calc({$offset - 500}px - {y * 0.2}em));"
+      />
+      <img
+        id="quito-houses"
+        src={'/images/welcomepage/landscape/QUITO_HOUSES.png'}
+        alt=""
+        style="transform: translateX(calc({$offset - 500}px - {y * 0.2}em));"
+      />
+      <img
+        id="caracas-2"
+        src={'/images/welcomepage/landscape/CARACAS_2.png'}
+        alt=""
+        style="transform: translateX(calc({y * 0.2}em + {500 - $offset}px));"
+      />
+      <img
+        id="caracas-1"
+        src={'/images/welcomepage/landscape/CARACAS_1.png'}
+        alt=""
+        style="transform: translateX(calc({$offset - 500}px - {y * 0.2}em));"
+      />
+      <img
+        id="quito-trees"
+        src={'/images/welcomepage/landscape/QUITO_TREES.png'}
+        alt=""
+        style="transform: translateX(calc({$offset - 500}px - {y * 0.2}em));"
+      />
+    </div>
 
-  <img class="arrowicon" src={arrowIcon} alt="Scroll to see more" />
-  <LanguageToggle />
-</footer>
-
-<Parallax sections={3} bind:this={parallax}>
-  <div id="container" style="background-color: white;">
-    {#if !page && ready}
-      <ParallaxLayer style="background-color: white;">
-        <img
-          src={'/images/welcomepage/landscape/QUITO_BG_VOLCANO.png'}
-          alt=""
-          style="transform: translate(0em,{(-y * 10) /
-            (layers.length -
-              1)}px); position: absolute; z-index: 1; height: 100%; width: 120%; bottom: -20%; left: -10%;"
-        />
-        <img
-          src={'/images/welcomepage/landscape/QUITO_2.png'}
-          alt=""
-          style="transform: translate({-y * 0.2}em,{(-y * 9) /
-            (layers.length -
-              1)}px); position: absolute; z-index: 2; height: 100%; width: 200%; bottom: -42%; right: -80%;"
-          in:fly={{ x: -500, duration: 6000 }}
-        />
-        <img
-          src={'/images/welcomepage/landscape/AVILA.png'}
-          alt=""
-          style="transform: translate({y * 0.2}em,{(-y * 8) /
-            (layers.length -
-              1)}px); position: absolute; z-index:3; height:60%; width: 250%; bottom: -10%; right: -50%;"
-          in:fly={{ x: 500, duration: 6000 }}
-        />
-        <img
-          src={'/images/welcomepage/landscape/CARACAS_3.png'}
-          alt=""
-          style="transform: translate({y * 0.2}em,{(-y * 7) /
-            (layers.length -
-              1)}px); position: absolute; z-index: 4; height: 36%; width: 150%; bottom: -10%; right: -5%;"
-          in:fly={{ x: 500, duration: 6000 }}
-        />
-        <img
-          src={'/images/welcomepage/landscape/CARACAS_BLDGA.png'}
-          alt=""
-          style="transform: translate({y * 0.2}em,{(-y * 6.5) /
-            (layers.length -
-              1)}px); position: absolute; z-index: 5; height: 44%; width: 100%; bottom: -6%; right: 10%;"
-          in:fly={{ x: 500, duration: 6000 }}
-        />
-        <img
-          src={'/images/welcomepage/landscape/QUITO_1.png'}
-          alt=""
-          style="transform: translate({-y * 0.2}em,{(-y * 6) /
-            (layers.length -
-              1)}px); position: absolute; z-index: 6; height: 35%; width: 200%; left: -5%; bottom: -8%;"
-          in:fly={{ x: -500, duration: 6000 }}
-        />
-        <img
-          src={'/images/welcomepage/landscape/QUITO_HOUSES.png'}
-          alt=""
-          style="transform: translate({-y * 0.2}em,{(-y * 5.5) /
-            (layers.length -
-              1)}px); position: absolute; z-index: 7; height: 50%; width: 100%; bottom: -10%; left: 10%;"
-          in:fly={{ x: -500, duration: 6000 }}
-        />
-        <img
-          src={'/images/welcomepage/landscape/CARACAS_2.png'}
-          alt=""
-          style="transform: translate({y * 0.2}em,{(-y * 5) /
-            (layers.length -
-              1)}px); position: absolute; z-index: 8; height: 60%; width: 120%; bottom: -20%;"
-          in:fly={{ x: 500, duration: 6000 }}
-        />
-        <img
-          src={'/images/welcomepage/landscape/CARACAS_1.png'}
-          alt=""
-          style="transform: translate({-y * 0.2}em,{(-y * 4.5) /
-            (layers.length -
-              1)}px); position: absolute; z-index: 9; height: 40%; width: 100%; bottom: -20%; right: 10%;"
-          in:fly={{ x: -500, duration: 6000 }}
-        />
-        <img
-          src={'/images/welcomepage/landscape/QUITO_TREES.png'}
-          alt=""
-          style="transform: translate({-y * 0.2}em,{(-y * 4) /
-            (layers.length -
-              1)}px); position: absolute; z-index: 10; height: 50%; width: 120%; bottom: -12%;"
-          in:fly={{ x: -500, duration: 6000 }}
-        />
-      </ParallaxLayer>
-      <div
-        style="
-      display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 12;"
-      >
-        <ParallaxLayer
-          offset={0}
-          rate={1}
-          style="
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        flex-direction: column;
-      "
-        >
+    <Parallax sections={3}>
+      <div id="parallax-container" class="centered-column">
+        <ParallaxLayer rate={1} class="centered-column">
           <div style="padding-left:2rem; padding-right:2rem">
             <h1 style="text-align: center;">Vida Migrante</h1>
-            <p style="font-size:21pt; font-weight:400: line-height:24pt;text-align: center;">
-              {#if language == Languages.ENGLISH}
+            <p style="font-size: 21pt; font-weight: 400; line-height: 24pt; text-align: center;">
+              {#if language === Languages.ENGLISH}
                 Venezuelan Migrants' Inclusion in Ecuador.
               {:else}
                 Inclusión de los Migrantes Venezolanos en Ecuador.
@@ -170,20 +108,8 @@
           </div>
         </ParallaxLayer>
 
-        <ParallaxLayer
-          offset={1}
-          rate={1}
-          style="
-        <!-- background: url('images/welcomepage/background-mountains.png') no-repeat center center fixed;  -->
-        background-color: #f6e0b1;
-        width: 100%;
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        flex-direction: column;
-      "
-        >
-          <div style="z-index: 12; padding-left:2rem; padding-right:2rem;">
+        <ParallaxLayer offset={1} rate={1} class="centered-column">
+          <div style="z-index: 12; padding-left: 2rem; padding-right: 2rem;">
             {#if language == Languages.ENGLISH}
               <h1 style="text-align: center; width: auto;">
                 Venezuelan Migrants <br /> in Ecuador
@@ -225,18 +151,8 @@
             <a href="/game" class="button">Empezar</a>
           {/if}
         </ParallaxLayer>
-        <ParallaxLayer
-          offset={2}
-          rate={1}
-          style="
-        background-color: 0; 
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        flex-direction: column;
-        padding-bottom: 10rem;
-      "
-        >
+
+        <ParallaxLayer offset={2} rate={1} style="padding-bottom: 10rem;" class="centered-column">
           <div style="z-index: 12; padding-left:2rem; padding-right:2rem; ">
             {#if language == Languages.ENGLISH}
               <h1 style="text-align: center;">How to Play?</h1>
@@ -340,47 +256,135 @@
           {/if}
         </ParallaxLayer>
       </div>
-    {:else if page === 1}
-      <p>When migrants arrive in Ecuador, they face multiple challenges including:</p>
-      <ol>
-        <li>Barriers to inclusion for migrants</li>
-        <li>Trade-offs the migrants have to make to meet their basic daily needs</li>
-        <li>
-          How support and assistances (food, access to internet, and legalization of documents) can
-          help change migrants' outcomes
-        </li>
-      </ol>
-    {:else if page === 2}
-      <p>
-        In this game you will learn about the struggles of the Venezuelan migrants in Ecuador, how
-        they face them, and how certain assistances can help them through their inclusion process in
-        Ecuador.
-      </p>
-      <p>
-        The goal of them game is to go through each one of the four rounds, which is an entire year,
-        by using as few coping strategies as possible, while maintaining some money, time, and
-        wellness.
-      </p>
-    {/if}
-    {#if page === lastPage}
-      <!-- <a href="/game" class="button">Start</a> -->
-    {:else}
-      <!-- <button style="z-index: 11;" class="button button" on:click={advancePage}> Next </button> -->
-    {/if}
+    </Parallax>
   </div>
-</Parallax>
+{/if}
+
+<footer>
+  <span class="logos">
+    <img src={mitLogo} alt="MIT Logo" />
+    <img
+      src={cddlLogo}
+      alt="Civic Data Design
+    Lab Logo"
+    />
+    <img
+      src={wfpLogo}
+      alt="World Food Programme Logo
+    (English)"
+      style:height="28px"
+    />
+    <img src={usaidLogo} alt="USAID Logo" style:height="28px" />
+  </span>
+
+  <img class="arrow-icon" src={arrowIcon} alt="Scroll to see more" />
+  <LanguageToggle />
+</footer>
 
 <style>
   #container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 2.5vw;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
   }
 
-  .arrowicon {
+  #intro {
+    position: fixed;
+    top: 0;
+    height: inherit;
+    width: inherit;
+    background-image: url('/images/welcomepage/landscape/QUITO_BG_VOLCANO.png');
+    background-position: 60% 20vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #quito-2 {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    width: 200%;
+    bottom: -42%;
+    right: -80%;
+  }
+
+  #avila {
+    position: absolute;
+    z-index: 3;
+    height: 60%;
+    width: 250%;
+    bottom: -10%;
+    right: -50%;
+  }
+
+  #caracas-3 {
+    position: absolute;
+    z-index: 4;
+    height: 36%;
+    width: 150%;
+    bottom: -10%;
+    right: -5%;
+  }
+
+  #caracas-bldgs {
+    position: absolute;
+    z-index: 5;
+    height: 44%;
+    width: 100%;
+    bottom: -6%;
+    right: 10%;
+  }
+
+  #quito-1 {
+    position: absolute;
+    z-index: 6;
+    height: 35%;
+    width: 200%;
+    left: -5%;
+    bottom: -8%;
+  }
+
+  #quito-houses {
+    position: absolute;
+    z-index: 7;
+    height: 50%;
+    width: 100%;
+    bottom: -10%;
+    left: 10%;
+  }
+
+  #caracas-2 {
+    position: absolute;
+    z-index: 8;
+    height: 60%;
+    width: 120%;
+    bottom: -20%;
+  }
+
+  #caracas-1 {
+    position: absolute;
+    z-index: 9;
+    height: 40%;
+    width: 100%;
+    bottom: -20%;
+    right: 10%;
+  }
+
+  #quito-trees {
+    position: absolute;
+    z-index: 7;
+    height: 50%;
+    width: 120%;
+    bottom: -12%;
+    right: -10%;
+  }
+
+  #parallax-container {
+    height: calc(100 * var(--vh));
+    width: calc(100 * var(--vw));
+  }
+
+  .arrow-icon {
     height: 8px;
     color: #505050;
     display: flex;
@@ -403,12 +407,13 @@
   }
 
   .logos {
-    max-width: 45vw;
+    max-width: calc(45 * var(--vh));
 
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
+
   .logos img {
     height: 20px;
   }
