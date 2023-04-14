@@ -506,7 +506,7 @@
   }
 
   .food-theme {
-    --thumb-image: url('/images/dashboard/EGGS_FOOD_2.png');
+    --thumb-image: url('/images/dashboard/FOOD_APPLE 2.png');
   }
 
   .health-theme {
