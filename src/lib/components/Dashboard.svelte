@@ -8,7 +8,7 @@
   import { spendings } from '$gameFiles/expenses.json';
   import { Languages, RESOURCE_UPDATE_ANIM_DURATION } from '$lib/utils/types';
   import { tweened } from 'svelte/motion';
-  import { cubicOut } from 'svelte/easing';
+  import { linear } from 'svelte/easing';
   import { slide } from 'svelte/transition';
 
   const migrants = $page.data.migrantData.migrants;
@@ -22,16 +22,16 @@
 
   const animatedPlayerExpenses = tweened(playerExpenses, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
-    easing: cubicOut,
+    easing: linear,
   });
 
   const animatedPlayerIncome = tweened(playerIncome, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
-    easing: cubicOut,
+    easing: linear,
   });
   const animatedHoursWorked = tweened(hoursWorked, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
-    easing: cubicOut,
+    easing: linear,
   });
 
   $: animatedPlayerExpenses.set(playerExpenses);
@@ -506,7 +506,7 @@
   }
 
   .food-theme {
-    --thumb-image: url('/images/dashboard/EGGS_FOOD_2.png');
+    --thumb-image: url('/images/dashboard/FOOD_APPLE 2.png');
   }
 
   .health-theme {

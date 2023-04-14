@@ -235,3 +235,10 @@ li {
 .accent-green {
   color: var(--accent-green);
 }
+
+.centered-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -99,11 +99,10 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
 <style>
   section {
     margin-top: 1em;
-    height: 85vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20vw;
-    overflow-y: hidden;
+    row-gap: 0.4rem;
   }
 
   .assist-thumb {
