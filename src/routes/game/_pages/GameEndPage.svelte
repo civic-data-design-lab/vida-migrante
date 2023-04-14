@@ -45,7 +45,7 @@
     </p>
   {/if}
   <p>
-    You work {job.hours} hours every week.
+    You work {$GameData.resources.time} hours every week.
   </p>
 </div>
 
