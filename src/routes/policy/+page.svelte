@@ -6,7 +6,7 @@
   $: language = $page.data.language;
 </script>
 
-<div id="container">
+<div id="container" class="constrained">
   <BackButton />
   {#if language == Languages.ENGLISH}
     <h1 id="policy-title">Policy Recommendations</h1>
@@ -97,24 +97,23 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100%;
+    height: fit-content;
     padding: 2em;
     overflow: scroll;
   }
 
-  #container::-webkit-scrollbar {
-    display: none;
-  }
-
-  #policy-title {
-    font-size: min(10vw, 43pt);
+  h1 {
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
   }
 
   p {
     text-align: left;
+    margin-top: 0;
   }
 
-  #policy-body {
-    margin-bottom: 5vh;
+  #policy-title {
+    font-size: min(9.5vw, 43pt);
   }
 </style>

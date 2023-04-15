@@ -6,7 +6,7 @@
   $: language = $page.data.language;
 </script>
 
-<div id="container">
+<div id="container" class="constrained">
   <BackButton />
   {#if language == Languages.ENGLISH}
     <h1>About</h1>
@@ -146,20 +146,12 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100%;
+    height: fit-content;
     padding: 2em;
     overflow: scroll;
   }
 
-  #container::-webkit-scrollbar {
-    display: none;
-  }
-
   p {
     text-align: left;
-  }
-
-  #credits {
-    margin-bottom: 5vh;
   }
 </style>

@@ -123,7 +123,7 @@
     </div>
 
     <Parallax sections={3}>
-      <div id="parallax-container" class="centered-column">
+      <div id="parallax-container" class="centered-column constrained">
         <ParallaxLayer rate={1} class="centered-column">
           <div style="padding-left:2rem; padding-right:2rem">
             <h1 style="text-align: center;">Vida Migrante</h1>
@@ -421,9 +421,8 @@
   }
 
   #parallax-container {
-    height: calc(100 * var(--vh));
+    min-height: calc(100 * var(--vh));
     width: calc(100 * var(--vw));
-    max-width: min(100vw, 750px);
   }
 
   #second-button {
