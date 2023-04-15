@@ -17,11 +17,10 @@
     language === Languages.ENGLISH ? 'Tap to draw a card' : 'Click para sacar tarjeta';
 </script>
 
-{#if language === Languages.ENGLISH}
-  <h1>{round}<sup>{ordinalSuffix}</sup> Month</h1>
-{:else}
-  <h1>{round}<sup>{ordinalSuffix}</sup> Mes</h1>
-{/if}
+<h1>
+  {round}<sup>{ordinalSuffix}</sup>
+  {#if language === Languages.ENGLISH}Month{:else}Mes{/if}
+</h1>
 <!-- Game Data store will automatically draw a card -->
 <TapIndicator message={tapMessage} on:click={GameData.advanceGameState} disabled={round !== 1}>
   <button id="draw-card">
@@ -48,6 +47,14 @@
 {/if}
 
 <style>
+  h1 {
+    margin-top: 0;
+  }
+
+  p {
+    padding: 0 1rem;
+  }
+
   button {
     all: unset;
     width: 200px;
