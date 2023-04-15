@@ -10,9 +10,8 @@
   $: language = $page.data.language;
 
   $: round = $GameData.round + 1; // Round is 0-indexed in game data, 1 indexed here
-  $: ordinalSuffix = getOrdinalSuffix(round);
-  $: ordinalRound = NUM_TO_ORDINAL_ARR[round];
-  $: ordinalRoundOrig = NUM_TO_ORDINAL_ARR[$GameData.round];
+  $: ordinalSuffix = getOrdinalSuffix(round, { language });
+  $: ordinalRound = NUM_TO_ORDINAL_ARR[language][round - 1];
 
   $: tapMessage =
     language === Languages.ENGLISH ? 'Tap to draw a card' : 'Click para sacar tarjeta';
@@ -35,16 +34,16 @@
 {#if language == Languages.ENGLISH}
   <p>
     Draw your
-    <b>{round}<sup>{ordinalSuffix}</sup></b>
-    card to see the {ordinalRoundOrig}
+    <b>{ordinalRound}</b>
+    card to see the {ordinalRound}
     event and make a decision on how to cope with it.
   </p>
 {:else}
   <p>
     Selecciona la
-    <b>{round}<sup>{ordinalSuffix}</sup></b>
-    carta para ver el {ordinalRoundOrig}
-    evento y toma una decisión sobre cómo enfrentarlo.
+    <b>{ordinalRound}a</b>
+    carta para ver el {ordinalRound}{round === 2 || round === 4 ? 'o' : ''} evento y toma una decisión
+    sobre cómo enfrentarlo.
   </p>
 {/if}
 

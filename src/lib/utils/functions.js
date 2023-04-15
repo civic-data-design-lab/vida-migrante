@@ -11,10 +11,32 @@
  *
  * Example: `getOrdinalSuffix(3) -> "rd"`
  *
+ * Note: Supports only numbers 1-4 in Spanish. Assumes masculine (cuarto ->
+ *  'to', segundo -> 'do')
+ *
+ *
  * @param {number} n - The provided number
+ * @param {object} [config] - Optional configuration object
+ * @param {string} config.language - The language to get the suffix in (en/es)
  * @returns {string} The ordinal suffix
  */
-export function getOrdinalSuffix(n) {
+export function getOrdinalSuffix(n, config) {
+  if (config && config.language) {
+    if (n <= 0 || n > 4) {
+      console.warn('only supports numbers between 1-4');
+      return '';
+    }
+    switch (n) {
+      case 1:
+      case 3:
+        return 'er';
+      case 2:
+        return 'do';
+      case 4:
+        return 'to';
+    }
+  }
+
   const ones = n % 10,
     tens = n % 100;
   if (ones == 1 && tens != 11) {
