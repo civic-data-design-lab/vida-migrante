@@ -112,7 +112,7 @@
     text-align: center;
     overflow: scroll;
     inline-size: 90%;
-    height: 80vh;
+    height: calc(80 * var(--vh));
   }
 
   #drawer-body::-webkit-scrollbar {

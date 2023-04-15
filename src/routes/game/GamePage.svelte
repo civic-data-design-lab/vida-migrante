@@ -42,10 +42,6 @@ overall styling. Actual page components can be found in the `_pages/` directory.
     overflow-y: scroll;
   }
 
-  .game-page::-webkit-scrollbar {
-    display: none;
-  }
-
   @media (min-width: 768px) {
     .game-page {
       min-width: 50%;
