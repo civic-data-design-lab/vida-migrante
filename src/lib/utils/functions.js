@@ -6,6 +6,8 @@
  * project files.
  */
 
+import { Languages } from './types';
+
 /**
  * Gets the number's ordinal suffix.
  *
@@ -21,7 +23,7 @@
  * @returns {string} The ordinal suffix
  */
 export function getOrdinalSuffix(n, config) {
-  if (config && config.language) {
+  if (config && config.language === Languages.SPANISH) {
     if (n <= 0 || n > 4) {
       console.warn('only supports numbers between 1-4');
       return '';
