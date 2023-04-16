@@ -8,17 +8,13 @@
   <div class="carousel-viewport">
     {#each migrants as migrant, i}
       <div id="carousel-slide{i}" class="carousel-slide">
-        {#if i > 0}
-          <a href="#carousel-slide{i - 1}" class="carousel-prev">Go to last slide</a>
-        {/if}
-        {#if i < migrants.length - 1}
-          <a href="#carousel-slide{i + 1}" class="carousel-next">Go to next slide</a>
-        {/if}
         <div class="carousel-content">
           <img src={`/images/migrants/${migrant.name}.svg`} alt={migrant.name} />
           <h3>{migrant.name}</h3>
           <span style:text-transform="capitalize">{migrant.age}, {migrant.maritalStatus}</span>
-          {@html migrant.introText}
+          <div id="intro-text">
+            {@html migrant.introText}
+          </div>
         </div>
       </div>
     {/each}
@@ -30,8 +26,8 @@
 <style>
   .carousel {
     position: relative;
-    height: 70vh;
-    width: 90vw;
+    height: calc(70 * var(--vh));
+    width: min(calc(90 * var(--vw)), 675px);
     scrollbar-color: transparent transparent;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -68,7 +64,7 @@
     width: 0;
     height: 0;
     border-block: 10px solid transparent;
-    pointer-events: none;
+      cursor: pointer;
   }
 
   #left-control {
@@ -77,25 +73,12 @@
 
   #right-control {
     border-left: 10px solid #333;
-  }
-
-  #right-control,
-  .carousel-next {
-    right: 0;
-  }
-
-  .carousel-prev,
-  .carousel-next {
-    position: absolute;
-    margin-top: 17vh;
-    height: 15px;
-    width: 15px;
-    font-size: 0;
+      right: 0;
   }
 
   .carousel-content {
     height: 100%;
-    width: 95%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,6 +95,10 @@
     font-size: 16pt;
     font-weight: normal;
     color: #505050;
+  }
+
+  #intro-text {
+      width: 95%;
   }
 
   img {

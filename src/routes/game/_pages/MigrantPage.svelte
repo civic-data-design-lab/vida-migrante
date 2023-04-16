@@ -25,6 +25,8 @@
           if (entry.intersectionRatio >= observerOptions.threshold) migrant = i;
           lControl.hidden = migrant === 0;
           rControl.hidden = migrant === slides.length - 1;
+          lControl.onclick = () => slides[migrant - 1].scrollIntoView();
+          rControl.onclick = () => slides[migrant + 1].scrollIntoView();
         });
       };
     }
@@ -36,33 +38,35 @@
   });
 </script>
 
-<div
-  style="width: 310px;
-word-wrap: break-word;"
-  id="header"
->
-  {#if language === Languages.ENGLISH}
-    <h1>Take the journey as</h1>
-  {:else}
-    <h1>Vive la experiencia como</h1>
-  {/if}
-</div>
-<Carousel />
+<div class="constrained centered-column">
+  <div id="header">
+    {#if language === Languages.ENGLISH}
+      <h1>Take the journey as</h1>
+    {:else}
+      <h1>Vive la experiencia como</h1>
+    {/if}
+  </div>
+  <Carousel />
 
-<button
-  class="button"
-  on:click={() => {
-    GameData.advanceGameState({ migrantId: migrant });
-  }}
->
-  {#if language === Languages.ENGLISH}
-    Select
-  {:else}
-    Seleccionar
-  {/if}
-</button>
+  <button
+    class="button"
+    on:click={() => {
+      GameData.advanceGameState({ migrantId: migrant });
+    }}
+  >
+    {#if language === Languages.ENGLISH}
+      Select
+    {:else}
+      Seleccionar
+    {/if}
+  </button>
+</div>
 
 <style>
+  #header {
+    word-wrap: break-word;
+  }
+
   h1 {
     font-size: 30pt;
     width: fit-content;
