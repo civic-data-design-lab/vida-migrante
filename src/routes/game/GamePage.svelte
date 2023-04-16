@@ -12,7 +12,7 @@ overall styling. Actual page components can be found in the `_pages/` directory.
 
   const rootPadding = 10;
 
-  $: paddingTop = hasBanner ? 150 : rootPadding;
+  $: paddingTop = hasBanner ? 85 : rootPadding;
   let paddingBottom;
   $: {
     paddingBottom = (hasDrawer ? drawerBottomThreshold : 0) + rootPadding;

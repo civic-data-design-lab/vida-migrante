@@ -49,7 +49,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding-top: 30px;
+    padding-top: min(30px, 3vh);
     z-index: 1;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);

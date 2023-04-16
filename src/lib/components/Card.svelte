@@ -58,9 +58,17 @@
   $: cardDetails = getCardDetails();
 </script>
 
-<TapIndicator message={tapText} on:click={onCardTap} disabled={roundNum !== 1}>
+<TapIndicator
+  message={tapText}
+  on:click={onCardTap}
+  disabled={roundNum !== 1}
+  grow={!minimized && window.innerHeight < 700}
+>
   {#key minimized}
-    <article in:slide={{ duration: 200 }} style="height: {minimized ? 'max-content' : '510px'};">
+    <article
+      in:slide={{ duration: 200 }}
+      style="height: {minimized ? 'max-content' : `min(510px, 100%)`}"
+    >
       <header style="background-color: var(--accent-{CARD_CATEGORY_COLOR_MAP[card.category]});">
         <h1>{card.title}</h1>
       </header>
@@ -149,6 +157,7 @@
   }
 
   .card-image {
+    align-self: center;
     width: 100%;
     /* Adjust image margins since it has some deadspace */
     margin-bottom: -10px;
@@ -170,5 +179,33 @@
 
   .resources-required p {
     margin: 5px 0 0 0;
+  }
+
+  @media only screen and (max-height: 700px) {
+    header {
+      min-height: 60px;
+    }
+  }
+
+  @media only screen and (max-width: 380px) {
+    article {
+      max-width: 90vw;
+    }
+
+    .card-image {
+      width: 75%;
+    }
+
+    .card-description {
+      padding: 0 1.5rem;
+    }
+
+    .card-updates {
+      padding: 0.5rem 1.5rem;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
   }
 </style>

@@ -346,6 +346,13 @@
     border-radius: 40px;
     margin: 1px;
   }
+
+  @media only screen and (max-height: 700px) {
+      .oval {
+          height: 1em;
+      }
+  }
+
   .oval_green {
     background: #7ba522;
   }

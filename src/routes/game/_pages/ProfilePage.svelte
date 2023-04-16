@@ -30,7 +30,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-      height: 100%;
+    height: 100%;
   }
 
   #begin-button {
