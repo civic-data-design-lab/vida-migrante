@@ -64,8 +64,8 @@
   $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
   $: expenses = expenses.map((_, i) => {
     let ovalClass = 'oval';
-    if (i === income_column) ovalClass += ' oval_green';
     if (i <= columns) ovalClass += ' oval_filled';
+    if (i === income_column) ovalClass += ' oval_green';
     return ovalClass;
   });
   $: indicators = new Array(total_columns).fill('indicator');
@@ -353,20 +353,12 @@
       }
   }
 
+  .oval_filled {
+      background: #505050;
+  }
+
   .oval_green {
     background: #7ba522;
-  }
-  .oval_red {
-    background: #cf6348;
-  }
-  .oval_yellow {
-    background: #e5b257;
-  }
-  .oval_blue {
-    background: #5273b0;
-  }
-  .oval_filled {
-    background: #505050;
   }
 
   .indicator {
