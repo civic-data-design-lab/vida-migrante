@@ -47,8 +47,8 @@
 <style>
   .migrant-banner {
     position: absolute;
-    width: 100%;
     top: 0;
+    left: 0;
     padding-top: 30px;
     z-index: 1;
     backdrop-filter: blur(2px);
