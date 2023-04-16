@@ -10,6 +10,7 @@
   import { tweened } from 'svelte/motion';
   import { linear } from 'svelte/easing';
   import { slide } from 'svelte/transition';
+  import { WindowHeight } from '$lib/stores/windowHeight.js';
 
   const migrants = $page.data.migrantData.migrants;
 
@@ -56,9 +57,9 @@
 
   //create the oval charts
   let displayedSpending = null;
-  const total_columns = 55;
+  let total_columns;
   const max_expense = 850;
-  let expenses = new Array(total_columns).fill('oval');
+  $: expenses = new Array(total_columns).fill('oval');
   $: columns = Math.floor((total_columns * $animatedPlayerExpenses) / max_expense);
   $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
   $: expenses = expenses.map((_, i) => {
@@ -71,20 +72,20 @@
     if (i <= columns) ovalClass += '_filled';
     return ovalClass;
   });
-  let indicators = new Array(total_columns).fill('indicator');
+  $: indicators = new Array(total_columns).fill('indicator');
   $: indicators = indicators.map((_, i) => {
     let indicatorClass = 'indicator';
     switch (i) {
-      case 20: //313*55/850 avg migrant income
+      case Math.floor((313 * total_columns) / 850):
         indicatorClass += '_gray';
         break;
-      case 54: //840*55/850 avg ecuadorian incomee
+      case Math.floor((840 * total_columns) / 850):
         indicatorClass += '_red';
         break;
-      case 35: //540*55/850 vital family basket
+      case Math.floor((540 * total_columns) / 850):
         indicatorClass += '_yellow';
         break;
-      case 49: //761*55/850 basic family basket
+      case Math.floor((761 * total_columns) / 850):
         indicatorClass += '_blue';
     }
     return indicatorClass;
@@ -97,6 +98,11 @@
   }
 
   let expenseReferences = false;
+
+  function computeColumns() {
+    total_columns = Math.floor((window.innerWidth * 0.9) / 6);
+  }
+  onMount(computeColumns);
 </script>
 
 <div id="expense-board">
@@ -138,7 +144,6 @@
     >
   {/if}
 </div>
-
 <div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
   <button
     id="modal-button-key"
@@ -200,7 +205,6 @@
   </div>
 {/key}
 <hr />
-
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
   <h2 style="margin-bottom: 0;">
     {#if isEn}Allocate Your Spending{:else}Asigna tus Gastos {/if}
@@ -240,6 +244,7 @@
     </div>
   {/each}
 </div>
+<svelte:window on:resize={computeColumns} />
 
 <Modal showModal={displayedSpending}>
   <div id="modal-body" slot="body">
@@ -339,21 +344,21 @@
   }
 
   .oval {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #f3f3f3;
     border-radius: 40px;
     margin: 1px;
   }
   .oval_green {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #7ba522;
     border-radius: 40px;
     margin: 1px;
   }
   .oval_red {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #cf6348;
     border-radius: 40px;
@@ -361,7 +366,7 @@
     /* border: 1.5px solid #CF6348; */
   }
   .oval_yellow {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #e5b257;
     border-radius: 40px;
@@ -369,7 +374,7 @@
     /* border: 1.5px solid #E5B257; */
   }
   .oval_blue {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #5273b0;
     border-radius: 40px;
@@ -377,14 +382,14 @@
     /* border: 1.5px solid #5273B0; */
   }
   .oval_filled {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #505050;
     border-radius: 40px;
     margin: 1px;
   }
   .oval_green_filled {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #7ba522;
     box-shadow: 0 0 0.1em #505050;
@@ -392,7 +397,7 @@
     margin: 1px;
   }
   .oval_red_filled {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #cf6348;
     box-shadow: 0 0 0.1em #505050;
@@ -401,7 +406,7 @@
     /* border: 1.5px solid #CF6348; */
   }
   .oval_yellow_filled {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #e5b257;
     box-shadow: 0 0 0.1em #505050;
@@ -410,7 +415,7 @@
     /* border: 1.5px solid #E5B257; */
   }
   .oval_blue_filled {
-    width: 0.25em;
+    width: 6px;
     height: 2em;
     background: #5273b0;
     box-shadow: 0 0 0.1em #505050;
@@ -420,35 +425,35 @@
   }
 
   .indicator {
-    width: 0.25em;
+    width: 6px;
     height: 0.55em;
     background-color: transparent;
     margin: 1px;
     margin-top: 4px;
   }
   .indicator_gray {
-    width: 0.25em;
+    width: 6px;
     height: 0.55em;
     background: #9c9c9c;
     margin: 1px;
     margin-top: 4px;
   }
   .indicator_red {
-    width: 0.25em;
+    width: 6px;
     height: 0.55em;
     background: #cf6348;
     margin: 1px;
     margin-top: 4px;
   }
   .indicator_yellow {
-    width: 0.25em;
+    width: 6px;
     height: 0.55em;
     background: #e5b257;
     margin: 1px;
     margin-top: 4px;
   }
   .indicator_blue {
-    width: 0.25em;
+    width: 6px;
     height: 0.55em;
     background: #5273b0;
     margin: 1px;
@@ -491,7 +496,7 @@
   }
 
   img {
-    width: 50%;
+    width: min(50%, 250px);
   }
 
   .modal-title {
@@ -511,25 +516,21 @@
 
   .health-theme {
     --thumb-image: url('/images/dashboard/HEALTH.png');
+    --thumb-transform: translateY(5px);
   }
 
   .household-theme {
     --thumb-image: url('/images/dashboard/HOUSEHOLD.png');
+    --thumb-transform: translateX(-10px);
   }
 
   .remittances-theme {
     --thumb-image: url('/images/dashboard/REMITTANCES.png');
+    --thumb-transform: translateY(3px);
   }
 
   .internet-theme {
     --thumb-image: url('/images/dashboard/WIFI.png');
-  }
-
-  #bars {
-    width: 85%;
-    display: flex;
-    flex-direction: row;
-    place-content: center;
   }
 
   #modal-button-key {

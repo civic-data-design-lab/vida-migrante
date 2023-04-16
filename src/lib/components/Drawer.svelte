@@ -126,8 +126,9 @@
 <style>
   #drawer {
     position: fixed;
-    height: 100vh;
-    width: 100vw;
+    left: 0;
+    height: calc(100 * var(--vh));
+    width: calc(100 * var(--vw));
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -142,9 +143,10 @@
 
   #drawer-backdrop {
     position: fixed;
-    height: 100vh;
-    width: 100vw;
+    height: calc(100 * var(--vh));
+    width: calc(100 * var(--vw));
     top: 0;
+    left: 0;
     z-index: 1;
   }
 

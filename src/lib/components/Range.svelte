@@ -275,6 +275,7 @@
         0 1px 1px 0 rgba(0, 0, 0, 0.14),
         0 0px 2px 1px rgba(0, 0, 0, 0.2)
       ); */
+    transform: var(--thumb-transform, none);
   }
 
   .range__thumb--holding {
@@ -289,7 +290,7 @@
     top: -33px;
     color: var(--tooltip-text, white);
     width: 38px;
-    padding: 4px 0;
+    padding: 8px 4px 4px 4px;
     border-radius: 4px;
     text-align: center;
     background-color: var(--tooltip-bgcolor, #505050);
