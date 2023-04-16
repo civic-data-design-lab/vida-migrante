@@ -137,6 +137,7 @@
     height: 5vh;
     width: 50%;
     border-radius: 2.5vh;
+    transition: none;
   }
 
   #modal-button:disabled {
