@@ -185,7 +185,7 @@
           offset={2}
           rate={1}
           class="centered-column"
-          style="padding-bottom: max(5.5rem, 100px);"
+          style="height: fit-content !important; min-height: 100vh; padding-bottom: 12rem;"
         >
           <div style="z-index: 12; padding-left:2rem; padding-right:2rem;">
             {#if language == Languages.ENGLISH}
@@ -316,7 +316,7 @@
     <img src={usaidLogo} alt="USAID Logo" style:height="28px" />
   </span>
 
-  {#if container && y < container.scrollHeight - window.innerHeight}
+  {#if container && Math.ceil(y) < container.scrollHeight - window.innerHeight}
     <img class="arrow-icon" src={arrowIcon} alt="Scroll to see more" />
   {/if}
   <LanguageToggle />
