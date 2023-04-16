@@ -64,12 +64,8 @@
   $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
   $: expenses = expenses.map((_, i) => {
     let ovalClass = 'oval';
-    switch (i) {
-      case income_column:
-        ovalClass += '_green';
-        break;
-    }
-    if (i <= columns) ovalClass += '_filled';
+    if (i === income_column) ovalClass += ' oval_green';
+    if (i <= columns) ovalClass += ' oval_filled';
     return ovalClass;
   });
   $: indicators = new Array(total_columns).fill('indicator');
@@ -77,16 +73,16 @@
     let indicatorClass = 'indicator';
     switch (i) {
       case Math.floor((313 * total_columns) / 850):
-        indicatorClass += '_gray';
+        indicatorClass += ' indicator_gray';
         break;
       case Math.floor((840 * total_columns) / 850):
-        indicatorClass += '_red';
+        indicatorClass += ' indicator_red';
         break;
       case Math.floor((540 * total_columns) / 850):
-        indicatorClass += '_yellow';
+        indicatorClass += ' indicator_yellow';
         break;
       case Math.floor((761 * total_columns) / 850):
-        indicatorClass += '_blue';
+        indicatorClass += ' indicator_blue';
     }
     return indicatorClass;
   });
@@ -351,122 +347,40 @@
     margin: 1px;
   }
   .oval_green {
-    width: 6px;
-    height: 2em;
     background: #7ba522;
-    border-radius: 40px;
-    margin: 1px;
   }
   .oval_red {
-    width: 6px;
-    height: 2em;
     background: #cf6348;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #CF6348; */
   }
   .oval_yellow {
-    width: 6px;
-    height: 2em;
     background: #e5b257;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #E5B257; */
   }
   .oval_blue {
-    width: 6px;
-    height: 2em;
     background: #5273b0;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #5273B0; */
   }
   .oval_filled {
-    width: 6px;
-    height: 2em;
     background: #505050;
-    border-radius: 40px;
-    margin: 1px;
-  }
-  .oval_green_filled {
-    width: 6px;
-    height: 2em;
-    background: #7ba522;
-    box-shadow: 0 0 0.1em #505050;
-    border-radius: 40px;
-    margin: 1px;
-  }
-  .oval_red_filled {
-    width: 6px;
-    height: 2em;
-    background: #cf6348;
-    box-shadow: 0 0 0.1em #505050;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #CF6348; */
-  }
-  .oval_yellow_filled {
-    width: 6px;
-    height: 2em;
-    background: #e5b257;
-    box-shadow: 0 0 0.1em #505050;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #E5B257; */
-  }
-  .oval_blue_filled {
-    width: 6px;
-    height: 2em;
-    background: #5273b0;
-    box-shadow: 0 0 0.1em #505050;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #5273B0; */
   }
 
   .indicator {
     width: 6px;
-    height: 0.55em;
+    height: 6px;
+    border-radius: 3px;
     background-color: transparent;
     margin: 1px;
-    margin-top: 4px;
   }
   .indicator_gray {
-    width: 6px;
-    height: 0.55em;
     background: #9c9c9c;
-    margin: 1px;
-    margin-top: 4px;
   }
   .indicator_red {
-    width: 6px;
-    height: 0.55em;
     background: #cf6348;
-    margin: 1px;
-    margin-top: 4px;
   }
   .indicator_yellow {
-    width: 6px;
-    height: 0.55em;
     background: #e5b257;
-    margin: 1px;
-    margin-top: 4px;
   }
   .indicator_blue {
-    width: 6px;
-    height: 0.55em;
     background: #5273b0;
-    margin: 1px;
-    margin-top: 4px;
   }
-
-  /* .circle {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-top: 0.3em;
-    margin-right: 0.5em;
-  } */
 
   .alignleft {
     display: flex;
