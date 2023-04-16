@@ -33,7 +33,7 @@ export async function load({ parent }) {
 
   const pageSeoProps = {
     ...seoProps,
-    pageTitle: 'Game',
+    pageTitle: language === Languages.ENGLISH ? 'Game' : 'Juego',
     slug: 'game',
   };
 
