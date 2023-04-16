@@ -6,15 +6,8 @@ import { DESCRIPTION } from '$lib/utils/seo.js';
  * Loads the language setting from the cookie.
  */
 export async function load({ cookies }) {
-  const languageCookie = cookies.get('language');
-
-  let language = Languages.SPANISH;
-  if (!languageCookie) {
-    console.log('No language set! Defaulting to spanish...');
-  } else {
-    console.log('Retrieved language from cookie:', languageCookie);
-    language = languageCookie;
-  }
+  // Set by `hooks.server.js`
+  const language = cookies.get('language');
 
   const seoProps = {
     metadescription: DESCRIPTION[language],
