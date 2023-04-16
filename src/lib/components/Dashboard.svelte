@@ -348,13 +348,13 @@
   }
 
   @media only screen and (max-height: 700px) {
-      .oval {
-          height: 1em;
-      }
+    .oval {
+      height: 1em;
+    }
   }
 
   .oval_filled {
-      background: #505050;
+    background: #505050;
   }
 
   .oval_green {

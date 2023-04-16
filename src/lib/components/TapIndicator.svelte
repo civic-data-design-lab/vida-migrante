@@ -35,7 +35,7 @@
         <p for="draw-card">{message || ''}</p>
       </div>
     {/if}
-    <div class="tap-indicator-body {show ? 'fade-in-out' : ''}" style="height: {grow ? '100%' : ''}">
+    <div class="tap-indicator-body centered-column {show ? 'fade-in-out' : ''}" style="height: {grow ? '100%' : ''}">
       <slot />
     </div>
   </button>

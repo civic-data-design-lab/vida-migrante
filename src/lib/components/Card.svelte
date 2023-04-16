@@ -62,7 +62,7 @@
   message={tapText}
   on:click={onCardTap}
   disabled={roundNum !== 1}
-  grow={!minimized && window.innerHeight - 240 > 510}
+  grow={!minimized}
 >
   {#key minimized}
     <article

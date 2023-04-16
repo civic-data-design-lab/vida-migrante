@@ -19,8 +19,12 @@
       </div>
     {/each}
   </div>
-  <div class="carousel-control" id="left-control" />
-  <div class="carousel-control" id="right-control" />
+  <div id="left-control-hitbox">
+    <div id="left-control" />
+  </div>
+  <div id="right-control-hitbox">
+    <div id="right-control" />
+  </div>
 </div>
 
 <style>
@@ -57,14 +61,28 @@
     scroll-snap-align: center;
   }
 
-  .carousel-control {
+  #left-control-hitbox,
+  #right-control-hitbox {
     z-index: 1;
     position: absolute;
-    margin-top: 17vh;
+    margin-top: calc(17 * var(--vh));
+    width: 20px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  #right-control-hitbox {
+    right: 0;
+  }
+
+  #left-control,
+  #right-control {
+    position: absolute;
+    bottom: 5px;
+    z-index: 1;
     width: 0;
     height: 0;
     border-block: 10px solid transparent;
-      cursor: pointer;
   }
 
   #left-control {
@@ -73,7 +91,7 @@
 
   #right-control {
     border-left: 10px solid #333;
-      right: 0;
+    right: 0;
   }
 
   .carousel-content {
@@ -98,7 +116,7 @@
   }
 
   #intro-text {
-      width: 95%;
+    width: 95%;
   }
 
   img {

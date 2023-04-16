@@ -15,8 +15,8 @@
   };
 
   onMount(() => {
-    const lControl = document.getElementById('left-control');
-    const rControl = document.getElementById('right-control');
+    const lControl = document.getElementById('left-control-hitbox');
+    const rControl = document.getElementById('right-control-hitbox');
     const slides = [...document.querySelectorAll('.carousel-slide')];
 
     function createUpdater(i) {
