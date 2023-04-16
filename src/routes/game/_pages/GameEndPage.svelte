@@ -13,13 +13,13 @@
   $: job = jobs[$GameData.jobId];
   let income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
-  $: incomeSuccess = income > job.income;
+  $: incomeSuccess = true; //income > job.income;
   $: migrantInfo = migrants.find((migrant) => migrant.id === $GameData.migrantId);
-  $: foodSecure = isFoodSecure(
+  $: foodSecure = false; /*isFoodSecure(
     sumValues($GameData.resources?.expenditures),
     migrantInfo.householdSize,
     $GameData.resources?.copingLevel
-  );
+  );*/
 </script>
 
 {#if language == Languages.ENGLISH}
@@ -98,16 +98,17 @@
 
 <div id="footer">
   <button class="button" on:click={GameData.advanceGameState}>Try Again</button>
-  <a href="/about">About</a>
+  <a href="/about" style="margin-top: 10px">About</a>
   <a href="/policy">Policy Recommendations</a>
 </div>
 
 <style>
   h1 {
     text-align: center;
-    font-size: min(30pt, 12vw);
+    font-size: min(30pt, 9vw);
     padding-left: 2.5vw;
     padding-right: 2.5vw;
+    margin-bottom: 0;
   }
 
   #body {
@@ -129,5 +130,26 @@
     width: 50%;
     border-radius: 3vh;
     font-size: 18pt;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media only screen and (max-height: 700px) {
+    h1 {
+      margin-top: 15px;
+    }
+
+    p {
+      margin-block: 11px;
+    }
+
+    .button {
+      height: 5vh;
+      font-size: 16pt;
+    }
+
+    a {
+      font-size: 13pt;
+    }
   }
 </style>

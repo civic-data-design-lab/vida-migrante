@@ -69,9 +69,7 @@
   }
 
   .nav-btn {
-    position: fixed;
-    left: 0;
-    transform: none; /*translateY(-130%);*/
+    transform: translateY(-130%);
   }
 
   .nav-btn:focus {
