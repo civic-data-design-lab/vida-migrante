@@ -65,6 +65,9 @@
 <style>
   #header {
     word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    width: 95%;
   }
 
   h1 {
