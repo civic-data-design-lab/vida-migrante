@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import '../app.css';
   import PageHead from '$lib/components/PageHead.svelte';
+  import CookiesConsentBanner from '$lib/components/CookiesConsentBanner.svelte';
 
   function calcViewportUnits() {
     let vh = window.innerHeight / 100;
@@ -20,6 +21,7 @@
 <div id="bg">
   <slot />
 </div>
+<CookiesConsentBanner />
 
 <style>
   #bg {
