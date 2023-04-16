@@ -1,4 +1,5 @@
 import { Languages } from '$types';
+import { DESCRIPTION } from '$lib/utils/seo.js';
 
 /**
  * Load function for the root layout.
@@ -15,5 +16,12 @@ export async function load({ cookies }) {
     language = languageCookie;
   }
 
-  return { language };
+  const seoProps = {
+    metadescription: DESCRIPTION[language],
+    ogLanguage: language,
+    pageTitle: null,
+    slug: '',
+  };
+
+  return { language, seoProps };
 }

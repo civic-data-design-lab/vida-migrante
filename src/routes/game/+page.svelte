@@ -81,9 +81,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Game | Ecuador Integration</title>
-</svelte:head>
 {#if pageData.hasMigrantBanner}
   <MigrantBanner migrantId={$GameData.migrantId} jobId={$GameData.jobId} />
 {/if}

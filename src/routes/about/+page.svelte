@@ -1,10 +1,13 @@
 <script>
   import BackButton from '$lib/components/BackButton.svelte';
-  import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
+  import PageHead from '$lib/components/PageHead.svelte';
 
-  $: language = $page.data.language;
+  export let data;
+  $: language = data.language;
 </script>
+
+<PageHead {...data.seoProps} />
 
 <div id="container" class="constrained">
   <BackButton />
