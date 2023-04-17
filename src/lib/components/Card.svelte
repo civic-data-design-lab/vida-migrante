@@ -67,7 +67,7 @@
   {#key minimized}
     <article
       in:slide={{ duration: 200 }}
-      style="height: {minimized ? 'max-content' : `min(510px, 100%)`}"
+      style="height: {minimized ? 'max-content' : `min(510px, min-content)`}"
     >
       <header style="background-color: var(--accent-{CARD_CATEGORY_COLOR_MAP[card.category]});">
         <h1>{card.title}</h1>
@@ -187,7 +187,7 @@
     }
   }
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 400px), (max-height: 750px) {
     article {
       max-width: 90vw;
     }
