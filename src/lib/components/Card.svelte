@@ -181,13 +181,13 @@
     margin: 5px 0 0 0;
   }
 
-  @media only screen and (max-height: 700px) {
+  @media only screen and (max-height: 750px) {
     header {
       min-height: 60px;
     }
   }
 
-  @media only screen and (max-width: 380px) {
+  @media only screen and (max-width: 400px) {
     article {
       max-width: 90vw;
     }
