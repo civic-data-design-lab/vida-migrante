@@ -177,3 +177,6 @@ export const RESOURCE_UPDATE_ANIM_DELAY = 300;
 
 /** Time in milliseconds of the drawer slide up/down animation. */
 export const DRAWER_ANIM_DURATION = 1000;
+
+/** One-year duration in seconds. */
+export const YEAR = 60 * 60 * 24 * 365;

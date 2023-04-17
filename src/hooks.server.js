@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import { Languages } from '$types';
+import { Languages, YEAR } from '$types';
 
 /**
  * Server hooks, run before executing other server functions.
@@ -25,7 +25,10 @@ export async function handle({ event, resolve }) {
     }
 
     console.log('Setting language cookie to', urlLanguage, 'from query params');
-    event.cookies.set('language', urlLanguage);
+    event.cookies.set('language', urlLanguage, {
+      path: '/',
+      maxAge: YEAR,
+    });
     language = urlLanguage;
     // Next check if the user stored the language from cookies
   } else if (cookieLanguage) {
@@ -35,7 +38,10 @@ export async function handle({ event, resolve }) {
     // Default is Spanish
     console.log('No language set, setting cookie to default Spanish');
     language = 'es';
-    event.cookies.set('language', language);
+    event.cookies.set('language', language, {
+      path: '/',
+      maxAge: YEAR,
+    });
   }
 
   console.debug('Transforming page chunk %lang% ->', language);
