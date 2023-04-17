@@ -17,9 +17,7 @@
 </script>
 
 <svelte:head>
-  <title>
-    {pageTitle ? `${pageTitle} | ` : ''}{SITE_TITLE}
-  </title>
+  <title>{pageTitle ? `${pageTitle} | ` : ''}{SITE_TITLE}</title>
   <meta name="description" content={metadescription} />
   <meta
     name="robots"
@@ -34,6 +32,7 @@
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={metadescription} />
   <meta property="og:image" content={PREVIEW_IMAGE.src} />
+  <!-- FIXME: OpenGraph recommends an image of size 1200x630 -->
   <meta property="og:image:width" content={PREVIEW_IMAGE.width} />
   <meta property="og:image:height" content={PREVIEW_IMAGE.height} />
   <meta property="og:image:alt" content={PREVIEW_IMAGE.alt} />
