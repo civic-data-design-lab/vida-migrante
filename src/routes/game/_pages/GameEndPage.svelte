@@ -13,13 +13,13 @@
   $: job = jobs[$GameData.jobId];
   let income = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
 
-  $: incomeSuccess = true; //income > job.income;
+  $: incomeSuccess = income > job.income;
   $: migrantInfo = migrants.find((migrant) => migrant.id === $GameData.migrantId);
-  $: foodSecure = false; /*isFoodSecure(
+  $: foodSecure = isFoodSecure(
     sumValues($GameData.resources?.expenditures),
     migrantInfo.householdSize,
     $GameData.resources?.copingLevel
-  );*/
+  );
 </script>
 
 {#if language == Languages.ENGLISH}
