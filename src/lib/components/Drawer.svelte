@@ -121,6 +121,7 @@
   on:touchend={onTouchEnd}
   on:mousemove={onMouseMove}
   on:mouseup={onMouseUp}
+  on:resize={closeDrawer}
 />
 
 <style>
