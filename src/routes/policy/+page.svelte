@@ -9,8 +9,10 @@
 
 <PageHead {...data.seoProps} />
 
-<div id="container" class="constrained">
+<header class="fixed-header">
   <BackButton />
+</header>
+<div id="container" class="constrained">
   {#if language == Languages.ENGLISH}
     <h1 id="policy-title">Policy Recommendations</h1>
   {:else}
