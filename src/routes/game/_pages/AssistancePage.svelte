@@ -47,7 +47,7 @@ word-wrap: break-word; margin-bottom:.2em; "
     style="width: 80%;
 word-wrap: break-word; text-align:center;margin-bottom:.1em;"
   >
-    Assistance help migrants' basic needs.
+    Assistances help with migrants' basic needs.
   </p>
 {:else}
   <h1
@@ -88,6 +88,7 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
   {#each assistances as assistance (assistance.id)}
     <button
       class="assist-thumb"
+      title={assistance.name}
       disabled={alreadySelectedAssistanceIds.includes(assistance.id)}
       on:click={() => (displayedAssistance = assistance)}
     >

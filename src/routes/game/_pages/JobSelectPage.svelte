@@ -25,33 +25,13 @@
   }
 </script>
 
-{#if language == Languages.ENGLISH}
-  <h1
-    style="width: 200px;
-word-wrap: break-word;margin-bottom:.2em; "
-  >
-    Choose your occupation
-  </h1>
-  <p
-    style="width: 80%;
-word-wrap: break-word;margin-top:.1em; text-align:center"
-  >
-    Migrants have limited options to get a job.
-  </p>
-{:else}
-  <h1
-    style="width: 250px;
-word-wrap: break-word;margin-bottom:.2em;"
-  >
-    Selecciona una ocupación
-  </h1>
-  <p
-    style="width: 80%;
-word-wrap: break-word; margin-top:.1em; text-align:center"
-  >
-    Los migrantes tienen opciones limitadas para encontrar empleo.
-  </p>
-{/if}
+<h1 style="width: 95%; word-wrap: break-word;margin-bottom:.2em;">
+  {#if language == Languages.ENGLISH}Choose your occupation{:else}Selecciona una ocupación{/if}
+</h1>
+<p style="width: 80%; word-wrap: break-word;margin-top:.1em; text-align:center">
+  {#if language == Languages.ENGLISH}Migrants have limited options to get a job.{:else}Los migrantes
+    tienen opciones limitadas para encontrar empleo.{/if}
+</p>
 <div id="jobs">
   {#each jobs as job, i}
     <img
@@ -157,6 +137,7 @@ word-wrap: break-word; margin-top:.1em; text-align:center"
     height: 5vh;
     width: 50%;
     border-radius: 2.5vh;
+    transition: none;
   }
 
   #modal-button:disabled {

@@ -47,9 +47,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: fit-content;
   }
 
   img {
     height: 30vh;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 </style>

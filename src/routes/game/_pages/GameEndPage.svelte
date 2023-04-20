@@ -22,16 +22,14 @@
   );
 </script>
 
-{#if language == Languages.ENGLISH}
-  <h1>
+<h1>
+  {#if language == Languages.ENGLISH}
     You and your family are {#if incomeSuccess && foodSecure}doing better!{:else}still struggling{/if}
-  </h1>
-{:else}
-  <h1>
+  {:else}
     Tu familia y tú {#if incomeSuccess && foodSecure}están un poco mejor!{:else}todavía tienen
       dificultades{/if}
-  </h1>
-{/if}
+  {/if}
+</h1>
 <div id="body">
   {#if language == Languages.ENGLISH}
     <p>
@@ -87,27 +85,46 @@
   {/if}
   {#if language == Languages.ENGLISH}
     <p>
-      You work <b>{job.hours}</b> hours every week.
+      You work <b>{$GameData.resources.time}</b> hours every week.
     </p>
   {:else}
     <p>
-      Trabajas <b>{job.hours}</b> horas a la semana.
+      Trabajas <b>{$GameData.resources.time}</b> horas a la semana.
     </p>
   {/if}
 </div>
 
 <div id="footer">
-  <button class="button" on:click={GameData.advanceGameState}>Try Again</button>
-  <a href="/about">About</a>
-  <a href="/policy">Policy Recommendations</a>
+  <button class="button" on:click={GameData.advanceGameState}>
+    {#if language === Languages.ENGLISH}
+      Try Again
+    {:else}
+      Empezar de nuevo
+    {/if}
+  </button>
+  <a href="/about" style="margin-top: 10px">
+    {#if language === Languages.ENGLISH}
+      About
+    {:else}
+      Acerca
+    {/if}
+  </a>
+  <a href="/policy">
+    {#if language === Languages.ENGLISH}
+      Policy Recommendations
+    {:else}
+      Recomendaciones
+    {/if}
+  </a>
 </div>
 
 <style>
   h1 {
     text-align: center;
-    font-size: min(30pt, 12vw);
+    font-size: min(30pt, 9vw);
     padding-left: 2.5vw;
     padding-right: 2.5vw;
+    margin-bottom: 0;
   }
 
   #body {
@@ -126,8 +143,29 @@
 
   .button {
     height: 6vh;
-    width: 50%;
+    width: fit-content;
     border-radius: 3vh;
     font-size: 18pt;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media only screen and (max-height: 700px) {
+    h1 {
+      margin-top: 15px;
+    }
+
+    p {
+      margin-block: 11px;
+    }
+
+    .button {
+      height: 5vh;
+      font-size: 16pt;
+    }
+
+    a {
+      font-size: 13pt;
+    }
   }
 </style>

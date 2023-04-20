@@ -56,38 +56,29 @@
 
   //create the oval charts
   let displayedSpending = null;
-  const total_columns = 55;
+  let total_columns;
   const max_expense = 850;
-  let expenses = new Array(total_columns).fill('oval');
+  $: expenses = new Array(total_columns).fill('oval');
   $: columns = Math.floor((total_columns * $animatedPlayerExpenses) / max_expense);
   $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
   $: expenses = expenses.map((_, i) => {
     let ovalClass = 'oval';
+    if (i <= columns) ovalClass += ' oval_filled';
+    if (i === income_column) ovalClass += ' oval_green';
     switch (i) {
-      case income_column:
-        ovalClass += '_green';
+      case Math.floor((313 * total_columns) / 850):
+        ovalClass += ' indicator indicator_gray';
         break;
+      case Math.floor((840 * total_columns) / 850):
+        ovalClass += ' indicator indicator_red';
+        break;
+      case Math.floor((540 * total_columns) / 850):
+        ovalClass += ' indicator indicator_yellow';
+        break;
+      case Math.floor((761 * total_columns) / 850):
+        ovalClass += ' indicator indicator_blue';
     }
-    if (i <= columns) ovalClass += '_filled';
     return ovalClass;
-  });
-  let indicators = new Array(total_columns).fill('indicator');
-  $: indicators = indicators.map((_, i) => {
-    let indicatorClass = 'indicator';
-    switch (i) {
-      case 20: //313*55/850 avg migrant income
-        indicatorClass += '_gray';
-        break;
-      case 54: //840*55/850 avg ecuadorian incomee
-        indicatorClass += '_red';
-        break;
-      case 35: //540*55/850 vital family basket
-        indicatorClass += '_yellow';
-        break;
-      case 49: //761*55/850 basic family basket
-        indicatorClass += '_blue';
-    }
-    return indicatorClass;
   });
 
   //slider
@@ -96,7 +87,12 @@
     spending.expense = $GameData.resources?.expenditures[spending.name2];
   }
 
-  let expenseReferences = false;
+  let expenseReferences = true;
+
+  function computeColumns() {
+    total_columns = Math.floor((window.innerWidth * 0.9) / 10);
+  }
+  onMount(computeColumns);
 </script>
 
 <div id="expense-board">
@@ -119,11 +115,6 @@
       <div class={color} />
     {/each}
   </section>
-  <section>
-    {#each indicators as indicator_color}
-      <div class={indicator_color} />
-    {/each}
-  </section>
 </div>
 <div id="migrant-state">
   {#if isEn}
@@ -138,7 +129,6 @@
     >
   {/if}
 </div>
-
 <div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
   <button
     id="modal-button-key"
@@ -200,7 +190,6 @@
   </div>
 {/key}
 <hr />
-
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
   <h2 style="margin-bottom: 0;">
     {#if isEn}Allocate Your Spending{:else}Asigna tus Gastos {/if}
@@ -240,6 +229,7 @@
     </div>
   {/each}
 </div>
+<svelte:window on:resize={computeColumns} />
 
 <Modal showModal={displayedSpending}>
   <div id="modal-body" slot="body">
@@ -284,20 +274,6 @@
     align-items: center;
   }
 
-  #container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    padding: 2.5vw;
-  }
-
-  #container2 {
-    display: flex;
-    /* justify-content: space-between; */
-  }
-
   #expense-board {
     display: flex;
     justify-content: space-between;
@@ -339,129 +315,49 @@
   }
 
   .oval {
-    width: 0.25em;
+    width: 10px;
     height: 2em;
     background: #f3f3f3;
     border-radius: 40px;
     margin: 1px;
   }
-  .oval_green {
-    width: 0.25em;
-    height: 2em;
-    background: #7ba522;
-    border-radius: 40px;
-    margin: 1px;
-  }
-  .oval_red {
-    width: 0.25em;
-    height: 2em;
-    background: #cf6348;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #CF6348; */
-  }
-  .oval_yellow {
-    width: 0.25em;
-    height: 2em;
-    background: #e5b257;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #E5B257; */
-  }
-  .oval_blue {
-    width: 0.25em;
-    height: 2em;
-    background: #5273b0;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #5273B0; */
-  }
+
   .oval_filled {
-    width: 0.25em;
-    height: 2em;
     background: #505050;
-    border-radius: 40px;
-    margin: 1px;
   }
-  .oval_green_filled {
-    width: 0.25em;
-    height: 2em;
+
+  .oval_green {
     background: #7ba522;
-    box-shadow: 0 0 0.1em #505050;
-    border-radius: 40px;
-    margin: 1px;
-  }
-  .oval_red_filled {
-    width: 0.25em;
-    height: 2em;
-    background: #cf6348;
-    box-shadow: 0 0 0.1em #505050;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #CF6348; */
-  }
-  .oval_yellow_filled {
-    width: 0.25em;
-    height: 2em;
-    background: #e5b257;
-    box-shadow: 0 0 0.1em #505050;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #E5B257; */
-  }
-  .oval_blue_filled {
-    width: 0.25em;
-    height: 2em;
-    background: #5273b0;
-    box-shadow: 0 0 0.1em #505050;
-    border-radius: 40px;
-    margin: 1px;
-    /* border: 1.5px solid #5273B0; */
   }
 
   .indicator {
-    width: 0.25em;
-    height: 0.55em;
-    background-color: transparent;
-    margin: 1px;
-    margin-top: 4px;
-  }
-  .indicator_gray {
-    width: 0.25em;
-    height: 0.55em;
-    background: #9c9c9c;
-    margin: 1px;
-    margin-top: 4px;
-  }
-  .indicator_red {
-    width: 0.25em;
-    height: 0.55em;
-    background: #cf6348;
-    margin: 1px;
-    margin-top: 4px;
-  }
-  .indicator_yellow {
-    width: 0.25em;
-    height: 0.55em;
-    background: #e5b257;
-    margin: 1px;
-    margin-top: 4px;
-  }
-  .indicator_blue {
-    width: 0.25em;
-    height: 0.55em;
-    background: #5273b0;
-    margin: 1px;
-    margin-top: 4px;
+    border: 3px solid;
+    width: 4px;
+    height: calc(2em - 3px);
   }
 
-  /* .circle {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-top: 0.3em;
-    margin-right: 0.5em;
-  } */
+  .indicator_gray {
+    border-color: #9c9c9c;
+  }
+  .indicator_red {
+    border-color: #cf6348;
+  }
+  .indicator_yellow {
+    border-color: #e5b257;
+  }
+  .indicator_blue {
+    border-color: #5273b0;
+  }
+
+  @media only screen and (max-height: 750px) {
+    .oval {
+      height: 1em;
+    }
+
+    .indicator {
+      height: calc(1em - 3px);
+    }
+  }
 
   .alignleft {
     display: flex;
@@ -491,7 +387,7 @@
   }
 
   img {
-    width: 50%;
+    width: min(50%, 250px);
   }
 
   .modal-title {
@@ -511,25 +407,21 @@
 
   .health-theme {
     --thumb-image: url('/images/dashboard/HEALTH.png');
+    --thumb-transform: translateY(5px);
   }
 
   .household-theme {
     --thumb-image: url('/images/dashboard/HOUSEHOLD.png');
+    --thumb-transform: translateX(-10px);
   }
 
   .remittances-theme {
     --thumb-image: url('/images/dashboard/REMITTANCES.png');
+    --thumb-transform: translateY(3px);
   }
 
   .internet-theme {
     --thumb-image: url('/images/dashboard/WIFI.png');
-  }
-
-  #bars {
-    width: 85%;
-    display: flex;
-    flex-direction: row;
-    place-content: center;
   }
 
   #modal-button-key {

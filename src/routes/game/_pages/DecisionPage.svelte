@@ -166,6 +166,7 @@
 
   .prompt {
     text-align: center;
+    margin-top: 1rem;
   }
 
   ul {
@@ -173,5 +174,12 @@
     flex-direction: column;
     gap: 1rem;
     padding: 0 1rem;
+    margin: 0;
+    width: 100%;
+  }
+
+  button {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 </style>

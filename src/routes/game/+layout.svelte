@@ -31,7 +31,9 @@
 {#if loading}
   <Loading />
 {:else}
-  <slot />
+  <div class="constrained">
+    <slot />
+  </div>
   <nav>
     <button class="nav-btn" on:click={() => (showDevNav = !showDevNav)}
       >{showDevNav ? 'Hide' : 'Show'} dev nav</button

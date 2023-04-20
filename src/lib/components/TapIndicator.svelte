@@ -23,19 +23,19 @@
    * @type {boolean}
    */
   export let disabled = false;
-
+  export let grow = false;
   let show = !disabled;
 </script>
 
 <Timed callback={() => (show = false)} waitTimeMs={6000}>
-  <button class="tap-indicator-wrapper" on:click={onClick}>
+  <button class="tap-indicator-wrapper" on:click={onClick} style="height: {grow ? '100%' : ''}">
     {#if show}
       <div class="tap-indicator-content">
         <img src={touchIcon} alt="Touch icon" />
         <p for="draw-card">{message || ''}</p>
       </div>
     {/if}
-    <div class={show ? 'fade-in-out' : ''}>
+    <div class="tap-indicator-body centered-column {show ? 'fade-in-out' : ''}" style="height: {grow ? '100%' : ''}">
       <slot />
     </div>
   </button>

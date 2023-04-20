@@ -76,7 +76,10 @@
   let drawerBottomThreshold;
   $: {
     const windowHeightVh = $WindowHeight / 100;
-    drawerBottomThreshold = Math.min(windowHeightVh * 85, $WindowHeight - 155);
+    drawerBottomThreshold = Math.min(
+      windowHeightVh * 85,
+      $WindowHeight - ($WindowHeight < 750 ? 140 : 160)
+    );
     console.debug('Set drawer bottom to', drawerBottomThreshold);
   }
 </script>
@@ -112,7 +115,7 @@
     text-align: center;
     overflow: scroll;
     inline-size: 90%;
-    height: 80vh;
+    height: calc(80 * var(--vh));
   }
 
   #drawer-body::-webkit-scrollbar {

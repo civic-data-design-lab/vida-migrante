@@ -19,82 +19,111 @@
 
   //for transition
   let ready = false;
+  const maxOffset = 500;
   let offset = tweened(0, {
     duration: 4500,
     easing: cubicInOut,
   });
   onMount(() => {
     ready = true;
-    offset.set(500);
+    offset.set(maxOffset);
   });
 
   //for scrolling
   let y;
+  let container;
 </script>
 
 <svelte:window bind:scrollY={y} />
 
 {#if ready}
-  <div id="container" class="centered-column">
+  <div id="container" class="centered-column" bind:this={container}>
     <div id="intro" style="filter: saturate(max(0, calc(1 - {y / window.innerHeight})))">
       <img
         id="quito-2"
         src={'/images/welcomepage/landscape/QUITO_2.png'}
         alt=""
-        style="transform: translateX({$offset - 500}px);"
+        style="
+          transform: translateX({$offset - maxOffset}px);
+          opacity: {$offset / maxOffset};
+        "
       />
       <img
         id="avila"
         src={'/images/welcomepage/landscape/AVILA.png'}
         alt=""
-        style="transform: translateX(calc({y * 0.2}em + {500 - $offset}px));"
+        style="
+          transform: translateX(calc({y * 0.2}em + {maxOffset - $offset}px));
+          opacity: {$offset / maxOffset};
+        "
       />
       <img
         id="caracas-3"
         src={'/images/welcomepage/landscape/CARACAS_3.png'}
         alt=""
-        style="transform: translateX(calc({y * 0.2}em + {500 - $offset}px));"
+        style="
+          transform: translateX(calc({y * 0.2}em + {maxOffset - $offset}px));
+          opacity: {$offset / maxOffset};
+        "
       />
       <img
         id="caracas-bldgs"
         src={'/images/welcomepage/landscape/CARACAS_BLDGS.png'}
         alt=""
-        style="transform: translateX(calc({y * 0.2}em + {500 - $offset}px));"
+        style="
+          transform: translateX(calc({y * 0.2}em + {500 - $offset}px));
+          opacity: {$offset / maxOffset};
+        "
       />
       <img
         id="quito-1"
         src={'/images/welcomepage/landscape/QUITO_1.png'}
         alt=""
-        style="transform: translateX(calc({$offset - 500}px - {y * 0.2}em));"
+        style="
+          transform: translateX(calc({$offset - 500}px - {y * 0.2}em));
+          opacity: {$offset / maxOffset};
+        "
       />
       <img
         id="quito-houses"
         src={'/images/welcomepage/landscape/QUITO_HOUSES.png'}
         alt=""
-        style="transform: translateX(calc({$offset - 500}px - {y * 0.2}em));"
+        style="
+          transform: translateX(calc({$offset - 500}px - {y * 0.2}em));
+          opacity: {$offset / maxOffset};
+        "
       />
       <img
         id="caracas-2"
         src={'/images/welcomepage/landscape/CARACAS_2.png'}
         alt=""
-        style="transform: translateX(calc({y * 0.2}em + {500 - $offset}px));"
+        style="
+          transform: translateX(calc({y * 0.2}em + {500 - $offset}px));
+          opacity: {$offset / maxOffset};
+        "
       />
       <img
         id="caracas-1"
         src={'/images/welcomepage/landscape/CARACAS_1.png'}
         alt=""
-        style="transform: translateX(calc({$offset - 500}px - {y * 0.2}em));"
+        style="
+          transform: translateX(calc({$offset - 500}px - {y * 0.2}em));
+          opacity: {$offset / maxOffset};
+        "
       />
       <img
         id="quito-trees"
         src={'/images/welcomepage/landscape/QUITO_TREES.png'}
         alt=""
-        style="transform: translateX(calc({$offset - 500}px - {y * 0.2}em));"
+        style="
+          transform: translateX(calc({$offset - 500}px - {y * 0.2}em));
+          opacity: {$offset / maxOffset};
+        "
       />
     </div>
 
     <Parallax sections={3}>
-      <div id="parallax-container" class="centered-column">
+      <div id="parallax-container" class="centered-column constrained">
         <ParallaxLayer rate={1} class="centered-column">
           <div style="padding-left:2rem; padding-right:2rem">
             <h1 style="text-align: center;">Vida Migrante</h1>
@@ -152,8 +181,13 @@
           {/if}
         </ParallaxLayer>
 
-        <ParallaxLayer offset={2} rate={1} style="padding-bottom: 10rem;" class="centered-column">
-          <div style="z-index: 12; padding-left:2rem; padding-right:2rem; ">
+        <ParallaxLayer
+          offset={2}
+          rate={1}
+          class="centered-column"
+          style="height: fit-content !important; min-height: 100vh; padding-bottom: 12rem;"
+        >
+          <div style="z-index: 12; padding-left:2rem; padding-right:2rem;">
             {#if language == Languages.ENGLISH}
               <h1 style="text-align: center;">How to Play?</h1>
             {:else}
@@ -238,22 +272,27 @@
               </li>
             </ol>
           </div>
-          {#if language == Languages.ENGLISH}
-            <a href="/about">About</a>
-          {:else}
-            <a href="/about">Acerca</a>
-          {/if}
-          {#if language == Languages.ENGLISH}
-            <a href="/policy">Policy Recommendations</a>
-          {:else}
-            <a href="/policy">Recomendaciones</a>
-          {/if}
-          <br />
-          {#if language == Languages.ENGLISH}
-            <a href="/game" class="button">Start</a>
-          {:else}
-            <a href="/game" class="button">Empezar</a>
-          {/if}
+          <a href="/about">
+            {#if language == Languages.ENGLISH}
+              About
+            {:else}
+              Acerca
+            {/if}
+          </a>
+          <a href="/policy">
+            {#if language == Languages.ENGLISH}
+              Policy Recommendations
+            {:else}
+              Recomendaciones
+            {/if}
+          </a>
+          <a id="second-button" href="/game" class="button">
+            {#if language == Languages.ENGLISH}
+              Start
+            {:else}
+              Empezar
+            {/if}
+          </a>
         </ParallaxLayer>
       </div>
     </Parallax>
@@ -277,7 +316,9 @@
     <img src={usaidLogo} alt="USAID Logo" style:height="28px" />
   </span>
 
-  <img class="arrow-icon" src={arrowIcon} alt="Scroll to see more" />
+  {#if container && Math.ceil(y) < container.scrollHeight - window.innerHeight}
+    <img class="arrow-icon" src={arrowIcon} alt="Scroll to see more" />
+  {/if}
   <LanguageToggle />
 </footer>
 
@@ -380,8 +421,12 @@
   }
 
   #parallax-container {
-    height: calc(100 * var(--vh));
+    min-height: calc(100 * var(--vh));
     width: calc(100 * var(--vw));
+  }
+
+  #second-button {
+    margin-top: 0.5em;
   }
 
   .arrow-icon {
