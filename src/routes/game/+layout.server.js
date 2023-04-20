@@ -16,7 +16,7 @@ import { Languages } from '$types';
  * game (e.g. `card-data.json` vs. `card-data-es.json`).
  */
 export async function load({ parent }) {
-  const { language } = await parent();
+  const { language, seoProps } = await parent();
 
   let cardData, assistances, migrantData, jobsData;
   if (language === Languages.ENGLISH) {
@@ -31,5 +31,11 @@ export async function load({ parent }) {
     jobsData = jobsEs;
   }
 
-  return { language, cardData, assistances, migrantData, jobsData };
+  const pageSeoProps = {
+    ...seoProps,
+    pageTitle: language === Languages.ENGLISH ? 'Game' : 'Juego',
+    slug: 'game',
+  };
+
+  return { language, cardData, assistances, migrantData, jobsData, seoProps: pageSeoProps };
 }

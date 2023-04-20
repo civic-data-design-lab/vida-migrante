@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import '../app.css';
+  import PageHead from '$lib/components/PageHead.svelte';
 
   function calcViewportUnits() {
     let vh = window.innerHeight / 100;
@@ -10,8 +11,11 @@
   }
 
   onMount(calcViewportUnits);
+
+  export let data;
 </script>
 
+<PageHead {...data.seoProps} />
 <svelte:window on:resize={calcViewportUnits} />
 <div id="bg">
   <slot />

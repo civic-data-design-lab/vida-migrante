@@ -1,13 +1,18 @@
 <script>
   import BackButton from '$lib/components/BackButton.svelte';
-  import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
+  import PageHead from '$lib/components/PageHead.svelte';
 
-  $: language = $page.data.language;
+  export let data;
+  $: language = data.language;
 </script>
 
-<div id="container" class="constrained">
+<PageHead {...data.seoProps} />
+
+<header class="fixed-header">
   <BackButton />
+</header>
+<div id="container" class="constrained">
   {#if language == Languages.ENGLISH}
     <h1 id="policy-title">Policy Recommendations</h1>
   {:else}
