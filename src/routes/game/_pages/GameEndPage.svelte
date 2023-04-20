@@ -2,7 +2,7 @@
   import { GameData } from '$gameData';
   import { isFoodSecure, sumValues } from '$utils/functions.js';
   import { page } from '$app/stores';
-  import { Languages } from '$lib/utils/types';
+  import { DAYS_IN_WEEK, Languages } from '$lib/utils/types';
   import { elasticOut } from 'svelte/easing';
 
   $: language = $page.data.language;
@@ -20,6 +20,8 @@
     migrantInfo.householdSize,
     $GameData.resources?.copingLevel
   );
+
+  $: hoursWorked = Math.floor(Math.round($GameData.resources?.time / DAYS_IN_WEEK));
 </script>
 
 <h1>
@@ -85,11 +87,11 @@
   {/if}
   {#if language == Languages.ENGLISH}
     <p>
-      You work <b>{$GameData.resources.time}</b> hours every week.
+      You work <b>~{hoursWorked}</b> hours each day.
     </p>
   {:else}
     <p>
-      Trabajas <b>{$GameData.resources.time}</b> horas a la semana.
+      Trabajas <b>~{hoursWorked}</b> horas cada día.
     </p>
   {/if}
 </div>

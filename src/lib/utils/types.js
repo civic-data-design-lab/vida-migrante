@@ -180,3 +180,6 @@ export const DRAWER_ANIM_DURATION = 1000;
 
 /** One-year duration in seconds. */
 export const YEAR = 60 * 60 * 24 * 365;
+
+/** Days in the week for hours worked calculation. */
+export const DAYS_IN_WEEK = 7;
