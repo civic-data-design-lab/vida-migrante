@@ -143,11 +143,11 @@
 
   .button {
     height: 6vh;
-    width: 50%;
+    width: fit-content;
     border-radius: 3vh;
     font-size: 18pt;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   @media only screen and (max-height: 700px) {
