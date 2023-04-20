@@ -58,16 +58,11 @@
   $: cardDetails = getCardDetails();
 </script>
 
-<TapIndicator
-  message={tapText}
-  on:click={onCardTap}
-  disabled={roundNum !== 1}
-  grow={!minimized}
->
+<TapIndicator message={tapText} on:click={onCardTap} disabled={roundNum !== 1} grow={!minimized}>
   {#key minimized}
     <article
       in:slide={{ duration: 200 }}
-      style="height: {minimized ? 'max-content' : `min(510px, min-content)`}"
+      style="height: {minimized ? 'max-content' : `min(510px, 100%)`}"
     >
       <header style="background-color: var(--accent-{CARD_CATEGORY_COLOR_MAP[card.category]});">
         <h1>{card.title}</h1>
@@ -142,7 +137,7 @@
   h1 {
     margin: 0;
     color: white;
-    font-size: 36px;
+    font-size: 33px;
   }
 
   p {
