@@ -10,7 +10,6 @@
   import { tweened } from 'svelte/motion';
   import { linear } from 'svelte/easing';
   import { slide } from 'svelte/transition';
-  import { WindowHeight } from '$lib/stores/windowHeight.js';
 
   const migrants = $page.data.migrantData.migrants;
 
@@ -66,25 +65,20 @@
     let ovalClass = 'oval';
     if (i <= columns) ovalClass += ' oval_filled';
     if (i === income_column) ovalClass += ' oval_green';
-    return ovalClass;
-  });
-  $: indicators = new Array(total_columns).fill('indicator');
-  $: indicators = indicators.map((_, i) => {
-    let indicatorClass = 'indicator';
     switch (i) {
       case Math.floor((313 * total_columns) / 850):
-        indicatorClass += ' indicator_gray';
+        ovalClass += ' indicator indicator_gray';
         break;
       case Math.floor((840 * total_columns) / 850):
-        indicatorClass += ' indicator_red';
+        ovalClass += ' indicator indicator_red';
         break;
       case Math.floor((540 * total_columns) / 850):
-        indicatorClass += ' indicator_yellow';
+        ovalClass += ' indicator indicator_yellow';
         break;
       case Math.floor((761 * total_columns) / 850):
-        indicatorClass += ' indicator_blue';
+        ovalClass += ' indicator indicator_blue';
     }
-    return indicatorClass;
+    return ovalClass;
   });
 
   //slider
@@ -93,10 +87,10 @@
     spending.expense = $GameData.resources?.expenditures[spending.name2];
   }
 
-  let expenseReferences = false;
+  let expenseReferences = true;
 
   function computeColumns() {
-    total_columns = Math.floor((window.innerWidth * 0.9) / 6);
+    total_columns = Math.floor((window.innerWidth * 0.9) / 10);
   }
   onMount(computeColumns);
 </script>
@@ -119,11 +113,6 @@
   <section>
     {#each expenses as color}
       <div class={color} />
-    {/each}
-  </section>
-  <section>
-    {#each indicators as indicator_color}
-      <div class={indicator_color} />
     {/each}
   </section>
 </div>
@@ -285,20 +274,6 @@
     align-items: center;
   }
 
-  #container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    padding: 2.5vw;
-  }
-
-  #container2 {
-    display: flex;
-    /* justify-content: space-between; */
-  }
-
   #expense-board {
     display: flex;
     justify-content: space-between;
@@ -340,17 +315,11 @@
   }
 
   .oval {
-    width: 6px;
+    width: 10px;
     height: 2em;
     background: #f3f3f3;
     border-radius: 40px;
     margin: 1px;
-  }
-
-  @media only screen and (max-height: 750px) {
-    .oval {
-      height: 1em;
-    }
   }
 
   .oval_filled {
@@ -362,23 +331,32 @@
   }
 
   .indicator {
-    width: 6px;
-    height: 6px;
-    border-radius: 3px;
-    background-color: transparent;
-    margin: 1px;
+    border: 3px solid;
+    width: 4px;
+    height: calc(2em - 3px);
   }
+
   .indicator_gray {
-    background: #9c9c9c;
+    border-color: #9c9c9c;
   }
   .indicator_red {
-    background: #cf6348;
+    border-color: #cf6348;
   }
   .indicator_yellow {
-    background: #e5b257;
+    border-color: #e5b257;
   }
   .indicator_blue {
-    background: #5273b0;
+    border-color: #5273b0;
+  }
+
+  @media only screen and (max-height: 750px) {
+    .oval {
+      height: 1em;
+    }
+
+    .indicator {
+      height: calc(1em - 3px);
+    }
   }
 
   .alignleft {

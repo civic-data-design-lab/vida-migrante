@@ -78,7 +78,7 @@
     const windowHeightVh = $WindowHeight / 100;
     drawerBottomThreshold = Math.min(
       windowHeightVh * 85,
-      $WindowHeight - ($WindowHeight < 750 ? 145 : 165)
+      $WindowHeight - ($WindowHeight < 750 ? 140 : 160)
     );
     console.debug('Set drawer bottom to', drawerBottomThreshold);
   }
