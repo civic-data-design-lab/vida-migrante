@@ -12,8 +12,8 @@ export async function load({ cookies }) {
   const seoProps = {
     metadescription: DESCRIPTION[language],
     ogLanguage: language,
-    pageTitle: null,
-    slug: '',
+    pageTitle: 'Vida Migrante',
+    slug: '/',
   };
 
   return { language, seoProps };
