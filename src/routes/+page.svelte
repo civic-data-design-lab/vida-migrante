@@ -174,11 +174,9 @@
             </p>
           </div>
 
-          {#if language == Languages.ENGLISH}
-            <a href="/game" class="button">Start</a>
-          {:else}
-            <a href="/game" class="button">Empezar</a>
-          {/if}
+          <a href="/game" class="button" data-sveltekit-preload-code="viewport">
+            {#if language === Languages.ENGLISH}Start{:else}Empezar{/if}
+          </a>
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -286,7 +284,7 @@
               Recomendaciones
             {/if}
           </a>
-          <a id="second-button" href="/game" class="button">
+          <a id="second-button" href="/game" class="button" data-sveltekit-preload-code="viewport">
             {#if language == Languages.ENGLISH}
               Start
             {:else}

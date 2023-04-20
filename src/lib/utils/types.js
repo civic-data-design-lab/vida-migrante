@@ -126,6 +126,17 @@ export const Languages = {
  * @prop {string[]} accreditations - List of the migrant's accreditations
  */
 
+/**
+ * @typedef SEOProps
+ *
+ * Defines the props for the head of each page.
+ *
+ * @prop {string} pageTitle - Passed in from the individual pages
+ * @prop {string} slug - Passed in from individual pages
+ * @prop {string} ogLanguage - Passed in from the root layout
+ * @prop {string} metadescription - Changes language depending on setting
+ */
+
 // ---------
 // Constants
 // ---------
@@ -166,3 +177,6 @@ export const RESOURCE_UPDATE_ANIM_DELAY = 300;
 
 /** Time in milliseconds of the drawer slide up/down animation. */
 export const DRAWER_ANIM_DURATION = 1000;
+
+/** One-year duration in seconds. */
+export const YEAR = 60 * 60 * 24 * 365;

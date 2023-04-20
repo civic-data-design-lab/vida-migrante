@@ -16,21 +16,12 @@
 
 <style>
   button {
-    position: fixed;
-    top: 20px;
-    left: 10px;
-    padding: 0 20px;
-
     display: flex;
     align-items: center;
     gap: 0.5rem;
 
     background-color: transparent;
     border: none;
-
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-    border-radius: 1rem;
   }
 
   button:hover {

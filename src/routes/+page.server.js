@@ -3,8 +3,7 @@
  */
 
 import { redirect } from '@sveltejs/kit';
-
-const YEAR = 60 * 60 * 24 * 365;
+import { YEAR } from '$types';
 
 export const actions = {
   /**

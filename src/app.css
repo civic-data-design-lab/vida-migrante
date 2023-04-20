@@ -253,3 +253,18 @@ li {
 .constrained {
   max-width: min(100vw, 750px);
 }
+
+.fixed-header {
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  padding: 20px 20px 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 1rem;
+}

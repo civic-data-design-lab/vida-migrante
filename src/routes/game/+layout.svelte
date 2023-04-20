@@ -5,6 +5,7 @@
   import { GameStates } from '$lib/utils/types';
   import { onMount } from 'svelte';
   import Loading from './Loading.svelte';
+  import PageHead from '$lib/components/PageHead.svelte';
 
   /** Data from `+layout.server.js` */
   export let data;
@@ -28,6 +29,7 @@
   }
 </script>
 
+<PageHead {...data.seoProps} />
 {#if loading}
   <Loading />
 {:else}
