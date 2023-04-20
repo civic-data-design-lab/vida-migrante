@@ -22,16 +22,14 @@
   );
 </script>
 
-{#if language == Languages.ENGLISH}
-  <h1>
+<h1>
+  {#if language == Languages.ENGLISH}
     You and your family are {#if incomeSuccess && foodSecure}doing better!{:else}still struggling{/if}
-  </h1>
-{:else}
-  <h1>
+  {:else}
     Tu familia y tú {#if incomeSuccess && foodSecure}están un poco mejor!{:else}todavía tienen
       dificultades{/if}
-  </h1>
-{/if}
+  {/if}
+</h1>
 <div id="body">
   {#if language == Languages.ENGLISH}
     <p>
@@ -87,19 +85,37 @@
   {/if}
   {#if language == Languages.ENGLISH}
     <p>
-      You work <b>{job.hours}</b> hours every week.
+      You work <b>{$GameData.resources.time}</b> hours every week.
     </p>
   {:else}
     <p>
-      Trabajas <b>{job.hours}</b> horas a la semana.
+      Trabajas <b>{$GameData.resources.time}</b> horas a la semana.
     </p>
   {/if}
 </div>
 
 <div id="footer">
-  <button class="button" on:click={GameData.advanceGameState}>Try Again</button>
-  <a href="/about" style="margin-top: 10px">About</a>
-  <a href="/policy">Policy Recommendations</a>
+  <button class="button" on:click={GameData.advanceGameState}>
+    {#if language === Languages.ENGLISH}
+      Try Again
+    {:else}
+      Empezar de nuevo
+    {/if}
+  </button>
+  <a href="/about" style="margin-top: 10px">
+    {#if language === Languages.ENGLISH}
+      About
+    {:else}
+      Acerca
+    {/if}
+  </a>
+  <a href="/policy">
+    {#if language === Languages.ENGLISH}
+      Policy Recommendations
+    {:else}
+      Recomendaciones
+    {/if}
+  </a>
 </div>
 
 <style>
