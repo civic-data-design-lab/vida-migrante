@@ -6,7 +6,7 @@
   import { page } from '$app/stores';
   import { isFoodSecure, sumValues } from '$lib/utils/functions';
   import { spendings } from '$gameFiles/expenses.json';
-  import { Languages, RESOURCE_UPDATE_ANIM_DURATION } from '$lib/utils/types';
+  import { DAYS_IN_WEEK, Languages, RESOURCE_UPDATE_ANIM_DURATION } from '$lib/utils/types';
   import { tweened } from 'svelte/motion';
   import { linear } from 'svelte/easing';
   import { slide } from 'svelte/transition';
@@ -18,7 +18,7 @@
 
   $: playerExpenses = parseInt(sumValues($GameData.resources?.expenditures));
   $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
-  $: hoursWorked = $GameData.resources?.time;
+  $: hoursWorked = Math.round($GameData.resources?.time / DAYS_IN_WEEK);
 
   const animatedPlayerExpenses = tweened(playerExpenses, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
@@ -119,12 +119,12 @@
 <div id="migrant-state">
   {#if isEn}
     <p4 style="width:100%; font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >You work <b><i>{Math.floor($animatedHoursWorked)}</i></b> hours a week & you are
+      >You work <b><i>~{Math.floor($animatedHoursWorked)}</i></b> hours each day & you are
       <b><i>{foodSecurityStatus}</i></b>.</p4
     >
   {:else}
     <p4 style="font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >Trabajas <b><i>{Math.floor($animatedHoursWorked)}</i></b> horas a la semana & tienes
+      >Trabajas <b><i>~{Math.floor($animatedHoursWorked)}</i></b> horas cada día & tienes
       <b><i>{foodSecurityStatus}</i></b>.</p4
     >
   {/if}
