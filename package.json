@@ -25,6 +25,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@vercel/analytics": "^1.0.0",
     "svelte-preprocess-import-assets": "^0.2.5",
     "svelte-scrollto": "^0.2.0"
   }

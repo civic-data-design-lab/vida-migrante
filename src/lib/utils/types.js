@@ -183,3 +183,6 @@ export const YEAR = 60 * 60 * 24 * 365;
 
 /** Days in the week for hours worked calculation. */
 export const DAYS_IN_WEEK = 7;
+
+/** Local storage key for whether or not the user accepted cookies. */
+export const ACCEPTED_COOKIES_KEY = 'acceptedCookies';

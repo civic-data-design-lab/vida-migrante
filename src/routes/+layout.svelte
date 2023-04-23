@@ -3,12 +3,31 @@
   import '../app.css';
   import PageHead from '$lib/components/PageHead.svelte';
   import CookiesConsentBanner from '$lib/components/CookiesConsentBanner.svelte';
+  import { dev, browser } from '$app/environment';
+  import { inject } from '@vercel/analytics';
+  import { ACCEPTED_COOKIES_KEY } from '$lib/utils/types';
 
   function calcViewportUnits() {
     let vh = window.innerHeight / 100;
     let vw = window.innerWidth / 100;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     document.documentElement.style.setProperty('--vw', `${vw}px`);
+  }
+
+  const startAnalytics = () => {
+    inject({ mode: dev ? 'development' : 'production' });
+  };
+
+  $: {
+    if (browser) {
+      // Only inject analytics if the user consented
+      const acceptedCookies = localStorage.getItem(ACCEPTED_COOKIES_KEY);
+      if (acceptedCookies === 'true') {
+        startAnalytics();
+      } else {
+        console.warn('Consent not given, not tracking.');
+      }
+    }
   }
 
   onMount(calcViewportUnits);
@@ -21,7 +40,7 @@
 <div id="bg">
   <slot />
 </div>
-<CookiesConsentBanner />
+<CookiesConsentBanner onConsent={startAnalytics} />
 
 <style>
   #bg {

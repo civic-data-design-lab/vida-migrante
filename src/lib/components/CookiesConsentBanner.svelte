@@ -1,19 +1,66 @@
 <script>
+  import { ACCEPTED_COOKIES_KEY } from '$lib/utils/types';
+  import { onMount } from 'svelte';
   import { fly } from 'svelte/transition';
+
+  export let onConsent;
+
+  let showBanner = false;
+
+  onMount(() => {
+    // Check if the user has accepted/declined cookies and tracking on this
+    // browser. If not, show the banner.
+    const cookie = localStorage.getItem(ACCEPTED_COOKIES_KEY);
+    if (cookie === null) {
+      console.debug('Cookie consent not received/rejected yet, showing banner...');
+      showBanner = true;
+    }
+  });
+
+  /**
+   * Submits the consent status of the user.
+   *
+   * @param {boolean} accepted - Whether the user accepted or rejected cookies/tracking.
+   */
+  const submitConsent = (accepted) => {
+    if (accepted) {
+      localStorage.setItem(ACCEPTED_COOKIES_KEY, 'true');
+      onConsent();
+    } else {
+      localStorage.setItem(ACCEPTED_COOKIES_KEY, 'false');
+    }
+
+    // Hide the banner
+    showBanner = false;
+  };
 </script>
 
-<span class="banner-container" transition:fly={{ y: 200 }}>
-  <div>
-    <p>
-      We use cookies and similar methods to recognize visitors and remember their preferences. We
-      also use them to analyze site traffic.
-    </p>
-    <form>
-      <button class="button">Accept</button>
-      <button class="button">Decline</button>
-    </form>
-  </div>
-</span>
+{#if showBanner}
+  <span class="banner-container" transition:fly={{ y: 200 }}>
+    <div>
+      <p>
+        We use cookies and similar methods to recognize visitors and remember their preferences. We
+        also use them to analyze site traffic.
+      </p>
+      <form>
+        <button
+          class="button"
+          title="Accept Cookies and Tracking"
+          on:click={() => submitConsent(true)}
+        >
+          Accept
+        </button>
+        <button
+          class="button"
+          title="Decline Cookies and Tracking"
+          on:click={() => submitConsent(false)}
+        >
+          Decline
+        </button>
+      </form>
+    </div>
+  </span>
+{/if}
 
 <style>
   .banner-container {
