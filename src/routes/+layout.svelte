@@ -14,21 +14,15 @@
     document.documentElement.style.setProperty('--vw', `${vw}px`);
   }
 
-  const startAnalytics = () => {
-    inject({ mode: dev ? 'development' : 'production' });
-  };
-
-  $: {
-    if (browser) {
-      // Only inject analytics if the user consented
-      const dataConsent = localStorage.getItem(DATA_CONSENT_KEY);
-      if (dataConsent === 'true') {
-        startAnalytics();
-      } else {
-        console.warn('Consent not given, not tracking.');
+  inject({
+    mode: dev ? 'development' : 'production',
+    beforeSend: (event) => {
+      if (localStorage.getItem(DATA_CONSENT_KEY) === 'true') {
+        return event;
       }
-    }
-  }
+      return null;
+    },
+  });
 
   onMount(calcViewportUnits);
 
@@ -40,7 +34,7 @@
 <div id="bg">
   <slot />
 </div>
-<DataConsentBanner onConsent={startAnalytics} />
+<DataConsentBanner />
 
 <style>
   #bg {

@@ -3,8 +3,6 @@
   import { onMount } from 'svelte';
   import { fly } from 'svelte/transition';
 
-  export let onConsent;
-
   let showBanner = false;
 
   onMount(() => {
@@ -25,7 +23,6 @@
   const submitConsent = (accepted) => {
     if (accepted) {
       localStorage.setItem(DATA_CONSENT_KEY, 'true');
-      onConsent();
     } else {
       localStorage.setItem(DATA_CONSENT_KEY, 'false');
     }
