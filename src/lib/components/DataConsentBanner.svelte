@@ -1,5 +1,5 @@
 <script>
-  import { ACCEPTED_COOKIES_KEY } from '$lib/utils/types';
+  import { DATA_CONSENT_KEY } from '$lib/utils/types';
   import { onMount } from 'svelte';
   import { fly } from 'svelte/transition';
 
@@ -10,9 +10,9 @@
   onMount(() => {
     // Check if the user has accepted/declined cookies and tracking on this
     // browser. If not, show the banner.
-    const cookie = localStorage.getItem(ACCEPTED_COOKIES_KEY);
-    if (cookie === null) {
-      console.debug('Cookie consent not received/rejected yet, showing banner...');
+    const hasDataConsent = localStorage.getItem(DATA_CONSENT_KEY);
+    if (hasDataConsent === null) {
+      console.debug('Data consent not received/rejected yet, showing banner...');
       showBanner = true;
     }
   });
@@ -20,14 +20,14 @@
   /**
    * Submits the consent status of the user.
    *
-   * @param {boolean} accepted - Whether the user accepted or rejected cookies/tracking.
+   * @param {boolean} accepted - Whether the user gave or declined data consent.
    */
   const submitConsent = (accepted) => {
     if (accepted) {
-      localStorage.setItem(ACCEPTED_COOKIES_KEY, 'true');
+      localStorage.setItem(DATA_CONSENT_KEY, 'true');
       onConsent();
     } else {
-      localStorage.setItem(ACCEPTED_COOKIES_KEY, 'false');
+      localStorage.setItem(DATA_CONSENT_KEY, 'false');
     }
 
     // Hide the banner
@@ -39,22 +39,12 @@
   <span class="banner-container" transition:fly={{ y: 200 }}>
     <div>
       <p>
-        We use cookies and similar methods to recognize visitors and remember their preferences. We
-        also use them to analyze site traffic.
+        We use cookies and similar methods to recognize visitors, remember their preferences, and
+        analyze site traffic.
       </p>
       <form>
-        <button
-          class="button"
-          title="Accept Cookies and Tracking"
-          on:click={() => submitConsent(true)}
-        >
-          Accept
-        </button>
-        <button
-          class="button"
-          title="Decline Cookies and Tracking"
-          on:click={() => submitConsent(false)}
-        >
+        <button class="button" title="Accept" on:click={() => submitConsent(true)}>Accept</button>
+        <button class="button" title="Decline" on:click={() => submitConsent(false)}>
           Decline
         </button>
       </form>

@@ -185,4 +185,4 @@ export const YEAR = 60 * 60 * 24 * 365;
 export const DAYS_IN_WEEK = 7;
 
 /** Local storage key for whether or not the user accepted cookies. */
-export const ACCEPTED_COOKIES_KEY = 'acceptedCookies';
+export const DATA_CONSENT_KEY = 'dataConsent';

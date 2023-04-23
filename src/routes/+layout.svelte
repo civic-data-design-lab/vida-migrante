@@ -2,10 +2,10 @@
   import { onMount } from 'svelte';
   import '../app.css';
   import PageHead from '$lib/components/PageHead.svelte';
-  import CookiesConsentBanner from '$lib/components/CookiesConsentBanner.svelte';
+  import DataConsentBanner from '$lib/components/DataConsentBanner.svelte';
   import { dev, browser } from '$app/environment';
   import { inject } from '@vercel/analytics';
-  import { ACCEPTED_COOKIES_KEY } from '$lib/utils/types';
+  import { DATA_CONSENT_KEY } from '$lib/utils/types';
 
   function calcViewportUnits() {
     let vh = window.innerHeight / 100;
@@ -21,8 +21,8 @@
   $: {
     if (browser) {
       // Only inject analytics if the user consented
-      const acceptedCookies = localStorage.getItem(ACCEPTED_COOKIES_KEY);
-      if (acceptedCookies === 'true') {
+      const dataConsent = localStorage.getItem(DATA_CONSENT_KEY);
+      if (dataConsent === 'true') {
         startAnalytics();
       } else {
         console.warn('Consent not given, not tracking.');
@@ -40,7 +40,7 @@
 <div id="bg">
   <slot />
 </div>
-<CookiesConsentBanner onConsent={startAnalytics} />
+<DataConsentBanner onConsent={startAnalytics} />
 
 <style>
   #bg {
