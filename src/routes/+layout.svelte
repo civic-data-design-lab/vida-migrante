@@ -2,6 +2,10 @@
   import { onMount } from 'svelte';
   import '../app.css';
   import PageHead from '$lib/components/PageHead.svelte';
+  import DataConsentBanner from '$lib/components/DataConsentBanner.svelte';
+  import { dev, browser } from '$app/environment';
+  import { inject } from '@vercel/analytics';
+  import { DATA_CONSENT_KEY } from '$lib/utils/types';
 
   function calcViewportUnits() {
     let vh = window.innerHeight / 100;
@@ -9,6 +13,16 @@
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     document.documentElement.style.setProperty('--vw', `${vw}px`);
   }
+
+  inject({
+    mode: dev ? 'development' : 'production',
+    beforeSend: (event) => {
+      if (localStorage.getItem(DATA_CONSENT_KEY) === 'true') {
+        return event;
+      }
+      return null;
+    },
+  });
 
   onMount(calcViewportUnits);
 
@@ -20,6 +34,7 @@
 <div id="bg">
   <slot />
 </div>
+<DataConsentBanner />
 
 <style>
   #bg {

@@ -13,6 +13,8 @@
   import wfpLogo from '$images/wfp-logo-standard-black-en.svg';
   import usaidLogo from '$images/usaid_horizontal_RGB_Black.png';
 
+  import va from '@vercel/analytics';
+
   /** Page data loaded from `+layout.server.svelte` */
   export let data;
   $: language = data.language;
@@ -174,7 +176,12 @@
             </p>
           </div>
 
-          <a href="/game" class="button" data-sveltekit-preload-code="viewport">
+          <a
+            href="/game"
+            class="button"
+            data-sveltekit-preload-code="viewport"
+            on:click|once={() => va.track('Start Game', { where: 'Description' })}
+          >
             {#if language === Languages.ENGLISH}Start{:else}Empezar{/if}
           </a>
         </ParallaxLayer>
@@ -284,7 +291,13 @@
               Recomendaciones
             {/if}
           </a>
-          <a id="second-button" href="/game" class="button" data-sveltekit-preload-code="viewport">
+          <a
+            id="second-button"
+            href="/game"
+            class="button"
+            data-sveltekit-preload-code="viewport"
+            on:click|once={() => va.track('Start Game', { where: 'How to Play' })}
+          >
             {#if language == Languages.ENGLISH}
               Start
             {:else}
@@ -440,7 +453,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    z-index: 999;
+    z-index: 5;
 
     padding: 1rem;
 
