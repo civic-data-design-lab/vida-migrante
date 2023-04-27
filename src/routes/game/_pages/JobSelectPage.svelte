@@ -79,7 +79,7 @@
         {#if language == Languages.ENGLISH}
           <span>You don't have the required accreditations</span>
         {:else}
-          <span>No tienes las acreditaciones necesarisas</span>
+          <span>No tienes las acreditaciones necesarias</span>
         {/if}
       {:else if language == Languages.ENGLISH}
         Select

@@ -5,10 +5,12 @@
       "name": "Luis",
       "age": 25,
       "maritalStatus": "casado",
-      "introText": "<p>Luis lleva <b>10 meses</b> en Ecuador y vive con <b>6</b> familiares. Trabajaba en el sector de la <b>construcción</b> en Venezuela. Tiene un título de <b>escuela secundaria</b>, y <b>no tiene otras acreditaciones o certificados legalizados</b>.</p>",
+      "introText": "<p>Luis lleva <b>10 meses</b> en Ecuador y su hogar está compuesto por <b>6</b> personas. Trabajaba en el sector de la <b>construcción</b> en Venezuela. Tiene un título de <b>escuela secundaria</b>, y <b>no tiene otros títulos, acreditaciones o certificados legalizados</b>. No tiene <b>redes comunitarias en el país</b> y su estatus migratorio sigue siendo <b>irregular</b>. Su pareja trabaja cuidando a los hijos de tiempo completo, así que él provee todo el ingreso del hogar.</p>",
       "householdSize": 7,
       "initialResources": {
-        "skills": ["construction"],
+        "skills": [
+          "construction"
+        ],
         "time": 5,
         "expenditures": {
           "rent": 120,
@@ -34,10 +36,12 @@
       "name": "Génesis",
       "age": 27,
       "maritalStatus": "soltera",
-      "introText": "<p>Génesis lleva <b>9 meses</b> en Ecuador y vive <b>sola</b>. Trabajaba en el sector de la <b>comercio al por mayor y al por menor</b> en Venezuela. Tiene un título de <b>escuela secundaria</b>, y <b>no tiene otras acreditaciones o certificados legalizados</b>.</p>",
+      "introText": "<p>Génesis lleva <b>9 meses</b> en Ecuador y vive <b>sola</b>. Trabajaba en el sector de la <b>comercio al por mayor y al por menor</b> en Venezuela. Tiene un título de <b>escuela secundaria</b>, y <b>no tiene otros títulos, acreditaciones o certificados legalizados</b>. No tiene <b>redes comunitarias en el país</b> y su estatus migratorio sigue siendo <b>irregular</b>. Su madre tiene una enfermedad muy grave por lo que no puede trabajar.</p>",
       "householdSize": 1,
       "initialResources": {
-        "skills": ["wholesale and retail"],
+        "skills": [
+          "wholesale and retail"
+        ],
         "time": 5,
         "expenditures": {
           "rent": 76,
@@ -63,10 +67,12 @@
       "name": "María",
       "age": 26,
       "maritalStatus": "casada",
-      "introText": "<p>María lleva <b>9 meses</b> en Ecuador y vive con <b>cuatro</b> familiares. Trabajaba en el sector de la <b>agricultura</b> en Venezuela. Tiene un título de <b>escuela preparatoria o bachillerato</b>, y <b>no tiene otras acreditaciones o certificados legalizados</b>.</p>",
+      "introText": "<p>María lleva <b>9 meses</b> en Ecuador y su hogar está compuesto por <b>4</b> personas. Trabajaba en el sector de la <b>agricultura</b> en Venezuela. Tiene un título de <b>escuela preparatoria o bachillerato</b>, y <b>no tiene otros títulos, acreditaciones o certificados legalizados</b>. No tiene <b>redes comunitarias en el país</b> y su estatus migratorio sigue siendo <b>irregular</b>. Su pareja tiene necesidades de salud especiales, por lo que no puede ayudar con los gastos del hogar.</p>",
       "householdSize": 5,
       "initialResources": {
-        "skills": ["agriculture"],
+        "skills": [
+          "agriculture"
+        ],
         "time": 5,
         "expenditures": {
           "rent": 104,
@@ -92,10 +98,12 @@
       "name": "José",
       "age": 26,
       "maritalStatus": "casado",
-      "introText": "<p>José lleva <b>10 meses</b> en Ecuador y vive con <b>su pareja</b>. Trabajaba en el sector de la <b>manufactura</b> en Venezuela. Tiene un título de <b>escuela primaria</b> y <b>no tiene otras acreditaciones o certificados legalizados</b>.</p>",
+      "introText": "<p>José lleva <b>10 meses</b> en Ecuador y vive con <b>su pareja</b>. Trabajaba en el sector de la <b>manufactura</b> en Venezuela. Tiene un título de <b>escuela primaria</b> y <b>no tiene otros títulos, acreditaciones o certificados legalizados</b>. No tiene <b>redes comunitarias en el país</b> y su estatus migratorio sigue siendo <b>irregular</b>.</p>",
       "householdSize": 2,
       "initialResources": {
-        "skills": ["manufacturing"],
+        "skills": [
+          "manufacturing"
+        ],
         "time": 5,
         "expenditures": {
           "rent": 67,

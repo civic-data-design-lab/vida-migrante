@@ -41,9 +41,9 @@
 <div class="constrained centered-column">
   <div id="header">
     {#if language === Languages.ENGLISH}
-      <h1>Take the journey as</h1>
+      <h1>Select a profile for this experience</h1>
     {:else}
-      <h1>Vive la experiencia como</h1>
+      <h1>Selecciona un perfil para vivir la experiencia</h1>
     {/if}
   </div>
   <Carousel />

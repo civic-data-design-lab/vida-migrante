@@ -27,16 +27,20 @@
     <p>
       You are working as a <b>{job.title}</b> for <b>{job.hours}</b> hours a week and earn a monthly
       income of <b>${income}</b>. The expenses for your household's basic needs are
-      <b>${expenditures}</b>; this means that you have
-      <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> for other expenses.
+      <b>${expenditures}</b>, but this does not account for all the household's expenses; this means
+      that you have
+      <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> for other expenses. No one else in the household
+      has income to help with the home expenses.
     </p>
   {:else}
     <p>
       Tienes un empleo como <b>{job.title}</b>. Trabajas <b>{job.hours}</b> horas a la semana y
       tienes un ingreso mensual de <b>${job.income}</b>. Los gastos para las necesidades básicas de
       tu hogar son de
-      <b>${expenditures}</b>, esto significa que tienes
-      <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> para otros gastos.
+      <b>${expenditures}</b>, pero este número no incluye otros gastos del hogar, esto significa que
+      tienes
+      <b>{savings < 0 ? '-' : ''}${Math.abs(savings)}</b> para otros gastos. Nadie más en su familia
+      aporta ingresos al hogar.
     </p>
   {/if}
 </div>

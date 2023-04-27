@@ -43,9 +43,9 @@
           >Family Baskets</b
         >
         of food. {#if foodSecure}Despite this, your family is still <b class="accent-green"
-            >food secure</b
+            >not vulnerable</b
           >
-        {:else}Due to some life events, your family is also <b class="accent-red">food insecure</b
+        {:else}Due to some life events, your family is also <b class="accent-red">vulnerable</b
           >{/if}.{/if}
     </p>
   {:else}
@@ -57,30 +57,30 @@
         son suficientes cubrir las necesidades básicas de tú familia incluyendo las <b
           >Canastas Básicas</b
         >
-        de comida. {#if foodSecure}A pesar de esto, tu familia aún tiene <b class="accent-green"
-            >seguridad alimentaria</b
+        de comida. {#if foodSecure}A pesar de esto, tu familia <b class="accent-green"
+            >no tiene vulnerabilidad</b
           >
         {:else}Debido a ciertos eventos, tu familia también tiene <b class="accent-red"
-            >inseguridad alimentaria</b
+            >vulnerabilidad</b
           >{/if}.{/if}
     </p>
   {/if}
   {#if incomeSuccess}
     {#if language == Languages.ENGLISH}
       <p>
-        Your income is still not enough to buy a <b class="accent-yellow">Basic Family Basket</b>,
-        but you can afford a <b class="accent-blue">Vital Family Basket</b>. {#if foodSecure}Your
+        Your income is still not enough to buy a <b class="accent-blue">Basic Family Basket</b>, but
+        you can afford a <b class="accent-yellow">Vital Family Basket</b>. {#if foodSecure}Your
           family is <b class="accent-green">food secure</b>{:else}Despite your increased income,
-          your family is still <b class="accent-red">food insecure</b>{/if}.
+          your family is still <b class="accent-red">vulnerable</b>{/if}.
       </p>
     {:else}
       <p>
-        Tus ingresos aún no son suficientes para adquirir una <b class="accent-yellow"
+        Tus ingresos aún no son suficientes para adquirir una <b class="accent-blue"
           >Canasta Familiar Básica</b
-        >, pero puedes adquirir una <b class="accent-blue">Canasta Familiar Vital</b>. {#if foodSecure}Tu
+        >, pero puedes adquirir una <b class="accent-yellow">Canasta Familiar Vital</b>. {#if foodSecure}Tu
           familia tiene <b class="accent-green">food secure</b>{:else}A pesar de que tus ingresos
           aumentaron, tu y tú familia aún tienen <b class="accent-red"
-            >{#if language == Languages.ENGLISH}food insecure{:else}inseguridad alimentaria {/if}</b
+            >{#if language == Languages.ENGLISH}vulnerable{:else}vulnerabilidad {/if}</b
           >{/if}.
       </p>
     {/if}
