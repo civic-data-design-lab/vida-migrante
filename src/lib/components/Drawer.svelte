@@ -34,8 +34,6 @@
       boundDrag(drawerTop + e.movementY);
       cancelClick = true;
     }
-    e.preventDefault();
-    e.stopPropagation();
   }
 
   function onMouseUp(e) {
@@ -47,6 +45,7 @@
     dragging = true;
     transition = '';
     prevTouch = e.touches[0];
+    window.addEventListener('touchmove', onTouchMove, {passive: false});
   }
 
   function onTouchMove(e) {
@@ -58,7 +57,6 @@
     }
     prevTouch = touch;
     e.preventDefault();
-    e.stopPropagation();
   }
 
   function onTouchEnd() {
@@ -72,6 +70,7 @@
       }
       prevTouch = undefined;
     }
+    window.removeEventListener('touchmove', onTouchMove);
   }
 
   /**
@@ -121,7 +120,6 @@
   <slot name="body" />
 </div>
 <svelte:window
-  on:touchmove={onTouchMove}
   on:touchend={onTouchEnd}
   on:mousemove={onMouseMove}
   on:mouseup={onMouseUp}
