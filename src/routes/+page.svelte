@@ -128,7 +128,11 @@
       <div id="parallax-container" class="centered-column constrained">
         <ParallaxLayer rate={1} class="centered-column">
           <div style="padding-left:2rem; padding-right:2rem">
-            <h1 style="text-align: center;">Vida Migrante</h1>
+            <p
+              style="text-align: center; font-size: 36pt; font-weight: bolder;text-align: center;word-wrap: break-word;"
+            >
+              Vida Migrante
+            </p>
             <p style="font-size: 21pt; font-weight: 400; line-height: 24pt; text-align: center;">
               {#if language === Languages.ENGLISH}
                 Venezuelan Migrants' Inclusion in Ecuador.
@@ -170,8 +174,8 @@
                 simulación se basan en una encuesta realizada a
                 <b>920 hogares de migrantes</b> en el Ecuador realizada por el Programa Mundial de
                 Alimentos. <br /><br />
-                Te embarcarás en un viaje en la vida de un migrante venezolano para experimentar la Desafíos
-                de la inclusión al Ecuador.
+                Te embarcarás en un viaje en la vida de un migrante venezolano para experimentar los
+                desafíos de la inclusión al Ecuador.
               {/if}
             </p>
           </div>
@@ -194,9 +198,9 @@
         >
           <div style="z-index: 12; padding-left:2rem; padding-right:2rem;">
             {#if language == Languages.ENGLISH}
-              <h1 style="text-align: center;">How to Play?</h1>
+              <h1 style="text-align: center;">How to explore the simulation?</h1>
             {:else}
-              <h1 style="text-align: center;">¿Cómo jugar?</h1>
+              <h1 style="text-align: center;">¿Cómo explorar la simulación?</h1>
             {/if}
             {#if language == Languages.ENGLISH}
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
@@ -213,12 +217,12 @@
               <li>
                 {#if language == Languages.ENGLISH}
                   <p style="margin: 0; font-family: 'open-sans', sans-serif;">
-                    1. Select a migrant and an occupation. These selection will assign you a
+                    1. Please select a profile and an occupation. These selection will assign you a
                     specific <b>monthly income and expenses. </b>
                   </p>
                 {:else}
                   <p style="margin: 0; font-family: 'open-sans', sans-serif;">
-                    1. Selecciona un migrante y una ocupación. Esta selección te asignará <b
+                    1. Selecciona un perfil y una ocupación. Esta selección te asignará <b
                       >ingresos y gastos mensuales.
                     </b>
                   </p>

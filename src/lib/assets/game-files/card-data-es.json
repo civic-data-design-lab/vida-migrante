@@ -40,7 +40,9 @@
           "income": {
             "salary": 54
           },
-          "skills": ["Tecnologías Digitales"]
+          "skills": [
+            "Tecnologías Digitales"
+          ]
         },
         "implicationText": "El <b>42%</b> de los migrantes tiene que gastar sus ahorros, si los tienen, para satisfacer sus necesidades esenciales."
       },
@@ -64,9 +66,11 @@
         "id": 0,
         "description": "No tengo acceso a una computadora",
         "updates": {
-          "skills": ["negocios"]
+          "skills": [
+            "negocios"
+          ]
         },
-        "except": "pero no podrá tomar la capacitación"
+        "except": "pero no podrás tomar la capacitación. Tus ingresos podrían incrementar pero la mayoría de los migrantes no tienen acceso a una computadora y a Internet"
       }
     ],
     "image": "PI_business-skills.png"
@@ -104,7 +108,7 @@
             "remittances": 24
           }
         },
-        "implicationText": "El <b>48%</b> de los migrantes tienen que trabajar más horas para satisfacer sus necesidades esenciales."
+        "implicationText": "El <b>48%</b> de los migrantes tienen que pedir dinero a amigos o familiares para satisfacer sus necesidades básicas."
       },
       {
         "id": 2,
@@ -133,7 +137,7 @@
           }
         },
         "except": "para compensar",
-        "implicationText": "El <b>9%</b> de los migrantes tienen que pedir ayuda a miembros de la comunidad."
+        "implicationText": "El <b>9%</b> de los migrantes tienen que pedir ayuda a miembros de la comunidad, esto les sirve también para crear una red comunitaria en Ecuador."
       }
     ],
     "image": "LE_community.png"
@@ -157,7 +161,7 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "El <b>42%</b> de los migrantes tienen que trabajar más horas para satisfacer sus necesidades esenciales."
+        "implicationText": "El <b>42%</b> de los migrantes tiene que gastar sus ahorros, si los tienen, para satisfacer sus necesidades esenciales."
       },
       {
         "id": 1,
@@ -171,13 +175,13 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "El <b>48%</b> de los migrantes tienen que trabajar más horas para satisfacer sus necesidades esenciales."
+        "implicationText": "El <b>48%</b> de los migrantes tienen que pedir dinero a amigos o familiares para satisfacer sus necesidades básicas."
       },
       {
         "id": 2,
         "description": "No puedo pagar las medicinas",
         "updates": {},
-        "except": "pero es posible que no mejores",
+        "except": "tendras que buscar una asistencia social que te ayude a comprarlas",
         "implicationText": ""
       }
     ],

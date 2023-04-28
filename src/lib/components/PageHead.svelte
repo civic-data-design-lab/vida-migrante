@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-  <title>{pageTitle ? `${pageTitle} | ` : ''}{SITE_TITLE}</title>
+  <title>{pageTitle !== SITE_TITLE ? `${pageTitle} | ` : ''}{SITE_TITLE}</title>
   <meta name="description" content={metadescription} />
   <meta
     name="robots"

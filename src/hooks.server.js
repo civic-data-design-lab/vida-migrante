@@ -10,13 +10,15 @@ import { Languages, YEAR } from '$types';
  * 3. Setting the default language to Spanish
  */
 export async function handle({ event, resolve }) {
-  const urlLanguage = event.url.searchParams.get('lang');
+  let urlLanguage = event.url.searchParams.get('lang');
   const cookieLanguage = event.cookies.get('language');
 
   let language;
 
   // Language in the URL query params takes precedent
   if (urlLanguage) {
+    urlLanguage = urlLanguage.toLowerCase(); // Support case insensitive
+
     // Validate the language
     if (!Object.values(Languages).includes(urlLanguage)) {
       console.error(`Got invalid query param lang=${urlLanguage}; redirecting to /`);

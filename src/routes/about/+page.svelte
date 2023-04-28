@@ -137,11 +137,11 @@
       </p>
     {/if}
     <p style="margin-top:.5em; ">
-      Alessandro Donucci, Luis Fernández, Crescenzo Rubinotti, Espedito Nastro.
+      Alessandro Dinucci, Luis Fernández, Crescenzo Rubinetti, Espedito Nastro.
     </p>
 
     <p style="margin:0.0em; ">
-      <a href="https://www.usaid.gov/"><b>USAID</b></a>
+      <a href="https://www.usaid.gov/"><b>USAID BHA</b></a>
     </p>
   </div>
 </div>

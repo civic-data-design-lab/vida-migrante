@@ -40,7 +40,9 @@
           "income": {
             "salary": 54
           },
-          "skills": ["digital skills"]
+          "skills": [
+            "digital skills"
+          ]
         },
         "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
       },
@@ -64,9 +66,11 @@
         "id": 0,
         "description": "I can't afford a computer",
         "updates": {
-          "skills": ["business"]
+          "skills": [
+            "business"
+          ]
         },
-        "except": "and you won't be able to take the training"
+        "except": " you won't be able to take the training. You could potentially increase you income but most of the migrants don't have access to a computer or to internet"
       }
     ],
     "image": "PI_business-skills.png"
@@ -133,7 +137,7 @@
           }
         },
         "except": "in order to make up for the time off",
-        "implicationText": "<b>9%</b> if migrants have to ask for support from their community to improve their conditions."
+        "implicationText": "<b>9%</b> of migrants have to ask for support from their community to improve their conditions and to start creating a community network."
       }
     ],
     "image": "LE_community.png"
@@ -142,7 +146,7 @@
     "id": 5,
     "category": "Life Event",
     "title": "Health",
-    "description": "You are sick of a lung disease and need to buy medicines medicine to treat it.",
+    "description": "You are sick of a lung disease and need to buy medicines to treat it.",
     "prompt": "How would you like to pay for this?",
     "options": [
       {
@@ -177,7 +181,7 @@
         "id": 2,
         "description": "I can't pay for the medicines",
         "updates": {},
-        "except": "but you are at risk of getting sicker",
+        "except": "you will have to find a social assistance that help you buy them",
         "implicationText": ""
       }
     ],

@@ -41,8 +41,8 @@
   // Get the migrant's food security status
   $: migrantInfo = migrants.find((migrant) => migrant.id === $GameData.migrantId);
 
-  $: foodSecureText = isEn ? 'Food Secure' : 'Seguridad Alimentaria';
-  $: foodInsecureText = isEn ? 'Food Insecure' : 'Inseguridad Alimentaria';
+  $: foodSecureText = isEn ? 'Not vulnerable' : 'No tienes vulnerabilidad';
+  $: foodInsecureText = isEn ? 'Vulnerable' : 'Tienes vulnerabilidad';
   let foodSecurityStatus;
   $: {
     console.debug('Calculating food security');
@@ -124,7 +124,7 @@
     >
   {:else}
     <p4 style="font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >Trabajas <b><i>~{Math.floor($animatedHoursWorked)}</i></b> horas cada día & tienes
+      >Trabajas <b><i>~{Math.floor($animatedHoursWorked)}</i></b> horas cada día y
       <b><i>{foodSecurityStatus}</i></b>.</p4
     >
   {/if}
@@ -192,7 +192,7 @@
 <hr />
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
   <h2 style="margin-bottom: 0;">
-    {#if isEn}Allocate Your Spending{:else}Asigna tus Gastos {/if}
+    {#if isEn}Minimum monthly household expenses{:else}Gastos mínimos mensuales del hogar {/if}
   </h2>
   {#each spendings as spending (spending.name)}
     <div style="display: flex; justify-content: space-between;">
