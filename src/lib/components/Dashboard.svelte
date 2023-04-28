@@ -67,7 +67,7 @@
     if (i === income_column) ovalClass += ' oval_green';
     switch (i) {
       case Math.floor((313 * total_columns) / 850):
-        ovalClass += ' indicator indicator_gray';
+        ovalClass += ' indicator indicator_rent';
         break;
       case Math.floor((840 * total_columns) / 850):
         ovalClass += ' indicator indicator_red';
@@ -153,7 +153,7 @@
   >
     <div id="name-board">
       <div class="alignleft">
-        <p4 style="color: #505050;"
+        <p4 style="color: var(--light-red);"
           >{#if isEn}Average Migrant Household Income
           {:else}
             Ingreso Promedio de Migrantes{/if}</p4
@@ -182,7 +182,7 @@
       </div>
     </div>
     <div id="money-board">
-      <p4 class="alignright" style="color: #505050; float: right;"> $313 </p4>
+      <p4 class="alignright" style="color: var(--light-red); float: right;"> $313 </p4>
       <p4 class="alignright" style="color: #CF6348; float: right;"> $840 </p4>
       <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
       <p4 class="alignright" style="color: #5273B0; float: right;"> $761 </p4>
@@ -197,7 +197,7 @@
   {#each spendings as spending (spending.name)}
     <div style="display: flex; justify-content: space-between;">
       <href class="info" style="padding:.4em" on:click={() => (displayedSpending = spending)}>
-        <p4 style="font-size:9pt;   text-decoration-line: underline;"
+        <p4 class="range-label" style="font-size:9pt;   text-decoration-line: underline;"
           >{#if isEn}
             {(slider_theme = spending.name)}{:else}
             {(slider_theme = spending.spanish_name)}
@@ -336,17 +336,17 @@
     height: calc(2em - 3px);
   }
 
-  .indicator_gray {
-    border-color: #9c9c9c;
+  .indicator_rent {
+    border-color: var(--light-red);
   }
   .indicator_red {
-    border-color: #cf6348;
+    border-color: var(--accent-red);
   }
   .indicator_yellow {
-    border-color: #e5b257;
+    border-color: var(--accent-yellow);
   }
   .indicator_blue {
-    border-color: #5273b0;
+    border-color: var(--accent-blue);
   }
 
   @media only screen and (max-height: 750px) {
@@ -355,7 +355,7 @@
     }
 
     .indicator {
-      height: calc(1em - 3px);
+      height: calc(1em - 5px);
     }
   }
 
@@ -397,6 +397,10 @@
   }
 
   /* slider */
+  .range-label {
+      cursor: pointer;
+  }
+
   .rent-theme {
     --thumb-image: url('/images/dashboard/RENT.png');
   }

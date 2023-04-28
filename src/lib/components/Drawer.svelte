@@ -34,6 +34,8 @@
       boundDrag(drawerTop + e.movementY);
       cancelClick = true;
     }
+    e.preventDefault();
+    e.stopPropagation();
   }
 
   function onMouseUp(e) {
@@ -55,6 +57,8 @@
       cancelClick = true;
     }
     prevTouch = touch;
+    e.preventDefault();
+    e.stopPropagation();
   }
 
   function onTouchEnd() {
