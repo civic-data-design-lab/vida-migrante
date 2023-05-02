@@ -38,22 +38,6 @@
   $: animatedPlayerIncome.set(playerIncome);
   $: animatedHoursWorked.set(hoursWorked);
 
-  // Get the migrant's food security status
-  $: migrantInfo = migrants.find((migrant) => migrant.id === $GameData.migrantId);
-
-  $: foodSecureText = isEn ? 'Not vulnerable' : 'No tienes vulnerabilidad';
-  $: foodInsecureText = isEn ? 'Vulnerable' : 'Tienes vulnerabilidad';
-  let foodSecurityStatus;
-  $: {
-    console.debug('Calculating food security');
-    const foodSecure = isFoodSecure(
-      sumValues($GameData.resources?.expenditures),
-      migrantInfo.householdSize,
-      $GameData.resources?.copingLevel
-    );
-    foodSecurityStatus = foodSecure ? foodSecureText : foodInsecureText;
-  }
-
   //create the oval charts
   let displayedSpending = null;
   let total_columns;
@@ -63,20 +47,21 @@
   $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
   $: expenses = expenses.map((_, i) => {
     let ovalClass = 'oval';
-    if (i <= columns) ovalClass += ' oval_filled';
-    if (i === income_column) ovalClass += ' oval_green';
+    if (i < income_column && i <= columns) ovalClass += ' oval-filled';
+    if (i === income_column) ovalClass += ' oval-green';
+    if (i > income_column && i <= columns) ovalClass += ' oval-red';
     switch (i) {
       case Math.floor((313 * total_columns) / 850):
-        ovalClass += ' indicator indicator_rent';
+        ovalClass += ' indicator indicator-pink';
         break;
       case Math.floor((840 * total_columns) / 850):
-        ovalClass += ' indicator indicator_red';
+        ovalClass += ' indicator indicator-purple';
         break;
       case Math.floor((540 * total_columns) / 850):
-        ovalClass += ' indicator indicator_yellow';
+        ovalClass += ' indicator indicator-yellow';
         break;
       case Math.floor((761 * total_columns) / 850):
-        ovalClass += ' indicator indicator_blue';
+        ovalClass += ' indicator indicator-blue';
     }
     return ovalClass;
   });
@@ -97,13 +82,13 @@
 
 <div id="expense-board">
   <div class="alignleft">
-    <p4 style="color: #505050; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
+    <p4 style="color: var(--gray); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Expenses: {:else} Gastos: {/if}
       <b>${Math.floor($animatedPlayerExpenses)}</b></p4
     >
   </div>
   <div class="alignleft">
-    <p4 style="color: #7BA522; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
+    <p4 style="color: var(--accent-green); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Income:{:else} Ingresos: {/if}
       <b>${Math.floor($animatedPlayerIncome)}</b></p4
     >
@@ -112,22 +97,23 @@
 <div id="expense-bars">
   <section>
     {#each expenses as color}
-      <div class={color} />
+      <div class={color}>
+        {#if color.includes('indicator')}
+          <p4 class="indicator-text {color.slice(color.lastIndexOf('indicator'))}">
+            {#if color.includes('indicator-pink')}
+              AMHI
+            {:else if color.includes('indicator-purple')}
+              AEI
+            {:else if color.includes('indicator-yellow')}
+              EVFB
+            {:else if color.includes('indicator-blue')}
+              EBFB
+            {/if}
+          </p4>
+        {/if}
+      </div>
     {/each}
   </section>
-</div>
-<div id="migrant-state">
-  {#if isEn}
-    <p4 style="width:100%; font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >You work <b><i>~{Math.floor($animatedHoursWorked)}</i></b> hours each day & you are
-      <b><i>{foodSecurityStatus}</i></b>.</p4
-    >
-  {:else}
-    <p4 style="font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >Trabajas <b><i>~{Math.floor($animatedHoursWorked)}</i></b> horas cada día y
-      <b><i>{foodSecurityStatus}</i></b>.</p4
-    >
-  {/if}
 </div>
 <div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
   <button
@@ -153,39 +139,39 @@
   >
     <div id="name-board">
       <div class="alignleft">
-        <p4 style="color: var(--light-red);"
-          >{#if isEn}Average Migrant Household Income
+        <p4 style="color: var(--accent-pink);"
+          >{#if isEn}Average Migrant Household Income (AMHI)
           {:else}
-            Ingreso Promedio de Migrantes{/if}</p4
+            Ingreso Promedio de Migrantes (IPM){/if}</p4
         >
       </div>
       <div class="alignleft">
-        <p4 style="color: #CF6348;"
-          >{#if isEn}Average Ecuadorian Income
+        <p4 style="color: var(--accent-purple);"
+          >{#if isEn}Average Ecuadorian Income (AEI)
           {:else}
-            Ingreso Promedio de Hogar en Ecuador{/if}</p4
+            Ingreso Promedio de Hogar en Ecuador (IPHE){/if}</p4
         >
       </div>
       <div class="alignleft">
-        <p4 style="color: #E5B257;"
-          >{#if isEn}Ecuadorian Vital Family Basket
+        <p4 style="color: var(--accent-yellow);"
+          >{#if isEn}Ecuadorian Vital Family Basket (EVFB)
           {:else}
-            Canasta Vital en Ecuador{/if}</p4
+            Canasta Vital en Ecuador (CVE){/if}</p4
         >
       </div>
       <div class="alignleft">
-        <p4 style="color: #5273B0;"
-          >{#if isEn}Ecuadorian Basic Family Basket
+        <p4 style="color: var(--accent-blue);"
+          >{#if isEn}Ecuadorian Basic Family Basket (EBFB)
           {:else}
-            Canasta Básica en Ecuador{/if}</p4
+            Canasta Básica en Ecuador (CBE){/if}</p4
         >
       </div>
     </div>
     <div id="money-board">
-      <p4 class="alignright" style="color: var(--light-red); float: right;"> $313 </p4>
-      <p4 class="alignright" style="color: #CF6348; float: right;"> $840 </p4>
-      <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
-      <p4 class="alignright" style="color: #5273B0; float: right;"> $761 </p4>
+      <p4 class="alignright" style="color: var(--accent-pink); float: right;"> $313 </p4>
+      <p4 class="alignright" style="color: var(--accent-purple); float: right;"> $840 </p4>
+      <p4 class="alignright" style="color: var(--accent-yellow); float: right;"> $540 </p4>
+      <p4 class="alignright" style="color: var(--accent-blue); float: right;"> $761 </p4>
     </div>
   </div>
 {/key}
@@ -197,12 +183,14 @@
   {#each spendings as spending (spending.name)}
     <div style="display: flex; justify-content: space-between;">
       <href class="info" style="padding:.4em" on:click={() => (displayedSpending = spending)}>
-        <p4 class="range-label" style="font-size:9pt;   text-decoration-line: underline;"
-          >{#if isEn}
-            {(slider_theme = spending.name)}{:else}
+        <p4 class="range-label" style="font-size:9pt;   text-decoration-line: underline;">
+          {#if isEn}
+            {(slider_theme = spending.name)}
+          {:else}
             {(slider_theme = spending.spanish_name)}
-          {/if}</p4
-        >
+          {/if}
+        </p4>
+        <p4 class="range-label"> ></p4>
       </href>
       <p4>${spending.expense}</p4>
     </div>
@@ -322,12 +310,16 @@
     margin: 1px;
   }
 
-  .oval_filled {
-    background: #505050;
+  .oval-filled {
+    background: var(--gray);
   }
 
-  .oval_green {
-    background: #7ba522;
+  .oval-green {
+    background: var(--accent-green);
+  }
+
+  .oval-red {
+    background: var(--accent-red);
   }
 
   .indicator {
@@ -336,17 +328,26 @@
     height: calc(2em - 3px);
   }
 
-  .indicator_rent {
-    border-color: var(--light-red);
+  .indicator-pink {
+    border-color: var(--accent-pink);
+    color: var(--accent-pink);
   }
-  .indicator_red {
-    border-color: var(--accent-red);
+  .indicator-purple {
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
   }
-  .indicator_yellow {
+  .indicator-yellow {
     border-color: var(--accent-yellow);
+    color: var(--accent-yellow);
   }
-  .indicator_blue {
+  .indicator-blue {
     border-color: var(--accent-blue);
+    color: var(--accent-blue);
+  }
+
+  .indicator-text {
+    position: absolute;
+    transform: translate(-50%, 40px);
   }
 
   @media only screen and (max-height: 750px) {
@@ -398,7 +399,7 @@
 
   /* slider */
   .range-label {
-      cursor: pointer;
+    cursor: pointer;
   }
 
   .rent-theme {
