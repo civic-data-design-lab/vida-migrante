@@ -57,6 +57,7 @@
       {/if}
       Nadie más en su familia aporta ingresos al hogar.
       <br><br>
+      Tu familia {#if foodSecure}<b style="color: var(--accent-green)">no tiene vulnerabilidad</b>{:else}<b style="color: var(--accent-red)">tiene vulnerabilidad</b>{/if}.
     </p>
   {/if}
 </div>
