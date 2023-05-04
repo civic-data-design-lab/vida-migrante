@@ -4,10 +4,12 @@
   import Carousel from '$components/Carousel.svelte';
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
+  import Modal from '$components/Modal.svelte';
 
   // Get the page data
   $: language = $page.data.language;
 
+  let showModal = false;
   let migrant = 0;
   const observerOptions = {
     rootMargin: '0px',
@@ -40,12 +42,16 @@
 
 <div class="constrained centered-column">
   <div id="header">
-    {#if language === Languages.ENGLISH}
-      <h1>Select a profile for this experience</h1>
-    {:else}
-      <h1>Selecciona un perfil para vivir la experiencia</h1>
-    {/if}
+    <h1>
+      {#if language === Languages.ENGLISH}
+        Select a profile for this experience
+      {:else}
+        Selecciona un perfil para vivir la experiencia
+      {/if}
+    </h1>
   </div>
+  <span on:click={() => (showModal = true)}>Learn more</span>
+
   <Carousel />
 
   <button
@@ -61,6 +67,36 @@
     {/if}
   </button>
 </div>
+
+<Modal bind:showModal>
+  <div id="modal-body" class="centered-column" slot="body">
+    <h1 id="modal-title">
+      {#if language === Languages.ENGLISH}
+        Profiles
+      {:else}
+        Perfiles
+      {/if}
+    </h1>
+    <p>
+      {#if language === Languages.ENGLISH}
+        The data analysis for our survey shows that these are the most common “types” or profiles of
+        migrants. We used the K-means clustering algorithm. Clustering is an unsupervised
+        machine-learning technique that clusters data according to feature similarities. The
+        objective of K-means clustering is to group data together to find k clusters by discovering
+        underlying patterns in the data. The algorithm included variables such as gender, age,
+        migratory status, household composition, income, and expenses.
+      {:else}
+        El análisis de datos de nuestra encuesta muestra que estos son los “tipos” o perfiles más
+        comunes de migrantes. Utilizamos el algoritmo de agrupamiento de K-medias. La agrupación en
+        clústeres es una técnica de aprendizaje automático no supervisada que agrupa los datos según
+        las similitudes de las características. El objetivo de la agrupación en clústeres de
+        K-medias es agrupar datos para encontrar k clústeres mediante el descubrimiento patrones
+        subyacentes en los datos. El algoritmo incluyó variables como género, edad, estatus
+        migratorio, composición del hogar, ingresos y gastos.
+      {/if}
+    </p>
+  </div>
+</Modal>
 
 <style>
   #header {
@@ -80,5 +116,16 @@
     margin: 0;
     margin-bottom: 2.5vh;
     cursor: pointer;
+  }
+
+  span {
+    margin-top: 5px;
+    font-size: 12pt;
+  }
+
+  span:hover, span:active {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #000;
   }
 </style>

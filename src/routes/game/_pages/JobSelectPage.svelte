@@ -26,10 +26,10 @@
 </script>
 
 <h1 style="width: 95%; word-wrap: break-word;margin-bottom:.2em;">
-  {#if language == Languages.ENGLISH}Choose your occupation{:else}Selecciona una ocupación{/if}
+  {#if language === Languages.ENGLISH}Choose your occupation{:else}Selecciona una ocupación{/if}
 </h1>
 <p style="width: 80%; word-wrap: break-word;margin-top:.1em; text-align:center">
-  {#if language == Languages.ENGLISH}Migrants have limited options to get a job.{:else}Los migrantes
+  {#if language === Languages.ENGLISH}Migrants have limited options to get a job.{:else}Los migrantes
     tienen opciones limitadas para encontrar empleo.{/if}
 </p>
 <div id="jobs">
@@ -55,7 +55,7 @@
   <div id="modal-body" slot="body">
     <img id="modal-img" src={modalImgSrc} alt={modalSector} />
     <h1 id="modal-title">{modalTitle}</h1>
-    {#if language == Languages.ENGLISH}
+    {#if language === Languages.ENGLISH}
       <p id="modal-text">
         <b>{modalDemo}</b> of migrants work in the <b>{modalSector}</b> sector in Ecuador. Your
         monthly income will be <b>${modalIncome}</b> and you will be working an average of
@@ -76,12 +76,12 @@
       }}
     >
       {#if buttonDisabled}
-        {#if language == Languages.ENGLISH}
+        {#if language === Languages.ENGLISH}
           <span>You don't have the required accreditations</span>
         {:else}
           <span>No tienes las acreditaciones necesarias</span>
         {/if}
-      {:else if language == Languages.ENGLISH}
+      {:else if language === Languages.ENGLISH}
         Select
       {:else}
         Seleccionar
@@ -129,7 +129,6 @@
 
   #modal-text {
     margin-top: 0;
-    margin-bottom: 12vh;
     margin-bottom: 2em;
   }
 
