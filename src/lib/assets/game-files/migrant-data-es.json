@@ -4,9 +4,9 @@
       "id": 0,
       "name": "Luis",
       "age": 25,
-      "maritalStatus": "casado",
+      "maritalStatus": "casado, familia de seis",
       "introText": "<p>Luis lleva <b>10 meses</b> en Ecuador y su hogar está compuesto por <b>6</b> personas. Trabajaba en el sector de la <b>construcción</b> en Venezuela. Tiene un título de <b>escuela secundaria</b>, y <b>no tiene otros títulos, acreditaciones o certificados legalizados</b>. No tiene <b>redes comunitarias en el país</b> y su estatus migratorio sigue siendo <b>irregular</b>. Su pareja trabaja cuidando a los hijos de tiempo completo, así que él provee todo el ingreso del hogar.</p>",
-      "householdSize": 7,
+      "householdSize": 6,
       "initialResources": {
         "skills": [
           "construction"
@@ -66,9 +66,9 @@
       "id": 2,
       "name": "María",
       "age": 26,
-      "maritalStatus": "casada",
+      "maritalStatus": "casada, familia de cuatro",
       "introText": "<p>María lleva <b>9 meses</b> en Ecuador y su hogar está compuesto por <b>4</b> personas. Trabajaba en el sector de la <b>agricultura</b> en Venezuela. Tiene un título de <b>escuela preparatoria o bachillerato</b>, y <b>no tiene otros títulos, acreditaciones o certificados legalizados</b>. No tiene <b>redes comunitarias en el país</b> y su estatus migratorio sigue siendo <b>irregular</b>. Su pareja tiene necesidades de salud especiales, por lo que no puede ayudar con los gastos del hogar.</p>",
-      "householdSize": 5,
+      "householdSize": 4,
       "initialResources": {
         "skills": [
           "agriculture"
