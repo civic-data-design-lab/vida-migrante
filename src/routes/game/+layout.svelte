@@ -71,7 +71,7 @@
   }
 
   .nav-btn {
-    transform: translateY(-130%);
+    transform: none; /*translateY(-130%);*/
   }
 
   .nav-btn:focus {

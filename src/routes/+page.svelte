@@ -168,8 +168,10 @@
                   continue, please <b>scroll down</b> and follow the instructions. <br /><br />
                   If you want to learn more about the socioeconomic conditions of the migrants,
                   <b
-                    ><a href="google.com" style="font-family: 'open sans', sans-serif;"
-                      >click here</a
+                    ><a
+                      target="_blank"
+                      href="https://www.dropbox.com/s/bmiuk0xeld118sv/040523_VIDA_MIGRANTE_EN.pdf?dl=0"
+                      style="font-family: 'open sans', sans-serif;">click here</a
                     ></b
                   >.
                 {:else}
@@ -185,7 +187,10 @@
                   Si quieres conocer más sobre el estudio sobre las condiciones socioeconómicas de los
                   migrantes haz
                   <b
-                    ><a href="google.com" style="font-family: 'open sans', sans-serif;">clic aquí</a
+                    ><a
+                      target="_blank"
+                      href="https://www.dropbox.com/s/bmiuk0xeld118sv/040523_VIDA_MIGRANTE_EN.pdf?dl=0"
+                      style="font-family: 'open sans', sans-serif;">clic aquí</a
                     ></b
                   >. <br /><br />
                 {/if}
@@ -205,7 +210,7 @@
               <img src={'/images/migrants/Luis.svg'} alt="Luis" style="width: 60%" />
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
                 {#if language === Languages.ENGLISH}
-                  <b>Over half</b> of the migrants spent <b>more than 90 percent</b> of their monthly
+                  <b style="color: #f5dfaf">Over half</b> of the migrants spent <b>more than 90 percent</b> of their monthly
                   income on basic necessities like rent, utilities, health, and food.
                 {:else}
                   <b>Más de la mitad</b> de los migrantes gastan <b>más del 90 por ciento</b> de sus
@@ -213,8 +218,8 @@
                   y alimentos.
                 {/if}
               </p>
-              <!-- TODO: image -->
-              <p style="text-align: left; font-family: 'open-sans', sans-serif;">
+              <img src={`/images/welcomepage/donut1.svg`} alt="donut1" style="width: 75%; position: relative; left: 40px"/>
+              <p style="text-align: left; font-family: 'open-sans', sans-serif; margin-bottom: 0">
                 {#if language === Languages.ENGLISH}
                   This leaves them with <b>little left for other essential needs</b>. In order to
                   make their money last, they must make a series of choices as they navigate their
@@ -222,7 +227,6 @@
                   <b>Help migrants make these choices.</b> <br /><br />
                   Go through the simulation by helping migrants improve their livelihoods. The process
                   will show you how the situation is <b>extremely difficult</b> for most migrants;
-                  <br /><br />
                 {:else}
                   Esto les deja <b>poco para otras necesidades</b> esenciales. Para hacer que su
                   dinero dure, toman una serie de decisiones mientras navegan su experiencia en
@@ -233,7 +237,7 @@
                   migrantes;
                 {/if}
               </p>
-              <!-- TODO: image -->
+              <img src={`/images/welcomepage/donut2.svg`} alt="donut2" style="width: 60%"/>
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
                 {#if language === Languages.ENGLISH}
                   <span style="color: var(--accent-blue);"><b>only 6% of the households</b></span> have
