@@ -17,7 +17,7 @@
   $: isEn = language === Languages.ENGLISH;
 
   $: playerExpenses = parseInt(sumValues($GameData.resources?.expenditures));
-  $: playerIncome = 500;// $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
+  $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
   $: hoursWorked = Math.round($GameData.resources?.time / DAYS_IN_WEEK);
 
   const animatedPlayerExpenses = tweened(playerExpenses, {
@@ -41,7 +41,7 @@
   //create the oval charts
   let displayedSpending = null;
   let total_columns;
-  const max_expense = 850;
+  const max_expense = 900;
   $: expenses = new Array(total_columns).fill('oval');
   $: columns = Math.floor((total_columns * $animatedPlayerExpenses) / max_expense);
   $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
@@ -51,16 +51,16 @@
     if (i === income_column) ovalClass += ' oval-green';
     if (i > income_column && i <= columns) ovalClass += ' oval-red';
     switch (i) {
-      case Math.floor((313 * total_columns) / 850):
+      case Math.floor((313 * total_columns) / max_expense):
         ovalClass += ' indicator indicator-pink';
         break;
-      case Math.floor((840 * total_columns) / 850):
+      case Math.floor((840 * total_columns) / max_expense):
         ovalClass += ' indicator indicator-purple';
         break;
-      case Math.floor((540 * total_columns) / 850):
+      case Math.floor((540 * total_columns) / max_expense):
         ovalClass += ' indicator indicator-yellow';
         break;
-      case Math.floor((761 * total_columns) / 850):
+      case Math.floor((761 * total_columns) / max_expense):
         ovalClass += ' indicator indicator-blue';
     }
     return ovalClass;
@@ -318,6 +318,7 @@
     background: #f3f3f3;
     border-radius: 40px;
     margin: 1px;
+      position: relative;
   }
 
   .oval-filled {
@@ -357,7 +358,8 @@
 
   .indicator-text {
     position: absolute;
-    transform: translate(-50%, 40px);
+      bottom: 0;
+    transform: translate(-50%, 20px);
   }
 
   @media only screen and (max-height: 750px) {
