@@ -240,6 +240,7 @@
     height: 6px;
     background-color: var(--track-bgcolor, #f3f3f3);
     border-radius: 4px;
+      width: calc(100% - 30px);
   }
 
   .range__track--highlighted {
