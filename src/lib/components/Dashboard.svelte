@@ -71,6 +71,14 @@
   for (let spending of spendings) {
     spending.expense = $GameData.resources?.expenditures[spending.name2];
   }
+  const range_thresholds = new Map([
+    ['Rent', 92],
+    ['Food', 104],
+    ['Health & Hygiene', 43],
+    ['Household & Utilities', 55],
+    ['Remittances', 24],
+    ['Internet', 11]
+  ]);
 
   let expenseReferences = true;
 
@@ -181,9 +189,9 @@
     {#if isEn}Minimum monthly household expenses{:else}Gastos mínimos mensuales del hogar {/if}
   </h2>
   {#each spendings as spending (spending.name)}
-    <div style="display: flex; justify-content: space-between;">
-      <href class="info" style="padding:.4em" on:click={() => (displayedSpending = spending)}>
-        <p4 class="range-label" style="font-size:9pt;   text-decoration-line: underline;">
+    <div style="display: flex; justify-content: space-between; color: {spending.expense < range_thresholds.get(spending.name)? 'var(--accent-red)' : 'var(--gray)'}">
+      <href class="info" style="padding:.4em; color: inherit" on:click={() => (displayedSpending = spending)}>
+        <p4 class="range-label" style="font-size:9pt; text-decoration-line: underline; color: inherit">
           {#if isEn}
             {(slider_theme = spending.name)}
           {:else}
@@ -192,7 +200,7 @@
         </p4>
         <p4 class="range-label"> ></p4>
       </href>
-      <p4>${spending.expense}</p4>
+      <p4 style="color: inherit">${spending.expense}</p4>
     </div>
     <div
       class:rent-theme={spending.name === 'Rent' || spending.name === 'Alquiler'}
@@ -400,6 +408,7 @@
   /* slider */
   .range-label {
     cursor: pointer;
+      color: inherit;
   }
 
   .rent-theme {
