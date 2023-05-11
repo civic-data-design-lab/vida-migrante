@@ -213,7 +213,7 @@
                   <b style="color: #f5dfaf">Over half</b> of the migrants spent <b>more than 90 percent</b> of their monthly
                   income on basic necessities like rent, utilities, health, and food.
                 {:else}
-                  <b>Más de la mitad</b> de los migrantes gastan <b>más del 90 por ciento</b> de sus
+                  <b style="color: #f5dfaf">Más de la mitad</b> de los migrantes gastan <b>más del 90 por ciento</b> de sus
                   ingresos mensuales en necesidades básicas como alquiler, servicios públicos, salud
                   y alimentos.
                 {/if}

@@ -55,14 +55,14 @@
       <p>
         Your income is still not enough to buy a <b class="accent-blue">Basic Family Basket</b>, but
         you can afford a <b class="accent-yellow">Vital Family Basket</b>. {#if foodSecure}Your
-        family is <b class="accent-green">food secure</b>{:else}Despite your increased income,
+        family is <b class="accent-green">not vulnerable</b>{:else}Despite your increased income,
         your family is still <b class="accent-red">vulnerable</b>{/if}.
       </p>
     {:else}
       <p>
         Tus ingresos aún no son suficientes para adquirir una <b class="accent-blue">Canasta Familiar Básica</b>,
-        pero puedes adquirir una <b class="accent-yellow">Canasta Familiar Vital</b>. {#if foodSecure}Tu
-        familia tiene <b class="accent-green">food secure</b>{:else}A pesar de que tus ingresos aumentaron, tu y tú
+        pero puedes adquirir una <b class="accent-yellow">Canasta Familiar Vital</b>. {#if foodSecure}Tu familia
+        <b class="accent-green">no tiene vulnerabilidad</b>{:else}A pesar de que tus ingresos aumentaron, tu y tú
         familia aún tienen <b class="accent-red">vulnerabilidad</b>{/if}.
       </p>
     {/if}

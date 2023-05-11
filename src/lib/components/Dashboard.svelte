@@ -109,13 +109,13 @@
         {#if color.includes('indicator')}
           <p4 class="indicator-text {color.slice(color.lastIndexOf('indicator'))}">
             {#if color.includes('indicator-pink')}
-              AMHI
+              {#if language === Languages.ENGLISH}AMHI{:else}IPM{/if}
             {:else if color.includes('indicator-purple')}
-              AEI
+              {#if language === Languages.ENGLISH}AEI{:else}IPHE{/if}
             {:else if color.includes('indicator-yellow')}
-              EVFB
+              {#if language === Languages.ENGLISH}EVFB{:else}CVE{/if}
             {:else if color.includes('indicator-blue')}
-              EBFB
+              {#if language === Languages.ENGLISH}EBFB{:else}CBE{/if}
             {/if}
           </p4>
         {/if}
