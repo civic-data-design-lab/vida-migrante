@@ -86,13 +86,11 @@
     total_columns = Math.floor((window.innerWidth * 0.9) / 10);
   }
   onMount(computeColumns);
-
-  $: overspent = columns > income_column || spendings.some(spending => spending.expense < range_thresholds.get(spending.name));
 </script>
 
 <div id="expense-board">
   <div class="alignleft">
-    <p4 style="color: {overspent? 'var(--accent-red)' : 'var(--gray)'}; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
+    <p4 style="color: var(--gray); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Expenses: {:else} Gastos: {/if}
       <b>${Math.floor($animatedPlayerExpenses)}</b></p4
     >
