@@ -5,6 +5,7 @@
   import { CARD_CATEGORY_COLOR_MAP, DRAWER_ANIM_DURATION } from '$types';
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
+  import LearnMore from "$components/LearnMore.svelte";
 
   // Toggles the drawer
   export let toggleDrawer;
@@ -138,7 +139,15 @@
 </Modal>
 <Card {card} minimized={showOptions} onCardTap={() => (showOptions = !showOptions)} {roundNum} />
 {#if showOptions}
-  <h4 class="prompt">{card.prompt || ''}</h4>
+  <div class="centered-column">
+    <h4 class="prompt">{card.prompt || ''}</h4>
+    {#if card.learn_more}
+      <LearnMore>
+        <h1 slot="title">{card.title}</h1>
+        <p slot="body">{card.learn_more}</p>
+      </LearnMore>
+    {/if}
+  </div>
   <ul>
     {#each card.options as option (option.id)}
       <li>

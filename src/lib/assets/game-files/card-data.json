@@ -23,7 +23,8 @@
         "except": "but you won't be able to take the training"
       }
     ],
-    "image": "PI_hairdresser.png"
+    "image": "PI_hairdresser.png",
+    "learn_more": "Non-specialized services is the second most common job among migrants, 17% of the migrants responded that they work in this industry. Not only hairdresser belongs to this category, but this occupation is also listed as the principal trade migrants want to learn; 31% of them responded that they would like to learn the skills required to become one. Other popular choices for this question include cook, mechanic, and baker."
   },
   {
     "id": 1,
@@ -40,9 +41,7 @@
           "income": {
             "salary": 54
           },
-          "skills": [
-            "digital skills"
-          ]
+          "skills": ["digital skills"]
         },
         "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
       },
@@ -53,7 +52,8 @@
         "except": "but you won't take the course"
       }
     ],
-    "image": "PI_digitalskills.png"
+    "image": "PI_digitalskills.png",
+    "learn_more": "One of the main barriers to integrate migrants into new digital economies is internet access. Over half the migrants who responded that they have digital skills cannot access the internet. Assisting to connect to the digital world, will help migrants improve their employment conditions."
   },
   {
     "id": 2,
@@ -66,14 +66,13 @@
         "id": 0,
         "description": "I can't afford a computer",
         "updates": {
-          "skills": [
-            "business"
-          ]
+          "skills": ["business"]
         },
         "except": " you won't be able to take the training. You could potentially increase you income but most of the migrants don't have access to a computer or to internet"
       }
     ],
-    "image": "PI_business-skills.png"
+    "image": "PI_business-skills.png",
+    "learn_more": "Our findings show that migrants have the skills and interests to be included in the emerging digital economies in Ecuador. The International Labour Organization identifies software development, Internet of Things, and e-commerce as industries in which migrants can have significant contributions and are already interested on."
   },
   {
     "id": 3,
@@ -118,7 +117,8 @@
         "implicationText": "<b>13%</b> of migrants don't send remittances to Venezuela"
       }
     ],
-    "image": "LE_remittances.png"
+    "image": "LE_remittances.png",
+    "learn_more": "Remittances are an essential component of the migrants’ expenses as they send them to help their family and friends in Venezuela. Our analysis shows that 47% of migrants send remittances; the average remittance is $24 per month."
   },
   {
     "id": 4,
@@ -140,7 +140,8 @@
         "implicationText": "<b>9%</b> of migrants have to ask for support from their community to improve their conditions and to start creating a community network."
       }
     ],
-    "image": "LE_community.png"
+    "image": "LE_community.png",
+    "learn_more": "Building a strong community network helps migrants navigate their everyday lives. Although recent migrants, like the ones in our study, might not have a strong network yet, building one helps them support each other by assisting them in take care of their relatives or borrowing goods."
   },
   {
     "id": 5,
@@ -185,6 +186,7 @@
         "implicationText": ""
       }
     ],
-    "image": "LE_health.png"
+    "image": "LE_health.png",
+    "learn_more": "Health is one of the main challenges of migrants. When they relocate, finding healthcare is tough as they still don’t have a strong community network. While the Ecuadorian government already provides universal healthcare regardless of nationality, illnesses and care are at the center of migrants’ path to decrease their vulnerability."
   }
 ]

@@ -23,7 +23,8 @@
         "except": "pero no podrá tomar el entrenamiento"
       }
     ],
-    "image": "PI_hairdresser.png"
+    "image": "PI_hairdresser.png",
+    "learn_more": "Los servicios no especializados es el segundo trabajo más común entre los migrantes, el 17% de los migrantes respondió que trabaja en esta industria. No solo estilista pertenece a esta categoría, ya que esta ocupación también figura como el principal oficio que los migrantes quieren aprender; el 31% de ellos respondió que les gustaría aprender las habilidades necesarias para convertirse en uno. Otras respuestas populares para esta pregunta incluyen cocinero, mecánico y panadero."
   },
   {
     "id": 1,
@@ -40,9 +41,7 @@
           "income": {
             "salary": 54
           },
-          "skills": [
-            "Tecnologías Digitales"
-          ]
+          "skills": ["Tecnologías Digitales"]
         },
         "implicationText": "El <b>42%</b> de los migrantes tiene que gastar sus ahorros, si los tienen, para satisfacer sus necesidades esenciales."
       },
@@ -53,7 +52,8 @@
         "except": "pero no podrá tomar la capacitación"
       }
     ],
-    "image": "PI_digitalskills.png"
+    "image": "PI_digitalskills.png",
+    "learn_more": "Una de las principales barreras para integrar a los migrantes en las nuevas economías digitales es el acceso a internet. Más de la mitad de los migrantes que respondieron que tienen habilidades digitales no pueden acceder a Internet. Ayudar a conectarse al mundo digital ayudará a los migrantes a mejorar sus condiciones de empleo."
   },
   {
     "id": 2,
@@ -66,14 +66,13 @@
         "id": 0,
         "description": "No tengo acceso a una computadora",
         "updates": {
-          "skills": [
-            "negocios"
-          ]
+          "skills": ["negocios"]
         },
         "except": "pero no podrás tomar la capacitación. Tus ingresos podrían incrementar pero la mayoría de los migrantes no tienen acceso a una computadora y a Internet"
       }
     ],
-    "image": "PI_business-skills.png"
+    "image": "PI_business-skills.png",
+    "learn_more": "Nuestros hallazgos muestran que los migrantes tienen las habilidades e intereses para ser incluidos en las economías digitales emergentes en Ecuador. La Organización Internacional del Trabajo identifica el desarrollo de software, Internet de las cosas y el comercio electrónico como industrias en las que los migrantes pueden tener contribuciones significativas y en las que ya están interesados."
   },
   {
     "id": 3,
@@ -118,7 +117,8 @@
         "implicationText": "El <b>13%</b> de los migrantes no mandan remesas a Venezuela."
       }
     ],
-    "image": "LE_remittances.png"
+    "image": "LE_remittances.png",
+    "learn_more": "Las remesas son un componente esencial de los gastos de los migrantes, ya que las envían para ayudar a sus familiares y amigos en Venezuela. Nuestro análisis muestra que el 47% de los migrantes envían remesas; la remesa promedio es de $24 por mes."
   },
   {
     "id": 4,
@@ -140,7 +140,8 @@
         "implicationText": "El <b>9%</b> de los migrantes tienen que pedir ayuda a miembros de la comunidad, esto les sirve también para crear una red comunitaria en Ecuador."
       }
     ],
-    "image": "LE_community.png"
+    "image": "LE_community.png",
+    "learn_more": "Construir una red comunitaria sólida ayuda a los migrantes a navegar su vida cotidiana. Aunque los migrantes recientes, como los de nuestro estudio, pueden no tener una red comunitaria sólida aún, construir una les ayuda a apoyarse mutuamente para cuidar a algún familiar o pedir bienes prestados."
   },
   {
     "id": 5,
@@ -185,6 +186,7 @@
         "implicationText": ""
       }
     ],
-    "image": "LE_health.png"
+    "image": "LE_health.png",
+    "learn_more": "La salud es uno de los principales desafíos de los migrantes. Cuando se migran, encontrar atención médica es difícil ya que aún no tienen una red comunitaria sólida. Si bien el gobierno ecuatoriano ya brinda atención médica universal independientemente de la nacionalidad, las enfermedades y la atención médica siguen en el centro del camino de los migrantes para disminuir su vulnerabilidad."
   }
 ]
