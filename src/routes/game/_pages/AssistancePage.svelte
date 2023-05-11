@@ -114,14 +114,17 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
 
 <section>
   {#each assistances as assistance (assistance.id)}
-    <button
-      class="assist-thumb"
-      title={assistance.name}
-      disabled={alreadySelectedAssistanceIds.includes(assistance.id)}
-      on:click={() => (displayedAssistance = assistance)}
-    >
-      <img src="/images/assistance/{assistance.image}" alt={assistance.name} />
-    </button>
+    <div class="centered-column">
+      <button
+        class="assist-thumb"
+        title={assistance.name}
+        disabled={alreadySelectedAssistanceIds.includes(assistance.id)}
+        on:click={() => (displayedAssistance = assistance)}
+      >
+        <img src="/images/assistance/{assistance.image}" alt={assistance.name} />
+      </button>
+      <p style="margin: 0; position: relative; top: -10px; text-align: center">{assistance.name}</p>
+    </div>
   {/each}
 </section>
 

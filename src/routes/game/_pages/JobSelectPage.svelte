@@ -60,21 +60,24 @@
 </LearnMore>
 <div id="jobs">
   {#each jobs as job, i}
-    <img
-      class="selection-icon"
-      src={`/images/jobs/${job.image}`}
-      alt={job.sector}
-      on:click={modalUpdater(
-        `/images/jobs/${job.image}`,
-        job.title,
-        job.demographics,
-        job.sector,
-        job.income,
-        job.hours,
-        i,
-        job.disabled
-      )}
-    />
+    <div class="centered-column">
+      <img
+        class="selection-icon"
+        src={`/images/jobs/${job.image}`}
+        alt={job.sector}
+        on:click={modalUpdater(
+          `/images/jobs/${job.image}`,
+          job.title,
+          job.demographics,
+          job.sector,
+          job.income,
+          job.hours,
+          i,
+          job.disabled
+        )}
+      />
+      <p style="margin: 0; margin-top: 5px; text-align: center">{job.title}</p>
+    </div>
   {/each}
 </div>
 <Modal bind:showModal>
@@ -127,7 +130,7 @@
     height: 85vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 30vw;
+    column-gap: 20vw;
     overflow-y: hidden;
   }
 
