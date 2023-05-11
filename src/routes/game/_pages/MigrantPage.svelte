@@ -5,6 +5,7 @@
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
   import Modal from '$components/Modal.svelte';
+  import LearnMore from "$components/LearnMore.svelte";
 
   // Get the page data
   $: language = $page.data.language;
@@ -50,34 +51,15 @@
       {/if}
     </h1>
   </div>
-  <span on:click={() => (showModal = true)}>Learn more</span>
-
-  <Carousel />
-
-  <button
-    class="button"
-    on:click={() => {
-      GameData.advanceGameState({ migrantId: migrant });
-    }}
-  >
-    {#if language === Languages.ENGLISH}
-      Select
-    {:else}
-      Seleccionar
-    {/if}
-  </button>
-</div>
-
-<Modal bind:showModal>
-  <div id="modal-body" class="centered-column" slot="body">
-    <h1 id="modal-title">
+  <LearnMore>
+    <h1 slot="title">
       {#if language === Languages.ENGLISH}
         Profiles
       {:else}
         Perfiles
       {/if}
     </h1>
-    <p>
+    <p slot="body">
       {#if language === Languages.ENGLISH}
         The data analysis for our survey shows that these are the most common “types” or profiles of
         migrants. We used the K-means clustering algorithm. Clustering is an unsupervised
@@ -95,8 +77,23 @@
         migratorio, composición del hogar, ingresos y gastos.
       {/if}
     </p>
-  </div>
-</Modal>
+  </LearnMore>
+
+  <Carousel />
+
+  <button
+    class="button"
+    on:click={() => {
+      GameData.advanceGameState({ migrantId: migrant });
+    }}
+  >
+    {#if language === Languages.ENGLISH}
+      Select
+    {:else}
+      Seleccionar
+    {/if}
+  </button>
+</div>
 
 <style>
   #header {
@@ -119,11 +116,13 @@
   }
 
   span {
+    font-family: var(--font-sirenia);
     margin-top: 5px;
     font-size: 12pt;
   }
 
-  span:hover, span:active {
+  span:hover,
+  span:active {
     cursor: pointer;
     text-decoration: underline;
     color: #000;

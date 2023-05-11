@@ -3,6 +3,7 @@
   import { GameData } from '$lib/stores/gameData';
   import { page } from '$app/stores';
   import { DRAWER_ANIM_DURATION, Languages } from '$lib/utils/types';
+  import LearnMore from '$components/LearnMore.svelte';
 
   export let toggleDrawer;
 
@@ -63,6 +64,33 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
     Las asistencias ayudan a los migrantes con sus necesidades básicas.
   </p>
 {/if}
+<LearnMore>
+  <h1 slot="title">
+    {#if language === Languages.ENGLISH}
+      Assistances
+    {:else}
+      Asistencias
+    {/if}
+  </h1>
+  <p slot="body">
+    {#if language === Languages.ENGLISH}
+      Assistance help migrants fill gaps in their coverage of basic needs. This aid might come in
+      the form of food vouchers, training, or in-kind goods. Organizations such as WFP, the UN,
+      NGOs, and the Ecuadorian government provide help to migrants in vulnerable positions.
+      Assistance are usually offered just once per type, so it’s important for the agencies that
+      provide them to target the correct groups, and for migrants to acknowledge this. Only 11% of
+      our respondents received assistance, making it very important to expand their reach.
+    {:else}
+      La asistencia ayuda a los migrantes a llenar los vacíos en la cobertura de sus necesidades
+      básicas. Esta ayuda puede venir en forma de cupones de alimentos, capacitación o bienes en
+      especie. Organizaciones como el PMA, la ONU, ONG y el gobierno ecuatoriano brindan ayuda a los
+      migrantes en situaciones de vulnerabilidad. Por lo general, la asistencia se ofrece solo una
+      vez por tipo, por lo que es importante que las agencias que la brindan se dirijan a los grupos
+      correctos y que los migrantes lo reconozcan. Solo el 11% de nuestros encuestados recibió
+      asistencia, por lo que es importante ampliar su alcance.
+    {/if}
+  </p>
+</LearnMore>
 
 <Modal showModal={displayedAssistance}>
   <div class="modal-body" slot="body">
