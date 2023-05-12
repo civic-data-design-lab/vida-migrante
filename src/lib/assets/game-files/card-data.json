@@ -4,7 +4,7 @@
     "category": "Personal Improvement",
     "title": "Hairdresser",
     "description": "You meet a friend who can teach you the skills needed to become a hairdresser.",
-    "prompt": "Would you like to train to become a hairdresser?",
+    "prompt": "Would you like to train to become a hairdresser? This training will help open job opportunities.",
     "options": [
       {
         "id": 0,
@@ -18,9 +18,9 @@
       },
       {
         "id": 1,
-        "description": "I can't afford taking time off",
+        "description": "You don't like this option",
         "updates": {},
-        "except": "but you won't be able to take the training"
+        "except": "there will be no changes in your family economy. However, you are giving up a possibility of training and a possibility of income"
       }
     ],
     "image": "PI_hairdresser.png",
@@ -30,7 +30,7 @@
     "id": 1,
     "category": "Personal Improvement",
     "title": "Digital Skills",
-    "description": "You saw an ad about a course on electronic commerce, which will help you increase your income. Would you like to take the course?",
+    "description": "You saw an ad about a free e-commerce course, which could help you increase your income and improve your employment situation in the future. Would you like to take the course?",
     "prompt": "Would you like to take the course?",
     "options": [
       {
@@ -41,7 +41,9 @@
           "income": {
             "salary": 54
           },
-          "skills": ["digital skills"]
+          "skills": [
+            "digital skills"
+          ]
         },
         "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
       },
@@ -49,7 +51,7 @@
         "id": 1,
         "description": "Maybe next time",
         "updates": {},
-        "except": "but you won't take the course"
+        "except": "there will be no changes in your family economy. However, you are giving up a training possibility."
       }
     ],
     "image": "PI_digitalskills.png",
@@ -66,7 +68,9 @@
         "id": 0,
         "description": "I can't afford a computer",
         "updates": {
-          "skills": ["business"]
+          "skills": [
+            "business"
+          ]
         },
         "except": " you won't be able to take the training. You could potentially increase you income but most of the migrants don't have access to a computer or to internet"
       }
@@ -78,25 +82,11 @@
     "id": 3,
     "category": "Life Event",
     "title": "Remittances",
-    "description": "Your mother in Venezuela needs surgey for a health emergency, and you have to send remittances to cover the medical bills.",
+    "description": "A relative from Venezuela informs you that he urgently requires resources to cover his mother's health expenses.",
     "prompt": "How would you like to pay for the remittances?",
     "options": [
       {
         "id": 0,
-        "description": "Work longer hours to get extra money",
-        "updates": {
-          "income": {
-            "salary": 24
-          },
-          "time": 12,
-          "expenditures": {
-            "remittances": 24
-          }
-        },
-        "implicationText": "<b>24%</b> of migrants have to work longer hours to meet their essential needs."
-      },
-      {
-        "id": 1,
         "description": "Borrow money from a friend",
         "updates": {
           "copingLevel": "stress",
@@ -107,13 +97,13 @@
             "remittances": 24
           }
         },
-        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs."
+        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs. Your effort will help cover this family emergency."
       },
       {
-        "id": 2,
+        "id": 1,
         "description": "I can't send money to mom now",
         "updates": {},
-        "except": "but your mom might not get better",
+        "except": "Your mother will not be able to receive adequate health care and will probably not get better. Your relatives should seek local help.",
         "implicationText": "<b>13%</b> of migrants don't send remittances to Venezuela"
       }
     ],
@@ -124,7 +114,7 @@
     "id": 4,
     "category": "Life Event",
     "title": "Community Support",
-    "description": "Your close friend and neighbor had a personal emergency and asks you to take care of their kids for a couple of days.",
+    "description": "Your community is organizing an event to fund aid for a Venezuelan family, their son needs an urgent operation. They ask you for support during Saturday to be at the food stall.",
     "prompt": "Would you like to help your friend?",
     "options": [
       {
@@ -138,6 +128,17 @@
         },
         "except": "in order to make up for the time off",
         "implicationText": "<b>9%</b> of migrants have to ask for support from their community to improve their conditions and to start creating a community network."
+      },
+      {
+        "id": 0,
+        "description": "I can't help",
+        "updates": {
+          "time": 5,
+          "income": {
+            "salary": -10
+          }
+        },
+        "implicationText": "<b>9%</b> of migrants have to ask for support from their community to improve their conditions and to start creating a community network. Not being able to support your community will impact social support networks in an emergency."
       }
     ],
     "image": "LE_community.png",
@@ -162,7 +163,7 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
+        "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs. If you choose this option your savings will decrease for future emergencies."
       },
       {
         "id": 1,
@@ -176,13 +177,13 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs."
+        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs. Your family situation will worsen and you will get into debt with a close friend."
       },
       {
         "id": 2,
         "description": "I can't pay for the medicines",
         "updates": {},
-        "except": "you will have to find a social assistance that help you buy them",
+        "except": "it is possible that your health will not improve, your economy will not change",
         "implicationText": ""
       }
     ],
