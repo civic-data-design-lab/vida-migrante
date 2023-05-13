@@ -3,7 +3,8 @@
   import { isFoodSecure, sumValues } from '$utils/functions.js';
   import { page } from '$app/stores';
   import { DAYS_IN_WEEK, Languages } from '$lib/utils/types';
-  import { elasticOut } from 'svelte/easing';
+  import enCards from '$gameFiles/assistances.json';
+  import spCards from '$gameFiles/assistances-es.json';
 
   $: language = $page.data.language;
 
@@ -22,6 +23,9 @@
   );
 
   $: hoursWorked = Math.floor(Math.round($GameData.resources?.time / DAYS_IN_WEEK));
+
+  $: assistanceIDs = $GameData.pastActions.filter(action => action.assistanceId).map(assistance => assistance.assistanceId);
+  $: assistances = (language === Languages.ENGLISH? enCards : spCards).filter(card => assistanceIDs.includes(card.id));
 </script>
 
 <h1>
@@ -69,11 +73,11 @@
   {/if}
   {#if language === Languages.ENGLISH}
     <p>
-      You work <b>~{hoursWorked}</b> hours each day.
+      You received <b>{assistances[0].name}</b> and <b>{assistances[1].name}</b>. These are usually provided to help migrants that are in a difficult situation, and they are usually given just once. You work <b>~{hoursWorked}</b> hours each day.
     </p>
   {:else}
     <p>
-      Trabajas <b>~{hoursWorked}</b> horas cada día.
+      Recibiste <b>{assistances[0].name}</b> y <b>{assistances[1].name}</b>. Por lo general, se dan a los migrantes para ayudarlos cuando se encuentran en una situación difícil y generalmente se brindan solo una vez. Trabajas <b>~{hoursWorked}</b> horas cada día.
     </p>
   {/if}
 </div>
