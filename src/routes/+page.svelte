@@ -128,7 +128,7 @@
         />
       </div>
 
-      <Parallax sections={3.25}>
+      <Parallax sections={3.4}>
         <div id="parallax-container" class="centered-column constrained">
           <ParallaxLayer rate={1} class="centered-column">
             <div style="padding-left:2rem; padding-right:2rem">
@@ -262,9 +262,9 @@
       </Parallax>
     </div>
   {:else}
-    <div class="centered-column" style="height: 100vh;" in:fade={{ delay: 500 }}>
-      <div style="z-index: 12; padding-left:2rem; padding-right:2rem;">
-        <h1 style="text-align: center;">
+    <div class="centered-column responsive" style="height: 100vh;" in:fade={{ delay: 500 }}>
+      <div style="z-index: 12; padding-left: 2rem; padding-right: 2rem;">
+        <h1 style="text-align: center;" class="h1-responsive">
           {#if language === Languages.ENGLISH}
             How to explore the simulation?
           {:else}
@@ -272,7 +272,7 @@
           {/if}
         </h1>
 
-        <p style="text-align: left; font-family: 'open-sans', sans-serif;">
+        <p style="text-align: left; font-family: 'open-sans', sans-serif;" class="p-responsive">
           {#if language === Languages.ENGLISH}
             The goal of the game is to <b>improve part of your livelihood;</b> increasing your income
             while working reasonable hours.
@@ -283,7 +283,7 @@
         </p>
         <ol type="1" style="padding-left: 1em;">
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;">
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 1. Please select a profile and an occupation. These selection will assign you a
                 specific <b>monthly income and expenses. </b>
@@ -295,7 +295,7 @@
             </p>
           </li>
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;">
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 2. You will play 4 rounds, each round is <b>one month.</b>
               {:else}
@@ -304,7 +304,7 @@
             </p>
           </li>
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;">
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 3. Draw a card for every month. The card contains an event or a situation you
                 <b>have to face through a decision.</b>
@@ -316,7 +316,7 @@
             </p>
           </li>
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;">
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 4. The decision you make will
                 <b>affect your income and your expenses.</b>
@@ -327,7 +327,7 @@
             </p>
           </li>
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;">
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 5. You will have the opportunity to select certain
                 <b>assistance, to help you through your journey.</b>
@@ -519,5 +519,27 @@
 
   a.button {
     margin-top: 0.5em;
+  }
+
+  @media only screen and (max-height: 750px), (max-width: 380px) {
+      .p-responsive {
+         font-size: 11pt;
+          margin: 0;
+      }
+
+      ol {
+          margin: 0;
+      }
+  }
+
+  @media only screen and (max-height: 700px) {
+      .responsive {
+          justify-content: start;
+      }
+
+      .h1-responsive {
+          margin-top: 2rem;
+          margin-bottom: 0;
+      }
   }
 </style>
