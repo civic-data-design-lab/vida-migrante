@@ -210,15 +210,20 @@
               <img src={'/images/migrants/Luis.svg'} alt="Luis" style="width: 60%" />
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
                 {#if language === Languages.ENGLISH}
-                  <b style="color: #f5dfaf">Over half</b> of the migrants spent <b>more than 90 percent</b> of their monthly
-                  income on basic necessities like rent, utilities, health, and food.
+                  <b style="color: #f5dfaf">Over half</b> of the migrants spent
+                  <b>more than 90 percent</b> of their monthly income on basic necessities like rent,
+                  utilities, health, and food.
                 {:else}
-                  <b style="color: #f5dfaf">Más de la mitad</b> de los migrantes gastan <b>más del 90 por ciento</b> de sus
-                  ingresos mensuales en necesidades básicas como alquiler, servicios públicos, salud
-                  y alimentos.
+                  <b style="color: #f5dfaf">Más de la mitad</b> de los migrantes gastan
+                  <b>más del 90 por ciento</b> de sus ingresos mensuales en necesidades básicas como
+                  alquiler, servicios públicos, salud y alimentos.
                 {/if}
               </p>
-              <img src={`/images/welcomepage/donut1.svg`} alt="donut1" style="width: 75%; position: relative; left: 40px"/>
+              <img
+                src={`/images/welcomepage/donut1.svg`}
+                alt="donut1"
+                style="width: 75%; position: relative; left: 40px"
+              />
               <p style="text-align: left; font-family: 'open-sans', sans-serif; margin-bottom: 0">
                 {#if language === Languages.ENGLISH}
                   This leaves them with <b>little left for other essential needs</b>. In order to
@@ -237,7 +242,7 @@
                   migrantes;
                 {/if}
               </p>
-              <img src={`/images/welcomepage/donut2.svg`} alt="donut2" style="width: 60%"/>
+              <img src={`/images/welcomepage/donut2.svg`} alt="donut2" style="width: 60%" />
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
                 {#if language === Languages.ENGLISH}
                   <span style="color: var(--accent-blue);"><b>only 6% of the households</b></span> have
@@ -522,24 +527,24 @@
   }
 
   @media only screen and (max-height: 750px), (max-width: 380px) {
-      .p-responsive {
-         font-size: 11pt;
-          margin: 0;
-      }
+    .p-responsive {
+      font-size: 11pt;
+      margin: 0;
+    }
 
-      ol {
-          margin: 0;
-      }
+    ol {
+      margin: 0;
+    }
   }
 
   @media only screen and (max-height: 700px) {
-      .responsive {
-          justify-content: start;
-      }
+    .responsive {
+      justify-content: start;
+    }
 
-      .h1-responsive {
-          margin-top: 2rem;
-          margin-bottom: 0;
-      }
+    .h1-responsive {
+      margin-top: 2rem;
+      margin-bottom: 0;
+    }
   }
 </style>

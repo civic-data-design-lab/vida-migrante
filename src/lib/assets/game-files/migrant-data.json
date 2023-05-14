@@ -5,7 +5,7 @@
       "name": "Luis",
       "age": 25,
       "maritalStatus": "married, family of 6",
-      "introText": "<p>Luis has been in Ecuador for <b>10 months</b> and his household is composed of <b>6</b> people. He used to work in the <b>construction</b> sector in Venezuela. He has a <b>high school degree</b>, but <b>no other legalized degrees, accreditations or certificates</b>. He doesn't have a <b>community network</b> and his migration status is still <b>irregular</b>. His partner takes care of heir kids fulltime, so he provides the entire household income.</p>",
+      "introText": "Luis has been in Ecuador for <b>10 months</b> and his household is composed of <b>6</b> people. He used to work in the <b>construction</b> sector in Venezuela. He has a <b>high school degree</b>, but <b>no other legalized degrees, accreditations or certificates</b>. He doesn't have a <b>community network</b> and his migration status is still <b>irregular</b>. His partner takes care of heir kids fulltime, so he provides the entire household income.",
       "householdSize": 6,
       "initialResources": {
         "skills": [
@@ -36,7 +36,7 @@
       "name": "Génesis",
       "age": 27,
       "maritalStatus": "single",
-      "introText": "<p>Génesis has been in Ecuador for <b>9 months</b> and lives <b>by herself</b>. She used to work in the <b>wholesale and retail</b> sector in Venezuela. She completed <b>secondary education</b>, and doesn’t have other <b>legalized degrees, accreditations or certificates</b>. She doesn't have a <b>community network</b> and her migration status is still <b>irregular</b>. Her mother has a very serious illness, so she can't work.</p>",
+      "introText": "Génesis has been in Ecuador for <b>9 months</b> and lives <b>by herself</b>. She used to work in the <b>wholesale and retail</b> sector in Venezuela. She completed <b>secondary education</b>, and doesn’t have other <b>legalized degrees, accreditations or certificates</b>. She doesn't have a <b>community network</b> and her migration status is still <b>irregular</b>. Her mother has a very serious illness, so she can't work.",
       "householdSize": 1,
       "initialResources": {
         "skills": [
@@ -67,7 +67,7 @@
       "name": "María",
       "age": 26,
       "maritalStatus": "married, family of 4",
-      "introText": "<p>María has been in Ecuador for <b>9 months</b> and her household is composed of <b>four</b> people. She used to work in the <b>agriculture</b> sector in Venezuela. She has a <b>high school degree</b>, and doesn’t have other <b>legalized degrees, accreditations or certificates</b>. She doesn't have a <b>community network</b> and her migration status is still <b>irregular</b>. Her partner is a person with special health needs, so he can't help with the home expenses.</p>",
+      "introText": "María has been in Ecuador for <b>9 months</b> and her household is composed of <b>four</b> people. She used to work in the <b>agriculture</b> sector in Venezuela. She has a <b>high school degree</b>, and doesn’t have other <b>legalized degrees, accreditations or certificates</b>. She doesn't have a <b>community network</b> and her migration status is still <b>irregular</b>. Her partner is a person with special health needs, so he can't help with the home expenses.",
       "householdSize": 4,
       "initialResources": {
         "skills": [
@@ -98,7 +98,7 @@
       "name": "José",
       "age": 26,
       "maritalStatus": "married",
-      "introText": "<p>José has been in Ecuador for <b>10 months</b> and lives with <b>his partner</b>. He used to work in the <b>manufacturing</b> sector in Venezuela. He completed <b>primary education</b> and has <b>no other legalized accreditations degrees, or certificates</b>. He doesn't have a <b>community network</b> and his migration status is still <b>irregular</b>.</p>",
+      "introText": "José has been in Ecuador for <b>10 months</b> and lives with <b>his partner</b>. He used to work in the <b>manufacturing</b> sector in Venezuela. He completed <b>primary education</b> and has <b>no other legalized accreditations degrees, or certificates</b>. He doesn't have a <b>community network</b> and his migration status is still <b>irregular</b>.",
       "householdSize": 2,
       "initialResources": {
         "skills": [

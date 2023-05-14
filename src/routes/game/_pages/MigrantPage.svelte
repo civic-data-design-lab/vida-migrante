@@ -5,7 +5,7 @@
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
   import Modal from '$components/Modal.svelte';
-  import LearnMore from "$components/LearnMore.svelte";
+  import LearnMore from '$components/LearnMore.svelte';
 
   // Get the page data
   $: language = $page.data.language;
@@ -126,5 +126,11 @@
     cursor: pointer;
     text-decoration: underline;
     color: #000;
+  }
+
+  @media only screen and (max-height: 750px), (max-width: 400px) {
+    h1 {
+      font-size: 23pt;
+    }
   }
 </style>
