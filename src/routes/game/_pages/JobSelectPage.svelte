@@ -29,7 +29,7 @@
 <h1 style="width: 95%; word-wrap: break-word;margin-bottom:.2em;">
   {#if language === Languages.ENGLISH}Choose your occupation{:else}Selecciona una ocupación{/if}
 </h1>
-<p style="width: 80%; word-wrap: break-word;margin-top:.1em; text-align:center">
+<p style="width: 85%; word-wrap: break-word;margin-block:.25em; text-align:center">
   {#if language === Languages.ENGLISH}Migrants have limited options to get a job.{:else}Los
     migrantes tienen opciones limitadas para encontrar empleo.{/if}
 </p>
@@ -130,7 +130,7 @@
     height: 85vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 20vw;
+    column-gap: 15vw;
     overflow-y: hidden;
   }
 
@@ -175,5 +175,25 @@
 
   span {
     font-size: 14pt;
+  }
+
+  @media only screen and (max-width: 450px) {
+      #jobs {
+          column-gap: 5vw;
+      }
+  }
+
+  @media only screen and (max-height: 700px) {
+      h1 {
+          font-size: 23pt;
+      }
+
+      p {
+          font-size: 12pt;
+      }
+
+      .centered-column > p {
+          font-size: 11pt;
+      }
   }
 </style>
