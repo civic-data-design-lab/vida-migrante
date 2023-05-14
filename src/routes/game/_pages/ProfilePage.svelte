@@ -40,4 +40,8 @@
     border-radius: 2.5vh;
     font: 18pt 'sirenia';
   }
+
+  p {
+    margin-block: 0.75rem;
+  }
 </style>

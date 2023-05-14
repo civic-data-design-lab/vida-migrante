@@ -3,7 +3,7 @@
   import { migrants } from '$gameFiles/migrant-data.json';
   import { Languages } from '$lib/utils/types';
   import { page } from '$app/stores';
-  import { isFoodSecure, sumValues } from "$utils/functions.js";
+  import { isFoodSecure, sumValues } from '$utils/functions.js';
 
   $: language = $page.data.language;
   const jobs = $page.data.jobsData.jobs;
@@ -41,8 +41,10 @@
         need <b>${-savings}</b> more to be able to afford your basic expenses.
       {/if}
       No one else in the household has income to help with home expenses.
-      <br><br>
-      You and your family are {#if foodSecure}<b style="color: var(--accent-green)">not vulnerable</b>{:else}<b style="color: var(--accent-red)">vulnerable</b>{/if}.
+      <br /><br />
+      You and your family are {#if foodSecure}<b style="color: var(--accent-green)"
+          >not vulnerable</b
+        >{:else}<b style="color: var(--accent-red)">vulnerable</b>{/if}.
     </p>
   {:else}
     <p>
@@ -56,8 +58,9 @@
         necesitas <b>${-savings}</b> más para sus gastos básicos.
       {/if}
       Nadie más en su familia aporta ingresos al hogar.
-      <br><br>
-      Tu familia {#if foodSecure}<b style="color: var(--accent-green)">no tiene vulnerabilidad</b>{:else}<b style="color: var(--accent-red)">tiene vulnerabilidad</b>{/if}.
+      <br /><br />
+      Tu familia {#if foodSecure}<b style="color: var(--accent-green)">no tiene vulnerabilidad</b
+        >{:else}<b style="color: var(--accent-red)">tiene vulnerabilidad</b>{/if}.
     </p>
   {/if}
 </div>
@@ -77,5 +80,12 @@
 
   p {
     margin-bottom: 0;
+    line-height: 16pt;
+  }
+
+  @media only screen and (max-height: 700px) {
+    p {
+      font-size: 12pt;
+    }
   }
 </style>

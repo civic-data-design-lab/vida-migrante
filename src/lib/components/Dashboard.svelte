@@ -77,7 +77,7 @@
     ['Health & Hygiene', 43],
     ['Household & Utilities', 55],
     ['Remittances', 24],
-    ['Internet', 11]
+    ['Internet', 11],
   ]);
 
   let expenseReferences = true;
@@ -123,7 +123,7 @@
     {/each}
   </section>
 </div>
-<div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
+<div style="align-items: center; place-content: center; display: flex; padding-top: 1.5em">
   <button
     id="modal-button-key"
     class="button"
@@ -189,9 +189,21 @@
     {#if isEn}Minimum monthly household expenses{:else}Gastos mínimos mensuales del hogar {/if}
   </h2>
   {#each spendings as spending (spending.name)}
-    <div style="display: flex; justify-content: space-between; color: {spending.expense < range_thresholds.get(spending.name)? 'var(--accent-red)' : 'var(--gray)'}">
-      <href class="info" style="padding:.4em; color: inherit" on:click={() => (displayedSpending = spending)}>
-        <p4 class="range-label" style="font-size:9pt; text-decoration-line: underline; color: inherit">
+    <div
+      style="display: flex; justify-content: space-between; color: {spending.expense <
+      range_thresholds.get(spending.name)
+        ? 'var(--accent-red)'
+        : 'var(--gray)'}"
+    >
+      <href
+        class="info"
+        style="padding:.4em; color: inherit"
+        on:click={() => (displayedSpending = spending)}
+      >
+        <p4
+          class="range-label"
+          style="font-size:9pt; text-decoration-line: underline; color: inherit"
+        >
           {#if isEn}
             {(slider_theme = spending.name)}
           {:else}
@@ -316,7 +328,7 @@
     background: #f3f3f3;
     border-radius: 40px;
     margin: 1px;
-      position: relative;
+    position: relative;
   }
 
   .oval-filled {
@@ -356,7 +368,7 @@
 
   .indicator-text {
     position: absolute;
-      bottom: 0;
+    bottom: 0;
     transform: translate(-50%, 20px);
   }
 
@@ -410,7 +422,7 @@
   /* slider */
   .range-label {
     cursor: pointer;
-      color: inherit;
+    color: inherit;
   }
 
   .rent-theme {
