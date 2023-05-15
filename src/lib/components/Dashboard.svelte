@@ -41,7 +41,7 @@
   //create the oval charts
   let displayedSpending = null;
   let total_columns;
-  const max_expense = 900;
+  const max_expense = 875;
   $: expenses = new Array(total_columns).fill('oval');
   $: columns = Math.floor((total_columns * $animatedPlayerExpenses) / max_expense);
   $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
