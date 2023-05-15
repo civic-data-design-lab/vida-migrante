@@ -133,13 +133,12 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
     margin-top: 1em;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 20vw;
+    column-gap: 15vw;
     row-gap: 0.4rem;
   }
 
   .assist-thumb {
     all: unset;
-    width: 100%;
   }
 
   .assist-thumb:hover {
@@ -174,5 +173,35 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
   button:disabled > img {
     -webkit-filter: grayscale(1);
     filter: grayscale(1);
+  }
+
+  @media only screen and (max-width: 400px) {
+      h1 {
+          font-size: 22pt;
+          margin-bottom: 0 !important;
+      }
+
+      p {
+          font-size: 12pt;
+          margin: 0 !important;
+      }
+
+      .centered-column > p {
+          font-size: 11pt;
+      }
+
+      img {
+          height: 14vh;
+      }
+  }
+
+  @media only screen and (max-height: 700px) {
+      section {
+          row-gap: 0;
+      }
+
+    img {
+      height: 13vh;
+    }
   }
 </style>
