@@ -24,8 +24,12 @@
 
   $: hoursWorked = Math.floor(Math.round($GameData.resources?.time / DAYS_IN_WEEK));
 
-  $: assistanceIDs = $GameData.pastActions.filter(action => action.assistanceId).map(assistance => assistance.assistanceId);
-  $: assistances = (language === Languages.ENGLISH? enCards : spCards).filter(card => assistanceIDs.includes(card.id));
+  $: assistanceIDs = $GameData.pastActions
+    .filter((action) => action.assistanceId)
+    .map((assistance) => assistance.assistanceId);
+  $: assistances = (language === Languages.ENGLISH ? enCards : spCards).filter((card) =>
+    assistanceIDs.includes(card.id)
+  );
 </script>
 
 <h1>
@@ -39,19 +43,33 @@
 <div id="body">
   {#if language === Languages.ENGLISH}
     <p>
-      Your income went from <b>${job.income}</b> to <b class={incomeSuccess ? 'accent-green' : 'accent-red'}>${income}</b>.
-      Your household income is still below <b class="accent-red">$793, the National Average in Ecuador</b>{#if incomeSuccess}.
-      {:else}, and it's still not enough to provide for your family's basic needs, including the <b>Family Baskets</b>of food.
-      {#if foodSecure}Despite this, your family is still <b class="accent-green">not vulnerable</b>
-      {:else}Due to some life events, your family is also <b class="accent-red">vulnerable</b>{/if}.{/if}
+      Your income went from <b>${job.income}</b> to
+      <b class={incomeSuccess ? 'accent-green' : 'accent-red'}>${income}</b>. Your household income
+      is still below
+      <b class="accent-red">$793, the National Average in Ecuador</b>{#if incomeSuccess}.
+      {:else}, and it's still not enough to provide for your family's basic needs, including the <b
+          >Family Baskets</b
+        >of food.
+        {#if foodSecure}Despite this, your family is still <b class="accent-green">not vulnerable</b
+          >
+        {:else}Due to some life events, your family is also <b class="accent-red">vulnerable</b
+          >{/if}.{/if}
     </p>
   {:else}
     <p>
-      Tus ingresos cambiaron de <b>${job.income}</b> a <b class={incomeSuccess ? 'accent-green' : 'accent-red'}>${income}</b>.
-      Los ingresos de tu hogar siguen por debajo de <b class="accent-red">$793, el promedio en Ecuador</b>{#if incomeSuccess}.
-      {:else}, y aún no son suficientes cubrir las necesidades básicas de tú familia incluyendo las <b>Canastas Básicas</b>
-      de comida. {#if foodSecure}A pesar de esto, tu familia <b class="accent-green">no tiene vulnerabilidad</b>
-      {:else}Debido a ciertos eventos, tu familia también tiene <b class="accent-red">vulnerabilidad</b>{/if}.{/if}
+      Tus ingresos cambiaron de <b>${job.income}</b> a
+      <b class={incomeSuccess ? 'accent-green' : 'accent-red'}>${income}</b>. Los ingresos de tu
+      hogar siguen por debajo de
+      <b class="accent-red">$793, el promedio en Ecuador</b>{#if incomeSuccess}.
+      {:else}, y aún no son suficientes cubrir las necesidades básicas de tú familia incluyendo las <b
+          >Canastas Básicas</b
+        >
+        de comida. {#if foodSecure}A pesar de esto, tu familia <b class="accent-green"
+            >no tiene vulnerabilidad</b
+          >
+        {:else}Debido a ciertos eventos, tu familia también tiene <b class="accent-red"
+            >vulnerabilidad</b
+          >{/if}.{/if}
     </p>
   {/if}
   {#if incomeSuccess}
@@ -59,25 +77,31 @@
       <p>
         Your income is still not enough to buy a <b class="accent-blue">Basic Family Basket</b>, but
         you can afford a <b class="accent-yellow">Vital Family Basket</b>. {#if foodSecure}Your
-        family is <b class="accent-green">not vulnerable</b>{:else}Despite your increased income,
-        your family is still <b class="accent-red">vulnerable</b>{/if}.
+          family is <b class="accent-green">not vulnerable</b>{:else}Despite your increased income,
+          your family is still <b class="accent-red">vulnerable</b>{/if}.
       </p>
     {:else}
       <p>
-        Tus ingresos aún no son suficientes para adquirir una <b class="accent-blue">Canasta Familiar Básica</b>,
-        pero puedes adquirir una <b class="accent-yellow">Canasta Familiar Vital</b>. {#if foodSecure}Tu familia
-        <b class="accent-green">no tiene vulnerabilidad</b>{:else}A pesar de que tus ingresos aumentaron, tu y tú
-        familia aún tienen <b class="accent-red">vulnerabilidad</b>{/if}.
+        Tus ingresos aún no son suficientes para adquirir una <b class="accent-blue"
+          >Canasta Familiar Básica</b
+        >, pero puedes adquirir una <b class="accent-yellow">Canasta Familiar Vital</b>. {#if foodSecure}Tu
+          familia
+          <b class="accent-green">no tiene vulnerabilidad</b>{:else}A pesar de que tus ingresos
+          aumentaron, tu y tú familia aún tienen <b class="accent-red">vulnerabilidad</b>{/if}.
       </p>
     {/if}
   {/if}
   {#if language === Languages.ENGLISH}
     <p>
-      You received <b>{assistances[0].name}</b> and <b>{assistances[1].name}</b>. These are usually provided to help migrants that are in a difficult situation, and they are usually given just once. You work <b>~{hoursWorked}</b> hours each day.
+      You received <b>{assistances[0].name}</b> and <b>{assistances[1].name}</b>. These are usually
+      provided to help migrants that are in a difficult situation, and they are usually given just
+      once. You work <b>~{hoursWorked}</b> hours each day.
     </p>
   {:else}
     <p>
-      Recibiste <b>{assistances[0].name}</b> y <b>{assistances[1].name}</b>. Por lo general, se dan a los migrantes para ayudarlos cuando se encuentran en una situación difícil y generalmente se brindan solo una vez. Trabajas <b>~{hoursWorked}</b> horas cada día.
+      Recibiste <b>{assistances[0].name}</b> y <b>{assistances[1].name}</b>. Por lo general, se dan
+      a los migrantes para ayudarlos cuando se encuentran en una situación difícil y generalmente se
+      brindan solo una vez. Trabajas <b>~{hoursWorked}</b> horas cada día.
     </p>
   {/if}
 </div>
@@ -138,13 +162,17 @@
     padding-right: 2rem;
   }
 
-  @media only screen and (max-height: 700px) {
+  @media only screen and (max-height: 700px), (max-width: 380px) {
     h1 {
       margin-top: 15px;
+      font-size: 22pt;
+      line-height: 22pt;
     }
 
     p {
       margin-block: 11px;
+      font-size: 12pt;
+      line-height: 15pt;
     }
 
     .button {
@@ -153,7 +181,7 @@
     }
 
     a {
-      font-size: 13pt;
+      font-size: 12pt;
     }
   }
 </style>
