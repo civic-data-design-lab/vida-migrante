@@ -153,7 +153,7 @@
 
   .card-image {
     align-self: center;
-    width: 100%;
+    width: 75%;
     /* Adjust image margins since it has some deadspace */
     margin-bottom: -10px;
     margin-top: -15px;
@@ -185,10 +185,6 @@
   @media only screen and (max-width: 400px), (max-height: 750px) {
     article {
       max-width: 90vw;
-    }
-
-    .card-image {
-      width: 75%;
     }
 
     .card-description {

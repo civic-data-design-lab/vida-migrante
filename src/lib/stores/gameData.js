@@ -244,7 +244,7 @@ GameData.subscribe((value) => {
 function drawCard(gameData) {
   // Get the already drawn cards from past actions (ignore assistances)
   const alreadyDrawn = gameData.pastActions
-    .filter((action) => action.cardId)
+    .filter((action) => action.cardId !== undefined)
     .map((action) => action.cardId);
 
   // Make sure we don't draw a repeat card
