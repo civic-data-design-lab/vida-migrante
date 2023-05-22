@@ -2,10 +2,13 @@
   import { GameData } from '$gameData';
   import Card from '$components/Card.svelte';
   import Modal from '$lib/components/Modal.svelte';
-  import { CARD_CATEGORY_COLOR_MAP, DRAWER_ANIM_DURATION } from '$types';
+  import { CARD_CATEGORY_COLOR_MAP, DRAWER_ANIM_DURATION, GameStates } from "$types";
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
   import LearnMore from '$components/LearnMore.svelte';
+  import wildCardsEn from '$gameFiles/wild-cards.json';
+  import wildCardsEs from '$gameFiles/wild-cards-es.json';
+  import { onMount } from "svelte";
 
   // Toggles the drawer
   export let toggleDrawer;
@@ -15,7 +18,13 @@
   $: isEn = language === Languages.ENGLISH;
 
   /** @type {import('$types').Card} */
-  $: card = $page.data.cardData[$GameData.currentCardId];
+  $: wildCards = isEn? wildCardsEn : wildCardsEs;
+  let card, cardLoaded = false;
+  $: if (!cardLoaded) {
+    card = ($GameData.state === GameStates.WILD_CARD? wildCards:$page.data.cardData)[$GameData.currentCardId];
+    cardLoaded = true;
+  }
+
 
   /**
    * 1-indexed round number

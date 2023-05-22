@@ -92,11 +92,11 @@ word-wrap: break-word; text-align:center;margin-block:.1em;"
       src="images/assistance/{displayedAssistance?.image || 'A_accreditation.png'}"
       alt="Accreditation"
     />
-    <h1>{displayedAssistance?.name}</h1>
+    <h1 style="margin-top: 0">{displayedAssistance?.name}</h1>
     <p id="modal-text">
       {displayedAssistance?.description}
     </p>
-    <button class="button" on:click={() => selectAssistance(displayedAssistance.id)}>
+    <button class="button" style="margin-top: 1rem;" on:click={() => selectAssistance(displayedAssistance.id)}>
       {#if language === Languages.ENGLISH}
         Select
       {:else}

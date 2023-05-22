@@ -56,6 +56,10 @@
       { component: DecisionPage, hasDrawer: true, hasMigrantBanner: true, props: { toggleDrawer } },
     ],
     [
+      GameStates.WILD_CARD,
+      { component: DecisionPage, hasDrawer: true, hasMigrantBanner: true, props: { toggleDrawer } },
+    ],
+    [
       GameStates.ASSISTANCE,
       {
         component: AssistancePage,
