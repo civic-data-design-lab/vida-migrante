@@ -54,7 +54,7 @@
         "except": "there will be no changes in your family economy. However, you are giving up a training possibility."
       }
     ],
-    "image": "PI_digitalskills.png",
+    "image": "PI_digital-skills.png",
     "learn_more": "One of the main barriers to integrate migrants into new digital economies is internet access. Over half the migrants who responded that they have digital skills cannot access the internet. Assisting to connect to the digital world, will help migrants improve their employment conditions."
   },
   {
@@ -156,7 +156,7 @@
         "description": "Spend savings to buy the medicine",
         "updates": {
           "income": {
-            "salary": 23
+            "salary": -23
           },
           "expenditures": {
             "health": 23
@@ -189,5 +189,120 @@
     ],
     "image": "LE_health.png",
     "learn_more": "Health is one of the main challenges of migrants. When they relocate, finding healthcare is tough as they still don’t have a strong community network. While the Ecuadorian government already provides universal healthcare regardless of nationality, illnesses and care are at the center of migrants’ path to decrease their vulnerability."
+  },
+  {
+    "id": 6,
+    "category": "Life Event",
+    "title": "Help a Friend",
+    "description": "A friend asks you to help take care of their children for one day a week.",
+    "prompt": "Caring for their children can be an alternative source of income. Do you want to help your friend?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Help my friend",
+        "updates": {
+          "time": 5,
+          "income": {
+            "salary": 23
+          }
+        },
+        "implicationText": "<b>9%</b> of migrants have to ask for help from the community. This serves to create a community network in Ecuador."
+      },
+      {
+        "id": 1,
+        "description": "I can't help my friend",
+        "updates": {},
+        "implicationText": "Not being able to support your community will impact your social networks of support in case of emergency."
+      }
+    ],
+    "image": "LE_community.png",
+    "learn_more": "Building a solid community network helps migrants navigate their daily lives. Although recent migrants, such as those of our study, may not have a solid community network yet, building a network helps them to support each other to take care of relatives and request borrowed assets."
+  },
+  {
+    "id": 7,
+    "category": "Life Event",
+    "title": "Workplace Discrimination",
+    "description": "You applied for a job, but was rejected for your nationality. You need the extra money.",
+    "prompt": "How do you want to get the money you need?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Borrow money from a friend",
+        "updates": {
+          "income": {
+            "salary": 23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "<b>48%</b> of migrants have to ask for money from family or friends to meet their basic needs."
+      },
+      {
+        "id": 1,
+        "description": "Work informally on the streets",
+        "updates": {
+          "income": {
+            "salary": 23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "<b>82%</b> of migrants work in the informal sector in Ecuador."
+      }
+    ],
+    "image": "LE_discrimination.svg",
+    "learn_more": "Your family situation will get worse and you will owe money to a close friend. 88% of migrants are not working a job that matches their professional skills, experience, or accreditation. Migrants whose work does not coincide with their skills have a 57% of probabilities of being in food insecurity."
+  },
+  {
+    "id": 8,
+    "category": "Life Event",
+    "title": "Sexual Harassment",
+    "description": "You were a victim of sexual harassment at work.",
+    "prompt": "What do you want to do?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Denounce and leave work",
+        "updates": {
+          "income": {
+            "salary": -35
+          }
+        },
+        "implicationText": "<b>60%</b> of Venezuelan migrant women suffer or have suffered gender violence in their work environment or to access the media."
+      },
+      {
+        "id": 1,
+        "description": "Quit working without denouncing",
+        "updates": {
+          "income": {
+            "salary": -23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "<b>60%</b> of Venezuelan migrant women suffer or have suffered gender violence in their work environment or to access the media."
+      }
+    ],
+    "image": "LE_harassment.svg",
+    "learn_more": "Forms of violence such as exploitation in the workplace, transactional or survival sex, and forced marriages have been identified in recent years among migrants. The presence of adolescents in the country who move unaccompanied or separated from their families increases the risk of these incidents and human trafficking. 60% of Venezuelan migrants suffer or have suffered gender violence in their work environment or to access the media. 28% of people who cross the border illegally claim to be survivors of border violence or abuse."
+  },
+  {
+    "id": 9,
+    "category": "Life Event",
+    "title": "Fines",
+    "description": "The authorities have reported you to the Court of Minors because your child is supporting you in your work during school hours.",
+    "prompt": "This causes anxiety and increases your feelings of insecurity in the country. What do you want to do?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Pay fine",
+        "updates": {
+          "income": {
+            "salary": -10
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "This fine will cost you $10 per month for four months for a total of $40."
+      }
+    ],
+    "image": "LE_fines.svg",
+    "learn_more": "The lack of economic resources (22.3%), the delay between the school period and when migrants enter the country (16.4%), the lack of information about educational systems (14.3%), and the lack of documentation for enrollment (13.9%) are the main causes for truancy."
   }
 ]

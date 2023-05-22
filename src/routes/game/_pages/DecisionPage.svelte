@@ -5,7 +5,7 @@
   import { CARD_CATEGORY_COLOR_MAP, DRAWER_ANIM_DURATION } from '$types';
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
-  import LearnMore from "$components/LearnMore.svelte";
+  import LearnMore from '$components/LearnMore.svelte';
 
   // Toggles the drawer
   export let toggleDrawer;

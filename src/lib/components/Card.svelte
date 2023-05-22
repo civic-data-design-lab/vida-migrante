@@ -68,7 +68,16 @@
         <h1>{card.title}</h1>
       </header>
       {#if !minimized}
-        <img class="card-image" src={`/images/card-visuals/${card.image}`} alt="Card visual" />
+        <img
+          class="
+            card-image
+            {card.image.includes('svg') ? 'svg' : ''}
+            {card.image.includes('fines') ? 'fines' : ''}
+            {card.image.includes('harass') ? 'harass' : ''}
+          "
+          src={`/images/card-visuals/${card.image}`}
+          alt="Card visual"
+        />
         <p class="card-description">{card.description}</p>
       {/if}
       <!-- Display the updates that the card may provide -->
@@ -157,6 +166,20 @@
     /* Adjust image margins since it has some deadspace */
     margin-bottom: -10px;
     margin-top: -15px;
+  }
+
+  .card-image.svg {
+    width: 70%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .card-image.harass {
+      margin-left: -20px;
+  }
+
+  .card-image.fines {
+      margin-left: -10px;
   }
 
   .card-updates {

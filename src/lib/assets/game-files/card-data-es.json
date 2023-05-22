@@ -54,7 +54,7 @@
         "except": "no habrá cambios en tu economía familiar. Sin embargo, estas renunciando a una posibilidad de formación."
       }
     ],
-    "image": "PI_digitalskills.png",
+    "image": "PI_digital-skills.png",
     "learn_more": "Una de las principales barreras para integrar a los migrantes en las nuevas economías digitales es el acceso a internet. Más de la mitad de los migrantes que respondieron que tienen habilidades digitales no pueden acceder a Internet. Ayudar a conectarse al mundo digital ayudará a los migrantes a mejorar sus condiciones de empleo."
   },
   {
@@ -156,7 +156,7 @@
         "description": "Gastar ahorros para comprarlas",
         "updates": {
           "income": {
-            "salary": 23
+            "salary": -23
           },
           "expenditures": {
             "health": 23
@@ -193,37 +193,116 @@
   {
     "id": 6,
     "category": "Life Event",
-    "title": "Ayuda a Familiares y Amigos",
-    "description": "Un amigo te pide que le ayudes a cuidar a sus hijos durante un día a la semana.",
-    "prompt": "El cuidado de los hijos puede ser una alternativa para generar ingresos adicionales, ¿quieres ayudar a tu amigo?",
+    "title": "Ayudar a Amigos",
+    "description": "Un amigo le pide que lo ayude a cuidar a sus hijos durante un día a la semana.",
+    "prompt": "El cuidado de los niños puede ser una alternativa para generar ingresos adicionales. ¿Desea ayudar a su amigo?",
     "options": [
       {
         "id": 0,
-        "description": "Ayudar a mi amigo",
+        "description": "Ayuda a mi amigo",
         "updates": {
           "time": 5,
           "income": {
-            "salary": -10
+            "salary": 23
           }
         },
-        "except": "para compensar",
-        "implicationText": "El <b>9%</b> de los migrantes tienen que pedir ayuda a miembros de la comunidad, esto les sirve también para crear una red comunitaria en Ecuador."
+        "implicationText": "El <b>9%</b> de los migrantes tienen que solicitar ayuda de la comunidad, esto también sirve para crear una red comunitaria en Ecuador."
       },
       {
         "id": 1,
-        "description": "No puedo ayudarlo",
+        "description": "No puedo ayudar a mi amigo",
         "updates": {},
-        "implicationText": "El <b>48%</b> de los migrantes tienen que pedir dinero a amigos o familiares para satisfacer sus necesidades básicas. Tu situación familiar empeorará y te endeudarás con una amiga cercana."
-      },
-      {
-        "id": 2,
-        "description": "No puedo pagar las medicinas",
-        "updates": {},
-        "except": "es posible que tu salud no mejore, tu economía no cambiará",
-        "implicationText": ""
+        "implicationText": "No poder apoyar a su comunidad impactará en las redes sociales de apoyo en caso de emergencia."
       }
     ],
-    "image": "LE_health.png",
-    "learn_more": "La salud es uno de los principales desafíos de los migrantes. Cuando migran, encontrar atención médica es difícil ya que aún no tienen una red comunitaria sólida. Si bien el gobierno ecuatoriano ya brinda atención médica universal independientemente de la nacionalidad, las enfermedades y la atención médica siguen en el centro del camino de los migrantes para disminuir su vulnerabilidad."
+    "image": "LE_community.png",
+    "learn_more": "Construir una red comunitaria sólida ayuda a los migrantes a navegar por su vida diaria. Aunque los migrantes recientes, como los de nuestro estudio, pueden no tener una red comunitaria sólida todavía, construir A los ayuda a apoyarse mutuamente para cuidarse de un pariente o solicitar activos prestados."
+  },
+  {
+    "id": 7,
+    "category": "Life Event",
+    "title": "Discriminación Laboral",
+    "description": "Solicitó un trabajo, pero no se lo dieron por su nacionalidad, pero necesita dinero extra.",
+    "prompt": "¿Cómo quieres obtener el dinero que necesitas?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Pedir prestado dinero a un amigo",
+        "updates": {
+          "income": {
+            "salary": 23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "El <b>48%</b> de los migrantes tienen que pedir dinero a amigos o familiares para satisfacer sus necesidades básicas."
+      },
+      {
+        "id": 1,
+        "description": "Trabajar informalmente en la calle",
+        "updates": {
+          "income": {
+            "salary": 23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "El <b>48%</b> de los migrantes tienen que pedir dinero a amigos o familiares para satisfacer sus necesidades básicas. El 82% de los migrantes trabajan en el sector informal en Ecuador."
+      }
+    ],
+    "image": "LE_discrimination.svg",
+    "learn_more": "Su situación familiar empeorará y le debe dinero a un amigo cercano. El 88% no está trabajando en un trabajo que coincida con sus habilidades profesionales, experiencia o acreditación. Los migrantes cuyas obras no coinciden con sus habilidades tienen el 57% de las probabilidades de estar en inseguridad alimentaria."
+  },
+  {
+    "id": 8,
+    "category": "Life Event",
+    "title": "Acoso Sexual",
+    "description": "Fuiste víctima de acoso sexual (y violencia de genero) en el trabajo.",
+    "prompt": "¿Qué es lo que quieres hacer?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Denunciar y dejar el trabajo",
+        "updates": {
+          "income": {
+            "salary": -35
+          }
+        },
+        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido/sufrido violencia de género en su entorno laboral o para acceder a la vida de los medios."
+      },
+      {
+        "id": 1,
+        "description": "Deja de trabajar sin denunciar",
+        "updates": {
+          "income": {
+            "salary": -23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido/sufrido violencia de género en su entorno laboral o para acceder a la vida de los medios."
+      }
+    ],
+    "image": "LE_harassment.svg",
+    "learn_more": "Se han identificado formas de violencia como la explotación en el lugar de trabajo, el sexo transaccional o para la supervivencia y los matrimonios forzados en los últimos años en los migrantes. La presencia en el país de los adolescentes en la movilidad humana, que se mueven no acompañadas o separadas de sus familias, aumenta el riesgo de estos incidentes de protección, así como el riesgo de ser víctimas de la trata y el tráfico de personas. El 60% de los migrantes venezolanos han sufrido/sufrido violencia de género en su entorno laboral o para acceder a los medios de comunicación. El 28% de las personas que cruzan las medidas irregulares declaran sobrevivientes de violencia o abuso fronterizo."
+  },
+  {
+    "id": 9,
+    "category": "Life Event",
+    "title": "Multa",
+    "description": "Las autoridades lo informaron (reportaron) a la corte (al tribunal) de menores porque su hijo lo está apoyando en su trabajo en los horarios escolares.",
+    "prompt": "Esto causa ansiedad y aumenta su sentimiento de inseguridad en el país. ¿Qué es lo que quieres hacer?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Paga la multa",
+        "updates": {
+          "income": {
+            "salary": -10
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "Esta multa le costará $ 10 por mes, hasta que termine de pagarlo. El total es de $ 40."
+      }
+    ],
+    "image": "LE_fines.svg",
+    "learn_more": "La falta de recursos económicos (22.3%), el retraso en el período escolar en el que ingresó a los países (16.4%), la falta de información sobre el sistema educativo (14.3%) y la falta de documentación para la inscripción (13.9%) , son las principales causas por las cuales los niños migrantes no asisten a la escuela."
   }
 ]

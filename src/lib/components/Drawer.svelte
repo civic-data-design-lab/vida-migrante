@@ -45,7 +45,7 @@
     dragging = true;
     transition = '';
     prevTouch = e.touches[0];
-    window.addEventListener('touchmove', onTouchMove, {passive: false});
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
   }
 
   function onTouchMove(e) {

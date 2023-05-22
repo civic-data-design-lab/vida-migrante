@@ -37,33 +37,27 @@
     .map((action) => action.assistanceId);
 </script>
 
-{#if language === Languages.ENGLISH}
-  <h1
-    style="width: 250px;
-word-wrap: break-word; margin-bottom:.2em; "
-  >
+<h1
+  style="width: 250px;
+word-wrap: break-word; margin-bottom:.2em"
+>
+  {#if language === Languages.ENGLISH}
     Select an assistance
-  </h1>
-  <p
-    style="width: 80%;
-word-wrap: break-word; text-align:center;margin-bottom:.1em;"
-  >
-    Assistances help with migrants' basic needs.
-  </p>
-{:else}
-  <h1
-    style="width: 250px;
-word-wrap: break-word; margin-bottom:.2em;"
-  >
+  {:else}
     Selecciona una asistencia
-  </h1>
-  <p
-    style="width: 80%;
-word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
-  >
+  {/if}
+</h1>
+<p
+  style="width: 80%;
+word-wrap: break-word; text-align:center;margin-block:.1em;"
+>
+  {#if language === Languages.ENGLISH}
+    Assistances help with migrants' basic needs.
+  {:else}
     Las asistencias ayudan a los migrantes con sus necesidades básicas.
-  </p>
-{/if}
+  {/if}
+</p>
+
 <LearnMore>
   <h1 slot="title">
     {#if language === Languages.ENGLISH}
@@ -146,7 +140,7 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
   }
 
   img {
-    height: 15vh;
+    height: min(15vh, 600px);
   }
 
   .modal-body {
@@ -176,29 +170,29 @@ word-wrap: break-word;margin-top:.1em; text-align:center; margin-bottom:.1em;"
   }
 
   @media only screen and (max-width: 400px) {
-      h1 {
-          font-size: 22pt;
-          margin-bottom: 0 !important;
-      }
+    h1 {
+      font-size: 22pt;
+      margin-bottom: 0 !important;
+    }
 
-      p {
-          font-size: 12pt;
-          margin: 0 !important;
-      }
+    p {
+      font-size: 12pt;
+      margin: 0 !important;
+    }
 
-      .centered-column > p {
-          font-size: 11pt;
-      }
+    .centered-column > p {
+      font-size: 11pt;
+    }
 
-      img {
-          height: 14vh;
-      }
+    img {
+      height: 14vh;
+    }
   }
 
   @media only screen and (max-height: 700px) {
-      section {
-          row-gap: 0;
-      }
+    section {
+      row-gap: 0;
+    }
 
     img {
       height: 13vh;

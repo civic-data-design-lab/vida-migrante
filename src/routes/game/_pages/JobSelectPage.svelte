@@ -178,22 +178,22 @@
   }
 
   @media only screen and (max-width: 450px) {
-      #jobs {
-          column-gap: 5vw;
-      }
+    #jobs {
+      column-gap: 5vw;
+    }
   }
 
   @media only screen and (max-height: 700px) {
-      h1 {
-          font-size: 23pt;
-      }
+    h1 {
+      font-size: 23pt;
+    }
 
-      p {
-          font-size: 12pt;
-      }
+    p {
+      font-size: 12pt;
+    }
 
-      .centered-column > p {
-          font-size: 11pt;
-      }
+    .centered-column > p {
+      font-size: 11pt;
+    }
   }
 </style>
