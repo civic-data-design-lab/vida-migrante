@@ -30,12 +30,12 @@
     font-family: var(--font-sirenia);
     margin-top: 5px;
     font-size: 12pt;
+    text-decoration: underline;
   }
 
   span:hover,
   span:active {
     cursor: pointer;
-    text-decoration: underline;
     color: #000;
   }
 </style>

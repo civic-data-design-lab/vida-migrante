@@ -175,11 +175,11 @@
   }
 
   .card-image.harass {
-      margin-left: -20px;
+    margin-left: -20px;
   }
 
   .card-image.fines {
-      margin-left: -10px;
+    margin-left: -10px;
   }
 
   .card-updates {
