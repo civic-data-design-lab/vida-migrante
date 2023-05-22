@@ -210,13 +210,13 @@
               <img src={'/images/migrants/Luis.svg'} alt="Luis" style="width: 60%" />
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
                 {#if language === Languages.ENGLISH}
-                  <b style="color: #f5dfaf">Over half</b> of the migrants spent
-                  <b>more than 90 percent</b> of their monthly income on basic necessities like rent,
-                  utilities, health, and food.
+                  <b>Over half</b> of the migrants spent
+                  <b style="color: #E6B157">more than 90 percent</b> of their monthly income on basic
+                  necessities like rent, utilities, health, and food.
                 {:else}
-                  <b style="color: #f5dfaf">Más de la mitad</b> de los migrantes gastan
-                  <b>más del 90 por ciento</b> de sus ingresos mensuales en necesidades básicas como
-                  alquiler, servicios públicos, salud y alimentos.
+                  <b>Más de la mitad</b> de los migrantes gastan
+                  <b style="color: #E6B157">más del 90 por ciento</b> de sus ingresos mensuales en necesidades
+                  básicas como alquiler, servicios públicos, salud y alimentos.
                 {/if}
               </p>
               <img
@@ -236,20 +236,24 @@
                   Esto les deja <b>poco para otras necesidades</b> esenciales. Para hacer que su
                   dinero dure, toman una serie de decisiones mientras navegan su experiencia en
                   Ecuador. <br /><br />
-                  <b>Ayude a los migrantes a tomar estas decisiones.</b> <br /><br />
-                  Realice la simulación ayudando a los migrantes a mejorar sus medios de vida. El proceso
-                  le mostrará cómo la situación es <b>extremadamente difícil</b> para la mayoría de los
+                  <b>Ayuda a los migrantes a tomar estas decisiones.</b> <br /><br />
+                  Navega la simulación ayudando a los migrantes a mejorar sus medios de vida. El proceso
+                  te mostrará cómo la situación es <b>extremadamente difícil</b> para la mayoría de los
                   migrantes;
                 {/if}
               </p>
               <img src={`/images/welcomepage/donut2.svg`} alt="donut2" style="width: 60%" />
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
                 {#if language === Languages.ENGLISH}
-                  <span style="color: var(--accent-blue);"><b>only 6% of the households</b></span> have
-                  an income equal or above the national average in Ecuador.
+                  <b>only 6% of the households</b> have an income equal or above the national
+                  average in Ecuador, <span style="color: #94439d;"><b>$840</b></span>. Migrants'
+                  households average income is
+                  <span style="color: #e7ab9c;"><b>$313</b></span>.
                 {:else}
-                  <span style="color: var(--accent-blue);"><b>solo el 6% de los hogares</b></span> tiene
-                  un ingreso igual o superior al promedio nacional en el Ecuador.
+                  <b>solo el 6% de los hogares</b> tiene un ingreso igual o superior al promedio
+                  nacional en el Ecuador, <span style="color: #94439d;"><b>$840</b></span>. El
+                  promedio de ingreso de los hogares migrantes es de
+                  <span style="color: #e7ab9c;"><b>$313</b></span>.
                 {/if}
               </p>
               <a href="/about">

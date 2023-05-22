@@ -194,7 +194,7 @@
     "id": 6,
     "category": "Life Event",
     "title": "Ayudar a Amigos",
-    "description": "Un amigo le pide que lo ayude a cuidar a sus hijos durante un día a la semana.",
+    "description": "Un amigo te pide que lo ayude a cuidar a sus hijos durante un día a la semana.",
     "prompt": "El cuidado de los niños puede ser una alternativa para generar ingresos adicionales. ¿Desea ayudar a su amigo?",
     "options": [
       {
@@ -212,22 +212,22 @@
         "id": 1,
         "description": "No puedo ayudar a mi amigo",
         "updates": {},
-        "implicationText": "No poder apoyar a su comunidad impactará en las redes sociales de apoyo en caso de emergencia."
+        "implicationText": "No apoyar a tu comunidad impactará en las redes sociales de apoyo en caso de emergencia."
       }
     ],
     "image": "LE_community.png",
-    "learn_more": "Construir una red comunitaria sólida ayuda a los migrantes a navegar por su vida diaria. Aunque los migrantes recientes, como los de nuestro estudio, pueden no tener una red comunitaria sólida todavía, construir A los ayuda a apoyarse mutuamente para cuidarse de un pariente o solicitar activos prestados."
+    "learn_more": "Construir una red comunitaria sólida ayuda a los migrantes a navegar por su vida diaria. Aunque los migrantes recientes pueden no tener una red comunitaria sólida aún, construirla los ayuda a apoyarse mutuamente para cuidarse o solicitar recursos prestados."
   },
   {
     "id": 7,
     "category": "Life Event",
     "title": "Discriminación Laboral",
-    "description": "Solicitó un trabajo, pero no se lo dieron por su nacionalidad, pero necesita dinero extra.",
+    "description": "Solicitaste un trabajo y no te lo dieron por tu nacionalidad, pero necesitas dinero extra.",
     "prompt": "¿Cómo quieres obtener el dinero que necesitas?",
     "options": [
       {
         "id": 0,
-        "description": "Pedir prestado dinero a un amigo",
+        "description": "Pedir prestado a un amigo",
         "updates": {
           "income": {
             "salary": 23
@@ -249,14 +249,14 @@
       }
     ],
     "image": "LE_discrimination.svg",
-    "learn_more": "Su situación familiar empeorará y le debe dinero a un amigo cercano. El 88% no está trabajando en un trabajo que coincida con sus habilidades profesionales, experiencia o acreditación. Los migrantes cuyas obras no coinciden con sus habilidades tienen el 57% de las probabilidades de estar en inseguridad alimentaria."
+    "learn_more": "Tu situación familiar empeorará y le debe dinero a un amigo cercano. El 88% de los migrants trabaja en un empleo que coincida con sus habilidades profesionales, experiencias o acreditaciones. Los migrantes cuyos empleos no coinciden con sus habilidades tienen un 57% de probabilidades de tener vulnerabilidad."
   },
   {
     "id": 8,
     "category": "Life Event",
     "title": "Acoso Sexual",
     "description": "Fuiste víctima de acoso sexual (y violencia de genero) en el trabajo.",
-    "prompt": "¿Qué es lo que quieres hacer?",
+    "prompt": "¿Qué quieres hacer?",
     "options": [
       {
         "id": 0,
@@ -266,7 +266,7 @@
             "salary": -35
           }
         },
-        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido/sufrido violencia de género en su entorno laboral o para acceder a la vida de los medios."
+        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido/sufrido violencia de género en su entorno laboral."
       },
       {
         "id": 1,
@@ -277,18 +277,18 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido/sufrido violencia de género en su entorno laboral o para acceder a la vida de los medios."
+        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido/sufrido violencia de género en su entorno laboral."
       }
     ],
     "image": "LE_harassment.svg",
-    "learn_more": "Se han identificado formas de violencia como la explotación en el lugar de trabajo, el sexo transaccional o para la supervivencia y los matrimonios forzados en los últimos años en los migrantes. La presencia en el país de los adolescentes en la movilidad humana, que se mueven no acompañadas o separadas de sus familias, aumenta el riesgo de estos incidentes de protección, así como el riesgo de ser víctimas de la trata y el tráfico de personas. El 60% de los migrantes venezolanos han sufrido/sufrido violencia de género en su entorno laboral o para acceder a los medios de comunicación. El 28% de las personas que cruzan las medidas irregulares declaran sobrevivientes de violencia o abuso fronterizo."
+    "learn_more": "Se han identificado formas de violencia como explotación en el lugar de trabajo, sexo transaccional o para la supervivencia y los matrimonios forzados en los últimos años entre los migrantes. La presencia en el país de los adolescentes migrantes, que se mueven no acompañadas o separadas de sus familias, aumenta el riesgo de estos incidentes, así como el riesgo de ser víctimas de trata y tráfico de personas. El 28% de las personas que migran por medios irregulares se declaran sobrevivientes de violencia o abuso."
   },
   {
     "id": 9,
     "category": "Life Event",
     "title": "Multa",
-    "description": "Las autoridades lo informaron (reportaron) a la corte (al tribunal) de menores porque su hijo lo está apoyando en su trabajo en los horarios escolares.",
-    "prompt": "Esto causa ansiedad y aumenta su sentimiento de inseguridad en el país. ¿Qué es lo que quieres hacer?",
+    "description": "Las autoridades lo reportaron al tribunal de menores porque su hijo lo está apoyando en su trabajo en horarios escolares.",
+    "prompt": "Esto te causa ansiedad y aumenta tu sentimiento de inseguridad en el país. ¿Qué es lo que quieres hacer?",
     "options": [
       {
         "id": 0,
@@ -299,10 +299,10 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "Esta multa le costará $ 10 por mes, hasta que termine de pagarlo. El total es de $ 40."
+        "implicationText": "Esta multa le costará $10 por mes, hasta que termine de pagarla. El total es de $40."
       }
     ],
     "image": "LE_fines.svg",
-    "learn_more": "La falta de recursos económicos (22.3%), el retraso en el período escolar en el que ingresó a los países (16.4%), la falta de información sobre el sistema educativo (14.3%) y la falta de documentación para la inscripción (13.9%) , son las principales causas por las cuales los niños migrantes no asisten a la escuela."
+    "learn_more": "La falta de recursos económicos (22.3%), el retraso en el período escolar en el que ingresó a los países (16.4%), la falta de información sobre el sistema educativo (14.3%) y la falta de documentación para la inscripción (13.9%), son las principales causas por las cuales los niños migrantes no asisten a la escuela."
   }
 ]
