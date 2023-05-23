@@ -98,7 +98,7 @@ function createGameData() {
             return {
               ...g,
               state: GameStates.WILD_CARD,
-              currentCardID: wildCardID,
+              currentCardId: wildCardID,
               pastActions: [...g.pastActions, action],
             };
           } else {
