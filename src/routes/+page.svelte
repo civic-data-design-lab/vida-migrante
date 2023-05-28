@@ -283,32 +283,33 @@
 
         <p style="text-align: left; font-family: 'open-sans', sans-serif;" class="p-responsive">
           {#if language === Languages.ENGLISH}
-            The goal of the game is to <b>improve part of your livelihood;</b> increasing your income
-            while working reasonable hours.
+            The goal of the simulation is to <b>improve part of your livelihood;</b> increasing your
+            income while working reasonable hours.
           {:else}
-            El objetivo del juego es <b>mejorar tu sustento;</b> aumentar tus ingresos, trabajando horas
-            razonables.
+            El objetivo de la simulación es <b>mejorar tu sustento;</b> aumentar tus ingresos, trabajando
+            horas razonables.
           {/if}
         </p>
         <ol type="1" style="padding-left: 1em;">
           <li>
             <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
-                1. Please select a profile and an occupation. These selection will assign you a
-                specific <b>monthly income and expenses. </b>
+                1. Please select a profile and an occupation. These selection will show a specific <b
+                  >monthly income and expenses
+                </b> of that household.
               {:else}
-                1. Selecciona un perfil y una ocupación. Esta selección te asignará <b
-                  >ingresos y gastos mensuales.
-                </b>
+                1. Selecciona un perfil y una ocupación. Esta selección desplegará los <b
+                  >ingresos y gastos mensuales</b
+                > que tiene ese hogar.
               {/if}
             </p>
           </li>
           <li>
             <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
-                2. You will play 4 rounds, each round is <b>one month.</b>
+                2. You will go through 4 rounds or scenarios, each one is <b>one month.</b>
               {:else}
-                2. Jugarás 4 rondas, cada ronda representa <b>un mes.</b>
+                2. La simulación tiene 4 rondas o escenarios, cada uno representa <b>un mes.</b>
               {/if}
             </p>
           </li>
@@ -327,10 +328,10 @@
           <li>
             <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
-                4. The decision you make will
+                4. Each option or decision you make will
                 <b>affect your income and your expenses.</b>
               {:else}
-                4. La decisión que tomes
+                4. Cada decisión u opción que tomes
                 <b> afectará tus ingresos y tus gastos.</b>
               {/if}
             </p>
@@ -339,10 +340,13 @@
             <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 5. You will have the opportunity to select certain
-                <b>assistance, to help you through your journey.</b>
+                <b
+                  >assistance, to help your household through your journey in this country and
+                  improve your situation in this country.</b
+                >
               {:else}
-                5. Tendrás la oportunidad de seleccionar algunas
-                <b>asistencias para hacer más llevadera tu experiencia </b>en el Ecuador.
+                5. Tendrás la oportunidad de seleccionar
+                <b>asistencias para tu familia mejorar tu situación en el país.</b>
               {/if}
             </p>
           </li>
