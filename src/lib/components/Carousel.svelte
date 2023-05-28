@@ -12,8 +12,8 @@
           <img src={`/images/migrants/${migrant.name}.svg`} alt={migrant.name} />
           <h3>{migrant.name}</h3>
           <span style:text-transform="capitalize">{migrant.age}, {migrant.maritalStatus}</span>
-          <div id="intro-text">
-            {@html migrant.introText}
+          <div class="intro-text">
+            <p>{@html migrant.introText}</p>
           </div>
         </div>
       </div>
@@ -115,11 +115,28 @@
     color: #505050;
   }
 
-  #intro-text {
+  .intro-text {
     width: 95%;
   }
 
   img {
-    height: 35vh;
+    height: 32vh;
+  }
+
+  @media only screen and (max-width: 400px) {
+    img {
+      height: 28vh;
+    }
+  }
+
+  @media only screen and (max-height: 750px), (max-width: 360px) {
+    span {
+      font-size: 13pt;
+    }
+
+    .intro-text > p {
+      font-size: 12pt;
+      line-height: 15pt;
+    }
   }
 </style>

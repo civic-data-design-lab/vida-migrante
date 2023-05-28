@@ -17,6 +17,7 @@ export const GameStates = {
   ROUND_START: 'round-start',
   DRAW_CARD: 'draw-card',
   DECISION: 'decision',
+  WILD_CARD: 'wild_card',
   /** Users select an assistance card, shows up after rounds 1 and 3 */
   ASSISTANCE: 'assistance',
   GAME_END: 'game-end',
@@ -167,6 +168,7 @@ export const CARD_CATEGORY_COLOR_MAP = {
   'Personal Improvement': 'red',
   Assistance: 'blue',
   'Life Event': 'yellow',
+  'Wild Card': 'gray',
 };
 
 /** Time in milliseconds of a resource update animation */
@@ -176,7 +178,7 @@ export const RESOURCE_UPDATE_ANIM_DURATION = 1000;
 export const RESOURCE_UPDATE_ANIM_DELAY = 300;
 
 /** Time in milliseconds of the drawer slide up/down animation. */
-export const DRAWER_ANIM_DURATION = 1000;
+export const DRAWER_ANIM_DURATION = 1500;
 
 /** One-year duration in seconds. */
 export const YEAR = 60 * 60 * 24 * 365;

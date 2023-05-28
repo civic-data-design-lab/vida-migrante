@@ -20,63 +20,49 @@
   $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
   $: hoursWorked = Math.round($GameData.resources?.time / DAYS_IN_WEEK);
 
-  const animatedPlayerExpenses = tweened(playerExpenses, {
+  export const expenseStore = tweened(playerExpenses, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
     easing: linear,
   });
 
-  const animatedPlayerIncome = tweened(playerIncome, {
+  export const incomeStore = tweened(playerIncome, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
     easing: linear,
   });
+
   const animatedHoursWorked = tweened(hoursWorked, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
     easing: linear,
   });
 
-  $: animatedPlayerExpenses.set(playerExpenses);
-  $: animatedPlayerIncome.set(playerIncome);
+  $: expenseStore.set(playerExpenses);
+  $: incomeStore.set(playerIncome);
   $: animatedHoursWorked.set(hoursWorked);
-
-  // Get the migrant's food security status
-  $: migrantInfo = migrants.find((migrant) => migrant.id === $GameData.migrantId);
-
-  $: foodSecureText = isEn ? 'Food Secure' : 'Seguridad Alimentaria';
-  $: foodInsecureText = isEn ? 'Food Insecure' : 'Inseguridad Alimentaria';
-  let foodSecurityStatus;
-  $: {
-    console.debug('Calculating food security');
-    const foodSecure = isFoodSecure(
-      sumValues($GameData.resources?.expenditures),
-      migrantInfo.householdSize,
-      $GameData.resources?.copingLevel
-    );
-    foodSecurityStatus = foodSecure ? foodSecureText : foodInsecureText;
-  }
 
   //create the oval charts
   let displayedSpending = null;
   let total_columns;
-  const max_expense = 850;
+  const max_expense = 875;
   $: expenses = new Array(total_columns).fill('oval');
-  $: columns = Math.floor((total_columns * $animatedPlayerExpenses) / max_expense);
-  $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
+  $: columns = Math.floor((total_columns * $expenseStore) / max_expense);
+  $: income_column = Math.ceil((total_columns * $incomeStore) / max_expense);
   $: expenses = expenses.map((_, i) => {
     let ovalClass = 'oval';
-    if (i <= columns) ovalClass += ' oval_filled';
-    if (i === income_column) ovalClass += ' oval_green';
+    if (i < income_column && i <= columns) ovalClass += ' oval-filled';
+    if (i === income_column) ovalClass += ' oval-green';
+    if (i > income_column && i <= columns) ovalClass += ' oval-red';
     switch (i) {
-      case Math.floor((313 * total_columns) / 850):
-        ovalClass += ' indicator indicator_gray';
+      case Math.floor((313 * total_columns) / max_expense):
+        ovalClass += ' indicator indicator-pink';
         break;
-      case Math.floor((840 * total_columns) / 850):
-        ovalClass += ' indicator indicator_red';
+      case Math.floor((840 * total_columns) / max_expense):
+        ovalClass += ' indicator indicator-purple';
         break;
-      case Math.floor((540 * total_columns) / 850):
-        ovalClass += ' indicator indicator_yellow';
+      case Math.floor((540 * total_columns) / max_expense):
+        ovalClass += ' indicator indicator-yellow';
         break;
-      case Math.floor((761 * total_columns) / 850):
-        ovalClass += ' indicator indicator_blue';
+      case Math.floor((761 * total_columns) / max_expense):
+        ovalClass += ' indicator indicator-blue';
     }
     return ovalClass;
   });
@@ -86,6 +72,14 @@
   for (let spending of spendings) {
     spending.expense = $GameData.resources?.expenditures[spending.name2];
   }
+  const range_thresholds = new Map([
+    ['Rent', 92],
+    ['Food', 104],
+    ['Health & Hygiene', 43],
+    ['Household & Utilities', 55],
+    ['Remittances', 24],
+    ['Internet', 11],
+  ]);
 
   let expenseReferences = true;
 
@@ -97,39 +91,40 @@
 
 <div id="expense-board">
   <div class="alignleft">
-    <p4 style="color: #505050; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
+    <p4 style="color: var(--gray); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Expenses: {:else} Gastos: {/if}
-      <b>${Math.floor($animatedPlayerExpenses)}</b></p4
+      <b>${Math.floor($expenseStore)}</b></p4
     >
   </div>
   <div class="alignleft">
-    <p4 style="color: #7BA522; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
+    <p4 style="color: var(--accent-green); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Income:{:else} Ingresos: {/if}
-      <b>${Math.floor($animatedPlayerIncome)}</b></p4
+      <b>${Math.floor($incomeStore)}</b></p4
     >
   </div>
 </div>
 <div id="expense-bars">
   <section>
     {#each expenses as color}
-      <div class={color} />
+      <div class={color}>
+        {#if color.includes('indicator')}
+          <p4 class="indicator-text {color.slice(color.lastIndexOf('indicator'))}">
+            {#if color.includes('indicator-pink')}
+              {#if language === Languages.ENGLISH}AMHI{:else}IPM{/if}
+            {:else if color.includes('indicator-purple')}
+              {#if language === Languages.ENGLISH}AEI{:else}IPHE{/if}
+            {:else if color.includes('indicator-yellow')}
+              {#if language === Languages.ENGLISH}EVFB{:else}CVE{/if}
+            {:else if color.includes('indicator-blue')}
+              {#if language === Languages.ENGLISH}EBFB{:else}CBE{/if}
+            {/if}
+          </p4>
+        {/if}
+      </div>
     {/each}
   </section>
 </div>
-<div id="migrant-state">
-  {#if isEn}
-    <p4 style="width:100%; font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >You work <b><i>~{Math.floor($animatedHoursWorked)}</i></b> hours each day & you are
-      <b><i>{foodSecurityStatus}</i></b>.</p4
-    >
-  {:else}
-    <p4 style="font-weight: 500; font-size: 11pt; margin-top:.5rem; text-align:left;"
-      >Trabajas <b><i>~{Math.floor($animatedHoursWorked)}</i></b> horas cada día & tienes
-      <b><i>{foodSecurityStatus}</i></b>.</p4
-    >
-  {/if}
-</div>
-<div id="" style=" align-items: center;  place-content: center;   display: flex; padding-top:1em">
+<div style="align-items: center; place-content: center; display: flex; padding-top: 1.5em">
   <button
     id="modal-button-key"
     class="button"
@@ -153,58 +148,72 @@
   >
     <div id="name-board">
       <div class="alignleft">
-        <p4 style="color: #505050;"
-          >{#if isEn}Average Migrant Household Income
+        <p4 style="color: var(--accent-pink);"
+          >{#if isEn}Average Migrant Household Income (AMHI)
           {:else}
-            Ingreso Promedio de Migrantes{/if}</p4
+            Ingreso Promedio de Migrantes (IPM){/if}</p4
         >
       </div>
       <div class="alignleft">
-        <p4 style="color: #CF6348;"
-          >{#if isEn}Average Ecuadorian Income
+        <p4 style="color: var(--accent-purple);"
+          >{#if isEn}Average Ecuadorian Income (AEI)
           {:else}
-            Ingreso Promedio de Hogar en Ecuador{/if}</p4
+            Ingreso Promedio de Hogar en Ecuador (IPHE){/if}</p4
         >
       </div>
       <div class="alignleft">
-        <p4 style="color: #E5B257;"
-          >{#if isEn}Ecuadorian Vital Family Basket
+        <p4 style="color: var(--accent-yellow);"
+          >{#if isEn}Ecuadorian Vital Family Basket (EVFB)
           {:else}
-            Canasta Vital en Ecuador{/if}</p4
+            Canasta Vital en Ecuador (CVE){/if}</p4
         >
       </div>
       <div class="alignleft">
-        <p4 style="color: #5273B0;"
-          >{#if isEn}Ecuadorian Basic Family Basket
+        <p4 style="color: var(--accent-blue);"
+          >{#if isEn}Ecuadorian Basic Family Basket (EBFB)
           {:else}
-            Canasta Básica en Ecuador{/if}</p4
+            Canasta Básica en Ecuador (CBE){/if}</p4
         >
       </div>
     </div>
     <div id="money-board">
-      <p4 class="alignright" style="color: #505050; float: right;"> $313 </p4>
-      <p4 class="alignright" style="color: #CF6348; float: right;"> $840 </p4>
-      <p4 class="alignright" style="color: #E5B257; float: right;"> $540 </p4>
-      <p4 class="alignright" style="color: #5273B0; float: right;"> $761 </p4>
+      <p4 class="alignright" style="color: var(--accent-pink); float: right;"> $313 </p4>
+      <p4 class="alignright" style="color: var(--accent-purple); float: right;"> $840 </p4>
+      <p4 class="alignright" style="color: var(--accent-yellow); float: right;"> $540 </p4>
+      <p4 class="alignright" style="color: var(--accent-blue); float: right;"> $761 </p4>
     </div>
   </div>
 {/key}
 <hr />
 <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
   <h2 style="margin-bottom: 0;">
-    {#if isEn}Allocate Your Spending{:else}Asigna tus Gastos {/if}
+    {#if isEn}Minimum monthly household expenses{:else}Gastos mínimos mensuales del hogar {/if}
   </h2>
   {#each spendings as spending (spending.name)}
-    <div style="display: flex; justify-content: space-between;">
-      <href class="info" style="padding:.4em" on:click={() => (displayedSpending = spending)}>
-        <p4 style="font-size:9pt;   text-decoration-line: underline;"
-          >{#if isEn}
-            {(slider_theme = spending.name)}{:else}
-            {(slider_theme = spending.spanish_name)}
-          {/if}</p4
+    <div
+      style="display: flex; justify-content: space-between; color: {spending.expense <
+      range_thresholds.get(spending.name)
+        ? 'var(--accent-red)'
+        : 'var(--gray)'}"
+    >
+      <href
+        class="info"
+        style="padding:.4em; color: inherit"
+        on:click={() => (displayedSpending = spending)}
+      >
+        <p4
+          class="range-label"
+          style="font-size:9pt; text-decoration-line: underline; color: inherit"
         >
+          {#if isEn}
+            {(slider_theme = spending.name)}
+          {:else}
+            {(slider_theme = spending.spanish_name)}
+          {/if}
+        </p4>
+        <p4 class="range-label"> ></p4>
       </href>
-      <p4>${spending.expense}</p4>
+      <p4 style="color: inherit">${spending.expense}</p4>
     </div>
     <div
       class:rent-theme={spending.name === 'Rent' || spending.name === 'Alquiler'}
@@ -225,6 +234,7 @@
         min={0}
         max={200}
         value={spending.expense}
+        trackHighlight={spending.expense < range_thresholds.get(spending.name)? 'var(--accent-red)' : 'var(--gray)'}
       />
     </div>
   {/each}
@@ -320,14 +330,19 @@
     background: #f3f3f3;
     border-radius: 40px;
     margin: 1px;
+    position: relative;
   }
 
-  .oval_filled {
-    background: #505050;
+  .oval-filled {
+    background: var(--gray);
   }
 
-  .oval_green {
-    background: #7ba522;
+  .oval-green {
+    background: var(--accent-green);
+  }
+
+  .oval-red {
+    background: var(--accent-red);
   }
 
   .indicator {
@@ -336,17 +351,27 @@
     height: calc(2em - 3px);
   }
 
-  .indicator_gray {
-    border-color: #9c9c9c;
+  .indicator-pink {
+    border-color: var(--accent-pink);
+    color: var(--accent-pink);
   }
-  .indicator_red {
-    border-color: #cf6348;
+  .indicator-purple {
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
   }
-  .indicator_yellow {
-    border-color: #e5b257;
+  .indicator-yellow {
+    border-color: var(--accent-yellow);
+    color: var(--accent-yellow);
   }
-  .indicator_blue {
-    border-color: #5273b0;
+  .indicator-blue {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+  }
+
+  .indicator-text {
+    position: absolute;
+    bottom: 0;
+    transform: translate(-50%, 20px);
   }
 
   @media only screen and (max-height: 750px) {
@@ -355,7 +380,7 @@
     }
 
     .indicator {
-      height: calc(1em - 3px);
+      height: calc(1em - 5px);
     }
   }
 
@@ -397,6 +422,11 @@
   }
 
   /* slider */
+  .range-label {
+    cursor: pointer;
+    color: inherit;
+  }
+
   .rent-theme {
     --thumb-image: url('/images/dashboard/RENT.png');
   }

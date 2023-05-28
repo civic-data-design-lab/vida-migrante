@@ -5,10 +5,13 @@
   --gray: #505050;
   --light-gray: rgba(35, 35, 35, 0.12);
 
+  --accent-gray: #2d2d2d;
   --accent-blue: #5273b0;
   --accent-red: #cf6348;
   --accent-yellow: #e5b257;
   --accent-green: #7ba522;
+  --accent-purple: #94439d;
+  --accent-pink: #e7ab9c;
 
   --light-blue: #c5dcee;
   --light-red: #eec3b8;
@@ -122,13 +125,11 @@ body {
   color: var(--gray);
   user-select: none;
   margin: 0;
+  overscroll-behavior: none;
 }
 
-body2 {
-  font-family: var(--font-rubik);
-  font-size: 16pt;
-  font-weight: normal;
-  line-height: 22pt;
+html {
+  overscroll-behavior: none;
 }
 
 a {

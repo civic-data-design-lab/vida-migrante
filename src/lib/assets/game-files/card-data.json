@@ -4,7 +4,7 @@
     "category": "Personal Improvement",
     "title": "Hairdresser",
     "description": "You meet a friend who can teach you the skills needed to become a hairdresser.",
-    "prompt": "Would you like to train to become a hairdresser?",
+    "prompt": "Would you like to train to become a hairdresser? This training will help open job opportunities.",
     "options": [
       {
         "id": 0,
@@ -18,18 +18,19 @@
       },
       {
         "id": 1,
-        "description": "I can't afford taking time off",
+        "description": "You don't like this option",
         "updates": {},
-        "except": "but you won't be able to take the training"
+        "except": "there will be no changes in your family economy. However, you are giving up a possibility of training and a possibility of income"
       }
     ],
-    "image": "PI_hairdresser.png"
+    "image": "PI_hairdresser.png",
+    "learn_more": "Non-specialized services is the second most common job among migrants, 17% of the migrants responded that they work in this industry. Not only hairdresser belongs to this category, but this occupation is also listed as the principal trade migrants want to learn; 31% of them responded that they would like to learn the skills required to become one. Other popular choices for this question include cook, mechanic, and baker."
   },
   {
     "id": 1,
     "category": "Personal Improvement",
     "title": "Digital Skills",
-    "description": "You saw an ad about a course on electronic commerce, which will help you increase your income. Would you like to take the course?",
+    "description": "You saw an ad about a free e-commerce course, which could help you increase your income and improve your employment situation in the future. Would you like to take the course?",
     "prompt": "Would you like to take the course?",
     "options": [
       {
@@ -40,7 +41,9 @@
           "income": {
             "salary": 54
           },
-          "skills": ["digital skills"]
+          "skills": [
+            "digital skills"
+          ]
         },
         "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
       },
@@ -48,10 +51,11 @@
         "id": 1,
         "description": "Maybe next time",
         "updates": {},
-        "except": "but you won't take the course"
+        "except": "there will be no changes in your family economy. However, you are giving up a training possibility."
       }
     ],
-    "image": "PI_digitalskills.png"
+    "image": "PI_digital-skills.png",
+    "learn_more": "One of the main barriers to integrate migrants into new digital economies is internet access. Over half the migrants who responded that they have digital skills cannot access the internet. Assisting to connect to the digital world, will help migrants improve their employment conditions."
   },
   {
     "id": 2,
@@ -64,36 +68,25 @@
         "id": 0,
         "description": "I can't afford a computer",
         "updates": {
-          "skills": ["business"]
+          "skills": [
+            "business"
+          ]
         },
-        "except": "and you won't be able to take the training"
+        "except": " you won't be able to take the training. You could potentially increase you income but most of the migrants don't have access to a computer or to internet"
       }
     ],
-    "image": "PI_business-skills.png"
+    "image": "PI_business-skills.png",
+    "learn_more": "Our findings show that migrants have the skills and interests to be included in the emerging digital economies in Ecuador. The International Labour Organization identifies software development, Internet of Things, and e-commerce as industries in which migrants can have significant contributions and are already interested on."
   },
   {
     "id": 3,
     "category": "Life Event",
     "title": "Remittances",
-    "description": "Your mother in Venezuela needs surgey for a health emergency, and you have to send remittances to cover the medical bills.",
+    "description": "A relative from Venezuela informs you that he urgently requires resources to cover his mother's health expenses.",
     "prompt": "How would you like to pay for the remittances?",
     "options": [
       {
         "id": 0,
-        "description": "Work longer hours to get extra money",
-        "updates": {
-          "income": {
-            "salary": 24
-          },
-          "time": 12,
-          "expenditures": {
-            "remittances": 24
-          }
-        },
-        "implicationText": "<b>24%</b> of migrants have to work longer hours to meet their essential needs."
-      },
-      {
-        "id": 1,
         "description": "Borrow money from a friend",
         "updates": {
           "copingLevel": "stress",
@@ -104,23 +97,24 @@
             "remittances": 24
           }
         },
-        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs."
+        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs. Your effort will help cover this family emergency."
       },
       {
-        "id": 2,
+        "id": 1,
         "description": "I can't send money to mom now",
         "updates": {},
-        "except": "but your mom might not get better",
+        "except": "Your mother will not be able to receive adequate health care and will probably not get better. Your relatives should seek local help.",
         "implicationText": "<b>13%</b> of migrants don't send remittances to Venezuela"
       }
     ],
-    "image": "LE_remittances.png"
+    "image": "LE_remittances.png",
+    "learn_more": "Remittances are an essential component of the migrants’ expenses as they send them to help their family and friends in Venezuela. Our analysis shows that 47% of migrants send remittances; the average remittance is $24 per month."
   },
   {
     "id": 4,
     "category": "Life Event",
     "title": "Community Support",
-    "description": "Your close friend and neighbor had a personal emergency and asks you to take care of their kids for a couple of days.",
+    "description": "Your community is organizing an event to fund aid for a Venezuelan family, their son needs an urgent operation. They ask you for support during Saturday to be at the food stall.",
     "prompt": "Would you like to help your friend?",
     "options": [
       {
@@ -133,16 +127,28 @@
           }
         },
         "except": "in order to make up for the time off",
-        "implicationText": "<b>9%</b> if migrants have to ask for support from their community to improve their conditions."
+        "implicationText": "<b>9%</b> of migrants have to ask for support from their community to improve their conditions and to start creating a community network."
+      },
+      {
+        "id": 1,
+        "description": "I can't help",
+        "updates": {
+          "time": 5,
+          "income": {
+            "salary": -10
+          }
+        },
+        "implicationText": "<b>9%</b> of migrants have to ask for support from their community to improve their conditions and to start creating a community network. Not being able to support your community will impact social support networks in an emergency."
       }
     ],
-    "image": "LE_community.png"
+    "image": "LE_community.png",
+    "learn_more": "Building a strong community network helps migrants navigate their everyday lives. Although recent migrants, like the ones in our study, might not have a strong network yet, building one helps them support each other by assisting them in take care of their relatives or borrowing goods."
   },
   {
     "id": 5,
     "category": "Life Event",
     "title": "Health",
-    "description": "You are sick of a lung disease and need to buy medicines medicine to treat it.",
+    "description": "You are sick of a lung disease and need to buy medicines to treat it.",
     "prompt": "How would you like to pay for this?",
     "options": [
       {
@@ -150,14 +156,14 @@
         "description": "Spend savings to buy the medicine",
         "updates": {
           "income": {
-            "salary": 23
+            "salary": -23
           },
           "expenditures": {
             "health": 23
           },
           "copingLevel": "stress"
         },
-        "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
+        "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs. If you choose this option your savings will decrease for future emergencies."
       },
       {
         "id": 1,
@@ -171,16 +177,132 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs."
+        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs. Your family situation will worsen and you will get into debt with a close friend."
       },
       {
         "id": 2,
         "description": "I can't pay for the medicines",
         "updates": {},
-        "except": "but you are at risk of getting sicker",
+        "except": "it is possible that your health will not improve, your economy will not change",
         "implicationText": ""
       }
     ],
-    "image": "LE_health.png"
+    "image": "LE_health.png",
+    "learn_more": "Health is one of the main challenges of migrants. When they relocate, finding healthcare is tough as they still don’t have a strong community network. While the Ecuadorian government already provides universal healthcare regardless of nationality, illnesses and care are at the center of migrants’ path to decrease their vulnerability."
+  },
+  {
+    "id": 6,
+    "category": "Life Event",
+    "title": "Help a Friend",
+    "description": "A friend asks you to help take care of their children for one day a week.",
+    "prompt": "Caring for their children can be an alternative source of income. Do you want to help your friend?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Help my friend",
+        "updates": {
+          "time": 5,
+          "income": {
+            "salary": 23
+          }
+        },
+        "implicationText": "<b>9%</b> of migrants have to ask for help from the community. This serves to create a community network in Ecuador."
+      },
+      {
+        "id": 1,
+        "description": "I can't help my friend",
+        "updates": {},
+        "implicationText": "Not being able to support your community will impact your social networks of support in case of emergency."
+      }
+    ],
+    "image": "LE_community.png",
+    "learn_more": "Building a solid community network helps migrants navigate their daily lives. Although recent migrants, such as those of our study, may not have a solid community network yet, building a network helps them to support each other to take care of relatives and request borrowed assets."
+  },
+  {
+    "id": 7,
+    "category": "Life Event",
+    "title": "Workplace Discrimination",
+    "description": "You applied for a job, but was rejected for your nationality. You need the extra money.",
+    "prompt": "How do you want to get the money you need?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Borrow money from a friend",
+        "updates": {
+          "income": {
+            "salary": 23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "<b>48%</b> of migrants have to ask for money from family or friends to meet their basic needs."
+      },
+      {
+        "id": 1,
+        "description": "Work informally on the streets",
+        "updates": {
+          "income": {
+            "salary": 23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "<b>82%</b> of migrants work in the informal sector in Ecuador."
+      }
+    ],
+    "image": "LE_discrimination.svg",
+    "learn_more": "Your family situation will get worse and you will owe money to a close friend. 88% of migrants are not working a job that matches their professional skills, experience, or accreditation. Migrants whose work does not coincide with their skills have a 57% of probabilities of being in food insecurity."
+  },
+  {
+    "id": 8,
+    "category": "Life Event",
+    "title": "Sexual Harassment",
+    "description": "You were a victim of sexual harassment at work.",
+    "prompt": "What do you want to do?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Denounce and leave work",
+        "updates": {
+          "income": {
+            "salary": -35
+          }
+        },
+        "implicationText": "<b>60%</b> of Venezuelan migrant women suffer or have suffered gender violence in their work environment or to access the media."
+      },
+      {
+        "id": 1,
+        "description": "Quit working without denouncing",
+        "updates": {
+          "income": {
+            "salary": -23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "<b>60%</b> of Venezuelan migrant women suffer or have suffered gender violence in their work environment or to access the media."
+      }
+    ],
+    "image": "LE_harassment.svg",
+    "learn_more": "Forms of violence such as exploitation in the workplace, transactional or survival sex, and forced marriages have been identified in recent years among migrants. The presence of adolescents in the country who move unaccompanied or separated from their families increases the risk of these incidents and human trafficking. 60% of Venezuelan migrants suffer or have suffered gender violence in their work environment or to access the media. 28% of people who cross the border illegally claim to be survivors of border violence or abuse."
+  },
+  {
+    "id": 9,
+    "category": "Life Event",
+    "title": "Fines",
+    "description": "The authorities have reported you to the Court of Minors because your child is supporting you in your work during school hours.",
+    "prompt": "This causes anxiety and increases your feelings of insecurity in the country. What do you want to do?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Pay fine",
+        "updates": {
+          "income": {
+            "salary": -10
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "This fine will cost you $10 per month for four months for a total of $40."
+      }
+    ],
+    "image": "LE_fines.svg",
+    "learn_more": "The lack of economic resources (22.3%), the delay between the school period and when migrants enter the country (16.4%), the lack of information about educational systems (14.3%), and the lack of documentation for enrollment (13.9%) are the main causes for truancy."
   }
 ]

@@ -4,10 +4,13 @@
   import Carousel from '$components/Carousel.svelte';
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
+  import Modal from '$components/Modal.svelte';
+  import LearnMore from '$components/LearnMore.svelte';
 
   // Get the page data
   $: language = $page.data.language;
 
+  let showModal = false;
   let migrant = 0;
   const observerOptions = {
     rootMargin: '0px',
@@ -40,12 +43,42 @@
 
 <div class="constrained centered-column">
   <div id="header">
-    {#if language === Languages.ENGLISH}
-      <h1>Take the journey as</h1>
-    {:else}
-      <h1>Vive la experiencia como</h1>
-    {/if}
+    <h1>
+      {#if language === Languages.ENGLISH}
+        Select a profile for this experience
+      {:else}
+        Selecciona un perfil para vivir la experiencia
+      {/if}
+    </h1>
   </div>
+  <LearnMore>
+    <h1 slot="title">
+      {#if language === Languages.ENGLISH}
+        Profiles
+      {:else}
+        Perfiles
+      {/if}
+    </h1>
+    <p slot="body">
+      {#if language === Languages.ENGLISH}
+        The data analysis for our survey shows that these are the most common “types” or profiles of
+        migrants. We used the K-means clustering algorithm. Clustering is an unsupervised
+        machine-learning technique that clusters data according to feature similarities. The
+        objective of K-means clustering is to group data together to find k clusters by discovering
+        underlying patterns in the data. The algorithm included variables such as gender, age,
+        migratory status, household composition, income, and expenses.
+      {:else}
+        El análisis de datos de nuestra encuesta muestra que estos son los “tipos” o perfiles más
+        comunes de migrantes. Utilizamos el algoritmo de agrupamiento de K-medias. La agrupación en
+        clústeres es una técnica de aprendizaje automático no supervisada que agrupa los datos según
+        las similitudes de las características. El objetivo de la agrupación en clústeres de
+        K-medias es agrupar datos para encontrar k clústeres mediante el descubrimiento patrones
+        subyacentes en los datos. El algoritmo incluyó variables como género, edad, estatus
+        migratorio, composición del hogar, ingresos y gastos.
+      {/if}
+    </p>
+  </LearnMore>
+
   <Carousel />
 
   <button
@@ -80,5 +113,24 @@
     margin: 0;
     margin-bottom: 2.5vh;
     cursor: pointer;
+  }
+
+  span {
+    font-family: var(--font-sirenia);
+    margin-top: 5px;
+    font-size: 12pt;
+  }
+
+  span:hover,
+  span:active {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #000;
+  }
+
+  @media only screen and (max-height: 750px), (max-width: 400px) {
+    h1 {
+      font-size: 23pt;
+    }
   }
 </style>

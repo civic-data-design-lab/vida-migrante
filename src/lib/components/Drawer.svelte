@@ -8,6 +8,7 @@
   let handle, prevTouch;
   let cancelClick = false;
   let transition = '';
+  export let background = '';
   let drawer;
 
   export let botThreshold;
@@ -45,6 +46,7 @@
     dragging = true;
     transition = '';
     prevTouch = e.touches[0];
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
   }
 
   function onTouchMove(e) {
@@ -55,6 +57,7 @@
       cancelClick = true;
     }
     prevTouch = touch;
+    e.preventDefault();
   }
 
   function onTouchEnd() {
@@ -68,6 +71,7 @@
       }
       prevTouch = undefined;
     }
+    window.removeEventListener('touchmove', onTouchMove);
   }
 
   /**
@@ -101,7 +105,7 @@
 />
 <div
   id="drawer"
-  style="top: {drawerTop}px; transition: {transition}"
+  style="top: {drawerTop}px; transition: {transition}; background: {background}"
   bind:this={drawer}
   transition:fly={{ y: 200 }}
 >
@@ -117,7 +121,6 @@
   <slot name="body" />
 </div>
 <svelte:window
-  on:touchmove={onTouchMove}
   on:touchend={onTouchEnd}
   on:mousemove={onMouseMove}
   on:mouseup={onMouseUp}
@@ -136,7 +139,6 @@
     align-items: center;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    background: #f9f9f9;
     filter: drop-shadow(0px -5px 5px rgba(0, 0, 0, 0.3));
     animation: wiggle 7s infinite;
     animation-delay: 2s;

@@ -1,0 +1,84 @@
+[
+  {
+    "id": 0,
+    "category": "Wild Card",
+    "title": "Violencia de Género",
+    "description": "Una amiga tuya sufrió un incidente de violencia doméstica y le pide que la ayude con sus hijos durante un par de semanas.",
+    "prompt": "¿Cómo quieres ayudarla?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Tomárte tiempo de trabajo para ayudarla",
+        "updates": {
+          "income": {
+            "salary": -10
+          }
+        },
+        "implicationText": "El <b>9%</b> de los migrantes tienen que solicitar ayuda de la comunidad, esto también sirve para crear una red comunitaria en Ecuador."
+      }
+    ],
+    "image": "WC_gender.svg",
+    "learn_more": "Según la ONU, la violencia de género es uno de los problemas más graves que padecen migrantes en Ecuador."
+  },
+  {
+    "id": 1,
+    "category": "Wild Card",
+    "title": "¿Quedarse o Irse?",
+    "description": "Desafortunadamente, no ha logrado integrarse económica y socialmente en Ecuador. Decide regresar a Venezuela en unos meses.",
+    "prompt": "¿Cómo lo quieres hacer?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Regresar a la frontera entre Ecuador y Colombia",
+        "updates": {
+          "income": {
+            "salary": -23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "Una organización humanitaria te paga el paso a la frontera entre Ecuador y Colombia. Para cruzar la frontera y debido a su situación en el país, decide cruzar irregularmente. El <b>23%</b> de los migrantes regresan a Venezuela o Colombia por no encontrar trabajo."
+      },
+      {
+        "id": 1,
+        "description": "Regresar a la frontera entre Ecuador y Perú",
+        "updates": {
+          "income": {
+            "salary": -23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "El <b>48%</b> de los migrantes deciden ir al Perú."
+      }
+    ],
+    "image": "WC_venezuela.svg",
+    "learn_more": "Otras razones por las cuales los migrantes deciden irse son no encontrar vivienda (10%) y problemas de seguridad (8%)."
+  },
+  {
+    "id": 2,
+    "category": "Wild Card",
+    "title": "Desalojo",
+    "description": "El propietario de la casa donde vives decide desalojarte por no pagar el alquiler.",
+    "prompt": "¿Qué quieres hacer?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Refugio de emergencia",
+        "updates": {},
+        "implicationText": "Te mudas con tu familia en uno de los 50 refugios y casas de bienvenida con el apoyo de PMA en Ecuador. Tienes derecho a los máximos 5 días de asistencia. Todas sus necesidades se cubrirán durante este tiempo. El <b>46%</b> de los migrantes informa tener condiciones desfavorables de vivienda, y el <b>9%</b> no tiene servicios básicos en su vivienda."
+      },
+      {
+        "id": 1,
+        "description": "Compartir casa con otra familia",
+        "updates": {
+          "expenditures": {
+            "rent": -20
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "Decides mudarte a una habitación privada, con cocina e instalaciones de higiene compartidos con otras familias. Esta posibilidad te permite reducir tu gasto mensual. El <b>33%</b> de la población migrante comparte su hogar con otros núcleos familiares. El <b>21%</b> considera que el baño o la ducha no son seguros al ser compartidos."
+      }
+    ],
+    "image": "WC_eviction.svg",
+    "learn_more": "El 51% de los hogares se han visto obligados a mudarse desde que llegaron a Ecuador. El 46% informa haber tenido problemas con el propietario de la vivienda, y el 23% ha sufrido discriminación debido a su nacionalidad."
+  }
+]

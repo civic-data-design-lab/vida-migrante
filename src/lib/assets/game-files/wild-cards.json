@@ -1,0 +1,84 @@
+[
+  {
+    "id": 0,
+    "category": "Wild Card",
+    "title": "Gender Violence",
+    "description": "A friend of yours suffered an incident of domestic violence and asks you to help her with her children for a couple of weeks.",
+    "prompt": "How do you want to help her?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Take time off work to help her",
+        "updates": {
+          "income": {
+            "salary": -10
+          }
+        },
+        "implicationText": "<b>9%</b> of migrants have to ask for help from the community. This serves to create a community network in Ecuador."
+      }
+    ],
+    "image": "WC_gender.svg",
+    "learn_more": "According to the UN and Care Ecuador, gender violence is one of the most serious problems migrants suffer from in Ecuador."
+  },
+  {
+    "id": 1,
+    "category": "Wild Card",
+    "title": "Stay or Leave?",
+    "description": "Unfortunately, you have not managed to integrate economically and socially into Ecuador. You decide to return to Venezuela in a few months.",
+    "prompt": "What do you want to do?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Return to the border between Ecuador and Colombia",
+        "updates": {
+          "income": {
+            "salary": -23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "A humanitarian organization pays for your passage to the border between Ecuador and Colombia. Due to your illegality, it decides to take irregular steps in order to cross the border. <b>23%</b> of migrants return to Venezuela or Colombia due to not finding work."
+      },
+      {
+        "id": 1,
+        "description": "Return to the border between Ecuador and Peru",
+        "updates": {
+          "income": {
+            "salary": -23
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "<b>48%</b> of migrants decide to go to Peru."
+      }
+    ],
+    "image": "WC_venezuela.svg",
+    "learn_more": "Other reasons why migrants decide to leave are housing (10%) and security (8%) problems."
+  },
+  {
+    "id": 2,
+    "category": "Wild Card",
+    "title": "Eviction",
+    "description": "Your landlord decides to evict you for not paying your rent.",
+    "prompt": "What do you want to do?",
+    "options": [
+      {
+        "id": 0,
+        "description": "Emergency shelter",
+        "updates": {},
+        "implicationText": "You and your family move into one of the 50 shelters and welcome houses supported by the WFP in Ecuador. You have the right to a maximum of 5 days of assistance. All your needs will be covered during this time. <b>46%</b> of the migrant population report poor accommodations and <b>9%</b> report a lack of basic services."
+      },
+      {
+        "id": 1,
+        "description": "Share a home with another family",
+        "updates": {
+          "expenditures": {
+            "rent": -20
+          },
+          "copingLevel": "stress"
+        },
+        "implicationText": "You decide to move into a private room with shared kitchens and sanitation/hygiene facilities. This option allows you to reduce your monthly expenses. <b>33%</b> of the migrant population share their home with other family nuclei. <b>21%</b> consider their bathrooms or showers unsafe."
+      }
+    ],
+    "image": "WC_eviction.svg",
+    "learn_more": "<b>51%</b> of family groups have been forced to move since they arrived in Ecuador. <b>46%</b> report having had problems with the owner of the house/room and <b>23%</b> have suffered discrimination due to their nationality."
+  }
+]

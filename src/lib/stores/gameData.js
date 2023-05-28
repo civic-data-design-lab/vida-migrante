@@ -11,6 +11,7 @@ import allCards from '$gameFiles/card-data';
 import allMigrantData from '$gameFiles/migrant-data';
 import allJobsData from '$gameFiles/jobs';
 import allAssistanceData from '$gameFiles/assistances';
+import allWildCards from '$gameFiles/wild-cards';
 import { applyUpdates, deepCopy, delay, parseJSONSafe, sumValues } from '$lib/utils/functions';
 
 console.log('DEV MODE:', dev);
@@ -72,14 +73,14 @@ function createGameData() {
           const cardId = drawCard(g);
           // const cardId = 4;  // Temp card control
           return { ...g, state: GameStates.DECISION, currentCardId: cardId };
-        case GameStates.DECISION:
+        case GameStates.DECISION: {
           const { optionId } = kwargs;
 
           /**
            * Stores the action into the past actions array
            * @type {import('$types').PastAction}
            */
-          const action = { cardId: g.currentCardId, optionId };
+          const action = { cardId: g.currentCardId, wild: false, optionId };
 
           // Figure out the next game state
           let nextState;
@@ -91,6 +92,15 @@ function createGameData() {
             // Assistance state shows up after rounds 1 and 3, don't end the
             // round yet
             nextState = GameStates.ASSISTANCE;
+          } else if (g.round === 1) {
+            // Wild card shows up after round 2
+            const wildCardID = Math.floor(Math.random() * allWildCards.length);
+            return {
+              ...g,
+              state: GameStates.WILD_CARD,
+              currentCardId: wildCardID,
+              pastActions: [...g.pastActions, action],
+            };
           } else {
             // Next round
             roundOver = true;
@@ -103,6 +113,16 @@ function createGameData() {
             state: nextState,
             round: roundOver ? g.round + 1 : g.round,
             pastActions: [...g.pastActions, action], // Add to the past actions list
+          };
+        }
+        case GameStates.WILD_CARD:
+          const { optionId } = kwargs;
+          const action = { cardId: g.currentCardId, wild: true, optionId };
+          return {
+            ...g,
+            state: GameStates.ROUND_START,
+            round: 2,
+            pastActions: [...g.pastActions, action],
           };
         case GameStates.ASSISTANCE:
           const { assistanceId } = kwargs;
@@ -244,7 +264,7 @@ GameData.subscribe((value) => {
 function drawCard(gameData) {
   // Get the already drawn cards from past actions (ignore assistances)
   const alreadyDrawn = gameData.pastActions
-    .filter((action) => action.cardId)
+    .filter((action) => action.cardId !== undefined)
     .map((action) => action.cardId);
 
   // Make sure we don't draw a repeat card
