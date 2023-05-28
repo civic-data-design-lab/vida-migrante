@@ -20,22 +20,23 @@
   $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
   $: hoursWorked = Math.round($GameData.resources?.time / DAYS_IN_WEEK);
 
-  const animatedPlayerExpenses = tweened(playerExpenses, {
+  export const expenseStore = tweened(playerExpenses, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
     easing: linear,
   });
 
-  const animatedPlayerIncome = tweened(playerIncome, {
+  export const incomeStore = tweened(playerIncome, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
     easing: linear,
   });
+
   const animatedHoursWorked = tweened(hoursWorked, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
     easing: linear,
   });
 
-  $: animatedPlayerExpenses.set(playerExpenses);
-  $: animatedPlayerIncome.set(playerIncome);
+  $: expenseStore.set(playerExpenses);
+  $: incomeStore.set(playerIncome);
   $: animatedHoursWorked.set(hoursWorked);
 
   //create the oval charts
@@ -43,8 +44,8 @@
   let total_columns;
   const max_expense = 875;
   $: expenses = new Array(total_columns).fill('oval');
-  $: columns = Math.floor((total_columns * $animatedPlayerExpenses) / max_expense);
-  $: income_column = Math.ceil((total_columns * $animatedPlayerIncome) / max_expense);
+  $: columns = Math.floor((total_columns * $expenseStore) / max_expense);
+  $: income_column = Math.ceil((total_columns * $incomeStore) / max_expense);
   $: expenses = expenses.map((_, i) => {
     let ovalClass = 'oval';
     if (i < income_column && i <= columns) ovalClass += ' oval-filled';
@@ -92,13 +93,13 @@
   <div class="alignleft">
     <p4 style="color: var(--gray); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Expenses: {:else} Gastos: {/if}
-      <b>${Math.floor($animatedPlayerExpenses)}</b></p4
+      <b>${Math.floor($expenseStore)}</b></p4
     >
   </div>
   <div class="alignleft">
     <p4 style="color: var(--accent-green); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Income:{:else} Ingresos: {/if}
-      <b>${Math.floor($animatedPlayerIncome)}</b></p4
+      <b>${Math.floor($incomeStore)}</b></p4
     >
   </div>
 </div>
@@ -233,6 +234,7 @@
         min={0}
         max={200}
         value={spending.expense}
+        trackHighlight={spending.expense < range_thresholds.get(spending.name)? 'var(--accent-red)' : 'var(--gray)'}
       />
     </div>
   {/each}

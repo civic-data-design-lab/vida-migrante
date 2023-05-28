@@ -8,6 +8,7 @@
   export let initialValue = 0;
   export let id = null;
   export let value = typeof initialValue === 'string' ? parseInt(initialValue) : initialValue;
+  export let trackHighlight = 'var(--gray)';
 
   // Node Bindings
   let container = null;
@@ -183,7 +184,7 @@
     on:touchstart={onTrackEvent}
   >
     <div class="range__track" bind:this={container}>
-      <div class="range__track--highlighted" bind:this={progressBar} />
+      <div class="range__track--highlighted" bind:this={progressBar} style="background: {trackHighlight}"/>
       <div
         class="range__thumb"
         class:range__thumb--holding={holding}
@@ -233,19 +234,17 @@
   }
 
   .range__wrapper:focus-visible > .range__track {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px var(--track-focus, #505050);
+    box-shadow: 0 0 0 2px white, 0 0 0 3px var(--gray);
   }
 
   .range__track {
     height: 6px;
-    background-color: var(--track-bgcolor, #f3f3f3);
+    background-color: var(--white);
     border-radius: 4px;
     width: calc(100% - 30px);
   }
 
   .range__track--highlighted {
-    background-color: var(--track-highlight-bgcolor, #505050);
-    background: var(--track-highlight-bg, linear-gradient(90deg, #505050, #505050));
     width: 0;
     height: 8px;
     position: absolute;
@@ -289,13 +288,12 @@
     pointer-events: none;
     position: absolute;
     top: -33px;
-    color: var(--tooltip-text, white);
+    color: var(--white);
     width: 38px;
     padding: 8px 4px 4px 4px;
     border-radius: 4px;
     text-align: center;
-    background-color: var(--tooltip-bgcolor, #505050);
-    background: var(--tooltip-bg, linear-gradient(45deg, #505050, #505050));
+    background: var(--gray);
   }
 
   .range__tooltip::after {
@@ -304,7 +302,7 @@
     position: absolute;
     height: 7px;
     width: 7px;
-    background-color: var(--tooltip-bgcolor, #505050);
+    background-color: var(--gray);
     bottom: -3px;
     left: calc(50% - 3px);
     clip-path: polygon(0% 0%, 100% 100%, 0% 100%);

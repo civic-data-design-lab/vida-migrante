@@ -1,7 +1,8 @@
 <script>
   import { GameData } from '$gameData';
   import { GameStates } from '$types';
-  import { onMount } from 'svelte';
+  import { onMount, afterUpdate, onDestroy } from 'svelte';
+  import { get } from 'svelte/store'
 
   import MigrantPage from './_pages/MigrantPage.svelte';
   import JobSelectPage from './_pages/JobSelectPage.svelte';
@@ -20,10 +21,27 @@
 
   $: state = $GameData.state;
 
-  let drawer;
-  let toggleDrawer;
+  let drawer, toggleDrawer, dashboard, expenseUnsub, incomeUnsub, overspent;
+
   onMount(() => {
     toggleDrawer = () => drawer.toggleDrawer();
+  });
+
+  afterUpdate(() => {
+    if (dashboard) {
+      expenseUnsub = dashboard.expenseStore.subscribe((expenses) => {
+        overspent = expenses > get(dashboard.incomeStore);
+      });
+      incomeUnsub = dashboard.incomeStore.subscribe((income) => {
+        overspent = get(dashboard.expenseStore) > income;
+      });
+      overspent = get(dashboard.expenseStore) > get(dashboard.incomeStore);
+    }
+  });
+
+  onDestroy(() => {
+    expenseUnsub();
+    incomeUnsub();
   });
 
   $: gamePages = new Map([
@@ -100,9 +118,9 @@
   </GamePage>
 {/key}
 {#if pageData.hasDrawer}
-  <Drawer bind:this={drawer} botThreshold={drawerBottomThreshold}>
+  <Drawer bind:this={drawer} botThreshold={drawerBottomThreshold} background={overspent? '#f7e3de' : '#f9f9f9'}>
     <div id="drawer-body" slot="body">
-      <Dashboard />
+      <Dashboard bind:this={dashboard} />
     </div>
   </Drawer>
 {/if}
