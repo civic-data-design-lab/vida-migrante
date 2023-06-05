@@ -246,7 +246,7 @@
     "id": 8,
     "category": "Life Event",
     "title": "Multa",
-    "description": "Las autoridades lo reportaron al tribunal de menores porque su hijo lo está apoyando en su trabajo en horarios escolares.",
+    "description": "Las autoridades te reportaron al tribunal de menores porque su hijo lo está apoyando en su trabajo en horarios escolares.",
     "prompt": "Esto te causa ansiedad y aumenta tu sentimiento de inseguridad en el país. ¿Qué es lo que quieres hacer?",
     "options": [
       {

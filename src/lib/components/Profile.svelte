@@ -41,10 +41,6 @@
         need <b>${-savings}</b> more to be able to afford your basic expenses.
       {/if}
       No one else in the household has income to help with home expenses.
-      <br /><br />
-      You and your family are {#if foodSecure}<b style="color: var(--accent-green)"
-          >not vulnerable</b
-        >{:else}<b style="color: var(--accent-red)">vulnerable</b>{/if}.
     </p>
   {:else}
     <p>

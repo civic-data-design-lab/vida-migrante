@@ -125,6 +125,11 @@
       language == Languages.ENGLISH
         ? `By chosing this option your economic resources ${incomeAdjustmentText} and ${hoursAdjustmentText}`
         : `Al elegir esta opción tus recursos económicos ${incomeAdjustmentText} y ${hoursAdjustmentText}`;
+
+    if (updates.income?.salary === 0.0) {
+      finalText = ''; // Set finalText to an empty string
+    }
+
     if (option.except) {
       finalText += `, ${option.except}`;
     }

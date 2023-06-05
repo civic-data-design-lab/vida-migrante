@@ -91,17 +91,30 @@
 
 <div id="expense-board">
   <div class="alignleft">
-    <p4 style="color: var(--gray); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
+    <p4
+      style="color: {$incomeStore < $expenseStore
+        ? 'var(--accent-red)'
+        : 'var(--gray)'}; font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Expenses: {:else} Gastos: {/if}
-      <b>${Math.floor($expenseStore)}</b></p4
-    >
+      <b>${Math.floor($expenseStore)}</b>
+    </p4>
   </div>
+
   <div class="alignleft">
     <p4 style="color: var(--accent-green); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Income:{:else} Ingresos: {/if}
-      <b>${Math.floor($incomeStore)}</b></p4
-    >
+      <b>${Math.floor($incomeStore)}</b>
+    </p4>
   </div>
+</div>
+<div class="alignleft">
+  <p4 style="color: var(--accent-red);">
+    {#if isEn}
+      {$incomeStore < $expenseStore ? 'Your expenses are higher than your income!' : ' '}
+    {:else}
+      {$incomeStore < $expenseStore ? '¡Tus gastos son mayores a tus ingresos!' : ' '}
+    {/if}
+  </p4>
 </div>
 <div id="expense-bars">
   <section>
@@ -130,8 +143,8 @@
     class="button"
     on:click={() => (expenseReferences = !expenseReferences)}
   >
-    {#if isEn}Show Key Indicators
-    {:else}Ver Indicadores Clave
+    {#if isEn}Hide Key Indicators
+    {:else}Esconder Indicadores Clave
     {/if}
     {#if expenseReferences}
       -
