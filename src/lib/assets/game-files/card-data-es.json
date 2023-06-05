@@ -4,7 +4,7 @@
     "category": "Personal Improvement",
     "title": "Estilista",
     "description": "Un amigo puede enseñarte las habilidades necesarias para convertirte en estilista.",
-    "prompt": "¿Te gustaría convertirte en estilista? Esta formación de ayudará a abrir oportunidades laborales.",
+    "prompt": "¿Te gustaría convertirte en estilista? Esta formación podría abrir nuevas oportunidades profesionales. ",
     "options": [
       {
         "id": 0,
@@ -24,7 +24,7 @@
       }
     ],
     "image": "PI_hairdresser.png",
-    "learn_more": "Los servicios no especializados es el segundo trabajo más común entre los migrantes, el 17% de los migrantes respondió que trabaja en esta industria. No solo estilista pertenece a esta categoría, ya que esta ocupación también figura como el principal oficio que los migrantes quieren aprender; el 31% de ellos respondió que les gustaría aprender las habilidades necesarias para convertirse en uno. Otras respuestas populares para esta pregunta incluyen cocinero, mecánico y panadero."
+    "learn_more": "Los servicios no especializados es el segundo trabajo más común entre los migrantes, el 17% de los migrantes respondió que trabaja en esta sector."
   },
   {
     "id": 1,
@@ -35,7 +35,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Gastar ahorros para tomarme tiempo del trabajo",
+        "description": "No tengo acceso a una computadora",
         "updates": {
           "time": 8,
           "income": {
@@ -45,13 +45,13 @@
             "Tecnologías Digitales"
           ]
         },
-        "implicationText": "El <b>42%</b> de los migrantes tiene que gastar sus ahorros, si los tienen, para satisfacer sus necesidades esenciales."
+        "implicationText": "la mayoría de las personas migrantes no tienen acceso a una computadora y a Internet. Más de la mitad de los migrantes encuestados que tienen habilidades digitales no pueden acceder a Internet. "
       },
       {
         "id": 1,
         "description": "Tal vez la próxima vez",
         "updates": {},
-        "except": "no habrá cambios en tu economía familiar. Sin embargo, estas renunciando a una posibilidad de formación."
+        "except": "si eliges esta opción, no habrá cambios en tu economía familiar. Sin embargo, estas renunciando a una posibilidad de formación."
       }
     ],
     "image": "PI_digital-skills.png",
@@ -61,7 +61,7 @@
     "id": 2,
     "category": "Personal Improvement",
     "title": "Habilidades de Negocios",
-    "description": "Ha comenzando un nuevo programa para obtener un título técnico en finanzas en tu escuela técnica local, pero requiere una computadora personal.",
+    "description": "Has comenzado un curso sobre habilidades digitales, pero requieres una computadora personal.",
     "prompt": "¿Te gustaría tomar el curso?",
     "options": [
       {
@@ -69,10 +69,10 @@
         "description": "No tengo acceso a una computadora",
         "updates": {
           "skills": [
-            "negocios"
+            "capacidades digitales"
           ]
         },
-        "except": "pero no podrás tomar la capacitación. Tus ingresos podrían incrementar pero la mayoría de los migrantes no tienen acceso a una computadora y a Internet"
+        "except": "pero no podrás tomar la capacitación. La mayoría de los migrantes no tienen acceso a una computadora y a Internet."
       }
     ],
     "image": "PI_business-skills.png",
@@ -87,7 +87,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Pedirle prestado a una amiga",
+        "description": "Pedirle prestado",
         "updates": {
           "copingLevel": "stress",
           "income": {
@@ -153,21 +153,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Gastar ahorros para comprarlas",
-        "updates": {
-          "income": {
-            "salary": -23
-          },
-          "expenditures": {
-            "health": 23
-          },
-          "copingLevel": "stress"
-        },
-        "implicationText": "El <b>42%</b> de los migrantes tiene que gastar sus ahorros, si los tienen, para satisfacer sus necesidades esenciales. Si elijes esta opción tus ahorros disminuirán para futuras emergencias"
-      },
-      {
-        "id": 1,
-        "description": "Pedirle prestado a una amiga",
+        "description": "Pedir prestado",
         "updates": {
           "income": {
             "salary": 23
@@ -177,10 +163,10 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "El <b>48%</b> de los migrantes tienen que pedir dinero a amigos o familiares para satisfacer sus necesidades básicas. Tu situación familiar empeorará y te endeudarás con una amiga cercana."
+        "implicationText": "El <b>48%</b> de los migrantes tienen que pedir dinero para satisfacer sus necesidades básicas. Tu situación familiar empeorará y te endeudarás."
       },
       {
-        "id": 2,
+        "id": 1,
         "description": "No puedo pagar las medicinas",
         "updates": {},
         "except": "es posible que tu salud no mejore, tu economía no cambiará",
@@ -188,41 +174,13 @@
       }
     ],
     "image": "LE_health.png",
-    "learn_more": "La salud es uno de los principales desafíos de los migrantes. Cuando migran, encontrar atención médica es difícil ya que aún no tienen una red comunitaria sólida. Si bien el gobierno ecuatoriano ya brinda atención médica universal independientemente de la nacionalidad, las enfermedades y la atención médica siguen en el centro del camino de los migrantes para disminuir su vulnerabilidad."
+    "learn_more": "La salud es uno de los principales desafíos de los migrantes. Cuando migran, encontrar atención médica es difícil. Aunque el gobierno ecuatoriano ya brinda atención médica universal sin importar la nacionalidad, el 26.5% de la  población migrante en Ecuador identifica la salud como un tema prioritario a cubrir."
   },
   {
     "id": 6,
     "category": "Life Event",
-    "title": "Ayudar a Amigos",
-    "description": "Un amigo te pide que lo ayude a cuidar a sus hijos durante un día a la semana.",
-    "prompt": "El cuidado de los niños puede ser una alternativa para generar ingresos adicionales. ¿Desea ayudar a su amigo?",
-    "options": [
-      {
-        "id": 0,
-        "description": "Ayuda a mi amigo",
-        "updates": {
-          "time": 5,
-          "income": {
-            "salary": 23
-          }
-        },
-        "implicationText": "El <b>9%</b> de los migrantes tienen que solicitar ayuda de la comunidad, esto también sirve para crear una red comunitaria en Ecuador."
-      },
-      {
-        "id": 1,
-        "description": "No puedo ayudar a mi amigo",
-        "updates": {},
-        "implicationText": "No apoyar a tu comunidad impactará en las redes sociales de apoyo en caso de emergencia."
-      }
-    ],
-    "image": "LE_community.png",
-    "learn_more": "Construir una red comunitaria sólida ayuda a los migrantes a navegar por su vida diaria. Aunque los migrantes recientes pueden no tener una red comunitaria sólida aún, construirla los ayuda a apoyarse mutuamente para cuidarse o solicitar recursos prestados."
-  },
-  {
-    "id": 7,
-    "category": "Life Event",
     "title": "Discriminación Laboral",
-    "description": "Solicitaste un trabajo y no te lo dieron por tu nacionalidad, pero necesitas dinero extra.",
+    "description": "Postulaste por un nuevo trabajo para mejor tus ingresos. Debido a tu nacionalidad no fuiste seleccionado. Pero necesitas de dinero extra.",
     "prompt": "¿Cómo quieres obtener el dinero que necesitas?",
     "options": [
       {
@@ -241,6 +199,7 @@
         "description": "Trabajar informalmente en la calle",
         "updates": {
           "income": {
+            "time": 10,
             "salary": 23
           },
           "copingLevel": "stress"
@@ -249,10 +208,10 @@
       }
     ],
     "image": "LE_discrimination.svg",
-    "learn_more": "Tu situación familiar empeorará y le debe dinero a un amigo cercano. El 88% de los migrants trabaja en un empleo que coincida con sus habilidades profesionales, experiencias o acreditaciones. Los migrantes cuyos empleos no coinciden con sus habilidades tienen un 57% de probabilidades de tener vulnerabilidad."
+    "learn_more": "El 88% de las personas migrantes trabaja en un empleo que no coincide con sus habilidades profesionales, experiencias o acreditaciones. Los migrantes cuyos empleos no coinciden con sus habilidades tienen un 57% de probabilidades de tener vulnerabilidad."
   },
   {
-    "id": 8,
+    "id": 7,
     "category": "Life Event",
     "title": "Acoso Sexual",
     "description": "Fuiste víctima de acoso sexual (y violencia de genero) en el trabajo.",
@@ -266,7 +225,7 @@
             "salary": -35
           }
         },
-        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido/sufrido violencia de género en su entorno laboral."
+        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido violencia de género en su entorno laboral. En ecuador en el 2022, solo 4521 casos de violencias basada géneros (VBG) han sido denunciado. Se estima que esto represente menos del 1% de los casos de VBG en el país."
       },
       {
         "id": 1,
@@ -277,14 +236,14 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido/sufrido violencia de género en su entorno laboral."
+        "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido violencia de género en su entorno laboral. En ecuador en el 2022, solo 4521 casos de violencias basada géneros (VBG) han sido denunciado. Se estima que esto represente menos del 1% de los casos de VBG en el país."
       }
     ],
     "image": "LE_harassment.svg",
     "learn_more": "Se han identificado formas de violencia como explotación en el lugar de trabajo, sexo transaccional o para la supervivencia y los matrimonios forzados en los últimos años entre los migrantes. La presencia en el país de los adolescentes migrantes, que se mueven no acompañadas o separadas de sus familias, aumenta el riesgo de estos incidentes, así como el riesgo de ser víctimas de trata y tráfico de personas. El 28% de las personas que migran por medios irregulares se declaran sobrevivientes de violencia o abuso."
   },
   {
-    "id": 9,
+    "id": 8,
     "category": "Life Event",
     "title": "Multa",
     "description": "Las autoridades lo reportaron al tribunal de menores porque su hijo lo está apoyando en su trabajo en horarios escolares.",
@@ -294,12 +253,19 @@
         "id": 0,
         "description": "Paga la multa",
         "updates": {
-          "income": {
-            "salary": -10
-          },
+          "income": {},
           "copingLevel": "stress"
         },
-        "implicationText": "Esta multa le costará $10 por mes, hasta que termine de pagarla. El total es de $40."
+        "implicationText": "No puedes pagar la multa ya que no cuentas con el dinero suficiente para pagar la multa."
+      },
+      {
+        "id": 1,
+        "description": "No pagar la multa",
+        "updates": {
+          "income": {},
+          "copingLevel": "stress"
+        },
+        "implicationText": "Tus ingresos no cambian, pero en caso de procesos de regularización o de acreditación de títulos profesionales no podrás aplicar a estas opciones hasta no haber cancelado la multa."
       }
     ],
     "image": "LE_fines.svg",

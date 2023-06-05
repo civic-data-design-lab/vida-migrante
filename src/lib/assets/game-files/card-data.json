@@ -4,7 +4,7 @@
     "category": "Personal Improvement",
     "title": "Hairdresser",
     "description": "You meet a friend who can teach you the skills needed to become a hairdresser.",
-    "prompt": "Would you like to train to become a hairdresser? This training will help open job opportunities.",
+    "prompt": "Would you like to become a hairdresser? This training could open up new career opportunities.",
     "options": [
       {
         "id": 0,
@@ -24,7 +24,7 @@
       }
     ],
     "image": "PI_hairdresser.png",
-    "learn_more": "Non-specialized services is the second most common job among migrants, 17% of the migrants responded that they work in this industry. Not only hairdresser belongs to this category, but this occupation is also listed as the principal trade migrants want to learn; 31% of them responded that they would like to learn the skills required to become one. Other popular choices for this question include cook, mechanic, and baker."
+    "learn_more": "Non-specialized services is the second most common job among migrants, 17% of migrants responded that they work in this sector."
   },
   {
     "id": 1,
@@ -35,7 +35,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Spend savings to take unpaid time off",
+        "description": "I can't afford a computer",
         "updates": {
           "time": 8,
           "income": {
@@ -45,13 +45,13 @@
             "digital skills"
           ]
         },
-        "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs."
+        "implicationText": "most migrants do not have access to a computer and the Internet. More than half of the migrants surveyed who have digital skills cannot access the Internet."
       },
       {
         "id": 1,
         "description": "Maybe next time",
         "updates": {},
-        "except": "there will be no changes in your family economy. However, you are giving up a training possibility."
+        "except": "if you choose this option, you will not get any changes in your family finances. However, you are giving up a training possibility."
       }
     ],
     "image": "PI_digital-skills.png",
@@ -61,7 +61,7 @@
     "id": 2,
     "category": "Personal Improvement",
     "title": "Business Skills",
-    "description": "A new program to get a degree in finance is starting at your local technical school, but it requires a personal computer.",
+    "description": "You have started a digital skills course, but you require a personal computer.",
     "prompt": "Do you want to buy a computer?",
     "options": [
       {
@@ -69,7 +69,7 @@
         "description": "I can't afford a computer",
         "updates": {
           "skills": [
-            "business"
+            "digital skills"
           ]
         },
         "except": " you won't be able to take the training. You could potentially increase you income but most of the migrants don't have access to a computer or to internet"
@@ -87,7 +87,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Borrow money from a friend",
+        "description": "Borrow money",
         "updates": {
           "copingLevel": "stress",
           "income": {
@@ -153,20 +153,6 @@
     "options": [
       {
         "id": 0,
-        "description": "Spend savings to buy the medicine",
-        "updates": {
-          "income": {
-            "salary": -23
-          },
-          "expenditures": {
-            "health": 23
-          },
-          "copingLevel": "stress"
-        },
-        "implicationText": "<b>42%</b> of migrants have to spend their savings, if they have any, to meet their essential needs. If you choose this option your savings will decrease for future emergencies."
-      },
-      {
-        "id": 1,
         "description": "Borrow money from a friend",
         "updates": {
           "income": {
@@ -177,10 +163,10 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "<b>48%</b> of migrants have to ask for money from friends and family to meet their essential needs. Your family situation will worsen and you will get into debt with a close friend."
+        "implicationText": "<b>48%</b> of migrants have to ask for money to meet their basic needs. Your family situation will worsen and you will get into debt."
       },
       {
-        "id": 2,
+        "id": 1,
         "description": "I can't pay for the medicines",
         "updates": {},
         "except": "it is possible that your health will not improve, your economy will not change",
@@ -188,41 +174,13 @@
       }
     ],
     "image": "LE_health.png",
-    "learn_more": "Health is one of the main challenges of migrants. When they relocate, finding healthcare is tough as they still don’t have a strong community network. While the Ecuadorian government already provides universal healthcare regardless of nationality, illnesses and care are at the center of migrants’ path to decrease their vulnerability."
+    "learn_more": "Health is one of the main challenges of migrants. When they migrate, finding medical attention is difficult. Although the Ecuadorian government already provides universal medical care regardless of nationality, 26.5% of the migrant population in Ecuador identifies health as a priority issue to cover."
   },
   {
     "id": 6,
     "category": "Life Event",
-    "title": "Help a Friend",
-    "description": "A friend asks you to help take care of their children for one day a week.",
-    "prompt": "Caring for their children can be an alternative source of income. Do you want to help your friend?",
-    "options": [
-      {
-        "id": 0,
-        "description": "Help my friend",
-        "updates": {
-          "time": 5,
-          "income": {
-            "salary": 23
-          }
-        },
-        "implicationText": "<b>9%</b> of migrants have to ask for help from the community. This serves to create a community network in Ecuador."
-      },
-      {
-        "id": 1,
-        "description": "I can't help my friend",
-        "updates": {},
-        "implicationText": "Not being able to support your community will impact your social networks of support in case of emergency."
-      }
-    ],
-    "image": "LE_community.png",
-    "learn_more": "Building a solid community network helps migrants navigate their daily lives. Although recent migrants, such as those of our study, may not have a solid community network yet, building a network helps them to support each other to take care of relatives and request borrowed assets."
-  },
-  {
-    "id": 7,
-    "category": "Life Event",
     "title": "Workplace Discrimination",
-    "description": "You applied for a job, but was rejected for your nationality. You need the extra money.",
+    "description": "You applied for a new job to improve your income. Due to your nationality you were not selected. But you need extra money.",
     "prompt": "How do you want to get the money you need?",
     "options": [
       {
@@ -238,8 +196,9 @@
       },
       {
         "id": 1,
-        "description": "Work informally on the streets",
+        "description": "Work informally on the street",
         "updates": {
+          "time": 10,
           "income": {
             "salary": 23
           },
@@ -249,10 +208,10 @@
       }
     ],
     "image": "LE_discrimination.svg",
-    "learn_more": "Your family situation will get worse and you will owe money to a close friend. 88% of migrants are not working a job that matches their professional skills, experience, or accreditation. Migrants whose work does not coincide with their skills have a 57% of probabilities of being in food insecurity."
+    "learn_more": "88% of migrants work in a job that does not match their professional skills, experiences or credentials. Migrants whose jobs do not match their skills are 57% likely to be vulnerable."
   },
   {
-    "id": 8,
+    "id": 7,
     "category": "Life Event",
     "title": "Sexual Harassment",
     "description": "You were a victim of sexual harassment at work.",
@@ -284,7 +243,7 @@
     "learn_more": "Forms of violence such as exploitation in the workplace, transactional or survival sex, and forced marriages have been identified in recent years among migrants. The presence of adolescents in the country who move unaccompanied or separated from their families increases the risk of these incidents and human trafficking. 60% of Venezuelan migrants suffer or have suffered gender violence in their work environment or to access the media. 28% of people who cross the border illegally claim to be survivors of border violence or abuse."
   },
   {
-    "id": 9,
+    "id": 8,
     "category": "Life Event",
     "title": "Fines",
     "description": "The authorities have reported you to the Court of Minors because your child is supporting you in your work during school hours.",
@@ -294,12 +253,19 @@
         "id": 0,
         "description": "Pay fine",
         "updates": {
-          "income": {
-            "salary": -10
-          },
+          "income": {},
           "copingLevel": "stress"
         },
-        "implicationText": "This fine will cost you $10 per month for four months for a total of $40."
+        "implicationText": "You cannot pay the fine since you do not have enough money to pay the fine."
+      },
+      {
+        "id": 1,
+        "description": "Don't pay for the fine",
+        "updates": {
+          "income": {},
+          "copingLevel": "stress"
+        },
+        "implicationText": "Your income does not change, but in the case of regularization processes or accreditation of professional titles, you will not be able to apply to these options until you have paid the fine."
       }
     ],
     "image": "LE_fines.svg",

@@ -234,7 +234,9 @@
         min={0}
         max={200}
         value={spending.expense}
-        trackHighlight={spending.expense < range_thresholds.get(spending.name)? 'var(--accent-red)' : 'var(--gray)'}
+        trackHighlight={spending.expense < range_thresholds.get(spending.name)
+          ? 'var(--accent-red)'
+          : 'var(--gray)'}
       />
     </div>
   {/each}

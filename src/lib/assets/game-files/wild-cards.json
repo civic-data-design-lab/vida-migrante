@@ -14,11 +14,11 @@
             "salary": -10
           }
         },
-        "implicationText": "<b>9%</b> of migrants have to ask for help from the community. This serves to create a community network in Ecuador."
+        "implicationText": "If you choose this option, your boss allows you to change the hours with your partner, but you will have to make up the hours, doing 5 hours a week for 2 extra weeks. <b>9%</b> of migrants have to request help from the community, this also serves to create a community network in Ecuador."
       }
     ],
     "image": "WC_gender.svg",
-    "learn_more": "According to the UN and Care Ecuador, gender violence is one of the most serious problems migrants suffer from in Ecuador."
+    "learn_more": "<b>One in two</b> migrant women in Ecuador has suffered or is suffering gender violence in the domestic or public space."
   },
   {
     "id": 1,
@@ -29,7 +29,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Return to the border between Ecuador and Colombia",
+        "description": "Go to the border between Ecuador and Colombia",
         "updates": {
           "income": {
             "salary": -23
@@ -40,7 +40,7 @@
       },
       {
         "id": 1,
-        "description": "Return to the border between Ecuador and Peru",
+        "description": "Go to the border between Ecuador and Peru",
         "updates": {
           "income": {
             "salary": -23
@@ -64,7 +64,7 @@
         "id": 0,
         "description": "Emergency shelter",
         "updates": {},
-        "implicationText": "You and your family move into one of the 50 shelters and welcome houses supported by the WFP in Ecuador. You have the right to a maximum of 5 days of assistance. All your needs will be covered during this time. <b>46%</b> of the migrant population report poor accommodations and <b>9%</b> report a lack of basic services."
+        "implicationText": "You move with your family to one of the 50 active shelters and shelters supported by the WFP in Ecuador. You are entitled to the maximum 5 days of assistance. <b>46%</b> of the migrant population report poor accommodations and <b>9%</b> report a lack of basic services."
       },
       {
         "id": 1,
@@ -75,7 +75,7 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "You decide to move into a private room with shared kitchens and sanitation/hygiene facilities. This option allows you to reduce your monthly expenses. <b>33%</b> of the migrant population share their home with other family nuclei. <b>21%</b> consider their bathrooms or showers unsafe."
+        "implicationText": "You decide to move to a private room, with kitchen and hygiene facilities shared with other families. <b>33%</b> of the migrant population share their home with other family nuclei. <b>21%</b> consider their bathrooms or showers unsafe."
       }
     ],
     "image": "WC_eviction.svg",

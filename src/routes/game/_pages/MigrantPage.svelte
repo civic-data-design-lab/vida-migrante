@@ -62,19 +62,24 @@
     <p slot="body">
       {#if language === Languages.ENGLISH}
         The data analysis for our survey shows that these are the most common “types” or profiles of
-        migrants. We used the K-means clustering algorithm. Clustering is an unsupervised
-        machine-learning technique that clusters data according to feature similarities. The
-        objective of K-means clustering is to group data together to find k clusters by discovering
-        underlying patterns in the data. The algorithm included variables such as gender, age,
-        migratory status, household composition, income, and expenses.
+        migrants. We used the K-means clustering algorithm. The grouping included variables such as
+        gender, age, migratory status, household composition, income, and expenses. If you want to
+        learn more about this method
+        <a
+          target="_blank"
+          href="https://www.dropbox.com/sh/2mnata3mr5fxqxp/AADXe9qwGg_a-yTKHf459i16a?dl=0"
+          >click here.</a
+        >
       {:else}
         El análisis de datos de nuestra encuesta muestra que estos son los “tipos” o perfiles más
-        comunes de migrantes. Utilizamos el algoritmo de agrupamiento de K-medias. La agrupación en
-        clústeres es una técnica de aprendizaje automático no supervisada que agrupa los datos según
-        las similitudes de las características. El objetivo de la agrupación en clústeres de
-        K-medias es agrupar datos para encontrar k clústeres mediante el descubrimiento patrones
-        subyacentes en los datos. El algoritmo incluyó variables como género, edad, estatus
-        migratorio, composición del hogar, ingresos y gastos.
+        comunes de migrantes. Utilizamos el algoritmo de agrupamiento de K-medias. El agrupamiento
+        incluyó variables como género, edad, estatus migratorio, composición del hogar, ingresos y
+        gastos. Si deseas saber más sobre este método dá
+        <a
+          target="_blank"
+          href="https://www.dropbox.com/sh/2mnata3mr5fxqxp/AADXe9qwGg_a-yTKHf459i16a?dl=0"
+          >clic aquí.</a
+        >
       {/if}
     </p>
   </LearnMore>

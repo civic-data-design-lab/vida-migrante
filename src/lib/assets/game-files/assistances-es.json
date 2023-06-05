@@ -6,7 +6,7 @@
     "description": "El proyecto EMPACT del Programa Mundial de Alimentos está brindando capacitación en herramientas digitales.",
     "updates": {
       "income": {
-        "assistance": 54
+        "assistance": 0
       }
     },
     "image": "A_training.png"
@@ -18,7 +18,7 @@
     "description": "El gobierno ecuatoriano amplió su política de regularización y calificas para beneficiarte.",
     "updates": {
       "income": {
-        "assistance": 87
+        "assistance": 0
       }
     },
     "image": "A_regularization.png"
@@ -30,7 +30,7 @@
     "description": "El gobierno ecuatoriano está legalizando acreditaciones, títulos y certificaciones de los migrantes.",
     "updates": {
       "income": {
-        "assistance": 70
+        "assistance": 0
       }
     },
     "image": "A_accreditation.png"

@@ -14,11 +14,11 @@
             "salary": -10
           }
         },
-        "implicationText": "El <b>9%</b> de los migrantes tienen que solicitar ayuda de la comunidad, esto también sirve para crear una red comunitaria en Ecuador."
+        "implicationText": "Si eliges esta opción, tu jefe te permite cambiar el horario con tu compañero, pero tendrás que recuperar las horas, haciendo 5 horas semanales durante 2 semanas extras. El <b>9%</b> de los migrantes tienen que solicitar ayuda de la comunidad, esto también sirve para crear una red comunitaria en Ecuador."
       }
     ],
     "image": "WC_gender.svg",
-    "learn_more": "Según la ONU, la violencia de género es uno de los problemas más graves que padecen migrantes en Ecuador."
+    "learn_more": "<b>Una de cada dos</b> mujeres migrantes en Ecuador ha sufrido o sufre violencia de género en el espacio domestico o público."
   },
   {
     "id": 1,
@@ -29,7 +29,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Regresar a la frontera entre Ecuador y Colombia",
+        "description": "Ir a la frontera entre Ecuador y Colombia",
         "updates": {
           "income": {
             "salary": -23
@@ -40,7 +40,7 @@
       },
       {
         "id": 1,
-        "description": "Regresar a la frontera entre Ecuador y Perú",
+        "description": "Ir a la frontera entre Ecuador y Perú",
         "updates": {
           "income": {
             "salary": -23
@@ -64,7 +64,7 @@
         "id": 0,
         "description": "Refugio de emergencia",
         "updates": {},
-        "implicationText": "Te mudas con tu familia en uno de los 50 refugios y casas de bienvenida con el apoyo de PMA en Ecuador. Tienes derecho a los máximos 5 días de asistencia. Todas sus necesidades se cubrirán durante este tiempo. El <b>46%</b> de los migrantes informa tener condiciones desfavorables de vivienda, y el <b>9%</b> no tiene servicios básicos en su vivienda."
+        "implicationText": "Te mudas con tu familia a uno de los 50 refugios y casas de acogida activas y suportadas por el PMA en Ecuador. Tienes derecho a los máximos 5 días de asistencia.  Todas sus necesidades se cubrirán durante este tiempo. El <b>46%</b> de los migrantes informa tener condiciones desfavorables de vivienda, y el <b>9%</b> no tiene servicios básicos en su vivienda."
       },
       {
         "id": 1,
@@ -75,7 +75,7 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "Decides mudarte a una habitación privada, con cocina e instalaciones de higiene compartidos con otras familias. Esta posibilidad te permite reducir tu gasto mensual. El <b>33%</b> de la población migrante comparte su hogar con otros núcleos familiares. El <b>21%</b> considera que el baño o la ducha no son seguros al ser compartidos."
+        "implicationText": "Decides mudarte a una habitación privada, con cocina e instalaciones de higiene compartidos con otras familias. El <b>33%</b> de la población migrante comparte su hogar con otros núcleos familiares. El <b>21%</b> considera que el baño o la ducha no son seguros al ser compartidos."
       }
     ],
     "image": "WC_eviction.svg",

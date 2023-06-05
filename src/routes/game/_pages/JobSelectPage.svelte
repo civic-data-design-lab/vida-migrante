@@ -45,16 +45,16 @@
     {#if language === Languages.ENGLISH}
       These are the most common occupations of migrants from our survey. Our findings reveal that
       migrants have no choice but to transition to the informal sector in Ecuador. According to
-      Ecuador's Ministry of Employment, 51% of the Ecuadorian economy is in the informal sector,
-      which might also affect migrants' employment. Other common occupations of migrants are
+      Ecuador's Ministry of Employment, 51% of the Ecuadorian economy is in the informal sector, 82%
+      of migrants are in the informal sector. Other common occupations of migrants are
       non-specialized personal services and the food and beverages industry.
     {:else}
       Estas son las ocupaciones más comunes de los migrantes según nuestra encuesta. Nuestros
       hallazgos revelan que los migrantes no tienen más remedio que hacer la transición al sector
       informal en Ecuador. Según el Ministerio de Trabajo de Ecuador, el 51% de la economía
-      ecuatoriana se encuentra en el sector informal, lo que también podría afectar el empleo de los
-      migrantes. Otras ocupaciones comunes entre los migrantes son los servicios personales no
-      especializados y la industria de alimentos y bebidas.
+      ecuatoriana se encuentra en el sector informal, el 82% de la población migrante se encuentra
+      en la informalidad. Otras ocupaciones comunes entre los migrantes son los servicios personales
+      no especializados y la industria de alimentos y bebidas.
     {/if}
   </p>
 </LearnMore>
