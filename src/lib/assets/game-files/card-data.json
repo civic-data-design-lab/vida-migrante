@@ -14,13 +14,17 @@
           "income": {
             "salary": -10
           }
-        }
+        },
+        "except": " These hours will be used to train for this profession."
       },
       {
         "id": 1,
         "description": "You don't like this option",
-        "updates": {},
-        "except": "there will be no changes in your family economy. However, you are giving up a possibility of training and a possibility of income"
+        "updates": {
+          "income": {
+            "salary": 0.0
+          }
+        }
       }
     ],
     "image": "PI_hairdresser.png",
@@ -45,13 +49,15 @@
             "digital skills"
           ]
         },
-        "implicationText": "most migrants do not have access to a computer and the Internet. More than half of the migrants surveyed who have digital skills cannot access the Internet."
+        "implicationText": "Most migrants do not have access to a computer and the Internet. More than half of the migrants surveyed who have digital skills cannot access the Internet."
       },
       {
         "id": 1,
         "description": "Maybe next time",
-        "updates": {},
-        "except": "if you choose this option, you will not get any changes in your family finances. However, you are giving up a training possibility."
+        "updates": {
+          "salary": 0.0
+        },
+        "except": " If you choose this option, you will not get any changes in your family finances. However, you are giving up a training possibility."
       }
     ],
     "image": "PI_digital-skills.png",
@@ -72,7 +78,7 @@
             "digital skills"
           ]
         },
-        "except": " you won't be able to take the training. You could potentially increase you income but most of the migrants don't have access to a computer or to internet"
+        "except": " You won't be able to take the training. You could potentially increase you income but most of the migrants don't have access to a computer or to internet."
       }
     ],
     "image": "PI_business-skills.png",
@@ -102,9 +108,13 @@
       {
         "id": 1,
         "description": "I can't send money to mom now",
-        "updates": {},
+        "updates": {
+          "income": {
+            "salary": 0.0
+          }
+        },
         "except": "Your mother will not be able to receive adequate health care and will probably not get better. Your relatives should seek local help.",
-        "implicationText": "<b>13%</b> of migrants don't send remittances to Venezuela"
+        "implicationText": "<b>13%</b> of migrants don't send remittances to Venezuela."
       }
     ],
     "image": "LE_remittances.png",
@@ -123,11 +133,10 @@
         "updates": {
           "time": 5,
           "income": {
-            "salary": -10
+            "salary": 0.0
           }
         },
-        "except": "in order to make up for the time off",
-        "implicationText": "<b>9%</b> of migrants have to ask for support from their community to improve their conditions and to start creating a community network."
+        "implicationText": "If you choose this option, your boss allows you to switch hours with your coworker, but you will have to make up the hours, doing <b>5</b> hours a week for <b>2</b> extra weeks. <b>9%</b> of migrants have to ask for support from their community to improve their conditions and to start creating a community network."
       },
       {
         "id": 1,
@@ -135,7 +144,7 @@
         "updates": {
           "time": 5,
           "income": {
-            "salary": -10
+            "salary": 0.0
           }
         },
         "implicationText": "<b>9%</b> of migrants have to ask for support from their community to improve their conditions and to start creating a community network. Not being able to support your community will impact social support networks in an emergency."
@@ -153,7 +162,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Borrow money from a friend",
+        "description": "Borrow money",
         "updates": {
           "income": {
             "salary": 23
@@ -168,8 +177,12 @@
       {
         "id": 1,
         "description": "I can't pay for the medicines",
-        "updates": {},
-        "except": "it is possible that your health will not improve, your economy will not change",
+        "updates": {
+          "income": {
+            "salary": 0.0
+          }
+        },
+        "except": "If you choose this option, your health may not improve.",
         "implicationText": ""
       }
     ],
@@ -185,7 +198,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Borrow money from a friend",
+        "description": "Borrow money",
         "updates": {
           "income": {
             "salary": 23
@@ -253,16 +266,20 @@
         "id": 0,
         "description": "Pay fine",
         "updates": {
-          "income": {},
+          "income": {
+            "salary": 0.0
+          },
           "copingLevel": "stress"
         },
-        "implicationText": "You cannot pay the fine since you do not have enough money to pay the fine."
+        "implicationText": "You cannot pay the fine since you do not have enough money to pay it."
       },
       {
         "id": 1,
         "description": "Don't pay for the fine",
         "updates": {
-          "income": {},
+          "income": {
+            "salary": 0.0
+          },
           "copingLevel": "stress"
         },
         "implicationText": "Your income does not change, but in the case of regularization processes or accreditation of professional titles, you will not be able to apply to these options until you have paid the fine."

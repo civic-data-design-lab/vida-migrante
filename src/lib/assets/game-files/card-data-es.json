@@ -14,13 +14,17 @@
           "income": {
             "salary": -10
           }
-        }
+        },
+        "except": " Estas horas las dedicarás para formarte en esta profesión."
       },
       {
         "id": 1,
         "description": "No te gusta esta opción",
-        "updates": {},
-        "except": "no habrá cambios en tu economía familiar. Sin embargo, estas renunciando a una posibilidad de formación y una posibilidad de ingresos"
+        "updates": {
+          "income": {
+            "salary": 0.0
+          }
+        }
       }
     ],
     "image": "PI_hairdresser.png",
@@ -45,13 +49,15 @@
             "Tecnologías Digitales"
           ]
         },
-        "implicationText": "la mayoría de las personas migrantes no tienen acceso a una computadora y a Internet. Más de la mitad de los migrantes encuestados que tienen habilidades digitales no pueden acceder a Internet. "
+        "implicationText": "La mayoría de las personas migrantes no tienen acceso a una computadora y a Internet. Más de la mitad de los migrantes encuestados que tienen habilidades digitales no pueden acceder a Internet. "
       },
       {
         "id": 1,
         "description": "Tal vez la próxima vez",
-        "updates": {},
-        "except": "si eliges esta opción, no habrá cambios en tu economía familiar. Sin embargo, estas renunciando a una posibilidad de formación."
+        "updates": {
+          "salary": 0.0
+        },
+        "except": " Si eliges esta opción, no habrá cambios en tu economía familiar. Sin embargo, estas renunciando a una posibilidad de formación."
       }
     ],
     "image": "PI_digital-skills.png",
@@ -72,7 +78,7 @@
             "capacidades digitales"
           ]
         },
-        "except": "pero no podrás tomar la capacitación. La mayoría de los migrantes no tienen acceso a una computadora y a Internet."
+        "except": " Pero no podrás tomar la capacitación. La mayoría de los migrantes no tienen acceso a una computadora y a Internet."
       }
     ],
     "image": "PI_business-skills.png",
@@ -102,7 +108,11 @@
       {
         "id": 1,
         "description": "No puedo mandar dinero a mi madre",
-        "updates": {},
+        "updates": {
+          "income": {
+            "salary": 0.0
+          }
+        },
         "except": "Tu madre no podrá recibir la atención sanitaria adecuada y probablemente no mejorará. Tus familiares deberán buscar ayuda local.",
         "implicationText": "El <b>13%</b> de los migrantes no mandan remesas a Venezuela."
       }
@@ -123,11 +133,10 @@
         "updates": {
           "time": 5,
           "income": {
-            "salary": -10
+            "salary": 0.0
           }
         },
-        "except": "para compensar",
-        "implicationText": "El <b>9%</b> de los migrantes tienen que pedir ayuda a miembros de la comunidad, esto les sirve también para crear una red comunitaria en Ecuador."
+        "implicationText": ". Si eliges esta opción, tu jefe te permite cambiar el horario con tu compañero, pero tendrás que recuperar las horas, haciendo <b>5</b> horas semanales durante <b>2</b> semanas extras. El <b>9%</b> de los migrantes tienen que pedir ayuda a miembros de la comunidad, esto les sirve también para crear una red comunitaria en Ecuador."
       },
       {
         "id": 1,
@@ -135,7 +144,7 @@
         "updates": {
           "time": 5,
           "income": {
-            "salary": -10
+            "salary": 0.0
           }
         },
         "implicationText": "El <b>9%</b> de los migrantes tienen que pedir ayuda a miembros de la comunidad, esto les sirve también para crear una red comunitaria en Ecuador. No poder apoyar tu comunidad impactará en las redes sociales de apoyo en caso de emergencia."
@@ -168,8 +177,12 @@
       {
         "id": 1,
         "description": "No puedo pagar las medicinas",
-        "updates": {},
-        "except": "es posible que tu salud no mejore, tu economía no cambiará",
+        "updates": {
+          "income": {
+            "salary": 0.0
+          }
+        },
+        "except": "Si eliges esta opción, es posible que tu salud no mejore.",
         "implicationText": ""
       }
     ],
@@ -253,16 +266,20 @@
         "id": 0,
         "description": "Paga la multa",
         "updates": {
-          "income": {},
+          "income": {
+            "salary": 0.0
+          },
           "copingLevel": "stress"
         },
-        "implicationText": "No puedes pagar la multa ya que no cuentas con el dinero suficiente para pagar la multa."
+        "implicationText": "No puedes pagar la multa ya que no cuentas con el dinero suficiente para pagarla."
       },
       {
         "id": 1,
         "description": "No pagar la multa",
         "updates": {
-          "income": {},
+          "income": {
+            "salary": 0.0
+          },
           "copingLevel": "stress"
         },
         "implicationText": "Tus ingresos no cambian, pero en caso de procesos de regularización o de acreditación de títulos profesionales no podrás aplicar a estas opciones hasta no haber cancelado la multa."

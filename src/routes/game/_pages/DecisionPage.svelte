@@ -67,7 +67,7 @@
    */
   const getIncomeAdjustmentText = (salaryUpdate) => {
     if (!salaryUpdate) {
-      return isEn ? 'will stay the same' : 'permanecerán iguales';
+      return isEn ? 'will stay the same.' : 'permanecerán iguales.';
     }
 
     let updateText = isEn ? 'have increased by' : 'recursos económicos han aumentado';
@@ -91,19 +91,19 @@
   const getHoursAdjustmentText = (hoursUpdate) => {
     if (!hoursUpdate) {
       return isEn
-        ? 'the number of hours spent on work and obligations will remain the same'
-        : 'el número de horas dedicadas a trabajo y obligaciones permanecerán iguales';
+        ? 'the number of hours spent on work and obligations will stay the same.'
+        : 'el número de horas dedicadas a trabajo y obligaciones permanecerán iguales.';
     }
 
     if (hoursUpdate < 0) {
       return isEn
-        ? `the number of hours dedicated to work and obligations will be reduced by <b>${-hoursUpdate}</b> hours every week`
-        : `el número de horas dedicadas a trabajo y obligaciones se reducirá en <b>${-hoursUpdate}</b> horas cada semana`;
+        ? `the number of hours dedicated to work and obligations will be reduced by <b>${-hoursUpdate}</b> hours every week.`
+        : `el número de horas dedicadas a trabajo y obligaciones se reducirá en <b>${-hoursUpdate}</b> horas cada semana.`;
     }
 
     return isEn
-      ? `the number of hours dedicated to work and obligations will increase by <b>${hoursUpdate}</b> hours every week`
-      : `el número de horas dedicadas al trabajo y obligaciones aumentará <b>${hoursUpdate}</b> horas cada semana`;
+      ? `the number of hours dedicated to work and obligations will increase by <b>${hoursUpdate}</b> hours every week.`
+      : `el número de horas dedicadas al trabajo y obligaciones aumentará <b>${hoursUpdate}</b> horas cada semana.`;
   };
 
   /**
@@ -131,10 +131,10 @@
     }
 
     if (option.except) {
-      finalText += `, ${option.except}`;
+      finalText += `${option.except}`;
     }
 
-    return finalText + '.';
+    return finalText + ' ';
   };
 
   $: optionUpdatesDescription = stringifyOption(displayedOption);

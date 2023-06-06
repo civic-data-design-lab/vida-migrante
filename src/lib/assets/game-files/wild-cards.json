@@ -11,7 +11,7 @@
         "description": "Take time off work to help her",
         "updates": {
           "income": {
-            "salary": -10
+            "salary": 0.0
           }
         },
         "implicationText": "If you choose this option, your boss allows you to change the hours with your partner, but you will have to make up the hours, doing 5 hours a week for 2 extra weeks. <b>9%</b> of migrants have to request help from the community, this also serves to create a community network in Ecuador."
@@ -32,26 +32,26 @@
         "description": "Go to the border between Ecuador and Colombia",
         "updates": {
           "income": {
-            "salary": -23
+            "salary": 0.0
           },
           "copingLevel": "stress"
         },
-        "implicationText": "A humanitarian organization pays for your passage to the border between Ecuador and Colombia. Due to your illegality, it decides to take irregular steps in order to cross the border. <b>23%</b> of migrants return to Venezuela or Colombia due to not finding work."
+        "implicationText": "You have been left without a job, and there are no expectations of earning an income. A humanitarian organization supports with the payment of the tickets to the Ecuador-Colombia border, with a return aid. It may be a time to return to Venezuela. <b>23%</b> of migrants are forced to return to Venezuela for not meeting their objectives in their migration process. Migrants are the hope of the relatives who remain in Venezuela to receive remittances and to be able to access basic needs with dignity."
       },
       {
         "id": 1,
         "description": "Go to the border between Ecuador and Peru",
         "updates": {
           "income": {
-            "salary": -23
+            "salary": 0.0
           },
           "copingLevel": "stress"
         },
-        "implicationText": "<b>48%</b> of migrants decide to go to Peru."
+        "implicationText": "You have been left without a job, and there are no expectations of earning an income. A humanitarian organization supports the payment of tickets to the Ecuador-Peru border, with transit assistance. It may be a time to try somewhere else."
       }
     ],
     "image": "WC_venezuela.svg",
-    "learn_more": "Other reasons why migrants decide to leave are housing (10%) and security (8%) problems."
+    "learn_more": "During the time in Ecuador, not all migrants who had the objective integrating achieve their objective. The impossibility of settling in Ecuador is due to different factors such as: being victims of gender violence, victims of attacks due to xenophobia, lack of livelihoods due to their nationality, lack of secure networks. The challenges they face in their day to day generate crucial decision-making, which will have an impact on the success or otherwise of their immigration process."
   },
   {
     "id": 2,
@@ -63,13 +63,20 @@
       {
         "id": 0,
         "description": "Emergency shelter",
-        "updates": {},
-        "implicationText": "You move with your family to one of the 50 active shelters and shelters supported by the WFP in Ecuador. You are entitled to the maximum 5 days of assistance. <b>46%</b> of the migrant population report poor accommodations and <b>9%</b> report a lack of basic services."
+        "updates": {
+          "income": {
+            "salary": 0.0
+          }
+        },
+        "implicationText": "You move with your family to one of the 50 active shelters supported by the WFP in Ecuador. You are entitled to the maximum 5 days of assistance. <b>46%</b> of the migrant population report poor accommodations and <b>9%</b> report a lack of basic services."
       },
       {
         "id": 1,
         "description": "Share a home with another family",
         "updates": {
+          "income": {
+            "salary": 0.0
+          },
           "expenditures": {
             "rent": -20
           },
