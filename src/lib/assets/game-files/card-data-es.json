@@ -93,7 +93,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Pedirle prestado",
+        "description": "Pedir prestado",
         "updates": {
           "copingLevel": "stress",
           "income": {
@@ -125,7 +125,7 @@
     "category": "Life Event",
     "title": "Ayuda Comunitaria",
     "description": "En tu comunidad están organizando un evento para fondear ayuda a una familia venezolana, su hijo necesita una operación urgente.  Te solicitan apoyo durante el sábado para estar en el puesto de comida.",
-    "prompt": "",
+    "prompt": "¿Cómo te gustaría ayudar?",
     "options": [
       {
         "id": 0,
@@ -198,7 +198,7 @@
     "options": [
       {
         "id": 0,
-        "description": "Pedir prestado a un amigo",
+        "description": "Pedir prestado",
         "updates": {
           "income": {
             "salary": 23
