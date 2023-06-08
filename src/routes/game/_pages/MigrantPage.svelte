@@ -67,7 +67,7 @@
         learn more about this method
         <a
           target="_blank"
-          href="https://www.dropbox.com/sh/2mnata3mr5fxqxp/AADXe9qwGg_a-yTKHf459i16a?dl=0"
+          href="https://www.dropbox.com/sh/yl6mzpgsbp1nwfo/AADosvws6XWdoS3JJtAKV0Jwa?dl=0"
           >click here.</a
         >
       {:else}
@@ -77,7 +77,7 @@
         gastos. Si deseas saber más sobre este método dá
         <a
           target="_blank"
-          href="https://www.dropbox.com/sh/2mnata3mr5fxqxp/AADXe9qwGg_a-yTKHf459i16a?dl=0"
+          href="https://www.dropbox.com/sh/yl6mzpgsbp1nwfo/AADosvws6XWdoS3JJtAKV0Jwa?dl=0"
           >clic aquí.</a
         >
       {/if}

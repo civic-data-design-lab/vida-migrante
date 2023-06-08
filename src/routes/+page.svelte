@@ -170,7 +170,7 @@
                   <b
                     ><a
                       target="_blank"
-                      href="https://www.dropbox.com/s/bmiuk0xeld118sv/040523_VIDA_MIGRANTE_EN.pdf?dl=0"
+                      href="https://www.dropbox.com/sh/yl6mzpgsbp1nwfo/AADosvws6XWdoS3JJtAKV0Jwa?dl=0"
                       style="font-family: 'open sans', sans-serif;">click here</a
                     ></b
                   >.
@@ -189,7 +189,7 @@
                   <b
                     ><a
                       target="_blank"
-                      href="https://www.dropbox.com/sh/2mnata3mr5fxqxp/AADXe9qwGg_a-yTKHf459i16a?dl=0"
+                      href="https://www.dropbox.com/sh/yl6mzpgsbp1nwfo/AADosvws6XWdoS3JJtAKV0Jwa?dl=0"
                       style="font-family: 'open sans', sans-serif;">clic aquí</a
                     ></b
                   >. <br /><br />
