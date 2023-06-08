@@ -36,7 +36,8 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "You have been left without a job, and there are no expectations of earning an income. A humanitarian organization supports with the payment of the tickets to the Ecuador-Colombia border, with a return aid. It may be a time to return to Venezuela. <b>23%</b> of migrants are forced to return to Venezuela for not meeting their objectives in their migration process. Migrants are the hope of the relatives who remain in Venezuela to receive remittances and to be able to access basic needs with dignity."
+        "implicationText": "You have been left without a job, and there are no expectations of earning an income. A humanitarian organization supports with the payment of the tickets to the Ecuador-Colombia border, with a return aid. It may be time to return to Venezuela. <br><br><b>23%</b> of migrants are forced to return to Venezuela for not meeting their objectives in their migration process. Migrants are the hope of the relatives who remain in Venezuela to receive remittances and to be able to access basic needs with dignity.",
+        "gameOver": true
       },
       {
         "id": 1,
@@ -47,7 +48,8 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "You have been left without a job, and there are no expectations of earning an income. A humanitarian organization supports the payment of tickets to the Ecuador-Peru border, with transit assistance. It may be a time to try somewhere else."
+        "implicationText": "You have been left without a job, and there are no expectations of earning an income. A humanitarian organization supports the payment of tickets to the Ecuador-Peru border, with transit assistance. It may be time to try somewhere else.",
+        "gameOver": true
       }
     ],
     "image": "WC_venezuela.svg",

@@ -138,19 +138,38 @@
   $: backgroundColor = showOptions
     ? `var(--light-${CARD_CATEGORY_COLOR_MAP[card.category]})`
     : 'transparent';
+
+  let gameOver = false;
 </script>
 
 <Modal showModal={displayedOption}>
   <div class="implication-body" slot="body">
     <h3 style="margin-top:.2em;">{displayedOption?.description}</h3>
-    <p style="margin-bottom:0;">{@html optionUpdatesDescription}</p>
+    {#if optionUpdatesDescription.trim()}
+      <p style="margin-bottom:0;">{@html optionUpdatesDescription}</p>
+    {/if}
     <p style="margin-top:0;"><br>{@html displayedOption?.implicationText || ''}</p>
-    <button on:click={() => makeDecision(displayedOption.id)} class="button">
+    <button on:click={() => {
+      if (displayedOption?.gameOver) gameOver = true;
+      else makeDecision(displayedOption.id);
+    }} class="button">
       {#if displayedOption?.updates.income?.salary === -9999}
         {#if isEn}Search for a new job{:else}Encontrar un nuevo empleo{/if}
       {:else}
         {#if isEn}Select{:else}Seleccionar{/if}
       {/if}
+    </button>
+  </div>
+</Modal>
+<Modal showModal={gameOver} closable={false}>
+  <div class="centered-column" slot="body">
+    <h3>
+      {#if isEn} Your Journey in Ecuador is Over {:else} Tu Estancia en Ecuador Terminó {/if}
+    </h3>
+    <button class="button" on:click={() => {
+      GameData.update((g) => {return {...g, state: GameStates.START}});
+    }}>
+      {#if isEn} Try Again {:else} Empezar de Nuevo {/if}
     </button>
   </div>
 </Modal>

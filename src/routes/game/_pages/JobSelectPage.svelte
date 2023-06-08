@@ -12,6 +12,7 @@
   let showModal = false;
   let modalImgSrc, modalTitle, modalDemo, modalSector, modalIncome, modalHours, buttonDisabled;
   function modalUpdater(imgSrc, title, demo, sector, income, hours, jobId, button) {
+    console.log($GameData.prevJob);
     return function updater() {
       modalImgSrc = imgSrc;
       modalTitle = title;
@@ -98,7 +99,7 @@
     <button
       id="modal-button"
       class="button"
-      disabled={buttonDisabled}
+      disabled={buttonDisabled || $GameData.prevJob === job}
       on:click={() => {
         GameData.advanceGameState({ jobId: job });
       }}
@@ -110,9 +111,17 @@
           <span>No tienes las acreditaciones necesarias</span>
         {/if}
       {:else if language === Languages.ENGLISH}
-        Select
+        {#if $GameData.prevJob === job}
+          You quit this job
+        {:else}
+          Select
+        {/if}
       {:else}
-        Seleccionar
+        {#if $GameData.prevJob === job}
+          Dejas este trabajo
+        {:else}
+          Seleccionar
+        {/if}
       {/if}
     </button>
   </div>

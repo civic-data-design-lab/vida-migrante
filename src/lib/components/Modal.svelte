@@ -1,5 +1,6 @@
 <script>
   export let showModal;
+  export let closable = true;
   let dialog;
   $: if (dialog) {
     if (showModal) dialog.showModal();
@@ -12,10 +13,12 @@
   on:close={() => {
     showModal = false;
   }}
-  on:click|self={() => dialog.close()}
+  on:click|self={() => {if (closable) dialog.close()}}
 >
   <div id="modal-button-container" style="transition: 200ms ease;">
-    <button on:click={() => dialog.close()} id="modal-close"> &#x2715; </button>
+    {#if closable}
+      <button on:click={() => dialog.close()} id="modal-close"> &#x2715; </button>
+    {/if}
   </div>
   <slot name="body" />
 </dialog>

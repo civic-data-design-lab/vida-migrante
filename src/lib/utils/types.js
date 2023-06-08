@@ -153,6 +153,7 @@ export const INITIAL_GAME_DATA = {
   currentCardId: null,
   migrantId: null,
   jobId: null,
+  prevJob: null,
   round: 0,
   resources: null,
   pastActions: [],

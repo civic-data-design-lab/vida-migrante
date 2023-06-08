@@ -99,8 +99,8 @@ function createGameData() {
           g.resources.time = jobData.hours;
           g.resources.income.salary = jobData.income;
 
-          if (g.pastActions.length) return { ...getNextState(g), jobId };
-          else return { ...g, jobId, state: GameStates.PROFILE };
+          if (g.prevJob !== null) return { ...getNextState(g), jobId };
+          else return { ...g, jobId, prevJob: jobId, state: GameStates.PROFILE };
         case GameStates.PROFILE:
           return { ...g, state: GameStates.ROUND_START };
         case GameStates.ROUND_START:
