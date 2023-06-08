@@ -8,7 +8,6 @@
   import LearnMore from '$components/LearnMore.svelte';
   import wildCardsEn from '$gameFiles/wild-cards.json';
   import wildCardsEs from '$gameFiles/wild-cards-es.json';
-  import { onMount } from 'svelte';
 
   // Toggles the drawer
   export let toggleDrawer;
@@ -121,10 +120,8 @@
     const incomeAdjustmentText = getIncomeAdjustmentText(updates.income?.salary);
     const hoursAdjustmentText = getHoursAdjustmentText(updates.time);
 
-    let finalText =
-      language == Languages.ENGLISH
-        ? `By chosing this option your economic resources ${incomeAdjustmentText} and ${hoursAdjustmentText}`
-        : `Al elegir esta opción tus recursos económicos ${incomeAdjustmentText} y ${hoursAdjustmentText}`;
+    let finalText = updates.income?.salary === -9999? (isEn ? 'By choosing this option you will have to look for a new job.' : 'Al elegir esta opción debes encontrar un nuevo empleo.') :
+      (isEn ? `By chosing this option your economic resources ${incomeAdjustmentText} and ${hoursAdjustmentText}` : `Al elegir esta opción tus recursos económicos ${incomeAdjustmentText} y ${hoursAdjustmentText}.`);
 
     if (updates.income?.salary === 0.0) {
       finalText = ''; // Set finalText to an empty string
@@ -147,9 +144,13 @@
   <div class="implication-body" slot="body">
     <h3 style="margin-top:.2em;">{displayedOption?.description}</h3>
     <p style="margin-bottom:0;">{@html optionUpdatesDescription}</p>
-    <p style="margin-top:0;">{@html displayedOption?.implicationText || ''}</p>
+    <p style="margin-top:0;"><br>{@html displayedOption?.implicationText || ''}</p>
     <button on:click={() => makeDecision(displayedOption.id)} class="button">
-      {#if isEn}Select{:else}Seleccionar{/if}
+      {#if displayedOption?.updates.income?.salary === -9999}
+        {#if isEn}Search for a new job{:else}Encontrar un nuevo empleo{/if}
+      {:else}
+        {#if isEn}Select{:else}Seleccionar{/if}
+      {/if}
     </button>
   </div>
 </Modal>

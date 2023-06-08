@@ -105,8 +105,9 @@ export function applyUpdates(originalObject, updatesObject) {
       // Concatenate the new array to the old array
       originalObject[key] = originalObject[key].concat(update);
     } else if (typeof update === 'number') {
-      // Add the delta to the original value
-      originalObject[key] += update;
+      // Add the delta to the original value, minimum value of 0
+      const newVal = originalObject[key] + update;
+      originalObject[key] = Math.max(0, newVal);
     } else if (typeof update === 'object') {
       // Recurse for nested values
       applyUpdates(originalObject[key], update);
@@ -133,7 +134,7 @@ export function sumValues(obj) {
 }
 
 /**
- * Gets whether or not an entity is food secure.
+ * Gets whether an entity is food secure.
  *
  * @param {number} totalExpenses - Total household expenses
  * @param {number} householdSize - Household size

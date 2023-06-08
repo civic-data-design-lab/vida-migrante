@@ -235,7 +235,7 @@
         "description": "Denounce and leave work",
         "updates": {
           "income": {
-            "salary": -35
+            "salary": -9999
           }
         },
         "implicationText": "<b>60%</b> of Venezuelan migrant women suffer or have suffered gender violence in their work environment or to access the media."
@@ -245,7 +245,7 @@
         "description": "Quit working without denouncing",
         "updates": {
           "income": {
-            "salary": -23
+            "salary": -9999
           },
           "copingLevel": "stress"
         },

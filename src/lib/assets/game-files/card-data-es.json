@@ -235,7 +235,7 @@
         "description": "Denunciar y dejar el trabajo",
         "updates": {
           "income": {
-            "salary": -35
+            "salary": -9999
           }
         },
         "implicationText": "El <b>60%</b> de las mujeres migrantes venezolanas han sufrido violencia de género en su entorno laboral. En ecuador en el 2022, solo 4521 casos de violencias basada géneros (VBG) han sido denunciado. Se estima que esto represente menos del 1% de los casos de VBG en el país."
@@ -245,7 +245,7 @@
         "description": "Deja de trabajar sin denunciar",
         "updates": {
           "income": {
-            "salary": -23
+            "salary": -9999
           },
           "copingLevel": "stress"
         },
