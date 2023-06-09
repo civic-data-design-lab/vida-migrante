@@ -36,7 +36,8 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "Te has quedado sin trabajo, y no hay expectativas de conseguir ingresos. Una organización humanitaria apoya con el pago de los pasajes hasta la frontera Ecuador- Colombia, con una ayuda de retorno. Puede ser un momento para regresar a Venezuela. <br><br>El <b>23%</b> de las personas migrantes se ven obligadas a regresar a Venezuela por no cumplir con sus objetivos en su proceso migratorio. Los migrantes son la esperanza de los familiares que quedan en Venezuela para recibir remesas y poder acceder a las necesidades básicas con dignidad."
+        "implicationText": "Te has quedado sin trabajo, y no hay expectativas de conseguir ingresos. Una organización humanitaria apoya con el pago de los pasajes hasta la frontera Ecuador- Colombia, con una ayuda de retorno. Puede ser un momento para regresar a Venezuela. <br><br>El <b>23%</b> de las personas migrantes se ven obligadas a regresar a Venezuela por no cumplir con sus objetivos en su proceso migratorio. Los migrantes son la esperanza de los familiares que quedan en Venezuela para recibir remesas y poder acceder a las necesidades básicas con dignidad.",
+        "gameOver": true
       },
       {
         "id": 1,
@@ -47,7 +48,8 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "Te has quedado sin trabajo, y no hay expectativas de conseguir ingresos. Una organización humanitaria apoya con el pago de los pasajes hasta la frontera Ecuador- Perú, con una ayuda de tránsito. Puede ser un momento para probar en otro lugar."
+        "implicationText": "Te has quedado sin trabajo, y no hay expectativas de conseguir ingresos. Una organización humanitaria apoya con el pago de los pasajes hasta la frontera Ecuador- Perú, con una ayuda de tránsito. Puede ser un momento para probar en otro lugar.",
+        "gameOver": true
       }
     ],
     "image": "WC_venezuela.svg",
