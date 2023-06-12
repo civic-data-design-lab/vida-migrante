@@ -32,9 +32,10 @@
   {#if language === Languages.ENGLISH}
     <p>
       You are working as a <b>{job.title}</b> for <b>{job.hours}</b> hours a week and earn a monthly
-      income of <b>${income}</b>. The expenses for your household's basic needs are
-      <b>${expenditures}</b>, but this does not account for all the household's expenses; this means
-      that you
+      income of <b>${income}</b>. The expenses for your household's basic needs,
+      <b>rent, food, rent & hygine and household & utilities</b>, are
+      <b>${expenditures}</b>, but this does not account for all the household's expenses such as
+      <b>remittances and internet</b>; this means that you
       {#if savings >= 0}
         have <b>${savings}</b> for other expenses.
       {:else}
@@ -46,14 +47,15 @@
     <p>
       Tienes un empleo como <b>{job.title}</b>. Trabajas <b>{job.hours}</b> horas a la semana y
       tienes un ingreso mensual de <b>${job.income}</b>. Los gastos para las necesidades básicas de
-      tu hogar son de
-      <b>${expenditures}</b>, pero este número no incluye otros gastos del hogar, esto significa que
+      tu hogar, <b>alquiler, alimentos, salud e higiene y hogar y servicios</b>, son de
+      <b>${expenditures}</b>, pero este número no incluye otros gastos del hogar, como
+      <b>remesas e internet</b>, esto significa que
       {#if savings >= 0}
         tienes <b>${savings}</b> para otros gastos.
       {:else}
         necesitas <b>${-savings}</b> más para sus gastos básicos.
       {/if}
-      Nadie más en su familia aporta ingresos al hogar.
+      Nadie más en tu familia aporta ingresos al hogar.
     </p>
   {/if}
 </div>

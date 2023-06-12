@@ -64,41 +64,39 @@
       {:else}, y aún no son suficientes cubrir las necesidades básicas de tú familia incluyendo las <b
           >Canastas Básicas</b
         >
-        de comida. {#if foodSecure}A pesar de esto, tu familia <b class="accent-green"
-            >no tiene vulnerabilidad</b
-          >
-        {:else}Debido a ciertos eventos, tu familia también tiene <b class="accent-red"
-            >vulnerabilidad</b
-          >{/if}.{/if}
+        de comida. Tu familia <b class="accent-red">vulnerabilidad</b>.{/if}
     </p>
   {/if}
   {#if incomeSuccess}
     {#if language === Languages.ENGLISH}
       <p>
-        Your income is still not enough to buy a <b class="accent-blue">Basic Family Basket</b>, but
-        you can afford a <b class="accent-yellow">Vital Family Basket</b>. Your family is
+        Your income is still not enough to buy a <b class="accent-blue">Basic Family Basket</b>, you
+        can't afford a <b class="accent-yellow">Vital Family Basket</b> either. Your family is
         <b class="accent-red">vulnerable.</b>
       </p>
     {:else}
       <p>
         Tus ingresos aún no son suficientes para adquirir una <b class="accent-blue"
           >Canasta Familiar Básica</b
-        >, pero puedes adquirir una <b class="accent-yellow">Canasta Familiar Vital</b>. Tu familia
+        >, tampoco puedes adquirir una <b class="accent-yellow">Canasta Familiar Vital</b>. Tu
+        familia
         <b class="accent-red">tiene vulnerabilidad.</b>
       </p>
     {/if}
   {/if}
   {#if language === Languages.ENGLISH}
     <p>
-      You received <b>{assistances[0].name}</b> and <b>{assistances[1].name}</b>. These are usually
-      provided to help migrants that are in a difficult situation, and they are usually given just
-      once.
+      You have been able to receive assistance, <b>{assistances[0].name}</b> and
+      <b>{assistances[1].name}</b>, from United Nations agencies, NGOs, among others. These are
+      usually provided to help migrants that are in a difficult situation, and they are usually
+      given just once.
     </p>
   {:else}
     <p>
-      Recibiste <b>{assistances[0].name}</b> y <b>{assistances[1].name}</b>. Por lo general, se dan
-      a los migrantes para ayudarlos cuando se encuentran en una situación difícil y generalmente se
-      brindan solo una vez.
+      Por parte de agencias de Naciones Unicadas, ONGs, entre otras, has podido recibirir
+      asistencias para <b>{assistances[0].name}</b> y <b>{assistances[1].name}</b>. Por lo general,
+      se dan a los migrantes para ayudarlos cuando se encuentran en una situación difícil y
+      generalmente se brindan solo una vez.
     </p>
   {/if}
 </div>

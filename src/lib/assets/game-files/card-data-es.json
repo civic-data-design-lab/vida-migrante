@@ -43,13 +43,13 @@
         "updates": {
           "time": 8,
           "income": {
-            "salary": 54
+            "salary": 0.0
           },
           "skills": [
             "Tecnologías Digitales"
           ]
         },
-        "implicationText": "La mayoría de las personas migrantes no tienen acceso a una computadora y a Internet. Más de la mitad de los migrantes encuestados que tienen habilidades digitales no pueden acceder a Internet. "
+        "implicationText": "No permitiría tomar el curso por lo que no habría cambio en gastos/ingreso/horas. La mayoría de las personas migrantes no tienen acceso a una computadora y a Internet. Más de la mitad de los migrantes encuestados que tienen habilidades digitales no pueden acceder a Internet. "
       },
       {
         "id": 1,
@@ -193,7 +193,7 @@
     "id": 6,
     "category": "Life Event",
     "title": "Discriminación Laboral",
-    "description": "Postulaste por un nuevo trabajo para mejor tus ingresos. Debido a tu nacionalidad no fuiste seleccionado. Pero necesitas de dinero extra.",
+    "description": "Postulaste por un nuevo trabajo para mejor tus ingresos. Debido a tu nacionalidad no fuiste seleccionado, pero necesitas dinero extra para poder tener una alimentación más adecuada y poder adquirir la Canasta Básica.",
     "prompt": "¿Cómo quieres obtener el dinero que necesitas?",
     "options": [
       {
@@ -205,7 +205,7 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "El <b>48%</b> de los migrantes tienen que pedir dinero a amigos o familiares para satisfacer sus necesidades básicas."
+        "implicationText": "¡Atención! Tus necesidades básicas no están cubiertas, así que no puedes utilizar el dinero que tienes disponible, por lo que tienes que pedir prestado. El <b>48%</b> de los migrantes tienen que pedir dinero a amigos o familiares para satisfacer sus necesidades básicas."
       },
       {
         "id": 1,
@@ -217,7 +217,7 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "El <b>48%</b> de los migrantes tienen que pedir dinero a amigos o familiares para satisfacer sus necesidades básicas. El 82% de los migrantes trabajan en el sector informal en Ecuador."
+        "implicationText": "El 82% de los migrantes trabajan en el sector informal en Ecuador."
       }
     ],
     "image": "LE_discrimination.svg",

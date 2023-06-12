@@ -340,14 +340,11 @@
           <li>
             <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
-                5. You will have the opportunity to select certain
-                <b
-                  >assistance, to help your household through your journey in this country and
-                  improve your situation in this country.</b
-                >
+                5. You will have the opportunity to access
+                <b>assistance that allows your family to improve the situation in the country.</b>
               {:else}
-                5. Tendrás la oportunidad de seleccionar
-                <b>asistencias para tu familia mejorar tu situación en el país.</b>
+                5. Tendrás la oportunidad de acceder a
+                <b>asistencias que permitan que tu familia mejore la situación en el país.</b>
               {/if}
             </p>
           </li>

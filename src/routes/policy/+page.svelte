@@ -20,6 +20,17 @@
   {/if}
 
   <div id="policy-body">
+    {#if language == Languages.ENGLISH}
+      <p>
+        From the conducted study, 5 general key points have been identified to promote an
+        improvement in the lives of migrants.
+      </p>
+    {:else}
+      <p>
+        Desde el estudio realizado, se han identificado 5 puntos generales clave para propiciar una
+        mejora en la vida de los/as personas migrantes.
+      </p>
+    {/if}
     <h1>1</h1>
     {#if language == Languages.ENGLISH}
       <p>

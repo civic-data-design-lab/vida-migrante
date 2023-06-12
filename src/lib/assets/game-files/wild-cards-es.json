@@ -24,7 +24,7 @@
     "id": 1,
     "category": "Wild Card",
     "title": "¿Quedarse o Irse?",
-    "description": "Desafortunadamente, no has logrado incluirte económica y socialmente en Ecuador. Decides regresar a Venezuela.",
+    "description": "Desafortunadamente, no has logrado incluirte económica y socialmente en Ecuador. Debes decidir dejar el lugar dónde estás y tomar nuevo rumbo.",
     "prompt": "¿Cómo lo quieres hacer?",
     "options": [
       {

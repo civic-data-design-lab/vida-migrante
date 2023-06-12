@@ -24,7 +24,7 @@
     "id": 1,
     "category": "Wild Card",
     "title": "Stay or Leave?",
-    "description": "Unfortunately, you have not managed to be included economically and socially into Ecuador. You decide to return to Venezuela.",
+    "description": "Unfortunately, you have not managed to be included economically and socially into Ecuador. You must decide to leave the place where you are and take a new course.",
     "prompt": "What do you want to do?",
     "options": [
       {

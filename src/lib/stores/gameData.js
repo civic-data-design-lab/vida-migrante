@@ -275,6 +275,14 @@ function drawCard(gameData) {
 
   // Make sure we don't draw a repeat card
   let availableCards = allCards.filter((card) => !alreadyDrawn.includes(card.id));
+
+  const migrant = allMigrantData.migrants[gameData.migrantId];
+  if (migrant && ["José", "Luis"].includes(migrant.name)) {
+    availableCards = availableCards.filter(
+      (card) => !card.title.includes("Sexual Harassment", "Acoso Sexual")
+    );
+  }
+
   // Draw a life event by round 3
   if (
     gameData.round === 2 &&

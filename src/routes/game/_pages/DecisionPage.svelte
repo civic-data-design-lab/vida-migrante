@@ -69,10 +69,10 @@
       return isEn ? 'will stay the same.' : 'permanecerán iguales.';
     }
 
-    let updateText = isEn ? 'have increased by' : 'recursos económicos han aumentado';
+    let updateText = isEn ? 'have increased by' : 'han aumentado';
     if (salaryUpdate < 0) {
       salaryUpdate = -salaryUpdate;
-      updateText = isEn ? 'have decreased by' : 'recursos económicos han disminuido';
+      updateText = isEn ? 'have decreased by' : 'han disminuido';
     }
 
     if (isEn) {
@@ -120,8 +120,14 @@
     const incomeAdjustmentText = getIncomeAdjustmentText(updates.income?.salary);
     const hoursAdjustmentText = getHoursAdjustmentText(updates.time);
 
-    let finalText = updates.income?.salary === -9999? (isEn ? 'By choosing this option you will have to look for a new job.' : 'Al elegir esta opción debes encontrar un nuevo empleo.') :
-      (isEn ? `By chosing this option your economic resources ${incomeAdjustmentText} and ${hoursAdjustmentText}` : `Al elegir esta opción tus recursos económicos ${incomeAdjustmentText} y ${hoursAdjustmentText}.`);
+    let finalText =
+      updates.income?.salary === -9999
+        ? isEn
+          ? 'By choosing this option you will have to look for a new job.'
+          : 'Al elegir esta opción debes encontrar un nuevo empleo.'
+        : isEn
+        ? `By chosing this option your economic resources ${incomeAdjustmentText} and ${hoursAdjustmentText}`
+        : `Al elegir esta opción tus recursos económicos ${incomeAdjustmentText} y ${hoursAdjustmentText}.`;
 
     if (updates.income?.salary === 0.0) {
       finalText = ''; // Set finalText to an empty string
@@ -148,16 +154,17 @@
     {#if optionUpdatesDescription.trim()}
       <p style="margin-bottom:0;">{@html optionUpdatesDescription}</p>
     {/if}
-    <p style="margin-top:0;"><br>{@html displayedOption?.implicationText || ''}</p>
-    <button on:click={() => {
-      if (displayedOption?.gameOver) gameOver = true;
-      else makeDecision(displayedOption.id);
-    }} class="button">
+    <p style="margin-top:0;"><br />{@html displayedOption?.implicationText || ''}</p>
+    <button
+      on:click={() => {
+        if (displayedOption?.gameOver) gameOver = true;
+        else makeDecision(displayedOption.id);
+      }}
+      class="button"
+    >
       {#if displayedOption?.updates.income?.salary === -9999}
         {#if isEn}Search for a new job{:else}Encontrar un nuevo empleo{/if}
-      {:else}
-        {#if isEn}Select{:else}Seleccionar{/if}
-      {/if}
+      {:else if isEn}Select{:else}Seleccionar{/if}
     </button>
   </div>
 </Modal>
@@ -166,9 +173,14 @@
     <h3>
       {#if isEn} Your Journey in Ecuador is Over {:else} Tu Estancia en Ecuador Terminó {/if}
     </h3>
-    <button class="button" on:click={() => {
-      GameData.update((g) => {return {...g, state: GameStates.START}});
-    }}>
+    <button
+      class="button"
+      on:click={() => {
+        GameData.update((g) => {
+          return { ...g, state: GameStates.START };
+        });
+      }}
+    >
       {#if isEn} Try Again {:else} Empezar de Nuevo {/if}
     </button>
   </div>

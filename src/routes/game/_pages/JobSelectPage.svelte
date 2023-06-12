@@ -116,12 +116,10 @@
         {:else}
           Select
         {/if}
+      {:else if $GameData.prevJob === job}
+        Dejaste este trabajo
       {:else}
-        {#if $GameData.prevJob === job}
-          Dejas este trabajo
-        {:else}
-          Seleccionar
-        {/if}
+        Seleccionar
       {/if}
     </button>
   </div>

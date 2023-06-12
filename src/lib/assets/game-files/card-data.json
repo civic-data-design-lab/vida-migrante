@@ -43,13 +43,13 @@
         "updates": {
           "time": 8,
           "income": {
-            "salary": 54
+            "salary": 0.0
           },
           "skills": [
             "digital skills"
           ]
         },
-        "implicationText": "Most migrants do not have access to a computer and the Internet. More than half of the migrants surveyed who have digital skills cannot access the Internet."
+        "implicationText": "You would not take the course so there would be no change in expenses/income/hours. Most migrants do not have access to a computer and the Internet. More than half of the migrants surveyed who have digital skills cannot access the Internet."
       },
       {
         "id": 1,
@@ -193,7 +193,7 @@
     "id": 6,
     "category": "Life Event",
     "title": "Workplace Discrimination",
-    "description": "You applied for a new job to improve your income. Due to your nationality you were not selected. But you need extra money.",
+    "description": "You applied for a new job to improve your income. Due to your nationality you were not selected, but you need extra money to be able to have a more adequate diet and to be able to afford the Basic Food Basket.",
     "prompt": "How do you want to get the money you need?",
     "options": [
       {
@@ -205,7 +205,7 @@
           },
           "copingLevel": "stress"
         },
-        "implicationText": "<b>48%</b> of migrants have to ask for money from family or friends to meet their basic needs."
+        "implicationText": "¡Atención! Your basic needs are not covered, so you cannot use the money you have available, so you have to borrow. <b>48%</b> of migrants have to ask for money from family or friends to meet their basic needs."
       },
       {
         "id": 1,
