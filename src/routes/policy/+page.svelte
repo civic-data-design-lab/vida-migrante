@@ -14,12 +14,23 @@
 </header>
 <div id="container" class="constrained">
   {#if language == Languages.ENGLISH}
-    <h1 id="policy-title">Policy Recommendations</h1>
+    <h1 id="policy-title">Recommendations from our Study</h1>
   {:else}
-    <h1 id="policy-title">Recomendaciones</h1>
+    <h1 id="policy-title">Recomendaciones del Estudio</h1>
   {/if}
 
   <div id="policy-body">
+    {#if language == Languages.ENGLISH}
+      <p>
+        From the conducted study, 5 general key points have been identified to promote an
+        improvement in the lives of migrants.
+      </p>
+    {:else}
+      <p>
+        Desde el estudio realizado, se han identificado 5 puntos generales clave para propiciar una
+        mejora en la vida de los/as personas migrantes.
+      </p>
+    {/if}
     <h1>1</h1>
     {#if language == Languages.ENGLISH}
       <p>
@@ -44,8 +55,8 @@
     {:else}
       <p>
         <b>Habilidades</b><br />
-        Muchos migrantes luchan por encontrar un trabajo que coincida con sus habilidades; se deben hacer
-        mejores conexiones entre las habilidades que los migrantes traen consigo y el mercado laboral
+        Las personas migrantes luchan por encontrar un trabajo que coincida con sus habilidades; se deben
+        hacer mejores conexiones entre las habilidades que los migrantes traen consigo y el mercado laboral
         potencial en Ecuador.
       </p>
     {/if}
@@ -59,9 +70,9 @@
     {:else}
       <p>
         <b>Capacitación e Internet</b><br />
-        Los migrantes pueden contribuir al desarrollo de las economías digitales, pero carecen de ca-
-        pacitación y acceso estable a Internet; es necesario hallar formas de brindar un mejor acceso
-        a los servicios de Internet y la capacitación para ayudarles.
+        Las personas migrantes pueden contribuir al desarrollo de las economías digitales, pero carecen
+        de ca- pacitación y acceso estable a Internet; es necesario hallar formas de brindar un mejor
+        acceso a los servicios de Internet y la capacitación para ayudarles.
       </p>
     {/if}
     <h1>4</h1>
@@ -74,8 +85,9 @@
     {:else}
       <p>
         <b>Sector Informal</b><br />
-        The Ecuador economy is 51% informal which means that to help migrants in Ecuador we must also
-        help the Ecuadorian economy. Programs available for Migrants should also be available for Ecuadorian.
+        La economía ecuatoriana es 51% informal lo que significa que para ayudar a las personas migrantes
+        en Ecuador también debemos ayudar a la economía ecuatoriana. Los programas disponibles para migrantes
+        también deberían estar disponibles para ecuatorianos.
       </p>
     {/if}
     <h1>5</h1>
@@ -89,9 +101,9 @@
     {:else}
       <p>
         <b>Economías Digitales</b><br />
-        Los migrantes están dispuestos a aprender las habilidades necesarias para las economías dig-
-        itales. Se deben desarrollar programas para ambos, venezolano y ecuatorianos, para ayudar a aumentar
-        su capacidad de trabajar dentro de la economía de servicios.
+        Las personas migrantes están dispuestos a aprender las habilidades necesarias para las economías
+        dig- itales. Se deben desarrollar programas para ambos, venezolano y ecuatorianos, para ayudar
+        a aumentar su capacidad de trabajar dentro de la economía de servicios.
       </p>
     {/if}
   </div>

@@ -170,7 +170,7 @@
                   <b
                     ><a
                       target="_blank"
-                      href="https://www.dropbox.com/s/bmiuk0xeld118sv/040523_VIDA_MIGRANTE_EN.pdf?dl=0"
+                      href="https://www.dropbox.com/sh/yl6mzpgsbp1nwfo/AADosvws6XWdoS3JJtAKV0Jwa?dl=0"
                       style="font-family: 'open sans', sans-serif;">click here</a
                     ></b
                   >.
@@ -189,7 +189,7 @@
                   <b
                     ><a
                       target="_blank"
-                      href="https://www.dropbox.com/s/bmiuk0xeld118sv/040523_VIDA_MIGRANTE_EN.pdf?dl=0"
+                      href="https://www.dropbox.com/sh/yl6mzpgsbp1nwfo/AADosvws6XWdoS3JJtAKV0Jwa?dl=0"
                       style="font-family: 'open sans', sans-serif;">clic aquí</a
                     ></b
                   >. <br /><br />
@@ -219,11 +219,6 @@
                   básicas como alquiler, servicios públicos, salud y alimentos.
                 {/if}
               </p>
-              <img
-                src={`/images/welcomepage/donut1.svg`}
-                alt="donut1"
-                style="width: 75%; position: relative; left: 40px"
-              />
               <p style="text-align: left; font-family: 'open-sans', sans-serif; margin-bottom: 0">
                 {#if language === Languages.ENGLISH}
                   This leaves them with <b>little left for other essential needs</b>. In order to
@@ -231,7 +226,7 @@
                   experience in Ecuador. <br /><br />
                   <b>Help migrants make these choices.</b> <br /><br />
                   Go through the simulation by helping migrants improve their livelihoods. The process
-                  will show you how the situation is <b>extremely difficult</b> for most migrants;
+                  will show you how the situation is <b>extremely difficult</b> for most migrants.
                 {:else}
                   Esto les deja <b>poco para otras necesidades</b> esenciales. Para hacer que su
                   dinero dure, toman una serie de decisiones mientras navegan su experiencia en
@@ -239,20 +234,19 @@
                   <b>Ayuda a los migrantes a tomar estas decisiones.</b> <br /><br />
                   Navega la simulación ayudando a los migrantes a mejorar sus medios de vida. El proceso
                   te mostrará cómo la situación es <b>extremadamente difícil</b> para la mayoría de los
-                  migrantes;
+                  migrantes.
                 {/if}
               </p>
-              <img src={`/images/welcomepage/donut2.svg`} alt="donut2" style="width: 60%" />
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
                 {#if language === Languages.ENGLISH}
-                  <b>only 6% of the households</b> have an income equal or above the national
-                  average in Ecuador, <span style="color: #94439d;"><b>$840</b></span>. Migrants'
-                  households average income is
+                  <b>94%</b> of households has an income 94% below the national average in Ecuador,
+                  <span style="color: #94439d;"><b>$840</b></span>. Migrants' households average
+                  income is
                   <span style="color: #e7ab9c;"><b>$313</b></span>.
                 {:else}
-                  <b>solo el 6% de los hogares</b> tiene un ingreso igual o superior al promedio
-                  nacional en el Ecuador, <span style="color: #94439d;"><b>$840</b></span>. El
-                  promedio de ingreso de los hogares migrantes es de
+                  <b>El 94%</b> de los hogares tiene un ingreso inferior al promedio nacional de
+                  Ecuador, <span style="color: #94439d;"><b>$840</b></span>. El promedio de ingreso
+                  de los hogares migrantes es de
                   <span style="color: #e7ab9c;"><b>$313</b></span>.
                 {/if}
               </p>
@@ -283,11 +277,9 @@
 
         <p style="text-align: left; font-family: 'open-sans', sans-serif;" class="p-responsive">
           {#if language === Languages.ENGLISH}
-            The goal of the simulation is to <b>improve part of your livelihood;</b> increasing your
-            income while working reasonable hours.
+            The goal of the simulation is to <b>improve the livelihood</b> of the chosen character.
           {:else}
-            El objetivo de la simulación es <b>mejorar tu sustento;</b> aumentar tus ingresos, trabajando
-            horas razonables.
+            El objetivo de la simulación es <b>mejorar el sustento</b> del personaje escogido.
           {/if}
         </p>
         <ol type="1" style="padding-left: 1em;">
@@ -307,9 +299,11 @@
           <li>
             <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
-                2. You will go through 4 rounds or scenarios, each one is <b>one month.</b>
+                2. You will go through 4 rounds or scenarios, each one is <b>one month</b> and
+                <b>one challenge.</b>
               {:else}
-                2. La simulación tiene 4 rondas o escenarios, cada uno representa <b>un mes.</b>
+                2. La simulación tiene 4 rondas o escenarios, cada uno representa <b>un mes</b> y
+                <b>un reto.</b>
               {/if}
             </p>
           </li>
@@ -329,24 +323,28 @@
             <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 4. Each option or decision you make will
-                <b>affect your income and your expenses.</b>
+                <b>affect your income and your expenses.</b> In the lower console, you will be able
+                to decide how to <b>divide your expenses</b> but you will see some alerts when you
+                make changes, which will indicate if you cover the <b>basic needs</b> or not with what
+                you intend to spend. Move the bars to allocate the expense for each category.
               {:else}
                 4. Cada decisión u opción que tomes
-                <b> afectará tus ingresos y tus gastos.</b>
+                <b> afectará tus ingresos y tus gastos.</b> En la consola inferior, podrás decidir
+                como
+                <b>dividir tus gastos</b> pero verás algunas alertas cuando realices cambios, que
+                indicarán si cubres las <b>necesidades básicas</b> o no con lo que pretendes gastar.
+                Mueva las barras para asignar el gasto para cada categoría.
               {/if}
             </p>
           </li>
           <li>
             <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
-                5. You will have the opportunity to select certain
-                <b
-                  >assistance, to help your household through your journey in this country and
-                  improve your situation in this country.</b
-                >
+                5. You will have the opportunity to access
+                <b>assistance that allows your family to improve the situation in the country.</b>
               {:else}
-                5. Tendrás la oportunidad de seleccionar
-                <b>asistencias para tu familia mejorar tu situación en el país.</b>
+                5. Tendrás la oportunidad de acceder a
+                <b>asistencias que permitan que tu familia mejore la situación en el país.</b>
               {/if}
             </p>
           </li>

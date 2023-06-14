@@ -36,6 +36,41 @@ if (browser && dev) {
 function createGameData() {
   const { subscribe, set, update } = writable(initialValue);
 
+  const getNextState = (g, action = undefined) => {
+    let nextState;
+    if (!g.resources.income.salary) {
+      // Quit job
+      nextState = GameStates.JOB_SELECT;
+    } else if (g.round + 1 >= NUM_ROUNDS) {
+      // Game Over
+      nextState = GameStates.GAME_END;
+    } else if (g.round === 0 || g.round === 2) {
+      // Assistance state shows up after rounds 1 and 3, don't end the
+      // round yet
+      nextState = GameStates.ASSISTANCE;
+    } else if (g.round === 1) {
+      // Wild card shows up after round 2
+      const wildCardID = Math.floor(Math.random() * allWildCards.length);
+      return {
+        ...g,
+        state: GameStates.WILD_CARD,
+        currentCardId: wildCardID,
+        pastActions: action ? [...g.pastActions, action] : g.pastActions,
+      };
+    } else {
+      // Next round
+      nextState = GameStates.ROUND_START;
+    }
+
+    // Update the game data
+    return {
+      ...g,
+      state: nextState,
+      round: nextState === GameStates.ROUND_START ? g.round + 1 : g.round,
+      pastActions: action ? [...g.pastActions, action] : g.pastActions, // Add to the past actions list
+    };
+  };
+
   const advanceGameState = (kwargs) => {
     update((g) => {
       switch (g.state) {
@@ -64,7 +99,8 @@ function createGameData() {
           g.resources.time = jobData.hours;
           g.resources.income.salary = jobData.income;
 
-          return { ...g, jobId, state: GameStates.PROFILE };
+          if (g.prevJob !== null) return { ...getNextState(g), jobId };
+          else return { ...g, jobId, prevJob: jobId, state: GameStates.PROFILE };
         case GameStates.PROFILE:
           return { ...g, state: GameStates.ROUND_START };
         case GameStates.ROUND_START:
@@ -83,37 +119,7 @@ function createGameData() {
           const action = { cardId: g.currentCardId, wild: false, optionId };
 
           // Figure out the next game state
-          let nextState;
-          let roundOver = false;
-          if (g.round + 1 >= NUM_ROUNDS) {
-            // Game Over
-            nextState = GameStates.GAME_END;
-          } else if (g.round === 0 || g.round === 2) {
-            // Assistance state shows up after rounds 1 and 3, don't end the
-            // round yet
-            nextState = GameStates.ASSISTANCE;
-          } else if (g.round === 1) {
-            // Wild card shows up after round 2
-            const wildCardID = Math.floor(Math.random() * allWildCards.length);
-            return {
-              ...g,
-              state: GameStates.WILD_CARD,
-              currentCardId: wildCardID,
-              pastActions: [...g.pastActions, action],
-            };
-          } else {
-            // Next round
-            roundOver = true;
-            nextState = GameStates.ROUND_START;
-          }
-
-          // Update the game data
-          return {
-            ...g,
-            state: nextState,
-            round: roundOver ? g.round + 1 : g.round,
-            pastActions: [...g.pastActions, action], // Add to the past actions list
-          };
+          return getNextState(g, action);
         }
         case GameStates.WILD_CARD:
           const { optionId } = kwargs;
@@ -269,6 +275,14 @@ function drawCard(gameData) {
 
   // Make sure we don't draw a repeat card
   let availableCards = allCards.filter((card) => !alreadyDrawn.includes(card.id));
+
+  const migrant = allMigrantData.migrants[gameData.migrantId];
+  if (migrant && ["José", "Luis"].includes(migrant.name)) {
+    availableCards = availableCards.filter(
+      (card) => !card.title.includes("Sexual Harassment", "Acoso Sexual")
+    );
+  }
+
   // Draw a life event by round 3
   if (
     gameData.round === 2 &&

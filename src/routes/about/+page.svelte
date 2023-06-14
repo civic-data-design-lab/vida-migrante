@@ -44,9 +44,10 @@
       trainings and programs to improve their economic situation. A mismatch of vocational skills
       and attainable careers, coupled with insufficient resources to improve the employment
       opportunities such as internet and trainings, has led to high food insecurity and an inability
-      to integrate into the economy. Nearly two-thirds of migrants put 75% of their income towards
-      basic necessities like food, rent and health and cannot afford to pursue opportunities such as
-      trainings to improve their economic situation.
+      to integrate into the economy. More than half of migrants spend more than 90 percent of your
+      monthly income in basic needs such as food, rent, utilities, and health; nearly two-thirds of
+      migrants put 75% of their income towards basic necessities like food, rent and health and
+      cannot afford to pursue opportunities such as trainings to improve their economic situation.
     </p>
   {:else}
     <p>
@@ -55,9 +56,11 @@
       capacitaciones y programas para mejorar su situación económica. Un desajuste de las
       habilidades profesionales y acreditaciones, junto con recursos insuficientes para mejorar sus
       ingresos acceso a Internet y capacitaciones, ha llevado a una alta inseguridad alimentaria y a
-      la incapacidad para integrarse a la economía. Casi dos tercios de los inmigrantes dedican el
-      75% de sus ingresos a necesidades básicas como comida, alquiler y salud y no pueden buscar
-      otras oportunidades como capacitaciones laborales para mejorar su situación económica.
+      la incapacidad para integrarse a la economía. Más de la mitad de los migrantes gastan más del
+      90 por ciento de sus ingresos mensuales en necesidades básicas como alquiler, servicios
+      públicos, salud y alimentos; casi dos tercios de los inmigrantes dedican el 75% de sus
+      ingresos a necesidades básicas como comida, alquiler y salud y no pueden buscar otras
+      oportunidades como capacitaciones laborales para mejorar su situación económica.
     </p>
   {/if}
   {#if language == Languages.ENGLISH}

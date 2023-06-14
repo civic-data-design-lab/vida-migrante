@@ -68,20 +68,18 @@ word-wrap: break-word; text-align:center;margin-block:.1em;"
   </h1>
   <p slot="body">
     {#if language === Languages.ENGLISH}
-      Assistance help migrants fill gaps in their coverage of basic needs. This aid might come in
-      the form of food vouchers, training, or in-kind goods. Organizations such as WFP, the UN,
-      NGOs, and the Ecuadorian government provide help to migrants in vulnerable positions.
-      Assistance are usually offered just once per type, so it’s important for the agencies that
-      provide them to target the correct groups, and for migrants to acknowledge this. Only 11% of
-      our respondents received assistance, making it very important to expand their reach.
+      Organizations such as the WFP, United Nations agencies and non-governmental organizations
+      (NGOs) provide assistance in emergency contexts to people in vulnerable situations. In
+      general, assistance is offered only once per type, so it is important to prioritize the most
+      vulnerable and priority groups, such as pregnant women, people with disabilities, the elderly,
+      children under 5 years of age, the LGBTQI+ population, among others.
     {:else}
-      La asistencia ayuda a los migrantes a llenar los vacíos en la cobertura de sus necesidades
-      básicas. Esta ayuda puede venir en forma de cupones de alimentos, capacitación o bienes en
-      especie. Organizaciones como el PMA, la ONU, ONG y el gobierno ecuatoriano brindan ayuda a los
-      migrantes en situaciones de vulnerabilidad. Por lo general, la asistencia se ofrece solo una
-      vez por tipo, por lo que es importante que las agencias que la brindan se dirijan a los grupos
-      correctos y que los migrantes lo reconozcan. Solo el 11% de nuestros encuestados recibió
-      asistencia, por lo que es importante ampliar su alcance.
+      Organizaciones como el PMA, agencias de Naciones Unidas y organizaciones no gubernamentales
+      (ONG) brindan asistencia en contextos de emergencia a personas en situación de vulnerabilidad.
+      En general, la asistencia se ofrece una sola vez por tipo, por lo que es importante que se
+      prioricen los grupos más vulnerables y prioritarios, como las mujeres embarazadas, las
+      personas con discapacidad, los adultos mayores, los niños menores de 5 años, la población
+      LGBTQI+, entre otros.
     {/if}
   </p>
 </LearnMore>
@@ -96,7 +94,11 @@ word-wrap: break-word; text-align:center;margin-block:.1em;"
     <p id="modal-text">
       {displayedAssistance?.description}
     </p>
-    <button class="button" style="margin-top: 1rem;" on:click={() => selectAssistance(displayedAssistance.id)}>
+    <button
+      class="button"
+      style="margin-top: 1rem;"
+      on:click={() => selectAssistance(displayedAssistance.id)}
+    >
       {#if language === Languages.ENGLISH}
         Select
       {:else}

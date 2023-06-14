@@ -2,13 +2,12 @@
   import { GameData } from '$gameData';
   import Card from '$components/Card.svelte';
   import Modal from '$lib/components/Modal.svelte';
-  import { CARD_CATEGORY_COLOR_MAP, DRAWER_ANIM_DURATION, GameStates } from "$types";
+  import { CARD_CATEGORY_COLOR_MAP, DRAWER_ANIM_DURATION, GameStates } from '$types';
   import { page } from '$app/stores';
   import { Languages } from '$lib/utils/types';
   import LearnMore from '$components/LearnMore.svelte';
   import wildCardsEn from '$gameFiles/wild-cards.json';
   import wildCardsEs from '$gameFiles/wild-cards-es.json';
-  import { onMount } from "svelte";
 
   // Toggles the drawer
   export let toggleDrawer;
@@ -18,13 +17,15 @@
   $: isEn = language === Languages.ENGLISH;
 
   /** @type {import('$types').Card} */
-  $: wildCards = isEn? wildCardsEn : wildCardsEs;
-  let card, cardLoaded = false;
+  $: wildCards = isEn ? wildCardsEn : wildCardsEs;
+  let card,
+    cardLoaded = false;
   $: if (!cardLoaded) {
-    card = ($GameData.state === GameStates.WILD_CARD? wildCards:$page.data.cardData)[$GameData.currentCardId];
+    card = ($GameData.state === GameStates.WILD_CARD ? wildCards : $page.data.cardData)[
+      $GameData.currentCardId
+    ];
     cardLoaded = true;
   }
-
 
   /**
    * 1-indexed round number
@@ -65,13 +66,13 @@
    */
   const getIncomeAdjustmentText = (salaryUpdate) => {
     if (!salaryUpdate) {
-      return isEn ? "won't get any money" : 'no obtendrás dinero';
+      return isEn ? 'will stay the same.' : 'permanecerán iguales.';
     }
 
-    let updateText = isEn ? 'get' : 'obtendrás';
+    let updateText = isEn ? 'have increased by' : 'han aumentado';
     if (salaryUpdate < 0) {
       salaryUpdate = -salaryUpdate;
-      updateText = isEn ? 'stop earning' : 'dejarás de obtener';
+      updateText = isEn ? 'have decreased by' : 'han disminuido';
     }
 
     if (isEn) {
@@ -89,19 +90,19 @@
   const getHoursAdjustmentText = (hoursUpdate) => {
     if (!hoursUpdate) {
       return isEn
-        ? "won't have to work any additional hours"
-        : 'no tendrás que trabajar horas adicionales';
+        ? 'the number of hours spent on work and obligations will stay the same.'
+        : 'el número de horas dedicadas a trabajo y obligaciones permanecerán iguales.';
     }
 
     if (hoursUpdate < 0) {
       return isEn
-        ? `will work <b>${-hoursUpdate}</b> fewer hours every month`
-        : `dejarás de trabajar <b>${-hoursUpdate}</b> horas cada mes`;
+        ? `the number of hours dedicated to work and obligations will be reduced by <b>${-hoursUpdate}</b> hours every week.`
+        : `el número de horas dedicadas a trabajo y obligaciones se reducirá en <b>${-hoursUpdate}</b> horas cada semana.`;
     }
 
     return isEn
-      ? `will have to work <b>${hoursUpdate}</b> additional hours every month`
-      : `tendrás que trabajar <b>${hoursUpdate}</b> horas adicionales cada mes`;
+      ? `the number of hours dedicated to work and obligations will increase by <b>${hoursUpdate}</b> hours every week.`
+      : `el número de horas dedicadas al trabajo y obligaciones aumentará <b>${hoursUpdate}</b> horas cada semana.`;
   };
 
   /**
@@ -120,29 +121,67 @@
     const hoursAdjustmentText = getHoursAdjustmentText(updates.time);
 
     let finalText =
-      language == Languages.ENGLISH
-        ? `If you choose this option you ${incomeAdjustmentText} and ${hoursAdjustmentText}`
-        : `Si eliges esta opción, ${incomeAdjustmentText} y ${hoursAdjustmentText}`;
-    if (option.except) {
-      finalText += `, ${option.except}`;
+      updates.income?.salary === -9999
+        ? isEn
+          ? 'By choosing this option you will have to look for a new job.'
+          : 'Al elegir esta opción debes encontrar un nuevo empleo.'
+        : isEn
+        ? `By chosing this option your economic resources ${incomeAdjustmentText} and ${hoursAdjustmentText}`
+        : `Al elegir esta opción tus recursos económicos ${incomeAdjustmentText} y ${hoursAdjustmentText}.`;
+
+    if (updates.income?.salary === 0.0) {
+      finalText = ''; // Set finalText to an empty string
     }
 
-    return finalText + '.';
+    if (option.except) {
+      finalText += `${option.except}`;
+    }
+
+    return finalText + ' ';
   };
 
   $: optionUpdatesDescription = stringifyOption(displayedOption);
   $: backgroundColor = showOptions
     ? `var(--light-${CARD_CATEGORY_COLOR_MAP[card.category]})`
     : 'transparent';
+
+  let gameOver = false;
 </script>
 
 <Modal showModal={displayedOption}>
   <div class="implication-body" slot="body">
     <h3 style="margin-top:.2em;">{displayedOption?.description}</h3>
-    <p style="margin-bottom:0;">{@html optionUpdatesDescription}</p>
-    <p style="margin-top:0;">{@html displayedOption?.implicationText || ''}</p>
-    <button on:click={() => makeDecision(displayedOption.id)} class="button">
-      {#if isEn}Select{:else}Seleccionar{/if}
+    {#if optionUpdatesDescription.trim()}
+      <p style="margin-bottom:0;">{@html optionUpdatesDescription}</p>
+    {/if}
+    <p style="margin-top:0;"><br />{@html displayedOption?.implicationText || ''}</p>
+    <button
+      on:click={() => {
+        if (displayedOption?.gameOver) gameOver = true;
+        else makeDecision(displayedOption.id);
+      }}
+      class="button"
+    >
+      {#if displayedOption?.updates.income?.salary === -9999}
+        {#if isEn}Search for a new job{:else}Encontrar un nuevo empleo{/if}
+      {:else if isEn}Select{:else}Seleccionar{/if}
+    </button>
+  </div>
+</Modal>
+<Modal showModal={gameOver} closable={false}>
+  <div class="centered-column" slot="body">
+    <h3>
+      {#if isEn} Your Journey in Ecuador is Over {:else} Tu Estancia en Ecuador Terminó {/if}
+    </h3>
+    <button
+      class="button"
+      on:click={() => {
+        GameData.update((g) => {
+          return { ...g, state: GameStates.START };
+        });
+      }}
+    >
+      {#if isEn} Try Again {:else} Empezar de Nuevo {/if}
     </button>
   </div>
 </Modal>

@@ -11,47 +11,49 @@
         "description": "Tomárte tiempo de trabajo para ayudarla",
         "updates": {
           "income": {
-            "salary": -10
+            "salary": 0.0
           }
         },
-        "implicationText": "El <b>9%</b> de los migrantes tienen que solicitar ayuda de la comunidad, esto también sirve para crear una red comunitaria en Ecuador."
+        "implicationText": "Si eliges esta opción, tu jefe te permite cambiar el horario con tu compañero, pero tendrás que recuperar las horas, haciendo 5 horas semanales durante 2 semanas extras. El <b>9%</b> de los migrantes tienen que solicitar ayuda de la comunidad, esto también sirve para crear una red comunitaria en Ecuador."
       }
     ],
     "image": "WC_gender.svg",
-    "learn_more": "Según la ONU, la violencia de género es uno de los problemas más graves que padecen migrantes en Ecuador."
+    "learn_more": "<b>Una de cada dos</b> mujeres migrantes en Ecuador ha sufrido o sufre violencia de género en el espacio domestico o público."
   },
   {
     "id": 1,
     "category": "Wild Card",
     "title": "¿Quedarse o Irse?",
-    "description": "Desafortunadamente, no ha logrado integrarse económica y socialmente en Ecuador. Decide regresar a Venezuela en unos meses.",
+    "description": "Desafortunadamente, no has logrado incluirte económica y socialmente en Ecuador. Debes decidir dejar el lugar dónde estás y tomar nuevo rumbo.",
     "prompt": "¿Cómo lo quieres hacer?",
     "options": [
       {
         "id": 0,
-        "description": "Regresar a la frontera entre Ecuador y Colombia",
+        "description": "Ir a la frontera entre Ecuador y Colombia",
         "updates": {
           "income": {
-            "salary": -23
+            "salary": 0.0
           },
           "copingLevel": "stress"
         },
-        "implicationText": "Una organización humanitaria te paga el paso a la frontera entre Ecuador y Colombia. Para cruzar la frontera y debido a su situación en el país, decide cruzar irregularmente. El <b>23%</b> de los migrantes regresan a Venezuela o Colombia por no encontrar trabajo."
+        "implicationText": "Te has quedado sin trabajo, y no hay expectativas de conseguir ingresos. Una organización humanitaria apoya con el pago de los pasajes hasta la frontera Ecuador- Colombia, con una ayuda de retorno. Puede ser un momento para regresar a Venezuela. <br><br>El <b>23%</b> de las personas migrantes se ven obligadas a regresar a Venezuela por no cumplir con sus objetivos en su proceso migratorio. Los migrantes son la esperanza de los familiares que quedan en Venezuela para recibir remesas y poder acceder a las necesidades básicas con dignidad.",
+        "gameOver": true
       },
       {
         "id": 1,
-        "description": "Regresar a la frontera entre Ecuador y Perú",
+        "description": "Ir a la frontera entre Ecuador y Perú",
         "updates": {
           "income": {
-            "salary": -23
+            "salary": 0.0
           },
           "copingLevel": "stress"
         },
-        "implicationText": "El <b>48%</b> de los migrantes deciden ir al Perú."
+        "implicationText": "Te has quedado sin trabajo, y no hay expectativas de conseguir ingresos. Una organización humanitaria apoya con el pago de los pasajes hasta la frontera Ecuador- Perú, con una ayuda de tránsito. Puede ser un momento para probar en otro lugar.",
+        "gameOver": true
       }
     ],
     "image": "WC_venezuela.svg",
-    "learn_more": "Otras razones por las cuales los migrantes deciden irse son no encontrar vivienda (10%) y problemas de seguridad (8%)."
+    "learn_more": "Durante el tiempo en Ecuador no todas las personas migrantes que tenían el objetivo de establecerse consiguen su objetivo. La imposibilidad de establecerse en Ecuador se da por diferentes factores cómo: ser víctimas de violencia de género, víctimas de agresiones debido a la xenofobia, falta de medios de vida debido a su nacionalidad, falta de redes seguras. Los retos a los que se enfrentan en su día a día generan una toma de decisiones crucial, que van a tener un impacto en el éxito o no de su proceso migratorio."
   },
   {
     "id": 2,
@@ -63,19 +65,26 @@
       {
         "id": 0,
         "description": "Refugio de emergencia",
-        "updates": {},
-        "implicationText": "Te mudas con tu familia en uno de los 50 refugios y casas de bienvenida con el apoyo de PMA en Ecuador. Tienes derecho a los máximos 5 días de asistencia. Todas sus necesidades se cubrirán durante este tiempo. El <b>46%</b> de los migrantes informa tener condiciones desfavorables de vivienda, y el <b>9%</b> no tiene servicios básicos en su vivienda."
+        "updates": {
+          "income": {
+            "salary": 0.0
+          }
+        },
+        "implicationText": "Te mudas con tu familia a uno de los 50 refugios y casas de acogida activas y suportadas por el PMA en Ecuador. Tienes derecho a los máximos 5 días de asistencia.  Todas sus necesidades se cubrirán durante este tiempo. El <b>46%</b> de los migrantes informa tener condiciones desfavorables de vivienda, y el <b>9%</b> no tiene servicios básicos en su vivienda."
       },
       {
         "id": 1,
         "description": "Compartir casa con otra familia",
         "updates": {
+          "income": {
+            "salary": 0.0
+          },
           "expenditures": {
             "rent": -20
           },
           "copingLevel": "stress"
         },
-        "implicationText": "Decides mudarte a una habitación privada, con cocina e instalaciones de higiene compartidos con otras familias. Esta posibilidad te permite reducir tu gasto mensual. El <b>33%</b> de la población migrante comparte su hogar con otros núcleos familiares. El <b>21%</b> considera que el baño o la ducha no son seguros al ser compartidos."
+        "implicationText": "Decides mudarte a una habitación privada, con cocina e instalaciones de higiene compartidos con otras familias. El <b>33%</b> de la población migrante comparte su hogar con otros núcleos familiares. El <b>21%</b> considera que el baño o la ducha no son seguros al ser compartidos."
       }
     ],
     "image": "WC_eviction.svg",
