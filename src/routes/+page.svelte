@@ -275,7 +275,10 @@
           {/if}
         </h1>
 
-        <p style="text-align: left; font-family: 'open-sans', sans-serif;" class="p-responsive">
+        <p
+          style="text-align: left; font-family: 'open-sans', sans-serif; font-size:10pt;"
+          class="p-responsive"
+        >
           {#if language === Languages.ENGLISH}
             The goal of the simulation is to <b>improve the livelihood</b> of the chosen character.
           {:else}
@@ -284,7 +287,10 @@
         </p>
         <ol type="1" style="padding-left: 1em;">
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
+            <p
+              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
+              class="p-responsive"
+            >
               {#if language === Languages.ENGLISH}
                 1. Please select a profile and an occupation. These selection will show a specific <b
                   >monthly income and expenses
@@ -297,7 +303,10 @@
             </p>
           </li>
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
+            <p
+              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
+              class="p-responsive"
+            >
               {#if language === Languages.ENGLISH}
                 2. You will go through 4 rounds or scenarios, each one is <b>one month</b> and
                 <b>one challenge.</b>
@@ -308,7 +317,10 @@
             </p>
           </li>
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
+            <p
+              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
+              class="p-responsive"
+            >
               {#if language === Languages.ENGLISH}
                 3. Draw a card for every month. The card contains an event or a situation you
                 <b>have to face through a decision.</b>
@@ -320,7 +332,10 @@
             </p>
           </li>
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
+            <p
+              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
+              class="p-responsive"
+            >
               {#if language === Languages.ENGLISH}
                 4. Each option or decision you make will
                 <b>affect your income and your expenses.</b> In the lower console, you will be able
@@ -338,7 +353,10 @@
             </p>
           </li>
           <li>
-            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
+            <p
+              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
+              class="p-responsive"
+            >
               {#if language === Languages.ENGLISH}
                 5. You will have the opportunity to access
                 <b>assistance that allows your family to improve the situation in the country.</b>
