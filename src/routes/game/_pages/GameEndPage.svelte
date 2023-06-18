@@ -88,8 +88,8 @@
     <p>
       You have been able to receive assistance, <b>{assistances[0].name}</b> and
       <b>{assistances[1].name}</b>, from United Nations agencies, NGOs, among others. These are
-      usually provided to help migrants that are in a difficult situation, and they are usually
-      given just once.
+      usually provided to help migrants who are in a difficult situation, and they are usually given
+      just once.
     </p>
   {:else}
     <p>

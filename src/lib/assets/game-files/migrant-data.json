@@ -5,7 +5,7 @@
       "name": "Luis",
       "age": 25,
       "maritalStatus": "married, family of 6",
-      "introText": "Luis has been in Ecuador for <b>10 months</b> and his household is composed of <b>6</b> people. He used to work in the <b>construction</b> sector in Venezuela. He has a <b>high school degree</b>, but <b>no other legalized degrees, accreditations or certificates</b>. He doesn't have a <b>community network</b> and his migration status is still <b>irregular</b>. His partner takes care of heir kids fulltime, so he provides the entire household income.",
+      "introText": "Luis has been in Ecuador for <b>10 months</b> and his household is composed of <b>6</b> people. He used to work in the <b>construction</b> sector in Venezuela. He has a <b>high school degree</b>, but <b>no other legalized degrees, accreditations or certificates</b>. He doesn't have a <b>community network</b> and his migration status is still <b>irregular</b>. His partner takes care of their kids full time, so he provides the entire household income.",
       "householdSize": 6,
       "initialResources": {
         "skills": [

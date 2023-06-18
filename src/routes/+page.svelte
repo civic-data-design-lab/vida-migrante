@@ -239,7 +239,7 @@
               </p>
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
                 {#if language === Languages.ENGLISH}
-                  <b>94%</b> of households has an income 94% below the national average in Ecuador,
+                  <b>94%</b> of households have an income 94% below the national average in Ecuador,
                   <span style="color: #94439d;"><b>$840</b></span>. Migrants' households average
                   income is
                   <span style="color: #e7ab9c;"><b>$313</b></span>.
