@@ -9,6 +9,8 @@
   import wildCardsEn from '$gameFiles/wild-cards.json';
   import wildCardsEs from '$gameFiles/wild-cards-es.json';
 
+  import va from '@vercel/analytics';
+
   // Toggles the drawer
   export let toggleDrawer;
 
@@ -157,8 +159,20 @@
     <p style="margin-top:0;"><br />{@html displayedOption?.implicationText || ''}</p>
     <button
       on:click={() => {
-        if (displayedOption?.gameOver) gameOver = true;
-        else makeDecision(displayedOption.id);
+        let analyticsKey = 'card';
+        if ($GameData.state === GameStates.WILD_CARD) {
+          analyticsKey = 'wildcard';
+        }
+        va.track(`decision/${analyticsKey}/${$GameData.currentCardId}`, {
+          optionId: displayedOption.id,
+          description: displayedOption.description,
+        });
+
+        if (displayedOption?.gameOver) {
+          gameOver = true;
+        } else {
+          makeDecision(displayedOption.id);
+        }
       }}
       class="button"
     >

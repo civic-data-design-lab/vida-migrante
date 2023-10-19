@@ -123,9 +123,12 @@ p4 {
 body {
   font: 16pt rubik;
   color: var(--gray);
-  user-select: none;
   margin: 0;
   overscroll-behavior: none;
+}
+
+::selection {
+  background-color: var(--light-yellow);
 }
 
 html {
