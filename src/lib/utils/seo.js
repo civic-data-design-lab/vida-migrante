@@ -1,5 +1,5 @@
 import { Languages } from './types';
-import previewImage from '$images/preview-image.jpg';
+import previewImage from '$images/preview-image.png';
 import previewImageSquare from '$images/preview-image-square.jpg';
 
 export const SITE_TITLE = 'Vida Migrante';
@@ -16,8 +16,8 @@ export const DESCRIPTION = {
 
 export const PREVIEW_IMAGE = {
   src: previewImage,
-  width: 828,
-  height: 1430,
+  width: 770,
+  height: 576,
   alt: 'Image of life event card during the game',
 };
 
