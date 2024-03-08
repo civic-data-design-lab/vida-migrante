@@ -18,7 +18,7 @@
 
   $: playerExpenses = parseInt(sumValues($GameData.resources?.expenditures));
   $: playerIncome = $GameData.resources?.income.salary + $GameData.resources?.income.assistance;
-  $: hoursWorked = Math.round($GameData.resources?.time / DAYS_IN_WEEK);
+  $: hoursWorked = $GameData.resources?.time;
 
   export const expenseStore = tweened(playerExpenses, {
     duration: RESOURCE_UPDATE_ANIM_DURATION,
@@ -104,6 +104,13 @@
     <p4 style="color: var(--accent-green); font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
       >{#if isEn} Income:{:else} Ingresos: {/if}
       <b>${Math.floor($incomeStore)}</b>
+    </p4>
+  </div>
+  <div class="alignleft">
+    <p4 style="font-weight: 500; font-size: 14.5pt; margin-bottom:.4em;"
+      >{#if isEn} Hours Worked:{:else} Horas de trabajo: {/if}
+
+      <b>{Math.floor($animatedHoursWorked)}</b>
     </p4>
   </div>
 </div>
@@ -268,7 +275,7 @@
         {displayedSpending?.spanish_name}
       {/if}
     </h1>
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; gap: 1rem">
       <div style="display: flex; flex-direction: column; align-content: start; text-align: left;">
         <p style="margin-bottom:.2em;">
           <b
@@ -301,7 +308,7 @@
 
   #expense-board {
     display: flex;
-    justify-content: space-between;
+    gap: 1rem;
     margin-top: 0.5em;
   }
 
@@ -422,7 +429,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    width: 80vw;
+    width: min(80vw, 650px);
     margin-bottom: 1em;
   }
 

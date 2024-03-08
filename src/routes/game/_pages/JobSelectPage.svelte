@@ -12,7 +12,6 @@
   let showModal = false;
   let modalImgSrc, modalTitle, modalDemo, modalSector, modalIncome, modalHours, buttonDisabled;
   function modalUpdater(imgSrc, title, demo, sector, income, hours, jobId, button) {
-    console.log($GameData.prevJob);
     return function updater() {
       modalImgSrc = imgSrc;
       modalTitle = title;
