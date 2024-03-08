@@ -531,6 +531,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+
+    backdrop-filter: blur(2px);
   }
 
   .logos {
