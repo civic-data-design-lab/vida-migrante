@@ -13,7 +13,9 @@
   on:close={() => {
     showModal = false;
   }}
-  on:click|self={() => {if (closable) dialog.close()}}
+  on:click|self={() => {
+    if (closable) dialog.close();
+  }}
 >
   <div id="modal-button-container" style="transition: 200ms ease;">
     {#if closable}
@@ -25,7 +27,7 @@
 
 <style>
   dialog {
-    max-width: 80vw;
+    max-width: min(80vw, 650px);
     max-height: 80vh;
     border-radius: 32px;
     border-width: 2px;

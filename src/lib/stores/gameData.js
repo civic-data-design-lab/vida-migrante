@@ -228,7 +228,7 @@ function createGameData() {
         .then(delay)
         .then(() => {
           // Only resolve the promise when all of the animations are finished.
-          console.log('Finished animation');
+          console.debug('Finished animation');
 
           // Make sure remaining non-animated resources get updated
           update((g) => {
@@ -277,9 +277,9 @@ function drawCard(gameData) {
   let availableCards = allCards.filter((card) => !alreadyDrawn.includes(card.id));
 
   const migrant = allMigrantData.migrants[gameData.migrantId];
-  if (migrant && ["José", "Luis"].includes(migrant.name)) {
+  if (migrant && ['José', 'Luis'].includes(migrant.name)) {
     availableCards = availableCards.filter(
-      (card) => !card.title.includes("Sexual Harassment", "Acoso Sexual")
+      (card) => !card.title.includes('Sexual Harassment', 'Acoso Sexual')
     );
   }
 
@@ -338,12 +338,13 @@ function updateResources(oldResources, updates) {
  */
 function animateResource(oldValue, newValue, updater) {
   return new Promise((resolve) => {
-    if (oldValue == newValue) {
+    if (oldValue === newValue) {
       // Don't invoke a delay if there are no updates to be made
       resolve(0);
       return;
     }
 
+    console.debug('Animating', oldValue, newValue);
     GameData.update((g) => {
       updater(g);
       return g;
