@@ -9,7 +9,7 @@
     {#each migrants as migrant, i}
       <div id="carousel-slide{i}" class="carousel-slide">
         <div class="carousel-content">
-          <img src={`/images/migrants/${migrant.name}.svg`} alt={migrant.name} />
+          <img src={`/images/migrants/${migrant.name}.png`} alt={migrant.name} />
           <h3>{migrant.name}</h3>
           <span style:text-transform="capitalize">{migrant.age}, {migrant.maritalStatus}</span>
           <div class="intro-text">

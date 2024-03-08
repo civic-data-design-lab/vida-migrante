@@ -207,7 +207,7 @@
                   Vida de los Migrantes in Ecuador
                 {/if}
               </h1>
-              <img src={'/images/migrants/Luis.svg'} alt="Luis" style="width: 60%" />
+              <img src={'/images/migrants/Luis.png'} alt="Luis" style="width: 60%" />
               <p style="text-align: left; font-family: 'open-sans', sans-serif;">
                 {#if language === Languages.ENGLISH}
                   <b>Over half</b> of the migrants spent
