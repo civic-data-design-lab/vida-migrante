@@ -135,10 +135,12 @@ word-wrap: break-word; text-align:center;margin-block:.1em;"
 
   .assist-thumb {
     all: unset;
+    transition: transform 150ms ease;
   }
 
-  .assist-thumb:hover {
+  .assist-thumb:hover:not(:disabled) {
     cursor: pointer;
+    transform: scale(1.1);
   }
 
   img {

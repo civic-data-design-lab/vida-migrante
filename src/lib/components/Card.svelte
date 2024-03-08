@@ -130,6 +130,10 @@
     flex-direction: column;
   }
 
+  article:hover {
+    cursor: pointer;
+  }
+
   header {
     /* Keep header at the top even if card scrolls */
     position: relative;

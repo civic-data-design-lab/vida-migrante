@@ -79,5 +79,13 @@
     font-size: 2em;
     color: var(--gray);
     padding: 0;
+
+    transition: all 150ms ease;
+  }
+
+  #modal-close:hover {
+    cursor: pointer;
+    color: var(--dark-gray);
+    font-weight: bold;
   }
 </style>
