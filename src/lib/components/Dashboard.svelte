@@ -275,7 +275,7 @@
         {displayedSpending?.spanish_name}
       {/if}
     </h1>
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; gap: 1rem">
       <div style="display: flex; flex-direction: column; align-content: start; text-align: left;">
         <p style="margin-bottom:.2em;">
           <b
@@ -429,7 +429,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    width: 80vw;
+    width: min(80vw, 650px);
     margin-bottom: 1em;
   }
 
