@@ -271,7 +271,7 @@
       <div style="z-index: 12; padding-left: 2rem; padding-right: 2rem;">
         <h1 style="text-align: center;" class="h1-responsive">
           {#if language === Languages.ENGLISH}
-            How to explore the simulation?
+            How to explore the simulation
           {:else}
             ¿Cómo explorar la simulación?
           {/if}
