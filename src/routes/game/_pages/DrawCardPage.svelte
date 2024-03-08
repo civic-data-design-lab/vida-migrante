@@ -26,7 +26,7 @@
   <button id="draw-card">
     <img class="card-back" src={cardBack} alt="Card back" />
     <img class="card-back" src={cardBack} alt="Card back" />
-    <img class="card-back" src={cardBack} alt="Card back" />
+    <img class="card-back" id="top-card" src={cardBack} alt="Card back" />
   </button>
 </TapIndicator>
 
@@ -66,6 +66,12 @@
     cursor: pointer;
   }
 
+  #top-card {
+    transition: transform 150ms ease;
+  }
+  button:hover #top-card {
+    transform: translateY(-20px);
+  }
   .card-back {
     position: absolute;
     object-fit: cover;
