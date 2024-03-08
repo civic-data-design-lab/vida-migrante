@@ -69,6 +69,12 @@
     width: 20px;
     height: 30px;
     cursor: pointer;
+    transition: transform 150ms ease;
+  }
+
+  #left-control-hitbox:hover,
+  #right-control-hitbox:hover {
+    transform: scale(1.1);
   }
 
   #right-control-hitbox {

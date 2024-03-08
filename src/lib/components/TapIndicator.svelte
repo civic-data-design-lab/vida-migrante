@@ -60,6 +60,10 @@
     align-items: center;
   }
 
+  .tap-indicator-content:hover {
+    cursor: pointer;
+  }
+
   .tap-indicator-wrapper {
     position: relative;
   }
