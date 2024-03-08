@@ -128,10 +128,12 @@
 
     display: flex;
     flex-direction: column;
+    transition: transform 150ms ease;
   }
 
   article:hover {
     cursor: pointer;
+    transform: scale(1.025);
   }
 
   header {
