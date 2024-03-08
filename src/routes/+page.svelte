@@ -219,6 +219,19 @@
                   básicas como alquiler, servicios públicos, salud y alimentos.
                 {/if}
               </p>
+              <p style="text-align: left; font-family: 'open-sans', sans-serif;">
+                {#if language === Languages.ENGLISH}
+                  <b>94%</b> of households have an income 94% below the national average in Ecuador,
+                  <span style="color: #94439d;"><b>$840</b></span>. Migrants' households average
+                  income is
+                  <span style="color: #e7ab9c;"><b>$313</b></span>.
+                {:else}
+                  <b>El 94%</b> de los hogares tiene un ingreso inferior al promedio nacional de
+                  Ecuador, <span style="color: #94439d;"><b>$840</b></span>. El promedio de ingreso
+                  de los hogares migrantes es de
+                  <span style="color: #e7ab9c;"><b>$313</b></span>.
+                {/if}
+              </p>
               <p style="text-align: left; font-family: 'open-sans', sans-serif; margin-bottom: 0">
                 {#if language === Languages.ENGLISH}
                   This leaves them with <b>little left for other essential needs</b>. In order to
@@ -237,35 +250,24 @@
                   migrantes.
                 {/if}
               </p>
-              <p style="text-align: left; font-family: 'open-sans', sans-serif;">
-                {#if language === Languages.ENGLISH}
-                  <b>94%</b> of households have an income 94% below the national average in Ecuador,
-                  <span style="color: #94439d;"><b>$840</b></span>. Migrants' households average
-                  income is
-                  <span style="color: #e7ab9c;"><b>$313</b></span>.
-                {:else}
-                  <b>El 94%</b> de los hogares tiene un ingreso inferior al promedio nacional de
-                  Ecuador, <span style="color: #94439d;"><b>$840</b></span>. El promedio de ingreso
-                  de los hogares migrantes es de
-                  <span style="color: #e7ab9c;"><b>$313</b></span>.
-                {/if}
-              </p>
-              <a href="/about">
-                {#if language === Languages.ENGLISH}About{:else}Acerca{/if}
-              </a>
-              <a href="/policy">
-                {#if language === Languages.ENGLISH}Policy Recommendations{:else}Recomendaciones{/if}
-              </a>
-              <a class="button" on:click|once={() => (page = 2)}>
+              <button id="continue" class="button" on:click|once={() => (page = 2)}>
                 {#if language === Languages.ENGLISH}Continue{:else}Continuar{/if}
-              </a>
+              </button>
+              <div id="more-links">
+                <a href="/about">
+                  {#if language === Languages.ENGLISH}About{:else}Acerca{/if}
+                </a>
+                <a href="/policy">
+                  {#if language === Languages.ENGLISH}Policy Recommendations{:else}Recomendaciones{/if}
+                </a>
+              </div>
             </div>
           </ParallaxLayer>
         </div>
       </Parallax>
     </div>
   {:else}
-    <div class="centered-column responsive" style="height: 100vh;" in:fade={{ delay: 500 }}>
+    <div id="page-2" class="centered-column constrained responsive" in:fade={{ delay: 500 }}>
       <div style="z-index: 12; padding-left: 2rem; padding-right: 2rem;">
         <h1 style="text-align: center;" class="h1-responsive">
           {#if language === Languages.ENGLISH}
@@ -275,10 +277,7 @@
           {/if}
         </h1>
 
-        <p
-          style="text-align: left; font-family: 'open-sans', sans-serif; font-size:10pt;"
-          class="p-responsive"
-        >
+        <p style="text-align: left; font-family: 'open-sans', sans-serif;" class="p-responsive">
           {#if language === Languages.ENGLISH}
             The goal of the simulation is to <b>improve the livelihood</b> of the chosen character.
           {:else}
@@ -287,10 +286,7 @@
         </p>
         <ol type="1" style="padding-left: 1em;">
           <li>
-            <p
-              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
-              class="p-responsive"
-            >
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 1. Please select a profile and an occupation. These selection will show a specific <b
                   >monthly income and expenses
@@ -303,10 +299,7 @@
             </p>
           </li>
           <li>
-            <p
-              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
-              class="p-responsive"
-            >
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 2. You will go through 4 rounds or scenarios, each one is <b>one month</b> and
                 <b>one challenge.</b>
@@ -317,10 +310,7 @@
             </p>
           </li>
           <li>
-            <p
-              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
-              class="p-responsive"
-            >
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 3. Draw a card for every month. The card contains an event or a situation you
                 <b>have to face through a decision.</b>
@@ -332,10 +322,7 @@
             </p>
           </li>
           <li>
-            <p
-              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
-              class="p-responsive"
-            >
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 4. Each option or decision you make will
                 <b>affect your income and your expenses.</b> In the lower console, you will be able
@@ -353,10 +340,7 @@
             </p>
           </li>
           <li>
-            <p
-              style="margin: 0; font-family: 'open-sans', sans-serif; font-size:10pt;"
-              class="p-responsive"
-            >
+            <p style="margin: 0; font-family: 'open-sans', sans-serif;" class="p-responsive">
               {#if language === Languages.ENGLISH}
                 5. You will have the opportunity to access
                 <b>assistance that allows your family to improve the situation in the country.</b>
@@ -506,6 +490,27 @@
     width: calc(100 * var(--vw));
   }
 
+  #continue {
+    margin-top: 2rem;
+  }
+
+  #more-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 2rem;
+    gap: 0.25rem;
+  }
+
+  #page-2 {
+    height: 100vh;
+  }
+
+  #page-2 li {
+    margin-bottom: 1rem;
+  }
+
   .arrow-icon {
     height: 8px;
     color: #505050;
@@ -558,6 +563,13 @@
 
     ol {
       margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    #page-2 {
+      margin-bottom: 300px;
+      justify-content: start;
     }
   }
 
