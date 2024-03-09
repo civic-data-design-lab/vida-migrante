@@ -2,7 +2,7 @@
   import { GameData } from '$gameData';
   import { GameStates } from '$types';
   import { onMount, afterUpdate, onDestroy } from 'svelte';
-  import { get } from 'svelte/store'
+  import { get } from 'svelte/store';
 
   import MigrantPage from './_pages/MigrantPage.svelte';
   import JobSelectPage from './_pages/JobSelectPage.svelte';
@@ -27,10 +27,12 @@
     toggleDrawer = () => drawer.toggleDrawer();
   });
 
+  // Subscribe to changes in the dashboard's expenses store
+  // Used in order to change the background color
   afterUpdate(() => {
-    if (dashboard) {
+    if (dashboard?.incomeStore) {
       expenseUnsub = dashboard.expenseStore.subscribe((expenses) => {
-        overspent = expenses > get(dashboard.incomeStore);
+        overspent = expenses > get(dashboard?.incomeStore);
       });
       incomeUnsub = dashboard.incomeStore.subscribe((income) => {
         overspent = get(dashboard.expenseStore) > income;
@@ -118,7 +120,11 @@
   </GamePage>
 {/key}
 {#if pageData.hasDrawer}
-  <Drawer bind:this={drawer} botThreshold={drawerBottomThreshold} background={overspent? '#f7e3de' : '#f9f9f9'}>
+  <Drawer
+    bind:this={drawer}
+    botThreshold={drawerBottomThreshold}
+    background={overspent ? '#f7e3de' : '#f9f9f9'}
+  >
     <div id="drawer-body" slot="body">
       <Dashboard bind:this={dashboard} />
     </div>
