@@ -4,14 +4,16 @@
   import Modal from '$components/Modal.svelte';
   import { GameData } from '$gameData';
   import { page } from '$app/stores';
-  import { isFoodSecure, sumValues } from '$lib/utils/functions';
-  import { spendings } from '$gameFiles/expenses.json';
+  import { deepCopy, isFoodSecure, sumValues } from '$lib/utils/functions';
+  import _EXPENSES from '$gameFiles/expenses.json';
   import { DAYS_IN_WEEK, Languages, RESOURCE_UPDATE_ANIM_DURATION } from '$lib/utils/types';
   import { tweened } from 'svelte/motion';
   import { linear } from 'svelte/easing';
   import { slide } from 'svelte/transition';
 
   const migrants = $page.data.migrantData.migrants;
+
+  let spendings = deepCopy(_EXPENSES.spendings);
 
   $: language = $page.data.language;
   $: isEn = language === Languages.ENGLISH;

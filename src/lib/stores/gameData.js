@@ -20,7 +20,7 @@ console.log('DEV MODE:', dev);
 // TODO: Currently only loads the game state from local storage in dev mode.
 // Need to implement a better way to allow users to persist games
 let initialValue = INITIAL_GAME_DATA;
-if (browser && dev) {
+if (browser && dev && false) {
   const storedGameData = window.localStorage.getItem('gameData');
 
   // Parse the JSON; if there is an error, return the initial game data
