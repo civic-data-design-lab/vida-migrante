@@ -2,14 +2,6 @@ name: "Feature Request"
 description: Request a feature or enhancement for Vida Migrante
 labels: ["enhancement"]
 body:
-  - type: dropdown
-    id: ismobile
-    attributes:
-      label: Is this feature request specifically for mobile?
-      options:
-        - "Yes"
-        - "No"
-      default: 1
   - type: textarea
     id: feature-description
     attributes:
