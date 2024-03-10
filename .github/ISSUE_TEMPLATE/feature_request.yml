@@ -1,0 +1,29 @@
+name: "Feature Request"
+description: Request a feature or enhancement for Vida Migrante
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Describe the feature
+      description: Briefly describe the feature/enhancement you would like to see included. **Include any relevant designs here as well if applicable.**
+      placeholder: Feature description
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - 0.5 (Nitpick)
+        - 1   (Minor)
+        - 1.5 (Moderate)
+        - 2   (Important)
+        - 2.5 (Highly important)
+        - 3   (Critical)
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Notes and Information

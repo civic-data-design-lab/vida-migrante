@@ -1,0 +1,58 @@
+name: "Bug report"
+description: Report an issue with Vida Migrante
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Before you start, make sure you have been testing on the [development version of the site](https://ecuador-integration-git-develop-cddl.vercel.app/).**
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: Briefly describe the bug that you are observing. **Include any relevant screenshots here as well.**
+      placeholder: Bug description
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browser(s) did you see this problem on?
+      multiple: true
+      options:
+        - Chrome
+        - Safari
+        - Firefox
+        - Microsoft Edge
+        - Other
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Describe or list the steps for reproducing the bug.
+      placeholder: Reproduction
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Include any browser console and/or server logs around the time this bug occurred if possible. Please try not to insert an image but copy paste the log text.
+      render: Shell
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - 0.5 (Nitpick)
+        - 1   (Minor)
+        - 1.5 (Moderate)
+        - 2   (Important)
+        - 2.5 (Highly important)
+        - 3   (Critical)
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Notes and Information
