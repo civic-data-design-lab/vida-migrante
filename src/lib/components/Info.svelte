@@ -1,6 +1,6 @@
 <!-- Represents an info icon that, when clicked, displays a modal. -->
 <script>
-  import infoIcon from '$images/info.svg';
+  import infoIcon from '$images/info.png';
   import Modal from './Modal.svelte';
 
   /**
