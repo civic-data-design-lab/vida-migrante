@@ -8,13 +8,13 @@
 
   import { Languages } from '$lib/utils/types';
   import LanguageToggle from '$lib/components/LanguageToggle.svelte';
-  import arrowIcon from '$images/keyboard-arrow-down_119013.svg';
   import cddlLogo from '$images/cddl_logo_black.svg';
   import mitLogo from '$images/mit-logo-black-blue.png';
   import wfpLogo from '$images/wfp-logo-standard-black-en.svg';
   import usaidLogo from '$images/usaid_horizontal_RGB_Black.png';
 
   import va from '@vercel/analytics';
+  import ScrollIndicator from '$lib/components/ScrollIndicator.svelte';
 
   /** Page data loaded from `+layout.server.svelte` */
   export let data;
@@ -144,6 +144,7 @@
                   Inclusión de los Migrantes Venezolanos en Ecuador.
                 {/if}
               </p>
+              <ScrollIndicator />
             </div>
           </ParallaxLayer>
 
@@ -195,6 +196,7 @@
                   >. <br /><br />
                 {/if}
               </p>
+              <ScrollIndicator />
             </div>
           </ParallaxLayer>
 
@@ -381,9 +383,6 @@
     <img src={usaidLogo} alt="USAID Logo" style:height="28px" />
   </span>
 
-  {#if container && Math.ceil(y) < container.scrollHeight - window.innerHeight}
-    <img class="arrow-icon" src={arrowIcon} alt="Scroll to see more" />
-  {/if}
   <LanguageToggle />
 </footer>
 
@@ -511,14 +510,6 @@
     margin-bottom: 1rem;
   }
 
-  .arrow-icon {
-    height: 8px;
-    color: #505050;
-    display: flex;
-    animation-name: flash;
-    animation: blinker 2s linear infinite;
-  }
-
   footer {
     position: fixed;
     bottom: 0;
@@ -545,12 +536,6 @@
 
   .logos img {
     height: 20px;
-  }
-
-  @keyframes blinker {
-    50% {
-      opacity: 0;
-    }
   }
 
   a.button {
